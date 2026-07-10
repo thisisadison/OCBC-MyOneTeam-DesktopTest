@@ -115,7 +115,7 @@
   .pilotHero{background:linear-gradient(135deg,#ec1c24,#a90c12);color:#fff;border-radius:20px;padding:18px;box-shadow:0 14px 34px rgba(236,28,36,.3)}
   .pilotHero .hbar{height:8px;border-radius:5px;background:rgba(255,255,255,.25);overflow:hidden;margin-top:6px}
   .pilotHero .hbar span{display:block;height:100%;background:#fff;border-radius:5px}
-  .activeppl{background:linear-gradient(135deg,#fff,#fff5f5);border:1px solid #f6d2d4}
+  .activeppl{background:rgba(255,255,255,.4);backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);border:1px solid rgba(255,255,255,.5);box-shadow:0 14px 34px rgba(20,10,5,.18)}
   .activeppl .pt{color:var(--ink)}.activeppl .pd{color:var(--ink2)}
   .feedcard{background:#fff;border:1px solid var(--line);border-radius:15px;padding:14px;box-shadow:var(--shadow);margin-bottom:11px}
   .feedcard.hot{border-color:#f6c9cb;background:#fffafa}
@@ -410,6 +410,7 @@
     overflow: hidden;
     /* Swapped purple gradient to your theme's red gradient variables */
     background: linear-gradient(125deg, var(--ai1), var(--ai2));
+    box-shadow: 0 14px 30px rgba(194,15,23,.22);
   }
   .promo .pt{font-family:'Sora';font-weight:800;font-size:18px;display:flex;align-items:center;gap:8px}
   .promo .pd{font-size:13px;opacity:.95;margin:7px 0 13px;line-height:1.45}
@@ -673,7 +674,7 @@
   .recorisk span{font-size:11px;color:var(--muted)}
   .recorisk b{font-family:'Sora';font-size:14px}
   .agentmini-h{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:2px 0 8px}
-  .hacctcard{background:#f2ece7;border-radius:22px;padding:24px 22px;margin:16px -8px 0}
+  .hacctcard{background:rgba(255,255,255,.42);backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);border:1px solid rgba(255,255,255,.5);border-radius:22px;padding:24px 22px;margin:16px -8px 0;box-shadow:0 14px 34px rgba(20,10,5,.18)}
   .hacctrow{display:flex;align-items:center;gap:17px}
   .hacctav{width:62px;height:62px;border-radius:50%;background:#f1d8c2;color:#9a7350;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex-shrink:0;font-family:'Sora';letter-spacing:.5px}
   .hacctname{font-family:'Sora';font-weight:800;font-size:19px;color:var(--ink)}
@@ -1677,10 +1678,11 @@ login(){return `
 
 
 
-home(){return `<div style="width:100%;overflow:hidden;line-height:0;height:455px">
-    <img src="images/ocbc-ea-home.png" style="width:100%;display:block" alt="OCBC home"/>
+home(){return `<div style="width:100%;overflow:hidden;line-height:0;height:515px;position:relative">
+    <img src="images/ocbc-ea-home-hero-ext.png" style="width:100%;display:block" alt="OCBC home"/>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:130px;background:linear-gradient(to bottom, rgba(245,246,248,0) 0%, rgba(245,246,248,.7) 60%, var(--bg) 100%);pointer-events:none"></div>
   </div>
-  <div class="pad" style="padding-top:16px">
+  <div class="pad homesheet" style="position:relative;z-index:2;margin-top:-300px;padding-top:0">
     ${state.invested?`<div class="promo activeppl" onclick="go('pilot')" style="cursor:pointer">
       <div class="row" style="margin-bottom:6px"><span class="livedot"></span><div class="pt" style="margin:0">My OneTeam · your AI team is active</div><span style="margin-left:auto;font-size:18px">›</span></div>
       <div class="pd">${state.pilot.rebalanced?'All caught up. Your team is monitoring markets for you.':'<b>1 new update</b> — markets moved and your team has a suggestion. Tap to review.'}</div>
