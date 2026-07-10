@@ -405,17 +405,17 @@
     margin: 14px -8px 0;
     border-radius: 22px;
     padding: 22px 22px;
-    color: #fff;
+    color: var(--ink);
     position: relative;
     overflow: hidden;
-    /* Swapped purple gradient to your theme's red gradient variables */
-    background: linear-gradient(125deg, var(--ai1), var(--ai2));
-    box-shadow: 0 14px 30px rgba(194,15,23,.22);
+    background: linear-gradient(135deg, #fffefb, #fdf3e2);
+    border: 1.5px solid rgba(196,138,26,.3);
+    box-shadow: 0 14px 30px rgba(196,138,26,.16), 0 4px 14px rgba(20,10,5,.06);
   }
   .promo .pt{font-family:'Sora';font-weight:800;font-size:18px;display:flex;align-items:center;gap:8px}
-  .promo .pd{font-size:13px;opacity:.95;margin:7px 0 13px;line-height:1.45}
-  .promo .pb{background:#fff;color:#5b2bb0;font-weight:800;border:none;border-radius:13px;padding:13px;width:100%;cursor:pointer;font-family:'Inter';font-size:14.5px}
-  .promo .spark{position:absolute;right:-10px;top:-10px;font-size:80px;opacity:.15}
+  .promo .pd{font-size:13px;opacity:.85;margin:7px 0 13px;line-height:1.45}
+  .promo .pb{background:linear-gradient(135deg,#e0a83e,#b8791f);color:#fff;font-weight:800;border:none;border-radius:13px;padding:13px;width:100%;cursor:pointer;font-family:'Inter';font-size:14.5px;box-shadow:0 8px 20px rgba(184,121,31,.35)}
+  .promo .spark{position:absolute;right:-10px;top:-10px;font-size:80px;opacity:.1}
 
   
 
@@ -1503,37 +1503,37 @@ function overAppetite(){return planRiskLevel()>riskProfileLevel()+1;}
 /* ============ shared bits ============ */
 function homePromo(){
   const slides=[{intro:true}].concat(CARAG.map(a=>({a:a})));
-  const dots=slides.map((_,i)=>`<span id="agdot${i}" style="display:inline-block;width:${i===0?16:6}px;height:6px;border-radius:3px;background:${i===0?'#fff':'rgba(255,255,255,.4)'};transition:all .35s ease"></span>`).join('');
-  const facepile=CARAG.map((a,i)=>`<div style="width:38px;height:38px;border-radius:11px;overflow:hidden;border:2px solid rgba(255,255,255,.55);margin-left:${i?-11:0}px;box-shadow:0 3px 8px rgba(0,0,0,.3);position:relative;z-index:${10-i}">${avatar(a)}</div>`).join('');
+  const dots=slides.map((_,i)=>`<span id="agdot${i}" style="display:inline-block;width:${i===0?16:6}px;height:6px;border-radius:3px;background:${i===0?'#b8791f':'rgba(196,138,26,.25)'};transition:all .35s ease"></span>`).join('');
+  const facepile=CARAG.map((a,i)=>`<div style="width:38px;height:38px;border-radius:11px;overflow:hidden;border:2px solid rgba(196,138,26,.35);margin-left:${i?-11:0}px;box-shadow:0 3px 8px rgba(20,10,5,.15);position:relative;z-index:${10-i}">${avatar(a)}</div>`).join('');
   const body=slides.map((sl,i)=>{
     const base=`position:absolute;inset:0;opacity:${i===0?1:0};transform:translateX(${i===0?0:24}px);transition:opacity .45s ease,transform .45s ease;pointer-events:${i===0?'auto':'none'}`;
     if(sl.intro)return `<div id="agslide${i}" style="${base};display:flex;flex-direction:column;justify-content:center;gap:11px">
         <div style="display:flex;align-items:center;gap:10px">
           <div style="display:flex">${facepile}</div>
-          <div style="font-size:10px;font-weight:800;color:rgba(255,255,255,.82);letter-spacing:.09em;line-height:1.3">YOUR AI<br>WEALTH TEAM</div>
+          <div style="font-size:10px;font-weight:800;color:#b8791f;letter-spacing:.09em;line-height:1.3">YOUR AI<br>WEALTH TEAM</div>
         </div>
         <div>
-          <div style="font-family:'Sora';font-weight:800;font-size:17px;color:#fff;line-height:1.24;margin-bottom:5px">Not Sure Where To Start Investing?</div>
-          <div style="font-size:12px;color:rgba(255,255,255,.84);line-height:1.4">A personalised plan built from what OCBC already knows about you \u2014 in minutes, no forms.</div>
+          <div style="font-family:'Sora';font-weight:800;font-size:17px;color:var(--ink);line-height:1.24;margin-bottom:5px">Not Sure Where To Start Investing?</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.4">A personalised plan built from what OCBC already knows about you \u2014 in minutes, no forms.</div>
         </div>
       </div>`;
     const a=sl.a;
     return `<div id="agslide${i}" style="${base};display:flex;align-items:center;gap:18px">
-        <div style="width:74px;height:74px;flex-shrink:0;border-radius:18px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.28);border:2px solid rgba(255,255,255,.3)">${avatar(a)}</div>
+        <div style="width:74px;height:74px;flex-shrink:0;border-radius:18px;overflow:hidden;box-shadow:0 4px 16px rgba(20,10,5,.18);border:2px solid rgba(196,138,26,.3)">${avatar(a)}</div>
         <div style="flex:1;min-width:0">
-          <div style="font-family:'Sora';font-weight:800;font-size:17px;color:#fff;line-height:1.2;margin-bottom:4px">${a.name}</div>
-          <div style="font-size:10.5px;color:rgba(255,255,255,.72);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;line-height:1.3">${a.desc||''}</div>
-          <div style="font-size:12.5px;color:rgba(255,255,255,.95);line-height:1.4">${AGENT_HOOKS[a.id]||''}</div>
+          <div style="font-family:'Sora';font-weight:800;font-size:17px;color:var(--ink);line-height:1.2;margin-bottom:4px">${a.name}</div>
+          <div style="font-size:10.5px;color:#b8791f;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;line-height:1.3">${a.desc||''}</div>
+          <div style="font-size:12.5px;color:var(--ink2);line-height:1.4">${AGENT_HOOKS[a.id]||''}</div>
         </div>
       </div>`;
   }).join('');
   return `<div class="promo" style="padding-bottom:14px">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:11px">
-      <div class="pt" style="font-size:12px;opacity:.85;font-weight:800;letter-spacing:.08em;margin:0">✦ My OneTeam</div>
+      <div class="pt" style="font-size:12px;opacity:1;font-weight:800;letter-spacing:.08em;margin:0;color:#b8791f">✦ My OneTeam</div>
       <div id="agDots" style="display:flex;gap:5px">${dots}</div>
     </div>
     <div id="agCarousel" style="position:relative;height:128px;margin-bottom:16px;overflow:hidden">${body}</div>
-    <button class="pb" onclick="go('team')" style="background:rgba(255,255,255,.18);color:#fff;border:1.5px solid rgba(255,255,255,.45);font-weight:700">Try It Now \u2192</button>
+    <button class="pb" onclick="go('team')">Try It Now \u2192</button>
   </div>`;
 }
 function appbar(t,back){return `<div class="appbar"><div class="back" onclick="go('${back}')">‹</div><div class="ttl">${t}</div><div class="ologo">OCBC</div></div>`;}
@@ -1689,7 +1689,7 @@ home(){return `<div style="width:100%;overflow:hidden;line-height:0;height:515px
     <img src="images/ocbc-ea-home.png" style="width:100%;display:block" alt="OCBC home"/>
     <div style="position:absolute;left:0;right:0;bottom:0;height:130px;background:linear-gradient(to bottom, rgba(245,246,248,0) 0%, rgba(245,246,248,.7) 60%, var(--bg) 100%);pointer-events:none"></div>
   </div>
-  <div class="pad homesheet" style="position:relative;z-index:2;margin-top:-160px;padding-top:0">
+  <div class="pad homesheet" style="position:relative;z-index:2;margin-top:-157px;padding-top:0">
     ${state.invested?`<div class="promo activeppl" onclick="go('pilot')" style="cursor:pointer">
       <div class="row" style="margin-bottom:6px"><span class="livedot"></span><div class="pt" style="margin:0">My OneTeam · your AI team is active</div><span style="margin-left:auto;font-size:18px">›</span></div>
       <div class="pd">${state.pilot.rebalanced?'All caught up. Your team is monitoring markets for you.':'<b>1 new update</b> — markets moved and your team has a suggestion. Tap to review.'}</div>
