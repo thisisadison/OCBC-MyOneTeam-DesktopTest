@@ -61,6 +61,8 @@
   .appbar .back{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px}
   .appbar .ttl{font-size:13px;font-weight:700;color:var(--muted)}
   .appbar .ologo{margin-left:auto;font-family:'Sora';font-weight:800;color:var(--red);font-size:15px}
+  .ologo-gold{display:flex;align-items:center;gap:5px;background:linear-gradient(160deg,#f3d68d 0%,#d3a347 55%,#a8701f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .ologo-mark{width:17px;height:17px;flex-shrink:0}
 
   h1{font-size:25px;line-height:1.18;margin:8px 0 6px;font-weight:800}
   h2{font-size:15px;margin:18px 0 9px;font-weight:700;font-family:'Sora'}
@@ -455,6 +457,25 @@
   .agrow-head{display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none}
   .agrow-check{width:22px;height:22px;border-radius:50%;border:1.5px solid #d2d5da;color:transparent;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s;flex-shrink:0}
   .agrow-check-on{background:var(--red);border-color:var(--red);color:#fff}
+
+  /* ===== gold theme: build-your-ai-team screen ===== */
+  .stepbadge.gold{color:#a6710f;background:#fbe8bf}
+  .agcard-gold{background:linear-gradient(180deg,#fffbf3,#fff);border:1.5px solid #e3cb92;border-radius:16px;padding:14px;margin-bottom:12px;transition:border-color .2s,box-shadow .2s,background .2s;position:relative;box-shadow:0 3px 10px rgba(190,150,60,.09)}
+  .agcard-gold-sel{border-color:#dbb668;border-width:2px;background:linear-gradient(180deg,#fffaf0,#fffdf8);box-shadow:0 6px 16px rgba(190,134,45,.18),inset 0 0 0 1px rgba(211,163,71,.12)}
+  .agcard-gold-badge{position:absolute;top:-9px;right:14px;background:linear-gradient(160deg,#f3d68d 0%,#d3a347 55%,#a8701f 100%);color:#3a2a0a;font-size:9.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:20px;box-shadow:0 3px 8px rgba(190,134,45,.35);display:flex;align-items:center;gap:3px}
+  .agcard-gold-head{display:flex;align-items:center;gap:14px;cursor:pointer;user-select:none}
+  .agcard-gold-photo{width:64px;height:64px;flex-shrink:0;border-radius:14px;overflow:hidden;box-shadow:0 0 0 1.5px rgba(227,176,74,.5),0 3px 10px rgba(18,20,28,.14);transition:box-shadow .2s}
+  .agcard-gold-sel .agcard-gold-photo{box-shadow:0 0 0 2px #dbb668,0 3px 10px rgba(18,20,28,.14)}
+  .agcard-gold-name{font-family:'Sora',sans-serif;font-weight:800;font-size:15px;color:var(--ink);line-height:1.2}
+  .agcard-gold-desc{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.4}
+  .agcard-gold-risk{font-size:10.5px;font-weight:800;padding:4px 10px;border-radius:20px;white-space:nowrap}
+  .agcard-gold-check{width:26px;height:26px;border-radius:50%;border:1.5px solid #e8d19c;color:transparent;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s;flex-shrink:0;background:#fffaf0}
+  .agcard-gold-check-on{background:linear-gradient(160deg,#dbb668,#b8925a);border-color:#a87f4a;color:#fff;box-shadow:0 2px 6px rgba(184,121,15,.3)}
+  .orchcard-gold{display:flex;gap:16px;align-items:center;background:linear-gradient(135deg,#1c1c22,#3a2f12);color:#fff;border:2px solid #e3b04a;border-radius:18px;padding:16px;box-shadow:0 12px 30px rgba(202,162,58,.25);margin-top:14px}
+  .orchcard-gold-photo{width:76px;height:76px;flex-shrink:0;border-radius:22px;overflow:hidden;position:relative;box-shadow:0 0 0 3px rgba(227,176,74,.55),0 0 24px rgba(227,176,74,.35),0 6px 16px rgba(0,0,0,.35)}
+  .orchcard-gold-label{display:flex;align-items:center;gap:6px;font-family:'Sora',sans-serif;font-weight:800;font-size:12.5px;color:#e3b04a;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+  .orchcard-gold-desc{font-size:12.5px;line-height:1.5;opacity:.92}
+  .btn.gold{background:linear-gradient(160deg,#f3d68d 0%,#e3be67 25%,#d3a347 55%,#be862d 100%);color:#1F2229;box-shadow:inset 0 1px 0 1px rgba(255,255,255,.5),0 8px 20px rgba(190,134,45,.30);border-radius:15px}
 
   /* Goal chat interface */
   .goalchat{display:flex;flex-direction:column;gap:12px;padding-top:4px}
@@ -1104,6 +1125,7 @@ const POOL=96000; // matches BANK_KNOWN.investableAssets — you can only invest
 
 const state={
   agents:[],
+  openAgent:'home',
   goalLabel:'home goal', target:400000, years:6, rmApproved:false, invested:false,
   pilot:{idle:12400, deployed:false, drift:58, rebalanced:false},
   proposals:[{id:'pr1',on:true},{id:'pr2',on:false}],
@@ -1536,7 +1558,7 @@ function homePromo(){
     <button class="pb" onclick="go('team')">Try It Now \u2192</button>
   </div>`;
 }
-function appbar(t,back){return `<div class="appbar"><div class="back" onclick="go('${back}')">‹</div><div class="ttl">${t}</div><div class="ologo">OCBC</div></div>`;}
+function appbar(t,back,gold,hideLogo){return `<div class="appbar"><div class="back" onclick="go('${back}')">‹</div><div class="ttl">${t}</div>${hideLogo?'':`<div class="ologo${gold?' ologo-gold':''}">${gold?'<svg class="ologo-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="19" fill="none" stroke="url(#ogGrad)" stroke-width="2.4"/><path d="M20 9 L28 15 V25 L20 31 L12 25 V15 Z" fill="none" stroke="url(#ogGrad)" stroke-width="2.2" stroke-linejoin="round"/><defs><linearGradient id="ogGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d68d"/><stop offset="0.55" stop-color="#d3a347"/><stop offset="1" stop-color="#a8701f"/></linearGradient></defs></svg>':''}OCBC</div>`}</div>`;}
 function donutSVG(size,clickable){const r=44,c=2*Math.PI*r;let off=0,segs='';
   for(const k of KEYS4){const len=state.buckets[k]/100*c;
     segs+=`<circle cx="60" cy="60" r="${r}" fill="none" stroke="${BK[k].hex}" stroke-width="13" stroke-dasharray="${len} ${c-len}" stroke-dashoffset="${-off}" transform="rotate(-90 60 60)" style="transition:stroke-dasharray .5s,stroke-dashoffset .5s"/>`;off+=len;}
@@ -1709,7 +1731,8 @@ home(){return `<div style="width:100%;overflow:hidden;line-height:0;height:515px
 
     ${state.invested?`<div class="card flat" style="background:#fff;margin-top:14px"><div class="row"><div style="font-size:22px">🎯</div><div style="font-size:13px;color:var(--muted);line-height:1.45">You're <b>${Math.round(totalVal()*1.047/state.target*100)}% toward your ${goalLabel()}</b>. Your team will keep you on track.</div></div></div>`:''}
   </div>
-  <div class="bottomnav" style="height:91px;overflow:hidden;position:sticky;bottom:0">
+  <div class="bottomnav" style="height:91px;overflow:hidden;position:sticky;bottom:0;background:#f9f6f2">
+    <div style="position:absolute;left:0;right:0;top:0;height:14px;background:linear-gradient(to bottom, var(--bg) 0%, rgba(245,246,248,0) 100%);z-index:1;pointer-events:none"></div>
     <img src="images/ocbc-ea-home.png" style="width:100%;display:block;position:absolute;left:0;top:-730px" alt="OCBC nav"/>
   </div>`;},
 
@@ -1771,26 +1794,27 @@ risk(){const surplus=BANK_KNOWN.monthlyIncome-BANK_KNOWN.monthlySpend;return app
   </div>
 </div>`;},
 
-team(){return appbar('Home','home')+`<div class="pad" style="padding-bottom:32px">
-  <div class="stepbadge">Step 1 · Build your AI team</div>
-  <h1>Here Are Your AI Agents</h1>
-  <p class="sub">Each one specialises in a different financial objective. Pick up to 2, and we'll create a personalised investment portfolio that balances your priorities.</p>
+team(){return appbar('Home','home',false,true)+`<div class="pad" style="padding-bottom:32px">
+  <div class="stepbadge gold">Step 1 of 2</div>
+  <h1>Build Your AI Team</h1>
+  <p class="sub">Choose up to two AI specialists. Your personal orchestrator will combine their expertise into one investment plan.</p>
 
   <div id="agstack">
   ${AGENTS.map((a,i)=>{
     const sel=state.agents.includes(a.id);
-    const open=i===0;
+    const open=state.openAgent===a.id;
     const d=AGENT_DETAIL[a.id];
-    return `<div class="agrow ${sel?'agrow-sel':''}" id="agrow_${a.id}">
-      <div class="agrow-head" onclick="toggleAgRow('${a.id}')">
-        <div style="width:46px;height:46px;flex-shrink:0;border-radius:12px;overflow:hidden;box-shadow:0 3px 10px rgba(18,20,28,.12)">${avatar(a)}</div>
+    return `<div class="agcard-gold ${sel?'agcard-gold-sel':''}" id="agrow_${a.id}">
+      ${sel?'<div class="agcard-gold-badge">✓ Selected</div>':''}
+      <div class="agcard-gold-head" onclick="toggleAgRow('${a.id}')">
+        <div class="agcard-gold-photo">${avatar(a)}</div>
         <div style="flex:1;min-width:0">
-          <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:13px;color:var(--ink);line-height:1.2">${a.name}</div>
-          <div style="font-size:11px;color:var(--muted);margin-top:2px">${a.desc}</div>
+          <div class="agcard-gold-name">${a.name}</div>
+          <div class="agcard-gold-desc">${a.desc}</div>
         </div>
         <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
-          <span style="font-size:10px;font-weight:800;padding:3px 8px;border-radius:6px;background:${d.riskColor}18;color:${d.riskColor}">${d.riskTag}</span>
-          <div class="agrow-check ${sel?'agrow-check-on':''}" onclick="toggleAgentClick(event,'${a.id}')">✓</div>
+          <span class="agcard-gold-risk" style="background:${d.riskColor}18;color:${d.riskColor}">${d.riskTag} Risk</span>
+          <div class="agcard-gold-check ${sel?'agcard-gold-check-on':''}" onclick="toggleAgentClick(event,'${a.id}')">✓</div>
           <span class="agrow-chevron" id="chev_${a.id}" style="color:var(--muted);font-size:14px;transition:transform .25s">${open?'▲':'▼'}</span>
         </div>
       </div>
@@ -1814,11 +1838,16 @@ team(){return appbar('Home','home')+`<div class="pad" style="padding-bottom:32px
   }).join('')}
   </div>
 
-  <div class="judgecard" style="margin-top:14px"><div class="pixframe gold" style="width:54px;flex-shrink:0">${avatar(JUDGE)}</div>
-    <div><div class="jn">Orchestrator</div><div class="jd">Weighing all of that against your Balanced risk profile, here is your personalised portfolio — four asset classes, with the funds picked for you in each.</div></div></div>
+  <div class="orchcard-gold">
+    <div class="orchcard-gold-photo">${avatar(JUDGE)}</div>
+    <div>
+      <div class="orchcard-gold-label">✦ Orchestrator</div>
+      <div class="orchcard-gold-desc">I will analyse your selected specialists and create a balanced, personalised investment strategy tailored to your goals and risk profile.</div>
+    </div>
+  </div>
 
-  <div style="text-align:center;font-size:12px;color:var(--muted);font-weight:500;margin:10px 0 4px">${state.agents.length}/2 agents selected</div>
-  <button class="btn ai glowpulse" onclick="proceedTeam()" ${state.agents.length===0?'disabled style="opacity:.4;pointer-events:none"':''}">Continue →</button>
+  <div style="text-align:center;font-size:12.5px;color:var(--muted);font-weight:600;margin:14px 0 4px">👥 ${state.agents.length} of 2 agents selected</div>
+  <button class="btn gold" onclick="proceedTeam()" ${state.agents.length===0?'disabled style="opacity:.4;pointer-events:none"':''}">Continue →</button>
 </div>`;},
 
 analyze(){runAnalyze();const sel=AGENTS.filter(a=>state.agents.includes(a.id));return appbar('Building Your Plan','risk')+`<div class="pad" style="padding-top:14px">
@@ -2716,16 +2745,8 @@ function toggleAgent(id){
   applyAgents();keepScroll(()=>render());
 }
 function toggleAgRow(id){
-  AGENTS.forEach(a=>{
-    const body=document.getElementById('agbody_'+a.id);
-    const chev=document.getElementById('chev_'+a.id);
-    if(!body||!chev)return;
-    const isOpen=body.dataset.open==='1';
-    const shouldOpen=(a.id===id)&&!isOpen;
-    body.style.maxHeight=shouldOpen?'500px':'0px';
-    body.dataset.open=shouldOpen?'1':'0';
-    chev.textContent=shouldOpen?'▲':'▼';
-  });
+  state.openAgent=(state.openAgent===id)?null:id;
+  keepScroll(()=>render());
 }
 
 function bumpTarget(d){state.target=Math.max(50000,state.target+d);if($('tgtS'))$('tgtS').textContent='S$'+state.target.toLocaleString();if(cur==='sandbox')refreshChrome();}
