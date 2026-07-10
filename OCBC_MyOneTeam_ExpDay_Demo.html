@@ -494,7 +494,7 @@
   .navitem-on{color:var(--red)}
   .navicon{font-size:18px;line-height:1}
   .navitem-mid{margin-top:-22px}
-  .navicon-mid{width:46px;height:46px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-size:19px;box-shadow:0 6px 14px rgba(236,28,36,.35);margin-bottom:2px}
+  .navicon-mid{width:46px;height:46px;border-radius:50%;background:linear-gradient(180deg,#F9FAFB 0%,#E8EBF0 16%,#D4D8DF 38%,#C2C7CE 58%,#B3B8BF 78%,#D6DBE2 100%);color:#1F2229;display:flex;align-items:center;justify-content:center;font-size:19px;box-shadow:inset 0 1px 0 1px rgba(255,255,255,.7),inset 0 -1px 1px rgba(80,85,92,.08),0 2px 6px rgba(0,0,0,.06),0 8px 18px rgba(0,0,0,.10);margin-bottom:2px;border:2px solid var(--red)}
 
   @keyframes fabpulse{0%,100%{box-shadow:0 10px 28px rgba(0,0,0,.42),0 0 0 0 rgba(52,211,153,0)}50%{box-shadow:0 10px 28px rgba(0,0,0,.42),0 0 0 5px rgba(52,211,153,.22)}}
   .chatfab{position:absolute;left:10px;right:10px;top:48px;z-index:50;display:none;align-items:center;gap:14px;background:linear-gradient(135deg,#322b3d,#17131d);color:#fff;border-radius:20px;padding:18px 18px;border:1px solid rgba(255,255,255,.12);box-shadow:0 10px 28px rgba(0,0,0,.42);cursor:pointer}
@@ -1617,10 +1617,10 @@ login(){return `
 <div style="position:relative;width:100%;height:100%;overflow:hidden;background:#e2efff">
   <img
       src="images/ocbc-ea-login.png"
-      style="position:absolute;top:0px;left:0;width:100%;height:100%;object-fit:cover;object-position:top;"
+      style="position:absolute;top:2px;left:2px;right:2px;bottom:2px;width:calc(100% - 4px);height:calc(100% - 4px);object-fit:cover;object-position:top;border-radius:38px;"
   />
 
-  <div class="logincta" style="position:absolute;bottom:100px;left:28px;right:28px;padding:0;background:transparent;">
+  <div class="logincta" style="position:absolute;bottom:85px;left:26px;right:26px;padding:0;background:transparent;">
   <button
       class="ologin"
       onclick="go('home')"
@@ -1631,16 +1631,13 @@ login(){return `
           border-radius:10px;
           cursor:pointer;
 
-          background:
-              linear-gradient(
-                  180deg,
-                  #F9FAFB 0%,
-                  #E8EBF0 16%,
-                  #D4D8DF 38%,
-                  #C2C7CE 58%,
-                  #B3B8BF 78%,
-                  #D6DBE2 100%
-              );
+      background: linear-gradient(
+          180deg,
+          #F3D68D 0%,
+          #E3BE67 25%,
+          #D3A347 55%,
+          #BE862D 100%
+      );
 
           border:1px solid rgba(200,205,212,.65);
 
@@ -1679,7 +1676,7 @@ login(){return `
 
 
 home(){return `<div style="width:100%;overflow:hidden;line-height:0;height:515px;position:relative">
-    <img src="images/ocbc-ea-home-hero-ext.png" style="width:100%;display:block" alt="OCBC home"/>
+    <img src="images/ocbc-ea-home.png" style="width:100%;display:block" alt="OCBC home"/>
     <div style="position:absolute;left:0;right:0;bottom:0;height:130px;background:linear-gradient(to bottom, rgba(245,246,248,0) 0%, rgba(245,246,248,.7) 60%, var(--bg) 100%);pointer-events:none"></div>
   </div>
   <div class="pad homesheet" style="position:relative;z-index:2;margin-top:-300px;padding-top:0">
@@ -1702,7 +1699,7 @@ home(){return `<div style="width:100%;overflow:hidden;line-height:0;height:515px
 
     ${state.invested?`<div class="card flat" style="background:#fff;margin-top:14px"><div class="row"><div style="font-size:22px">🎯</div><div style="font-size:13px;color:var(--muted);line-height:1.45">You're <b>${Math.round(totalVal()*1.047/state.target*100)}% toward your ${goalLabel()}</b>. Your team will keep you on track.</div></div></div>`:''}
   </div>
-  <div class="bottomnav" style="height:91px;overflow:hidden;position:relative">
+  <div class="bottomnav" style="height:91px;overflow:hidden;position:sticky;bottom:0">
     <img src="images/ocbc-ea-home.png" style="width:100%;display:block;position:absolute;left:0;top:-778px" alt="OCBC nav"/>
   </div>`;},
 
