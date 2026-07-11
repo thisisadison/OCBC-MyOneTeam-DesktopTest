@@ -562,8 +562,8 @@
   .weighpct{font-family:'Sora';font-weight:800;font-size:16px}
 
   /* portfolio */
-  .sgbanner{display:flex;align-items:center;gap:10px;background:#eef3ff;border:1px solid #d6e3fb;border-radius:13px;padding:11px 13px;font-size:12px;color:#22436e;line-height:1.4;cursor:pointer;margin-bottom:14px}
-  .sglink{margin-left:auto;background:#2f6fd6;color:#fff;font-weight:700;font-size:12px;padding:6px 13px;border-radius:9px;flex-shrink:0}
+  .sgbanner{display:flex;align-items:center;gap:10px;background:#fdf6e5;border:1px solid #e8d29a;border-radius:13px;padding:11px 13px;font-size:12px;color:#7a5a10;line-height:1.4;cursor:pointer;margin-bottom:14px}
+  .sglink{margin-left:auto;background:linear-gradient(160deg,#e3b04a,#b8790f);color:#fff;font-weight:700;font-size:12px;padding:6px 13px;border-radius:9px;flex-shrink:0}
   .legend4{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;margin-top:12px;text-align:left}
   .lg{font-size:12px;color:var(--ink2);display:flex;align-items:center;gap:6px}.lg b{margin-left:auto;font-family:'Sora'}
   .lg .swatch{width:10px;height:10px;border-radius:3px;flex-shrink:0}
@@ -880,7 +880,7 @@
 const ORDER=['login','home','team','goals','risk','analyze','reco','portfolio','projection','advice','trade','pilot','review'];
 // Screens that aren't steps of their own get the number of the step they branch from.
 const STEP_ALIAS={link:'portfolio',orchestrate:'portfolio',tune:'portfolio',sandbox:'reco',choose:'reco',paper:'reco',rm:'reco',done:'trade'};
-const NAMES={login:'Log In',home:'Home',team:'Your AI Team',goals:'Your Goals',risk:'Risk Comfort',analyze:'Building Your Plan',reco:'Your Plan',orchestrate:'Orchestrated view',portfolio:'Your Portfolio',tune:'Edit Basket',projection:'Projection',advice:'Final Advice',trade:'Trade',pilot:'My OneTeam Home',review:'Quarterly Review'};
+const NAMES={login:'Log In',home:'Home',team:'Your AI Team',goals:'Your Goals',risk:'Risk Comfort',analyze:'Building Your Plan',reco:'Your Plan',orchestrate:'Orchestrated view',portfolio:'Your Portfolio',link:'Link Accounts',tune:'Edit Basket',sandbox:'Ready To Act',choose:'Choose Next Step',paper:'Paper Trading',rm:'Relationship Manager',done:'Invest',projection:'Projection',advice:'Final Advice',trade:'Trade',pilot:'My OneTeam Home',review:'Quarterly Review'};
 const KEYS4=['FI','Funds','Cash','Alt'];
 const BK={FI:{name:'Fixed Income',color:'var(--fi)',hex:'#2f6fd6',sub:'Stability & income'},
   Funds:{name:'Equities',color:'var(--funds)',hex:'#ec1c24',sub:'Growth engine'},
@@ -1750,21 +1750,21 @@ home(){return `<div style="width:100%;overflow:hidden;line-height:0;height:515px
     <img src="images/ocbc-ea-home.png" style="width:100%;display:block;position:absolute;left:0;top:-730px" alt="OCBC nav"/>
   </div>`;},
 
-link(){return appbar('Link Accounts','portfolio')+`<div class="pad">
+link(){return appbar('Link Accounts','portfolio',false,true)+`<div class="pad">
   <h1 style="margin-top:6px">Give Your AI Team A Complete View</h1>
   <p class="sub">Add your outside holdings so your team can plan around your whole portfolio — diversify better and avoid overlap. Read-only; nothing is moved.</p>
 
-  <div class="card" style="background:#fff5f5;border-color:#f6d2d4;cursor:pointer" onclick="linkSGFinDex()">
-    <div class="row"><div class="li" style="width:40px;height:40px;border-radius:11px;background:#5a6470;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;font-family:'Sora'">SG</div>
+  <div class="card" style="background:linear-gradient(135deg,#fffaf0,#fff);border:1.5px solid #e8d6a8;cursor:pointer" onclick="linkSGFinDex()">
+    <div class="row"><div class="li" style="width:40px;height:40px;border-radius:11px;background:linear-gradient(160deg,#e3b04a,#b8790f);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;font-family:'Sora'">SG</div>
       <div><div class="ln" style="font-weight:700;font-size:14px">Link via SGFinDex</div><div class="lx" style="font-size:12px;color:var(--muted)">Pull CPF &amp; your local SG bank balances with Singpass</div></div>
       <div class="lpill todo" id="sgPill" style="margin-left:auto">Connect</div></div>
   </div>
 
   <div class="sbsec-h" style="margin:20px 0 8px">Brokerages &amp; other holdings</div>
   <div id="provList">${state.providers.filter(p=>p.manual).map(p=>provRow(p)).join('')||'<div class="sbempty">None added yet — add an overseas broker, robo, or property below.</div>'}</div>
-  <div class="lrow" onclick="manualModal()" style="border-style:dashed;justify-content:center;color:var(--red);font-weight:700">＋ Add a brokerage manually</div>
+  <div class="lrow" onclick="manualModal()" style="border-style:dashed;border-color:#dcbb72;justify-content:center;color:#a6710f;font-weight:700">＋ Add a brokerage manually</div>
 
-  <button class="btn primary" onclick="go('portfolio')">Done — back to my plan →</button>
+  <button class="btn gold" onclick="go('portfolio')">Done — back to my plan →</button>
 </div>`;},
 
 goals(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
@@ -1886,7 +1886,7 @@ reco(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
   const signals=sel.map(a=>({ag:a,...noticedDynamic(a)}));
   const prof=state.riskAssessed||riskProfile();
   return `<div style="position:relative">
-  <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
+  <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
   <div style="position:relative;z-index:1;padding-top:50px">${appbar('Your Plan','analyze',false,true)}<div class="pad">
   <div style="background:rgba(255,253,248,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:16px;padding:14px 16px;margin:0 0 14px">
     <div class="eyebrow" style="background:linear-gradient(120deg,#e3b04a,#a6710f);-webkit-background-clip:text;background-clip:text;color:transparent">Your AI team's recommendation</div>
@@ -2100,12 +2100,16 @@ portfolio(){if(!PRODUCTS.some(p=>p.bucket&&p.amt)){applyAgents();recommendAmount
   recalcBuckets();
   if(!state._aiProj){state._aiProj=sandProjValue();state._aiRet=pRetEff();}
   const k=state.activeBucket;
-  return appbar('Your Portfolio',state.agents.length>1?'orchestrate':'goals')+`<div class="pad">
-  <div class="eyebrow ai">Your AI-recommended portfolio</div>
-  <h1 style="margin-bottom:4px">${riskComfort().word} ${PNAME[state.agents[0]]||''} Mix</h1>
-  <p class="sub" style="margin-bottom:12px">Built from your agents and your OCBC data. Below is your mix across four asset classes, and the funds inside each.</p>
+  return `<div style="position:relative">
+  <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Your Portfolio','reco',false,true)}<div class="pad">
+  <div style="background:rgba(255,253,248,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:16px;padding:14px 16px;margin:0 0 14px">
+    <div class="eyebrow" style="background:linear-gradient(120deg,#e3b04a,#a6710f);-webkit-background-clip:text;background-clip:text;color:transparent">Your AI-recommended portfolio</div>
+    <h1 style="margin:6px 0 4px">${riskComfort().word} ${PNAME[state.agents[0]]||''} Mix</h1>
+    <p class="sub" style="margin:0;color:var(--ink2)">Built from your agents and your OCBC data. Below is your mix across four asset classes, and the funds inside each.</p>
+  </div>
 
-  <div class="card" style="text-align:center">
+  <div class="card" style="text-align:center;background:linear-gradient(180deg,#fffbf3,#fff);border:1px solid #e8d6a8">
     <div style="display:flex;justify-content:center">${pieSVG(150)}</div>
     <div class="legend4">${KEYS4.map(x=>`<div class="lg"><span class="swatch" style="background:${BK[x].hex}"></span>${BK[x].name} <b>${state.buckets[x]}%</b></div>`).join('')}</div>
   </div>
@@ -2119,14 +2123,14 @@ portfolio(){if(!PRODUCTS.some(p=>p.bucket&&p.amt)){applyAgents();recommendAmount
 
   <div class="prodwrap" id="prodWrap">${productList(k)}</div>
 
-  <button class="editbtn" onclick="openTune('${k}')">✎ Edit ${BK[k].name} In The Sandbox</button>
+  <button class="editbtn" style="background:linear-gradient(180deg,#fffdf9,#fff);border:1.5px solid #e3cb92" onclick="openTune('${k}')">✎ Edit ${BK[k].name} In The Sandbox</button>
 
-  <button class="btn primary" onclick="go('projection')">Confirm &amp; See Projection →</button>
-</div>`;},
+  <button class="btn gold" onclick="go('projection')">Confirm &amp; See Projection →</button>
+</div></div></div>`;},
 
 /* ===== per-bucket sandbox (playground) ===== */
 tune(){const k=state.editBucket||state.activeBucket;const active=PRODUCTS.filter(p=>p.bucket===k);const avail=PRODUCTS.filter(p=>p.cls===k&&p.bucket!==k);const p=aiPersona();
-  return appbar(BK[k].name+' Sandbox','Portfolio')+`<div class="pad">
+  return appbar(BK[k].name+' Sandbox','portfolio')+`<div class="pad">
   <div class="sandintro">This is your <b style="color:${BK[k].color}">${BK[k].name} Sandbox</b>. Set how much to put into each fund — the dollar amounts decide its share of your donut. Drop funds in from the rail, pull any out with ×, and watch the projection react.</div>
 
   ${sbTopPanel()}
@@ -2805,14 +2809,14 @@ function bumpYears(d){state.years=Math.min(40,Math.max(1,state.years+d));if($('y
 function linkSGFinDex(){let n=0;state.providers.forEach(p=>{if(p.sgfx&&!p.linked){p.linked=true;n++;}});
   if(!n){toast('SGFinDex accounts already linked');return;}
   refreshLinkUI();toast('Linked '+n+' accounts via SGFinDex ✓');}
-function manualModal(){showModal(`<div class="applogo" style="background:#5a6470">＋</div>
+function manualModal(){showModal(`<div class="applogo" style="background:linear-gradient(160deg,#e3b04a,#b8790f)">＋</div>
   <h3>Add an account manually</h3>
   <p style="text-align:left;color:var(--muted);font-size:12px">For holdings that aren't auto-linkable (e.g. an overseas broker or property).</p>
   <input class="field" id="mName" placeholder="Account name (e.g. Saxo, property)">
   <input class="field" id="mVal" placeholder="Approx. value (S$)" inputmode="numeric">
   <input class="field" id="mStocks" placeholder="Stocks / funds you hold here — optional (e.g. AAPL, VWRA, NVDA)">
   <p style="text-align:left;color:var(--muted);font-size:11px;margin-top:-4px">Telling us what you already own helps your team avoid overlap and spot gaps.</p>
-  <button class="btn primary" onclick="addManual()">Add account</button>
+  <button class="btn gold" onclick="addManual()">Add account</button>
   <button class="btn ghost" onclick="hideModal()">Cancel</button>`);}
 function addManual(){const nm=($('mName').value||'').trim();const v=parseInt(($('mVal').value||'').replace(/[^0-9]/g,''))||0;
   const st=($('mStocks')&&$('mStocks').value||'').trim();
@@ -3051,7 +3055,8 @@ function render(){
     team:{img:'images/ocbc-ea-myaiteam.png',top:-40,width:100},
     goals:{img:'images/ocbc-ea-yourgoals.png',top:-40,width:100},
     risk:{img:'images/ocbc-ea-risk.png',top:-40,width:100},
-    reco:{img:'images/ocbc-ea-yourplan.png',top:-40,width:100}
+    reco:{img:'images/ocbc-ea-yourplan.png',top:-40,width:100},
+    portfolio:{img:'images/ocbc-ea-portfolio.png',top:-40,width:100}
   };
   $('statusbar').className='statusbar'+(cur==='home'||cur==='analyze'||BG_SCREENS[cur]?' onhero':cur==='login'?' over':'');
   if($('screenbg')){
