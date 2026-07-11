@@ -259,6 +259,10 @@
     50% { transform: scale(1); opacity: .9; }
   }
 
+  /* 3D net-mesh background — Building Your Plan screen (canvas-driven, see #netmesh JS) */
+  .netmesh-wrap{position:absolute;top:0;left:0;right:0;height:500px;overflow:hidden;z-index:0;pointer-events:none;background:linear-gradient(180deg,#fdf6ea 0%,#f9f0dd 40%,#f6ecd8 65%,var(--bg) 100%)}
+  #netmesh{display:block;width:100%;height:100%}
+
   .ai-name {
     font-family: 'Sora';
     font-weight: 700;
@@ -1863,18 +1867,20 @@ team(){return `<div style="position:relative">
   <button class="btn gold" onclick="proceedTeam()" ${state.agents.length===0?'disabled style="opacity:.4;pointer-events:none"':''}">Continue →</button>
 </div></div></div>`;},
 
-analyze(){runAnalyze();const sel=AGENTS.filter(a=>state.agents.includes(a.id));return appbar('Building Your Plan','risk')+`<div class="pad" style="padding-top:14px">
-  <div style="text-align:center;margin:4px 0 14px"><div class="ai-orb" style="width:52px;height:52px;margin:0 auto 12px"></div>
-    <div class="eyebrow ai">Your AI team is working</div>
+analyze(){runAnalyze();const sel=AGENTS.filter(a=>state.agents.includes(a.id));setTimeout(initNetMesh,0);return `<div style="position:relative">
+  <div class="netmesh-wrap"><canvas id="netmesh"></canvas></div>
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Building Your Plan','risk',false,true)}<div class="pad" style="padding-top:14px">
+  <div style="text-align:center;margin:4px 0 14px"><div class="ai-orb" style="width:52px;height:52px;margin:0 auto 12px;background:linear-gradient(135deg,#e3b04a,#b8790f);box-shadow:0 0 0 1px rgba(211,163,71,.3),0 8px 30px rgba(190,134,45,.28)"></div>
+    <div class="eyebrow" style="background:linear-gradient(120deg,#e3b04a,#a6710f);-webkit-background-clip:text;background-clip:text;color:transparent">Your AI team is working</div>
     <h1 style="margin-top:4px">Building Your Plan</h1>
     <p class="sub" style="margin-bottom:0">Each agent you picked makes its case. The Orchestrator weighs them and decides your recommended allocation.</p></div>
   <div class="agentmini-h">Your agents are making their case</div>
-  <div class="card flat agentmini" id="agentList">
+  <div class="card flat agentmini" id="agentList" style="background:linear-gradient(180deg,#fffbf3,#fff);border:1px solid #e8d6a8">
     ${sel.map((a,i)=>`<div class="agentrow" id="ag${i}"><div class="pixframe" style="width:28px">${avatar(a)}</div><div><div class="an">${a.name}</div><div class="ad">${a.explain}</div></div><div class="tick">✓</div></div>`).join('')}
   </div>
   <div id="verdict"></div>
   <div id="analyzeCta"></div>
-</div>`;},
+</div></div></div>`;},
 
 reco(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
   const signals=sel.map(a=>({ag:a,...noticedDynamic(a)}));
@@ -2830,7 +2836,7 @@ function runAnalyze(){analyzeRun=false;setTimeout(()=>{
         <div><div class="veyebrow">Orchestrator · The Verdict</div><div class="vtitle">Your recommended allocation</div></div></div>
       <div class="vsub">Balancing ${names} for your ${goalLabel()}. Figures are the share (%) of your portfolio in each asset class.</div>
       <div class="vbars">${bars}</div></div>`;}
-    const cta=$('analyzeCta');if(cta)cta.innerHTML=`<button class="btn ai glowpulse" style="animation:slideup .3s ease" onclick="go('reco')">See My Recommended Plan →</button>`;},after);
+    const cta=$('analyzeCta');if(cta)cta.innerHTML=`<button class="btn gold glowpulse" style="animation:slideup .3s ease" onclick="go('reco')">See My Recommended Plan →</button>`;},after);
 },60);}
 
 function setChart(t){state.chart=t;document.querySelectorAll('.chartcard .seg .s').forEach(s=>s.classList.remove('on'));event.target.classList.add('on');$('chartBox').innerHTML=projChart();}
@@ -2943,15 +2949,106 @@ function startCarousel(){
   const car=document.getElementById('agCarousel');
   if(car)car.onclick=()=>{agTo(window._agIdx+1);clearInterval(window._agTimer);window._agTimer=setInterval(()=>agTo(window._agIdx+1),3500);};
 }
+/* ── 3D net-mesh background (Building Your Plan screen) ── */
+window._netMeshRAF = window._netMeshRAF || null;
+function initNetMesh(){
+  if(window._netMeshRAF){cancelAnimationFrame(window._netMeshRAF);window._netMeshRAF=null;}
+  const canvas=document.getElementById('netmesh');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+
+  const COLS=30,ROWS=20;
+  const SPACING=21;
+  let W=0,H=0,t=0;
+
+  function resize(){
+    const rect=canvas.parentElement.getBoundingClientRect();
+    W=rect.width;H=rect.height;
+    canvas.width=W*dpr;canvas.height=H*dpr;
+    canvas.style.width=W+'px';canvas.style.height=H+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  resize();
+  window.addEventListener('resize',resize);
+
+  // Camera / perspective params — low, wide terrain-flyover angle like a landscape horizon
+  const focal=210;
+  const camY=-55;
+  const tiltX=0.98;
+
+  function project(x,y,z){
+    const ry=y*Math.cos(tiltX)-z*Math.sin(tiltX);
+    const rz=y*Math.sin(tiltX)+z*Math.cos(tiltX)+focal;
+    const scale=focal/Math.max(rz,1);
+    return {
+      x:W/2+x*scale,
+      y:H*0.20+(ry-camY)*scale,
+      scale
+    };
+  }
+
+  function frame(){
+    t+=0.005;
+    ctx.clearRect(0,0,W,H);
+
+    // precompute projected grid points with smooth, gentle wave displacement for calm terrain motion
+    const pts=[];
+    for(let r=0;r<ROWS;r++){
+      pts[r]=[];
+      for(let c=0;c<COLS;c++){
+        const gx=(c-(COLS-1)/2)*SPACING;
+        const gy=(r-(ROWS-1)/2)*SPACING;
+        const wave=Math.sin(gx*0.04+t)*11 + Math.cos(gy*0.05+t*0.7)*9;
+        pts[r][c]=project(gx,gy,wave);
+      }
+    }
+
+    function depthOf(p){return Math.max(0,Math.min(1,(p.scale-0.42)/0.62));}
+
+    ctx.lineWidth=0.8;
+    ctx.lineCap='round';
+    // horizontal + vertical grid lines only — no diagonals, for a calmer, cleaner look
+    for(let r=0;r<ROWS;r++){
+      for(let c=0;c<COLS;c++){
+        const p=pts[r][c];
+        const depthFade=depthOf(p);
+        if(depthFade<0.03)continue;
+        const alpha=0.055+depthFade*0.19;
+        ctx.strokeStyle='rgba(200,158,88,'+alpha+')';
+        if(c<COLS-1){const p2=pts[r][c+1];ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p2.x,p2.y);ctx.stroke();}
+        if(r<ROWS-1){const p2=pts[r+1][c];ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p2.x,p2.y);ctx.stroke();}
+      }
+    }
+    // soft dots at every intersection, brighter and larger with depth
+    for(let r=0;r<ROWS;r++){
+      for(let c=0;c<COLS;c++){
+        const p=pts[r][c];
+        const depthFade=depthOf(p);
+        if(depthFade<0.08)continue;
+        ctx.fillStyle='rgba(224,178,88,'+(0.18+depthFade*0.48)+')';
+        ctx.beginPath();ctx.arc(p.x,p.y,0.6+depthFade*1.3,0,Math.PI*2);ctx.fill();
+      }
+    }
+
+    window._netMeshRAF=requestAnimationFrame(frame);
+  }
+  frame();
+}
+function stopNetMesh(){
+  if(window._netMeshRAF){cancelAnimationFrame(window._netMeshRAF);window._netMeshRAF=null;}
+}
+
 function render(){
   if(window._agTimer){clearInterval(window._agTimer);window._agTimer=null;}
+  if(cur!=='analyze')stopNetMesh();
   closePicker();hideModal();$('view').innerHTML=S[cur]();$('view').scrollTop=0;
   const BG_SCREENS={
     team:{img:'images/ocbc-ea-myaiteam.png',top:-40,width:100},
     goals:{img:'images/ocbc-ea-yourgoals.png',top:-40,width:100},
     risk:{img:'images/ocbc-ea-risk.png',top:-40,width:100}
   };
-  $('statusbar').className='statusbar'+(cur==='home'||BG_SCREENS[cur]?' onhero':cur==='login'?' over':'');
+  $('statusbar').className='statusbar'+(cur==='home'||cur==='analyze'||BG_SCREENS[cur]?' onhero':cur==='login'?' over':'');
   if($('screenbg')){
     const bgCfg=BG_SCREENS[cur];
     $('screenbg').style.display=bgCfg?'block':'none';
