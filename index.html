@@ -260,7 +260,7 @@
   }
 
   /* 3D net-mesh background — Building Your Plan screen (canvas-driven, see #netmesh JS) */
-  .netmesh-wrap{position:absolute;top:0;left:0;right:0;height:500px;overflow:hidden;z-index:0;pointer-events:none;background:linear-gradient(180deg,#fdf6ea 0%,#f9f0dd 40%,#f6ecd8 65%,var(--bg) 100%)}
+  .netmesh-wrap{position:absolute;top:0;left:0;right:0;height:420px;overflow:hidden;z-index:0;pointer-events:none;background:linear-gradient(180deg,#fdf6ea 0%,#f9f0dd 40%,#f6ecd8 65%,var(--bg) 100%)}
   #netmesh{display:block;width:100%;height:100%}
 
   .ai-name {
@@ -1885,9 +1885,13 @@ analyze(){runAnalyze();const sel=AGENTS.filter(a=>state.agents.includes(a.id));s
 reco(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
   const signals=sel.map(a=>({ag:a,...noticedDynamic(a)}));
   const prof=state.riskAssessed||riskProfile();
-  return appbar('Your Plan','analyze')+`<div class="pad">
-  <div class="eyebrow ai">Your AI team's recommendation</div>
-  <h1>A Plan Built Around Your Goals</h1>
+  return `<div style="position:relative">
+  <div style="position:relative;z-index:1">${appbar('Your Plan','analyze',false,true)}<div class="pad">
+  <div class="eyebrow" style="background:linear-gradient(120deg,#e3b04a,#a6710f);-webkit-background-clip:text;background-clip:text;color:transparent">Your AI team's recommendation</div>
+  <h1>
+    A Plan Built<br>
+    Around Your Goals
+  </h1>
   <p class="sub">Here's what each agent flagged in your situation — and the mix it points to, kept within your ${prof} risk profile.</p>
 
   <h2>What Your AI Team Noticed</h2>
@@ -1900,7 +1904,7 @@ reco(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
     <div><div style="font-family:'Sora';font-weight:800;font-size:14px;color:#fff">Orchestrator</div>
       <div style="font-size:12px;color:#e8d8ad;line-height:1.45">Weighed against your <b style="color:#fff">${prof}</b> profile, here's your recommended mix across four asset classes. Open your plan next to see — and adjust — the funds I've picked in each.</div></div></div>
 
-  <div class="card" style="text-align:center;margin-top:11px">
+  <div class="card" style="text-align:center;margin-top:11px;background:linear-gradient(180deg,#fffbf3,#fff);border:1px solid #e8d6a8">
     <div style="display:flex;justify-content:center">${pieSVG(150)}</div>
     <div class="legend4">${KEYS4.map(x=>`<div class="lg"><span class="swatch" style="background:${BK[x].hex}"></span>${BK[x].name} <b>${state.buckets[x]}%</b></div>`).join('')}</div>
     <div class="recorisk">
@@ -1909,9 +1913,9 @@ reco(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
     </div>
   </div>
 
-  <button class="btn primary" onclick="go('portfolio')">Adjust &amp; Explore My Plan →</button>
+  <button class="btn gold" onclick="go('portfolio')">Adjust &amp; Explore My Plan →</button>
   <div class="disc">Illustrative only. Projections are not guaranteed and your capital is at risk.</div>
-</div>`;},
+</div></div></div>`;},
 
 sandbox(){return appbar('Adjust Your Plan','reco')+`<div class="pad">
   <div class="row" style="justify-content:space-between;margin-bottom:8px"><div class="eyebrow ai">Your sandbox · adjust freely, risk-free</div><span class="goalbadge" id="goalChip" style="background:${goalStatus().ok?'#e7f8ef':'#fdeee8'};color:${goalStatus().ok?'#0c7a4a':'#b1560f'}">${goalStatus().label}</span></div>
@@ -3046,7 +3050,8 @@ function render(){
   const BG_SCREENS={
     team:{img:'images/ocbc-ea-myaiteam.png',top:-40,width:100},
     goals:{img:'images/ocbc-ea-yourgoals.png',top:-40,width:100},
-    risk:{img:'images/ocbc-ea-risk.png',top:-40,width:100}
+    risk:{img:'images/ocbc-ea-risk.png',top:-40,width:100},
+    reco:{img:'images/ocbc-ea-yourplan.png',top:-40,width:100}
   };
   $('statusbar').className='statusbar'+(cur==='home'||cur==='analyze'||BG_SCREENS[cur]?' onhero':cur==='login'?' over':'');
   if($('screenbg')){
