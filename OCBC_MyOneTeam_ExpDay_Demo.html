@@ -50,7 +50,7 @@
   .screen{background:var(--bg);border-radius:40px;overflow:hidden;position:relative;display:flex;flex-direction:column;height:846px}
   .notch{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:122px;height:32px;background:#0a0b0d;border-radius:20px;z-index:40}
   .statusbar{height:50px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 26px 8px;font-size:13px;font-weight:600;color:var(--ink);position:relative;z-index:10}
-  .statusbar.over{position:absolute;top:0;left:0;right:0;height:50px;background:transparent;color:#fff;z-index:20}
+  .statusbar.over{position:absolute;top:0;left:0;right:0;height:50px;background:transparent;color:#14161b;z-index:20}
   .statusbar.light{color:#fff}
   .statusbar.onhero{position:absolute;top:0;left:0;right:0;height:50px;background:transparent;color:var(--ink);z-index:20}
   .view{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;position:relative;min-height:0}
@@ -73,7 +73,7 @@
 
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:17px;box-shadow:var(--shadow);margin-bottom:13px}
   .card.flat{box-shadow:none}
-  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:none;border-radius:15px;padding:16px;font-size:15px;font-weight:700;cursor:pointer;margin-top:11px;transition:transform .05s,filter .15s,box-shadow .2s;font-family:'Inter'}
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:none;border-radius:12px;padding:16px;font-size:15px;font-weight:700;cursor:pointer;margin-top:11px;transition:transform .05s,filter .15s,box-shadow .2s;font-family:'Inter'}
   .btn:active{transform:scale(.99)}
   .btn.primary{background:var(--red);color:#fff;box-shadow:0 8px 20px rgba(236,28,36,.28)}
   .btn.primary:hover{filter:brightness(1.04)}
@@ -183,7 +183,7 @@
   .ogi:active{background:#f6f7f9}
   .ogic{width:46px;height:46px;border-radius:14px;background:#f4f5f7;display:flex;align-items:center;justify-content:center;font-size:18px;color:#c0392b}
   .ologin-wrap{position:sticky;bottom:0;background:#fff;padding:8px 16px 0;margin-top:auto;box-shadow:0 -8px 20px rgba(255,255,255,.95)}
-  .ologin{width:100%;background:#3a4754;color:#fff;border:none;border-radius:26px;padding:16px;font-size:15px;font-weight:700;font-family:'Sora';cursor:pointer;display:block}
+  .ologin{width:100%;background:#3a4754;color:#fff;border:none;border-radius:12px;padding:16px;font-size:15px;font-weight:700;font-family:'Sora';cursor:pointer;display:block}
   .ologin:active{background:#2c3741}
   .omaint{font-size:11px;color:#6b7280;line-height:1.45;padding:10px 2px 16px}
   .omaint b{color:#3a3f47}
@@ -416,7 +416,7 @@
   }
   .promo .pt{font-family:'Sora';font-weight:800;font-size:18px;display:flex;align-items:center;gap:8px}
   .promo .pd{font-size:13px;opacity:.85;margin:7px 0 13px;line-height:1.45}
-  .promo .pb{background:linear-gradient(135deg,#e0a83e,#b8791f);color:#fff;font-weight:800;border:none;border-radius:13px;padding:13px;width:100%;cursor:pointer;font-family:'Inter';font-size:14.5px;box-shadow:0 8px 20px rgba(184,121,31,.35)}
+  .promo .pb{background:linear-gradient(135deg,#e0a83e,#b8791f);color:#fff;font-weight:800;border:none;border-radius:12px;padding:13px;width:100%;cursor:pointer;font-family:'Inter';font-size:14.5px;box-shadow:0 8px 20px rgba(184,121,31,.35)}
   .promo .spark{position:absolute;right:-10px;top:-10px;font-size:80px;opacity:.1}
 
   
@@ -475,7 +475,7 @@
   .orchcard-gold-photo{width:76px;height:76px;flex-shrink:0;border-radius:22px;overflow:hidden;position:relative;box-shadow:0 0 0 3px rgba(227,176,74,.55),0 0 24px rgba(227,176,74,.35),0 6px 16px rgba(0,0,0,.35)}
   .orchcard-gold-label{display:flex;align-items:center;gap:6px;font-family:'Sora',sans-serif;font-weight:800;font-size:12.5px;color:#e3b04a;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
   .orchcard-gold-desc{font-size:12.5px;line-height:1.5;opacity:.92}
-  .btn.gold{background:linear-gradient(160deg,#f3d68d 0%,#e3be67 25%,#d3a347 55%,#be862d 100%);color:#1F2229;box-shadow:inset 0 1px 0 1px rgba(255,255,255,.5),0 8px 20px rgba(190,134,45,.30);border-radius:15px}
+  .btn.gold{background:linear-gradient(160deg,#f3d68d 0%,#e3be67 25%,#d3a347 55%,#be862d 100%);color:#1F2229;box-shadow:inset 0 1px 0 1px rgba(255,255,255,.5),0 8px 20px rgba(190,134,45,.30);border-radius:12px}
 
   /* Goal chat interface */
   .goalchat{display:flex;flex-direction:column;gap:12px;padding-top:4px}
@@ -541,10 +541,14 @@
   .agbul.amber li:before{background:#e08600}.agbul.amber li{color:#6b4c00;font-size:12px}
 
   /* screen 4 suggested chip */
-  .chat-suggest{display:flex;flex-direction:column;gap:4px;margin:2px 0 10px;padding-left:40px;animation:chatIn .3s ease}
-  .sugchip{align-self:flex-start;background:#fff;border:1.5px dashed;border-radius:20px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
-  .sugchips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:4px}
-  .sugspark{font-size:11px}
+  .chat-suggest{display:flex;flex-direction:column;gap:6px;margin:2px 0 10px;padding-left:40px;animation:chatIn .3s ease}
+  .sugchip{align-self:flex-start;background:#fff;border:1.5px solid;border-radius:20px;padding:9px 16px 9px 12px;font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:7px;box-shadow:0 2px 8px rgba(20,22,27,.06);transition:transform .1s,box-shadow .15s}
+  .sugchip:hover{box-shadow:0 4px 12px rgba(20,22,27,.10);transform:translateY(-1px)}
+  .sugchip:active{transform:translateY(0)}
+  .sugspark{font-size:9px;width:16px;height:16px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .sugval{white-space:nowrap}
+  .sugbest{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;opacity:.75;border-left:1px solid currentColor;padding-left:7px;margin-left:1px}
+  .sugchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:5px}
   .sugnote{font-size:10.5px;color:var(--muted);line-height:1.35;max-width:240px}
 
   /* orchestrate */
@@ -1372,7 +1376,7 @@ function nextChatTurn(){
   const i=state._chatStep||0;
   if(i>=turns.length){
     const btn=document.createElement('button');
-    btn.className='btn primary chat-continue';
+    btn.className='btn gold chat-continue';
     btn.textContent='Continue →';
     btn.onclick=saveGoals;
     btn.style.animation='chatIn .35s ease';
@@ -1398,7 +1402,7 @@ function renderKnownCard(box,agent){
   const wrap=document.createElement('div');
   wrap.className='chat-known';
   wrap.innerHTML='<div class="chat-avatar" style="box-shadow:0 2px 10px '+hexToRgba(c,.35)+',0 0 0 2px '+hexToRgba(c,.25)+'">'+avatar(agent)+'</div>'+
-    '<div class="chat-known-card" style="background:'+hexToRgba(c,.07)+';border-left:3px solid '+c+'">'+
+    '<div class="chat-known-card" style="background:linear-gradient(180deg,#fdf6ea,#fbf1e0);border:1px solid '+hexToRgba(c,.22)+';border-left:3px solid '+c+'">'+
     '<div class="chat-known-title" style="color:'+c+'">'+agent.name+' already has this on file</div>'+
     known.map(k=>'<div class="chat-known-row"><span>'+k.label+'</span><span style="color:'+c+'">'+k.value+'</span></div>').join('')+
     '</div>';
@@ -1411,7 +1415,7 @@ function renderTyping(box,agent,done){
   wrap.className='chat-typing';
   wrap.id='typing-now';
   wrap.innerHTML='<div class="chat-avatar" style="box-shadow:0 2px 10px '+hexToRgba(c,.35)+',0 0 0 2px '+hexToRgba(c,.25)+'">'+avatar(agent)+'</div>'+
-    '<div class="dots" style="background:'+hexToRgba(c,.10)+'"><span style="background:'+c+'"></span><span style="background:'+c+'"></span><span style="background:'+c+'"></span></div>';
+    '<div class="dots" style="background:#fbf1e0;border:1px solid '+hexToRgba(c,.2)+'"><span style="background:'+c+'"></span><span style="background:'+c+'"></span><span style="background:'+c+'"></span></div>';
   box.appendChild(wrap);
   chatScroll();
   setTimeout(()=>{
@@ -1425,13 +1429,13 @@ function renderQuestion(box,agent,field){
   const bub=document.createElement('div');
   bub.className='chat-bubble-agent';
   bub.innerHTML='<div class="chat-avatar" style="box-shadow:0 2px 10px '+hexToRgba(c,.35)+',0 0 0 2px '+hexToRgba(c,.25)+'">'+avatar(agent)+'</div>'+
-    '<div class="bub" style="background:'+hexToRgba(c,.09)+';border:1px solid '+hexToRgba(c,.25)+'">'+field.label+'</div>';
+    '<div class="bub" style="background:linear-gradient(180deg,#fdf6ea,#fbf1e0);border:1.5px solid '+hexToRgba(c,.35)+'">'+field.label+'</div>';
   box.appendChild(bub);
 
   const row=document.createElement('div');
   row.className='chat-input-row';
   row.id='inputrow-'+field.id;
-  row.innerHTML='<div class="qinwrap" style="border-color:'+hexToRgba(c,.35)+'">'+(field.money?'<span class="qpfx" style="color:'+c+'">S$</span>':'')+
+  row.innerHTML='<div class="qinwrap" style="background:#fdf6ea;border-color:'+hexToRgba(c,.35)+'">'+(field.money?'<span class="qpfx" style="color:'+c+'">S$</span>':'')+
     '<input class="qin" id="qin-'+field.id+'" inputmode="numeric" placeholder="Type your own…" style="caret-color:'+c+'">'+
     (field.unit&&!field.money?'<span class="qsfx">'+field.unit+'</span>':'')+'</div>'+
     '<button class="chat-send" style="background:'+c+'" onclick="submitChatAnswer(\''+field.id+'\')">→</button>';
@@ -1441,8 +1445,11 @@ function renderQuestion(box,agent,field){
   sug.className='chat-suggest';
   sug.id='suggest-'+field.id;
   const opts=(field.opts&&field.opts.length)?field.opts:[field.def];
-  const chips=opts.map(v=>{const lbl=field.money?'S$'+Number(v).toLocaleString():v+(field.unit?' '+field.unit:'');
-    return '<button class="sugchip" style="border-color:'+hexToRgba(c,.45)+';color:'+c+'" onclick="useSuggest(\''+field.id+'\','+v+')"><span class="sugspark">✦</span> '+lbl+'</button>';}).join('');
+  const chips=opts.map((v,i)=>{const lbl=field.money?'S$'+Number(v).toLocaleString():v+(field.unit?' '+field.unit:'');
+    return '<button class="sugchip" style="background:linear-gradient(180deg,#fdf6ea,#fbf1e0);border-color:'+hexToRgba(c,.4)+';color:'+c+'" onclick="useSuggest(\''+field.id+'\','+v+')">'+
+      '<span class="sugspark" style="background:'+c+'">✦</span><span class="sugval">'+lbl+'</span>'+
+      (i===0?'<span class="sugbest" style="color:'+c+'">Recommended</span>':'')+
+      '</button>';}).join('');
   const note=field.note||'Suggested from what OCBC already knows about you — tap one, or type your own';
   sug.innerHTML='<div class="sugchips">'+chips+'</div><span class="sugnote">'+note+'</span>';
   box.appendChild(sug);
