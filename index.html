@@ -155,11 +155,11 @@
   .rkopt.on{border-color:var(--red);background:var(--red-tint);color:var(--red)}
   .qq{display:flex;gap:9px;font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:11px}
   .qnum{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
-  .rccard{background:linear-gradient(135deg,#fff,#fff5f5);border:1.5px solid #f6c9cb;border-radius:16px;padding:17px;margin:4px 0 16px;box-shadow:0 10px 26px rgba(236,28,36,.1)}
-  .rceyebrow{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--red)}
+  .rccard{background:linear-gradient(135deg,#fff,#fffaf0);border:1.5px solid #e8cf94;border-radius:16px;padding:17px;margin:4px 0 16px;box-shadow:0 10px 26px rgba(190,134,45,.12)}
+  .rceyebrow{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#a6710f}
   .rclabel{font-family:'Sora';font-weight:800;font-size:21px;margin:2px 0 6px;color:var(--ink)}
   .rcdesc{font-size:13px;line-height:1.5;color:var(--ink2)}
-  .rcdiv{height:1px;background:#f1d3d5;margin:13px 0}
+  .rcdiv{height:1px;background:#ecdbb0;margin:13px 0}
   .rcport{font-family:'Sora';font-weight:800;font-size:16px;color:var(--ink);margin-top:2px}
   .rcnote{font-size:11.5px;color:var(--muted);margin-top:5px}
   .addcount{margin-left:auto;font-size:10.5px;color:var(--muted);font-weight:700}
@@ -687,7 +687,7 @@
   .sandintro{font-size:12px;color:var(--ink2);line-height:1.5;background:#fbf7ee;border:1px solid #efe6d2;border-radius:12px;padding:11px 13px;margin-bottom:14px}
   .riskseg{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:9px}
   .riskpill{flex:1 1 auto;min-width:90px;text-align:center;padding:9px 8px;border:1.5px solid var(--line);border-radius:11px;background:#fff;font-size:12.5px;font-weight:700;color:var(--ink2);cursor:pointer;transition:.15s}
-  .riskpill.on{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 4px 12px rgba(236,28,36,.22)}
+  .riskpill.on{background:linear-gradient(160deg,#e3b04a,#b8790f);border-color:#b8790f;color:#fff;box-shadow:0 4px 12px rgba(184,121,15,.28)}
   .rcadjnote{font-size:11.5px;color:var(--muted);line-height:1.45;margin-bottom:14px}
   .riskadj{margin-top:14px;text-align:center}
   .riskadj-link{display:inline-block;font-size:12.5px;color:var(--muted);font-weight:600;cursor:pointer;padding:6px 4px;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line)}
@@ -1778,15 +1778,16 @@ goals(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
   <div id="goalChat" class="goalchat"></div>
 </div></div></div>`;},
 
-risk(){const surplus=BANK_KNOWN.monthlyIncome-BANK_KNOWN.monthlySpend;return appbar('Risk Comfort','goals')+`<div class="pad">
-  <div class="stepbadge">Step 3 · Your risk comfort</div>
+risk(){const surplus=BANK_KNOWN.monthlyIncome-BANK_KNOWN.monthlySpend;return `<div style="position:relative">
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Risk Comfort','goals',false,true)}<div class="pad">
+  <div class="stepbadge gold">Step 3 · Your risk comfort</div>
   <h1>Here's What We Think Fits You</h1>
   <p class="sub">From your goals, timeline and what's already on file with OCBC, My OneTeam assessed your risk comfort — no questionnaire needed.</p>
 
   <div class="rccard" id="rcCard">${rcHTML()}</div>
 
-  <div class="card" style="background:var(--bg);border:none;box-shadow:none;padding:14px 0">
-    <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">How we assessed this</div>
+  <div class="card" style="background:linear-gradient(180deg,#fffbf3,#fff);border:1px solid #e8d6a8;border-radius:15px;box-shadow:0 3px 10px rgba(190,150,60,.08);padding:14px 16px;margin-top:2px">
+    <div style="font-size:11px;font-weight:700;color:#a6710f;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">How we assessed this</div>
     <div style="display:flex;flex-direction:column;gap:8px">
       <div class="assessrow"><span>Goal timeline</span><b>${state.years} years</b></div>
       <div class="assessrow"><span>Target amount</span><b>S$${(state.target/1000).toFixed(0)}k</b></div>
@@ -1796,14 +1797,14 @@ risk(){const surplus=BANK_KNOWN.monthlyIncome-BANK_KNOWN.monthlySpend;return app
     </div>
   </div>
 
-  <button class="btn primary" onclick="saveRisk()">Looks Right, Continue →</button>
+  <button class="btn gold" onclick="saveRisk()">Looks Right, Continue →</button>
 
   <div class="riskadj">
     <div class="riskadj-link" onclick="toggleRiskAdj()">This doesn't feel right? Adjust my profile <span>${state.expand.riskAdj?'▴':'▾'}</span></div>
     ${state.expand.riskAdj?`<div class="riskseg" style="margin-top:11px">${RISK_WORDS.map((w,i)=>`<button class="riskpill ${riskIndex()===i?'on':''}" onclick="setRisk(${i})">${w}</button>`).join('')}</div>
     <div class="rcadjnote">Move toward growth for more upside (and bigger swings), or toward conservative to play safe — your mix and funds update to match. Most clients keep our assessment.</div>`:''}
   </div>
-</div>`;},
+</div></div></div>`;},
 
 team(){return `<div style="position:relative">
   <div style="position:relative;z-index:1;padding-top:50px">${appbar('Home','home',false,true)}<div class="pad" style="padding-bottom:32px">
@@ -2947,7 +2948,8 @@ function render(){
   closePicker();hideModal();$('view').innerHTML=S[cur]();$('view').scrollTop=0;
   const BG_SCREENS={
     team:{img:'images/ocbc-ea-myaiteam.png',top:-40,width:100},
-    goals:{img:'images/ocbc-ea-yourgoals.png',top:-40,width:100}
+    goals:{img:'images/ocbc-ea-yourgoals.png',top:-40,width:100},
+    risk:{img:'images/ocbc-ea-risk.png',top:-40,width:100}
   };
   $('statusbar').className='statusbar'+(cur==='home'||BG_SCREENS[cur]?' onhero':cur==='login'?' over':'');
   if($('screenbg')){
