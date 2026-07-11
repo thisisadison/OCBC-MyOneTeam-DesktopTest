@@ -1886,13 +1886,16 @@ reco(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
   const signals=sel.map(a=>({ag:a,...noticedDynamic(a)}));
   const prof=state.riskAssessed||riskProfile();
   return `<div style="position:relative">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
   <div style="position:relative;z-index:1;padding-top:50px">${appbar('Your Plan','analyze',false,true)}<div class="pad">
-  <div class="eyebrow" style="background:linear-gradient(120deg,#e3b04a,#a6710f);-webkit-background-clip:text;background-clip:text;color:transparent">Your AI team's recommendation</div>
-  <h1>A Plan Built Around Your Goals</h1>
-  <p class="sub">Here's what each agent flagged in your situation — and the mix it points to, kept within your ${prof} risk profile.</p>
+  <div style="background:rgba(255,253,248,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:16px;padding:14px 16px;margin:0 0 14px">
+    <div class="eyebrow" style="background:linear-gradient(120deg,#e3b04a,#a6710f);-webkit-background-clip:text;background-clip:text;color:transparent">Your AI team's recommendation</div>
+    <h1 style="margin:6px 0 6px">A Plan Built Around Your Goals</h1>
+    <p class="sub" style="margin:0;color:var(--ink2)">Here's what each agent flagged in your situation — and the mix it points to, kept within your ${prof} risk profile.</p>
+  </div>
 
   <h2>What Your AI Team Noticed</h2>
-  ${signals.map(s=>`<div class="signal" style="border-left:3px solid ${s.ag.color};background:${s.ag.color}0c">
+  ${signals.map(s=>`<div class="signal" style="border-left:3px solid ${s.ag.color};background:linear-gradient(180deg,#fffdf9,#fff);box-shadow:0 3px 10px rgba(20,22,27,.06)">
     <div class="miniframe" style="box-shadow:0 2px 8px ${s.ag.color}40">${avatar(s.ag)}</div>
     <div><div class="byag" style="color:${s.ag.color}">${s.ag.name} noticed</div><div class="st">${s.t}</div></div></div>`).join('')}
 
