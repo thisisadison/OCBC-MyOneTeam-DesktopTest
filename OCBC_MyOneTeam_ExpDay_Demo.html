@@ -854,7 +854,7 @@
   <div class="screen">
     <div class="notch" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:122px;height:32px;background:#0a0b0d;border-radius:0 0 20px 20px;z-index:50"></div>
     <div class="screenbg" id="screenbg" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;z-index:0;pointer-events:none;background:#fbf3e9">
-      <img src="images/ocbc-ea-myaiteam.png" alt="" style="position:absolute;left:0;top:-40px;width:100%;height:auto;display:block">
+      <img id="screenbgImg" src="images/ocbc-ea-myaiteam.png" alt="" style="position:absolute;left:0;top:-40px;width:100%;height:auto;display:block">
     </div>
     <div class="statusbar" id="statusbar"><span id="clock">9:41</span><span>5G&nbsp; 100%</span></div>
     <div class="view" id="view"></div>
@@ -1763,12 +1763,13 @@ goals(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
     (AGENT_Q[a.id]||[]).forEach(f=>turns.push({type:'q',agent:a,field:f}));
   });
   state._turns=turns;
-  return appbar('Your Goals','team')+`<div class="pad" style="padding-bottom:24px">
-  <div class="stepbadge">Step 2 · Tell us about your goals</div>
+  return `<div style="position:relative">
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Your Goals','team',false,true)}<div class="pad" style="padding-bottom:24px">
+  <div class="stepbadge gold">Step 2 · Tell us about your goals</div>
   <h1>Quick Chat With Your Team</h1>
   <p class="sub">We've already got some of this on file. Use the suggested answer or type your own.</p>
   <div id="goalChat" class="goalchat"></div>
-</div>`;},
+</div></div></div>`;},
 
 risk(){const surplus=BANK_KNOWN.monthlyIncome-BANK_KNOWN.monthlySpend;return appbar('Risk Comfort','goals')+`<div class="pad">
   <div class="stepbadge">Step 3 · Your risk comfort</div>
@@ -2937,8 +2938,20 @@ function startCarousel(){
 function render(){
   if(window._agTimer){clearInterval(window._agTimer);window._agTimer=null;}
   closePicker();hideModal();$('view').innerHTML=S[cur]();$('view').scrollTop=0;
-  $('statusbar').className='statusbar'+(cur==='home'||cur==='team'?' onhero':cur==='login'?' over':'');
-  if($('screenbg'))$('screenbg').style.display=(cur==='team')?'block':'none';
+  const BG_SCREENS={
+    team:{img:'images/ocbc-ea-myaiteam.png',top:-40,width:100},
+    goals:{img:'images/ocbc-ea-yourgoals.png',top:-97,width:101.53}
+  };
+  $('statusbar').className='statusbar'+(cur==='home'||BG_SCREENS[cur]?' onhero':cur==='login'?' over':'');
+  if($('screenbg')){
+    const bgCfg=BG_SCREENS[cur];
+    $('screenbg').style.display=bgCfg?'block':'none';
+    if(bgCfg){
+      $('screenbgImg').src=bgCfg.img;
+      $('screenbgImg').style.top=bgCfg.top+'px';
+      $('screenbgImg').style.width=bgCfg.width+'%';
+    }
+  }
   const i=ORDER.indexOf(STEP_ALIAS[cur]||cur);$('stepLabel').textContent=(i+1)+' / '+ORDER.length+' · '+NAMES[cur];
   const fabScreens=['reco','portfolio','tune','projection','advice','trade','pilot','review'];
   const showFab=fabScreens.indexOf(cur)>=0;
