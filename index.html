@@ -1886,12 +1886,9 @@ reco(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
   const signals=sel.map(a=>({ag:a,...noticedDynamic(a)}));
   const prof=state.riskAssessed||riskProfile();
   return `<div style="position:relative">
-  <div style="position:relative;z-index:1">${appbar('Your Plan','analyze',false,true)}<div class="pad">
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Your Plan','analyze',false,true)}<div class="pad">
   <div class="eyebrow" style="background:linear-gradient(120deg,#e3b04a,#a6710f);-webkit-background-clip:text;background-clip:text;color:transparent">Your AI team's recommendation</div>
-  <h1>
-    A Plan Built<br>
-    Around Your Goals
-  </h1>
+  <h1>A Plan Built Around Your Goals</h1>
   <p class="sub">Here's what each agent flagged in your situation — and the mix it points to, kept within your ${prof} risk profile.</p>
 
   <h2>What Your AI Team Noticed</h2>
