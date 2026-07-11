@@ -853,6 +853,9 @@
 <div class="phone">
   <div class="screen">
     <div class="notch" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:122px;height:32px;background:#0a0b0d;border-radius:0 0 20px 20px;z-index:50"></div>
+    <div class="screenbg" id="screenbg" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;z-index:0;pointer-events:none">
+      <img src="images/ocbc-ea-myaiteam.png" alt="" style="position:absolute;left:0;top:-80px;width:100%;height:calc(100% + 80px);object-fit:cover;object-position:center top;display:block">
+    </div>
     <div class="statusbar" id="statusbar"><span id="clock">9:41</span><span>5G&nbsp; 100%</span></div>
     <div class="view" id="view"></div>
     <div class="chatfab" id="chatFab" onclick="openChat('global')">
@@ -1794,7 +1797,8 @@ risk(){const surplus=BANK_KNOWN.monthlyIncome-BANK_KNOWN.monthlySpend;return app
   </div>
 </div>`;},
 
-team(){return appbar('Home','home',false,true)+`<div class="pad" style="padding-bottom:32px">
+team(){return `<div style="position:relative">
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Home','home',false,true)}<div class="pad" style="padding-bottom:32px">
   <div class="stepbadge gold">Step 1 of 2</div>
   <h1>Build Your AI Team</h1>
   <p class="sub">Choose up to two AI specialists. Your personal orchestrator will combine their expertise into one investment plan.</p>
@@ -1848,7 +1852,7 @@ team(){return appbar('Home','home',false,true)+`<div class="pad" style="padding-
 
   <div style="text-align:center;font-size:12.5px;color:var(--muted);font-weight:600;margin:14px 0 4px">👥 ${state.agents.length} of 2 agents selected</div>
   <button class="btn gold" onclick="proceedTeam()" ${state.agents.length===0?'disabled style="opacity:.4;pointer-events:none"':''}">Continue →</button>
-</div>`;},
+</div></div></div>`;},
 
 analyze(){runAnalyze();const sel=AGENTS.filter(a=>state.agents.includes(a.id));return appbar('Building Your Plan','risk')+`<div class="pad" style="padding-top:14px">
   <div style="text-align:center;margin:4px 0 14px"><div class="ai-orb" style="width:52px;height:52px;margin:0 auto 12px"></div>
@@ -2933,7 +2937,8 @@ function startCarousel(){
 function render(){
   if(window._agTimer){clearInterval(window._agTimer);window._agTimer=null;}
   closePicker();hideModal();$('view').innerHTML=S[cur]();$('view').scrollTop=0;
-  $('statusbar').className='statusbar'+(cur==='home'?' onhero':cur==='login'?' over':'');
+  $('statusbar').className='statusbar'+(cur==='home'||cur==='team'?' onhero':cur==='login'?' over':'');
+  if($('screenbg'))$('screenbg').style.display=(cur==='team')?'block':'none';
   const i=ORDER.indexOf(STEP_ALIAS[cur]||cur);$('stepLabel').textContent=(i+1)+' / '+ORDER.length+' · '+NAMES[cur];
   const fabScreens=['reco','portfolio','tune','projection','advice','trade','pilot','review'];
   const showFab=fabScreens.indexOf(cur)>=0;
