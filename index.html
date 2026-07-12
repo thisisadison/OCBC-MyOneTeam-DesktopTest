@@ -84,6 +84,8 @@
   .btn.link{background:transparent;color:var(--red);box-shadow:none}
   .pulse{animation:pulse 2s ease-in-out infinite}
   @keyframes pulse{0%,100%{box-shadow:0 8px 20px rgba(236,28,36,.28)}50%{box-shadow:0 8px 30px rgba(236,28,36,.5)}}
+  @keyframes pulseGold{0%,100%{box-shadow:0 8px 20px rgba(190,134,45,.30)}50%{box-shadow:0 8px 32px rgba(190,134,45,.55)}}
+  .btn.gold.glowpulse{animation:pulseGold 2.2s ease-in-out infinite}
   .judgebtn{background:#fff;color:#a87b1f;border:1.5px solid #caa23a;position:relative;overflow:hidden;animation:judgeGlow 2.4s ease-in-out infinite}
   @keyframes judgeGlow{0%,100%{box-shadow:0 4px 14px rgba(202,162,58,.18)}50%{box-shadow:0 6px 22px rgba(202,162,58,.42)}}
   .glowpulse{animation:pulse 2.2s ease-in-out infinite}
@@ -2166,14 +2168,16 @@ tune(){const k=state.editBucket||state.activeBucket;const active=PRODUCTS.filter
 /* ===== projection with per-product growth + advance sim ===== */
 projection(){recalcBuckets();state.chart='line';state.invest=Math.max(1000,totalVal());if(state.simT==null)state.simT=0;
   const k=state.activeBucket;const p=aiPersona();
-  return appbar('Projection','portfolio')+`<div class="pad">
+  return `<div style="position:relative">
+  <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Projection','portfolio',false,true)}<div class="pad">
   <div class="coachstrip" onclick="openChat('projection')">
     <div class="cav">${avatar(p)}</div>
     <div style="flex:1"><div>Your line climbs over time but with real dips along the way — I've marked the market events behind each one. Tap to ask me about them.</div>
       <div class="coachcta" style="color:${p.color}">Ask ${p.name} About The Ups &amp; Downs →</div></div>
   </div>
 
-  <div class="eyebrow ai">If you stay the course</div>
+  <div class="eyebrow" style="background:linear-gradient(120deg,#e3b04a,#a6710f);-webkit-background-clip:text;background-clip:text;color:transparent">If you stay the course</div>
   <h1 style="margin-bottom:4px">Where This Plan Could Take You</h1>
   <p class="sub" style="margin-bottom:12px">Your confirmed mix projected to ${2025+horizon()} — with the real ups and downs a market throws at you, not a smooth line.</p>
   <div class="chartcard">
@@ -2198,10 +2202,10 @@ projection(){recalcBuckets();state.chart='line';state.invest=Math.max(1000,total
 
   <h2 style="margin-top:14px">Your Confirmed Holdings <span style="font-size:12px;font-weight:600;color:var(--muted)">· growth ${simLabel()==='today'?'from today':'after '+simLabel().replace(' in','')}</span></h2>
   <div class="hsumwrap">${holdingsSummary()}</div>
-  <div class="hsumhint">Each holding's growth moves with the simulation above — advance by week, month or year to watch it compound. To change the mix, edit a basket in the sandbox.</div>
+  <div class="hsumhint" style="background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid var(--line)">Each holding's growth moves with the simulation above — advance by week, month or year to watch it compound. To change the mix, edit a basket in the sandbox.</div>
 
-  <button class="btn ai glowpulse" onclick="go('advice')">What Does My Team Think? →</button>
-</div>`;},
+  <button class="btn gold glowpulse" onclick="go('advice')">What Does My Team Think? →</button>
+</div></div></div>`;},
 
 /* ===== final orchestrator + agents (family tree) ===== */
 advice(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
@@ -3100,7 +3104,8 @@ function render(){
     reco:{img:'images/ocbc-ea-yourplan.png',top:-40,width:100},
     portfolio:{img:'images/ocbc-ea-portfolio.png',top:-40,width:100},
     link:{img:'images/ocbc-ea-link.png',top:-40,width:100},
-    tune:{img:'images/ocbc-ea-sandbox.png',top:-40,width:100}
+    tune:{img:'images/ocbc-ea-sandbox.png',top:-40,width:100},
+    projection:{img:'images/ocbc-ea-projection.png',top:-40,width:100}
   };
   $('statusbar').className='statusbar'+(cur==='home'||cur==='analyze'||BG_SCREENS[cur]?' onhero':cur==='login'?' over':'');
   if($('screenbg')){
