@@ -765,6 +765,7 @@
   .newsartimg .ph{display:flex;flex-direction:column;align-items:center;gap:6px;color:#c9ae72}
   .newsartimg .ph svg{width:34px;height:34px;opacity:.8}
   .newsartimg .ph span{font-size:10.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;opacity:.85}
+  .aitag{position:absolute;top:10px;left:10px;background:linear-gradient(160deg,#e3b04a,#b8790f);color:#fff;font-size:10px;font-weight:800;letter-spacing:.03em;padding:4px 9px;border-radius:20px;box-shadow:0 3px 8px rgba(190,134,45,.35)}
   .newsartbody{padding:12px 14px 14px}
   .newsartmeta{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;color:#a6710f;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
   .newsartmeta .src{color:var(--ink)}
@@ -3026,13 +3027,19 @@ function seededPct(seed){let h=0;for(let i=0;i<seed.length;i++){h=(h*31+seed.cha
 function marketTicker(){
   const held=PRODUCTS.filter(p=>p.bucket);
   const idx=[{name:'STI Index',tk:'STI'},{name:'S&P 500',tk:'SPX'}];
-  const rows=held.map(p=>({name:cleanName(p.name),tk:prodTicker(p.name),pct:seededPct(p.id+state._mktSeed),cls:p.cls||p.bucket}))
-    .concat(idx.map(i=>({name:i.name,tk:i.tk,pct:seededPct(i.tk+state._mktSeed),cls:null})));
-  return rows;}
+  const heldRows=held.map(p=>({name:cleanName(p.name),tk:prodTicker(p.name),pct:seededPct(p.id+state._mktSeed),cls:p.cls||p.bucket,mine:true}));
+  const idxRows=idx.map(i=>({name:i.name,tk:i.tk,pct:seededPct(i.tk+state._mktSeed),cls:null,mine:false}));
+  return {held:heldRows,all:heldRows.concat(idxRows)};}
 function marketsTab(){
   if(!state._mktSeed)state._mktSeed=String(Math.floor(Date.now()/3600000));
-  const rows=marketTicker();
+  const data=marketTicker();
+  const filt=state._mktFilt||'suggested';
+  const rows=filt==='suggested'?data.held:data.all;
   return `<div class="mkthead"><span>Today's movers</span><span class="mktlive"><span class="livedot" style="background:#1f9d57"></span>Live</span></div>
+    <div class="sbtabs" style="margin-bottom:11px">
+      <button class="sbtab ${filt==='suggested'?'on':''}" onclick="setMktFilt('suggested')">✦ Your Holdings</button>
+      <button class="sbtab ${filt==='all'?'on':''}" onclick="setMktFilt('all')">All Markets</button>
+    </div>
     <div class="mktlist">
       ${rows.map(r=>{const up=r.pct>=0;const hex=r.cls&&BK[r.cls]?BK[r.cls].hex:'#8a8d93';
         return `<div class="mktrow">
@@ -3041,28 +3048,45 @@ function marketsTab(){
           <div class="mktchg ${up?'up':'dn'}">${up?'▲':'▼'} ${Math.abs(r.pct).toFixed(1)}%</div>
         </div>`;}).join('')}
     </div>`;}
+function setMktFilt(f){state._mktFilt=f;keepScroll(render);}
 const NEWS_ARTICLES=[
-  {img:null,src:'The Business Times',time:'2h ago',tag:'Markets',title:'Fed signals two rate cuts likely before year-end',snip:'Policymakers point to cooling inflation data, a shift that could lift bond prices and ease borrowing costs across Asia.'},
-  {img:null,src:'Reuters',time:'5h ago',tag:'Equities',title:'Asian tech stocks rally on strong chip demand outlook',snip:'Semiconductor names led gains across regional markets as AI-driven orders continue to beat expectations.'},
-  {img:null,src:'CNA Business',time:'Yesterday',tag:'Singapore',title:'STI closes at fresh high as banks lead the charge',snip:'Local lenders posted solid results this quarter, lifting the benchmark index to its strongest close in over a year.'},
-  {img:null,src:'Bloomberg',time:'2 days ago',tag:'Global',title:'Gold holds near record highs amid safe-haven demand',snip:'Investors continue rotating into gold as a hedge, even as equity markets post modest gains this week.'}
+  {img:'images/ocbc-ea-article1.jpeg',src:'The Business Times',time:'2h ago',tag:'Markets',title:'Fed signals two rate cuts likely before year-end',snip:'Policymakers point to cooling inflation data, a shift that could lift bond prices and ease borrowing costs across Asia.',cls:['FI'],agents:['income']},
+  {img:'images/ocbc-ea-article2.jpeg',src:'Reuters',time:'5h ago',tag:'Equities',title:'Asian tech stocks rally on strong chip demand outlook',snip:'Semiconductor names led gains across regional markets as AI-driven orders continue to beat expectations.',cls:['Funds'],agents:['grow']},
+  {img:'images/ocbc-ea-article3.jpeg',src:'CNA Business',time:'Yesterday',tag:'Singapore',title:'STI closes at fresh high as banks lead the charge',snip:'Local lenders posted solid results this quarter, lifting the benchmark index to its strongest close in over a year.',cls:['Funds'],agents:['grow']},
+  {img:'images/ocbc-ea-article4.jpeg',src:'Bloomberg',time:'2 days ago',tag:'Global',title:'Gold holds near record highs amid safe-haven demand',snip:'Investors continue rotating into gold as a hedge, even as equity markets post modest gains this week.',cls:['Alt'],agents:['retire']},
+  {img:null,src:'Straits Times',time:'3 days ago',tag:'Property',title:'Singapore home prices cool slightly as new supply arrives',snip:'Analysts say the modest pullback gives buyers a little more room, though prices remain well above pre-2020 levels.',cls:[],agents:['home']},
+  {img:null,src:'CNBC',time:'3 days ago',tag:'Rates',title:'SGD money market yields ease from recent peak',snip:'Short-term cash yields have started to drift lower, prompting some investors to lock in current rates on longer bonds.',cls:['Cash','FI'],agents:['income']},
+  {img:null,src:'Bloomberg',time:'4 days ago',tag:'Retirement',title:'CPF SA interest floor stays at 4% for another year',snip:'The guaranteed floor continues to make CPF top-ups one of the more attractive low-risk options for long-term savers.',cls:[],agents:['retire']},
+  {img:null,src:'Reuters',time:'5 days ago',tag:'REITs',title:'S-REITs post steady payouts as borrowing costs stabilise',snip:'Distribution yields held firm this quarter as financing costs plateaued, a relief after two years of rate pressure.',cls:['Alt'],agents:['home']}
 ];
 function newsImgSlot(a){
   if(a.img)return `<img src="${a.img}" alt="${a.title}" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><rect x=&quot;3&quot; y=&quot;5&quot; width=&quot;18&quot; height=&quot;14&quot; rx=&quot;2&quot;/><circle cx=&quot;8.5&quot; cy=&quot;10&quot; r=&quot;1.5&quot;/><path d=&quot;M21 15l-5-5-9 9&quot;/></svg><span>Image unavailable</span></div>'">`;
   return `<div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg><span>Article image</span></div>`;}
+function newsRelevant(a){
+  const myAgents=new Set(state.agents||[]);
+  return (a.agents||[]).some(g=>myAgents.has(g));}
 function newsTab(){
-  return `<div class="newsarthead"><span>Financial news</span><span style="font-weight:600;color:var(--muted);text-transform:none">${NEWS_ARTICLES.length} stories</span></div>
+  const filt=state._newsFilt||'suggested';
+  const suggested=NEWS_ARTICLES.filter(newsRelevant);
+  const list=filt==='suggested'?(suggested.length?suggested:NEWS_ARTICLES):NEWS_ARTICLES;
+  return `<div class="newsarthead"><span>Financial news</span><span style="font-weight:600;color:var(--muted);text-transform:none">${list.length} stories</span></div>
+    <div class="sbtabs" style="margin-bottom:11px">
+      <button class="sbtab ${filt==='suggested'?'on':''}" onclick="setNewsFilt('suggested')">✦ AI Suggested</button>
+      <button class="sbtab ${filt==='all'?'on':''}" onclick="setNewsFilt('all')">All Stories</button>
+    </div>
     <div class="newsartlist">
-      ${NEWS_ARTICLES.map((a,i)=>`<div class="newsartcard" onclick="openNewsArticle(${i})">
-        <div class="newsartimg">${newsImgSlot(a)}</div>
+      ${list.map((a,i)=>{const origIdx=NEWS_ARTICLES.indexOf(a);const rel=newsRelevant(a);
+        return `<div class="newsartcard" onclick="openNewsArticle(${origIdx})">
+        <div class="newsartimg">${newsImgSlot(a)}${filt==='suggested'&&rel?'<span class="aitag">✦ For you</span>':''}</div>
         <div class="newsartbody">
           <div class="newsartmeta"><span class="src">${a.src}</span><span>·</span><span>${a.time}</span></div>
           <div class="newsarttitle">${a.title}</div>
           <div class="newsartsnip">${a.snip}</div>
           <div class="newsartfoot"><span class="newsarttag">${a.tag}</span><span class="newsartread">Read more →</span></div>
         </div>
-      </div>`).join('')}
+      </div>`;}).join('')}
     </div>`;}
+function setNewsFilt(f){state._newsFilt=f;keepScroll(render);}
 function openNewsArticle(i){const a=NEWS_ARTICLES[i];if(!a)return;
   showModal(`<div style="text-align:left">
     <div class="newsartimg" style="border-radius:14px;margin-bottom:12px">${newsImgSlot(a)}</div>
