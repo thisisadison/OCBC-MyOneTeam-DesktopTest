@@ -773,7 +773,7 @@
   .stressval{font-size:12.5px;color:var(--ink2);margin-bottom:10px}
   .stressmsg{font-size:12px;color:#15543a;line-height:1.5;margin-top:10px;background:#eef9f1;border-radius:10px;padding:10px 12px}
 
-  .acctcard{background:#fff;border:1px solid var(--line);border-radius:15px;padding:4px 14px;box-shadow:var(--shadow)}
+  .acctcard{background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid #e8d6a8;border-radius:15px;padding:4px 14px;box-shadow:0 3px 10px rgba(190,150,60,.08)}
   .acctrow{display:flex;align-items:center;gap:11px;padding:11px 0}
   .acctic{width:38px;height:38px;border-radius:10px;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Sora';font-weight:800;font-size:11px;flex-shrink:0}
   .acctlbl{font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
@@ -785,7 +785,7 @@
   .acctready .rdot{width:7px;height:7px;border-radius:50%;background:#1f9d57;display:inline-block}
   .okcheck{width:54px;height:54px;border-radius:50%;background:#e7f8ef;color:#1f9d57;font-size:27px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
   .acctdiv{height:1px;background:var(--line);margin:0 -14px 0 49px}
-  .ordgroup{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px 13px;margin-bottom:9px;box-shadow:var(--shadow)}
+  .ordgroup{background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid #e8d6a8;border-radius:14px;padding:11px 13px;margin-bottom:9px;box-shadow:0 3px 10px rgba(190,150,60,.08)}
   .ordhead{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:800;color:var(--ink);padding-bottom:9px;margin-bottom:7px;border-bottom:1px solid var(--line)}
   .ordvia{font-size:10.5px;font-weight:600;color:var(--muted)}
   .ordsum{margin-left:auto;font-family:'Sora';font-weight:800}
@@ -2235,13 +2235,15 @@ advice(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
 
 /* ===== trade: Oscar AI fed; iOCBC equities / OCBC the rest ===== */
 trade(){const prods=PRODUCTS.filter(p=>p.bucket);const total=totalVal();
-  return appbar('Trade','advice')+`<div class="pad">
-  <div class="eyebrow ai">Right inside the OCBC app you already use</div>
+  return `<div style="position:relative">
+  <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Trade','advice',false,true)}<div class="pad">
+  <div class="eyebrow" style="background:linear-gradient(120deg,#e3b04a,#a6710f);-webkit-background-clip:text;background-clip:text;color:transparent">Right inside the OCBC app you already use</div>
   <h1 style="margin-bottom:4px">Place Your Whole Plan In A Tap</h1>
-  <p class="sub" style="margin-bottom:14px">Your AI-built mix carries straight into your OCBC app — every fund across all four asset classes is pre-loaded. OCBC routes each one to the right channel, so there's nothing to set up, find, or key in.</p>
+  <p class="sub" style="margin-bottom:14px;color:var(--ink2)">Your AI-built mix carries straight into your OCBC app — every fund across all four asset classes is pre-loaded. OCBC routes each one to the right channel, so there's nothing to set up, find, or key in.</p>
 
   <div class="acctcard">
-    <div class="acctrow"><div class="acctic" style="background:#ec1c24">360</div>
+    <div class="acctrow"><div class="acctic" style="background:linear-gradient(160deg,#e3b04a,#b8790f)">360</div>
       <div style="flex:1;min-width:0"><div class="acctlbl">Funded from</div><div class="acctname">OCBC 360 Account · •••• 8842</div></div>
       <div class="acctav">S$${BANK_KNOWN.investableAssets.toLocaleString()}<span>available</span></div></div>
     <div class="acctdiv"></div>
@@ -2264,9 +2266,9 @@ trade(){const prods=PRODUCTS.filter(p=>p.bucket);const total=totalVal();
   </div>
   <div class="plannote">Suggested by your AI team for your ${goalLabel()} — your full S$${Math.round(BANK_KNOWN.investableAssets/1000)}k investable balance now, plus a monthly contribution. It never places more than you actually have; the rest of the journey to your goal comes from these top-ups and time.</div>
 
-  <button class="btn primary" onclick="placeOrder()">Review &amp; Place Order →</button>
+  <button class="btn gold" onclick="placeOrder()">Review &amp; Place Order →</button>
   <div class="disc">One order, executed by OCBC across the relevant channels (Unit Trusts, ETFs, bonds, cash & REITs). Investments carry risk; projections aren't guaranteed.</div>
-</div>`;},
+</div></div></div>`;},
 };
 
 /* ============ component renderers ============ */
@@ -3108,7 +3110,8 @@ function render(){
     link:{img:'images/ocbc-ea-link.png',top:-40,width:100},
     tune:{img:'images/ocbc-ea-sandbox.png',top:-40,width:100},
     projection:{img:'images/ocbc-ea-projection.png',top:-40,width:100},
-    advice:{img:'images/ocbc-ea-finaladvice.png',top:-40,width:100}
+    advice:{img:'images/ocbc-ea-finaladvice.png',top:-40,width:100},
+    trade:{img:'images/ocbc-ea-trade.png',top:-40,width:100}
   };
   $('statusbar').className='statusbar'+(cur==='home'||cur==='analyze'||BG_SCREENS[cur]?' onhero':cur==='login'?' over':'');
   if($('screenbg')){
