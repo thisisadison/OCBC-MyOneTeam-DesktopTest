@@ -40,7 +40,7 @@
   h1,h2,h3,.disp{font-family:'Sora','Inter',sans-serif;letter-spacing:-.02em}
 
   .demobar{width:100%;max-width:900px;display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;justify-content:center}
-  .demobar .brand{font-family:'Sora';font-weight:800;color:var(--red);margin-right:auto;display:flex;align-items:center;gap:8px;font-size:15px}
+  .demobar .brand{font-family:'Sora';font-weight:800;color:#b8790f;margin-right:auto;display:flex;align-items:center;gap:8px;font-size:15px}
   .demobar .brand small{color:var(--muted);font-weight:500;font-family:'Inter'}
   .demobar button{border:1px solid var(--line);background:#fff;color:var(--ink);padding:8px 12px;border-radius:10px;font-weight:600;font-size:13px;cursor:pointer}
   .demobar button:hover{background:#f6f7f9}
@@ -133,13 +133,13 @@
   .fbtn{background:#fff;border:1px solid #e3cb92;border-radius:11px;padding:11px 14px;font-size:13px;font-weight:700;cursor:pointer;color:var(--ink)}
   .reviewcard{display:flex;align-items:center;gap:12px;background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid #e8d6a8;border-radius:15px;padding:14px;box-shadow:0 3px 10px rgba(190,150,60,.08);cursor:pointer}
   .reviewcard .opt-ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-  .propcard{display:flex;align-items:center;gap:11px;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:13px;margin-bottom:10px;cursor:pointer;transition:.12s}
-  .propcard.on{border-color:var(--red);background:#fffafa}
+  .propcard{display:flex;align-items:center;gap:11px;background:linear-gradient(180deg,#fffdf9,#fff);border:1.5px solid #e8d6a8;border-radius:14px;padding:13px;margin-bottom:10px;cursor:pointer;transition:.12s}
+  .propcard.on{border-color:#a6710f;background:linear-gradient(180deg,#fff6de,#fffaf0)}
   .propcard .miniframe{border-radius:50%;overflow:hidden;line-height:0;flex-shrink:0}
   .propt{font-family:'Sora';font-weight:800;font-size:13.5px}
   .propd{font-size:11.5px;color:var(--muted);line-height:1.4;margin-top:2px}
   .propchk{width:24px;height:24px;border-radius:50%;border:1.5px solid #d2d5da;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:13px;flex-shrink:0}
-  .propcard.on .propchk{background:var(--red);border-color:var(--red)}
+  .propcard.on .propchk{background:linear-gradient(160deg,#e3b04a,#b8790f);border-color:#b8790f}
   .qname{font-family:'Sora';font-weight:800;font-size:14px}
   .qdesc{font-size:11.5px;color:var(--muted)}
   .qfield{margin-top:11px}
@@ -2107,14 +2107,16 @@ pilot(){const inv=totalVal(),curV=Math.round(inv*1.047),gain=curV-inv,gpct=(gain
 review(){const aGuard=pickAgent('income'),aGlobal=pickAgent('grow');
   const inv=totalVal(),curV=Math.round(inv*1.047);
   const P=id=>state.proposals.find(p=>p.id===id).on;
-  return appbar('Quarterly Review','pilot')+`<div class="pad">
-  <div class="stepbadge">Q2 2026 · Your team reconvened</div>
+  return `<div style="position:relative">
+  <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Quarterly Review','pilot',false,true)}<div class="pad">
+  <div class="stepbadge gold">Q2 2026 · Your team reconvened</div>
   <h1>Your Quarterly Team Review</h1>
-  <p class="sub">Your AI committee met, reviewed performance against your goal, and has a couple of small adjustments for your approval.</p>
+  <p class="sub" style="color:var(--ink2)">Your AI committee met, reviewed performance against your goal, and has a couple of small adjustments for your approval.</p>
 
-  <div class="card" style="background:var(--ink);color:#fff;border:none">
+  <div class="card" style="background:var(--ink);color:#fff;border:1.5px solid #e3b04a">
     <div style="font-size:12px;opacity:.75">This quarter</div>
-    <div style="font-family:'Sora';font-weight:800;font-size:26px;margin-top:2px">+4.2%</div>
+    <div style="font-family:'Sora';font-weight:800;font-size:26px;margin-top:2px;color:#f3d68d">+4.2%</div>
     <div style="font-size:12px;opacity:.75;margin-top:4px">Portfolio S$${curV.toLocaleString()} · ahead of a 60/40 benchmark (+3.1%)</div>
   </div>
 
@@ -2133,10 +2135,10 @@ review(){const aGuard=pickAgent('income'),aGlobal=pickAgent('grow');
     <span class="propchk">${P('pr2')?'✓':''}</span>
   </div>
 
-  <button class="btn primary" onclick="applyReview()">Apply Approved Changes</button>
-  <div style="text-align:center;margin-top:12px"><a onclick="go('pilot')" style="font-size:13px;font-weight:600;color:var(--red);cursor:pointer">Skip — Keep My Plan As Is</a></div>
+  <button class="btn gold" onclick="applyReview()">Apply Approved Changes</button>
+  <div style="text-align:center;margin-top:12px"><a onclick="go('pilot')" style="font-size:13px;font-weight:600;color:#a6710f;cursor:pointer">Skip — Keep My Plan As Is</a></div>
   <div class="disc">You're always in control. Nothing changes until you approve. Capital at risk; returns not guaranteed.</div>
-</div>`;},
+</div></div></div>`;},
 
 /* ===== orchestrated view (multi-agent) ===== */
 orchestrate(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));applyAgents();
@@ -3247,7 +3249,8 @@ function render(){
     projection:{img:'images/ocbc-ea-projection.png',top:-40,width:100},
     advice:{img:'images/ocbc-ea-finaladvice.png',top:-40,width:100},
     trade:{img:'images/ocbc-ea-trade.png',top:-40,width:100},
-    pilot:{img:'images/ocbc-ea-myoneteamhome.png',top:-40,width:100}
+    pilot:{img:'images/ocbc-ea-myoneteamhome.png',top:-40,width:100},
+    review:{img:'images/ocbc-ea-quarterlyreview.png',top:-40,width:100}
   };
   $('statusbar').className='statusbar'+(cur==='home'||cur==='analyze'||BG_SCREENS[cur]?' onhero':cur==='login'?' over':'');
   if($('screenbg')){
