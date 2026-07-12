@@ -602,7 +602,7 @@
   .treename{font-family:'Sora';font-weight:800;font-size:14px}
   .treesay{font-size:12px;color:var(--ink2);line-height:1.45;margin-top:5px}
   .treetop .treesay{color:#e8d8ad}
-  .treeline{width:2px;height:18px;background:var(--line);margin:0 auto}
+  .treeline{width:2px;height:18px;background:#e3cb92;margin:0 auto}
   .treekids{display:flex;gap:11px;justify-content:center}
   .treekids.one{max-width:280px;margin:0 auto}
   .treekid{flex:1;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 12px;text-align:center;box-shadow:var(--shadow);position:relative}
@@ -2209,10 +2209,12 @@ projection(){recalcBuckets();state.chart='line';state.invest=Math.max(1000,total
 
 /* ===== final orchestrator + agents (family tree) ===== */
 advice(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
-  return appbar('Final Advice','projection')+`<div class="pad">
-  <div class="eyebrow ai">Your team's sign-off</div>
+  return `<div style="position:relative">
+  <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Final Advice','projection',false,true)}<div class="pad">
+  <div class="eyebrow" style="background:linear-gradient(120deg,#e3b04a,#a6710f);-webkit-background-clip:text;background-clip:text;color:transparent">Your team's sign-off</div>
   <h1 style="margin-bottom:4px">The Committee On Your Final Mix</h1>
-  <p class="sub" style="margin-bottom:14px">They've seen your confirmed portfolio and its projection. Here's their closing word.</p>
+  <p class="sub" style="margin-bottom:14px;color:var(--ink2)">They've seen your confirmed portfolio and its projection. Here's their closing word.</p>
 
   <div class="tree">
     <div class="treetop"><div class="pixframe gold" style="width:56px">${avatar(JUDGE)}</div>
@@ -2221,15 +2223,15 @@ advice(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
     </div>
     <div class="treeline"></div>
     <div class="treekids ${sel.length===1?'one':''}">
-      ${sel.map(a=>`<div class="treekid"><span class="kidconn"></span><div class="miniframe" style="width:42px">${avatar(a)}</div>
+      ${sel.map(a=>`<div class="treekid" style="background:linear-gradient(180deg,#fffdf9,#fff);border-color:#e8d6a8"><span class="kidconn" style="background:#e3cb92"></span><div class="miniframe" style="width:42px">${avatar(a)}</div>
         <div class="treename" style="color:${a.color}">${a.name}</div>
         <div class="treesay">${AGENT_ADVICE(a.id)}</div></div>`).join('')}
     </div>
   </div>
 
-  <button class="btn primary" onclick="go('trade')">I'm Ready To Trade →</button>
-  <div style="text-align:center;margin-top:10px"><a onclick="go('portfolio')" style="font-size:12.5px;color:var(--red);font-weight:600;cursor:pointer">← Adjust the mix first</a></div>
-</div>`;},
+  <button class="btn gold" onclick="go('trade')">I'm Ready To Trade →</button>
+  <div style="text-align:center;margin-top:10px"><a onclick="go('portfolio')" style="font-size:12.5px;color:#a6710f;font-weight:600;cursor:pointer">← Adjust the mix first</a></div>
+</div></div></div>`;},
 
 /* ===== trade: Oscar AI fed; iOCBC equities / OCBC the rest ===== */
 trade(){const prods=PRODUCTS.filter(p=>p.bucket);const total=totalVal();
@@ -3105,7 +3107,8 @@ function render(){
     portfolio:{img:'images/ocbc-ea-portfolio.png',top:-40,width:100},
     link:{img:'images/ocbc-ea-link.png',top:-40,width:100},
     tune:{img:'images/ocbc-ea-sandbox.png',top:-40,width:100},
-    projection:{img:'images/ocbc-ea-projection.png',top:-40,width:100}
+    projection:{img:'images/ocbc-ea-projection.png',top:-40,width:100},
+    advice:{img:'images/ocbc-ea-finaladvice.png',top:-40,width:100}
   };
   $('statusbar').className='statusbar'+(cur==='home'||cur==='analyze'||BG_SCREENS[cur]?' onhero':cur==='login'?' over':'');
   if($('screenbg')){
