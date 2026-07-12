@@ -116,22 +116,22 @@
   /* returning-user home */
   .livedot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:lp 1.8s infinite}
   @keyframes lp{0%{box-shadow:0 0 0 0 rgba(52,211,153,.5)}70%{box-shadow:0 0 0 7px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
-  .pilotHero{background:linear-gradient(135deg,#ec1c24,#a90c12);color:#fff;border-radius:20px;padding:18px;box-shadow:0 14px 34px rgba(236,28,36,.3)}
+  .pilotHero{background:linear-gradient(135deg,#e3b04a,#a6710f);color:#fff;border-radius:20px;padding:18px;box-shadow:0 14px 34px rgba(190,134,45,.30)}
   .pilotHero .hbar{height:8px;border-radius:5px;background:rgba(255,255,255,.25);overflow:hidden;margin-top:6px}
   .pilotHero .hbar span{display:block;height:100%;background:#fff;border-radius:5px}
   .activeppl{background:rgba(255,255,255,.4);backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);border:1px solid rgba(255,255,255,.5);box-shadow:0 14px 34px rgba(20,10,5,.18)}
   .activeppl .pt{color:var(--ink)}.activeppl .pd{color:var(--ink2)}
-  .feedcard{background:#fff;border:1px solid var(--line);border-radius:15px;padding:14px;box-shadow:var(--shadow);margin-bottom:11px}
-  .feedcard.hot{border-color:#f6c9cb;background:#fffafa}
+  .feedcard{background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid #e8d6a8;border-radius:15px;padding:14px;box-shadow:0 3px 10px rgba(190,150,60,.08);margin-bottom:11px}
+  .feedcard.hot{border-color:#e8d6a8;background:linear-gradient(180deg,#fffbf3,#fff)}
   .feedtop{display:flex;align-items:center;gap:10px;margin-bottom:9px}
   .feedtop .miniframe{border-radius:50%;overflow:hidden;line-height:0;flex-shrink:0;box-shadow:0 2px 6px rgba(18,20,28,.12)}
   .feedname{font-family:'Sora';font-weight:800;font-size:13.5px}
   .feedtime{font-size:11px;color:var(--muted)}
-  .newdot{margin-left:auto;font-size:9px;font-weight:800;letter-spacing:.05em;background:var(--red);color:#fff;padding:3px 7px;border-radius:6px}
+  .newdot{margin-left:auto;font-size:9px;font-weight:800;letter-spacing:.05em;background:linear-gradient(160deg,#e3b04a,#b8790f);color:#fff;padding:3px 7px;border-radius:6px}
   .feedtext{font-size:13px;line-height:1.5;color:var(--ink2);margin-bottom:11px}
   .feedact{display:flex;gap:9px;align-items:center}
-  .fbtn{background:#fff;border:1px solid var(--line);border-radius:11px;padding:11px 14px;font-size:13px;font-weight:700;cursor:pointer;color:var(--ink)}
-  .reviewcard{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:15px;padding:14px;box-shadow:var(--shadow);cursor:pointer}
+  .fbtn{background:#fff;border:1px solid #e3cb92;border-radius:11px;padding:11px 14px;font-size:13px;font-weight:700;cursor:pointer;color:var(--ink)}
+  .reviewcard{display:flex;align-items:center;gap:12px;background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid #e8d6a8;border-radius:15px;padding:14px;box-shadow:0 3px 10px rgba(190,150,60,.08);cursor:pointer}
   .reviewcard .opt-ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
   .propcard{display:flex;align-items:center;gap:11px;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:13px;margin-bottom:10px;cursor:pointer;transition:.12s}
   .propcard.on{border-color:var(--red);background:#fffafa}
@@ -169,7 +169,7 @@
   .regchip{border:1.5px solid var(--line);background:#fff;border-radius:20px;padding:8px 13px;font-size:12.5px;font-weight:600;color:var(--ink2);cursor:pointer;transition:.12s}
   .regchip.on{border-color:var(--red);background:var(--red-tint);color:var(--red)}
   .feedtag{font-size:11.5px;color:var(--muted);font-weight:600;background:#f4f4f5;border-radius:8px;padding:7px 10px;text-align:center}
-  .learnlink{display:inline-block;margin-top:4px;font-size:13px;font-weight:700;color:var(--red);cursor:pointer}
+  .learnlink{display:inline-block;margin-top:4px;font-size:13px;font-weight:700;color:#a6710f;cursor:pointer}
 
   /* OCBC Singapore pre-login */
   .ocbcpre{min-height:100%;background:#fff;position:relative}
@@ -495,7 +495,7 @@
   .chat-bubble-agent{display:flex;gap:10px;align-items:flex-start;animation:chatIn .35s ease}
   .chat-bubble-agent .bub{background:var(--bg);border-radius:14px;border-top-left-radius:4px;padding:10px 14px;font-size:13.5px;color:var(--ink);line-height:1.45;max-width:78%}
   .chat-bubble-user{display:flex;justify-content:flex-end;animation:chatIn .35s ease}
-  .chat-bubble-user .bub{background:var(--red);color:#fff;border-radius:14px;border-top-right-radius:4px;padding:10px 14px;font-size:13.5px;font-weight:700;max-width:70%}
+  .chat-bubble-user .bub{background:#fff;border:1.5px solid #e3cb92;border-radius:14px;border-top-right-radius:4px;padding:10px 14px;font-size:13.5px;font-weight:700;max-width:70%}
   .chat-input-row{display:flex;gap:8px;align-items:center;animation:chatIn .35s ease}
   .chat-input-row .qinwrap{flex:1}
   .chat-typing{display:flex;gap:10px;align-items:center;animation:chatIn .35s ease}
@@ -619,12 +619,23 @@
   .oscardot{width:8px;height:8px;border-radius:50%;background:#1f9d57;flex-shrink:0;box-shadow:0 0 0 0 rgba(31,157,87,.5);animation:lp 1.8s infinite}
   @keyframes lp{0%{box-shadow:0 0 0 0 rgba(31,157,87,.5)}70%{box-shadow:0 0 0 7px rgba(31,157,87,0)}100%{box-shadow:0 0 0 0 rgba(31,157,87,0)}}
   .miniprog{text-align:left}.mptop{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-  .mptag{background:#eef3ff;color:#2f6fd6;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 9px;border-radius:7px}
+  .mptag{background:#fdf6e5;color:#a6710f;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 9px;border-radius:7px}
   .miniprog .applogo{margin:0 0 12px}
-  .miniorder{background:#f6f7f9;border-radius:12px;padding:6px 13px;margin:10px 0 14px}
-  .orow{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
+  .ordhead2{display:flex;align-items:center;gap:12px;text-align:left}
+  .sheet .applogo.sm{width:46px;height:46px;border-radius:13px;font-size:11px;margin:0;flex-shrink:0}
+  .ordhead2 h3{text-align:left;font-size:17px}
+  .ordflow{display:flex;align-items:center;gap:10px;background:#fdf6ea;border:1px solid #e8d6a8;border-radius:13px;padding:12px 14px;margin-bottom:10px}
+  .ordflow-step{flex:1;min-width:0}
+  .ordflow-lbl{font-size:10px;font-weight:800;color:#a6710f;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px}
+  .ordflow-val{font-size:12.5px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ordflow-arrow{color:#c9a44a;font-size:15px;flex-shrink:0}
+  .ordtotalhero{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#e3b04a,#a6710f);color:#fff;border-radius:14px;padding:14px 16px;margin:10px 0 14px}
+  .ordtotalhero span{font-size:12.5px;font-weight:600;opacity:.9}
+  .ordtotalhero b{font-family:'Sora';font-weight:800;font-size:19px}
+  .miniorder{background:#fdf6ea;border-radius:12px;padding:6px 13px;margin:10px 0 14px}
+  .orow{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid #f0e2bb;font-size:13px}
   .orow:last-child{border-bottom:none}.oname{flex:1;color:var(--ink2);text-align:left}.oamt{font-family:'Sora';font-weight:700;color:var(--ink);text-align:right}
-  .orow.total{border-top:2px solid var(--line);margin-top:4px;padding-top:10px}
+  .orow.total{border-top:2px solid #e8d6a8;margin-top:4px;padding-top:10px}
 
   /* sandbox canvas */
   .coachstrip{cursor:pointer}
@@ -1417,7 +1428,7 @@ function renderKnownCard(box,agent){
   const wrap=document.createElement('div');
   wrap.className='chat-known';
   wrap.innerHTML='<div class="chat-avatar" style="box-shadow:0 2px 10px '+hexToRgba(c,.35)+',0 0 0 2px '+hexToRgba(c,.25)+'">'+avatar(agent)+'</div>'+
-    '<div class="chat-known-card" style="background:linear-gradient(180deg,#fdf6ea,#fbf1e0);border:1px solid '+hexToRgba(c,.22)+';border-left:3px solid '+c+'">'+
+    '<div class="chat-known-card" style="background:#fff;border:1px solid #e3cb92;border-left:3px solid '+c+'">'+
     '<div class="chat-known-title" style="color:'+c+'">'+agent.name+' already has this on file</div>'+
     known.map(k=>'<div class="chat-known-row"><span>'+k.label+'</span><span style="color:'+c+'">'+k.value+'</span></div>').join('')+
     '</div>';
@@ -1430,7 +1441,7 @@ function renderTyping(box,agent,done){
   wrap.className='chat-typing';
   wrap.id='typing-now';
   wrap.innerHTML='<div class="chat-avatar" style="box-shadow:0 2px 10px '+hexToRgba(c,.35)+',0 0 0 2px '+hexToRgba(c,.25)+'">'+avatar(agent)+'</div>'+
-    '<div class="dots" style="background:#fbf1e0;border:1px solid '+hexToRgba(c,.2)+'"><span style="background:'+c+'"></span><span style="background:'+c+'"></span><span style="background:'+c+'"></span></div>';
+    '<div class="dots" style="background:#fff;border:1px solid #e3cb92"><span style="background:'+c+'"></span><span style="background:'+c+'"></span><span style="background:'+c+'"></span></div>';
   box.appendChild(wrap);
   chatScroll();
   setTimeout(()=>{
@@ -1444,13 +1455,13 @@ function renderQuestion(box,agent,field){
   const bub=document.createElement('div');
   bub.className='chat-bubble-agent';
   bub.innerHTML='<div class="chat-avatar" style="box-shadow:0 2px 10px '+hexToRgba(c,.35)+',0 0 0 2px '+hexToRgba(c,.25)+'">'+avatar(agent)+'</div>'+
-    '<div class="bub" style="background:linear-gradient(180deg,#fdf6ea,#fbf1e0);border:1.5px solid '+hexToRgba(c,.35)+'">'+field.label+'</div>';
+    '<div class="bub" style="background:#fff;border:1.5px solid #e3cb92">'+field.label+'</div>';
   box.appendChild(bub);
 
   const row=document.createElement('div');
   row.className='chat-input-row';
   row.id='inputrow-'+field.id;
-  row.innerHTML='<div class="qinwrap" style="background:#fdf6ea;border-color:'+hexToRgba(c,.35)+'">'+(field.money?'<span class="qpfx" style="color:'+c+'">S$</span>':'')+
+  row.innerHTML='<div class="qinwrap" style="background:#fff;border-color:#e3cb92">'+(field.money?'<span class="qpfx" style="color:'+c+'">S$</span>':'')+
     '<input class="qin" id="qin-'+field.id+'" inputmode="numeric" placeholder="Type your own…" style="caret-color:'+c+'">'+
     (field.unit&&!field.money?'<span class="qsfx">'+field.unit+'</span>':'')+'</div>'+
     '<button class="chat-send" style="background:'+c+'" onclick="submitChatAnswer(\''+field.id+'\')">→</button>';
@@ -1461,7 +1472,7 @@ function renderQuestion(box,agent,field){
   sug.id='suggest-'+field.id;
   const opts=(field.opts&&field.opts.length)?field.opts:[field.def];
   const chips=opts.map((v,i)=>{const lbl=field.money?'S$'+Number(v).toLocaleString():v+(field.unit?' '+field.unit:'');
-    return '<button class="sugchip" style="background:linear-gradient(180deg,#fdf6ea,#fbf1e0);border-color:'+hexToRgba(c,.4)+';color:'+c+'" onclick="useSuggest(\''+field.id+'\','+v+')">'+
+    return '<button class="sugchip" style="background:#fff;border-color:#e3cb92;color:'+c+'" onclick="useSuggest(\''+field.id+'\','+v+')">'+
       '<span class="sugspark" style="background:'+c+'">✦</span><span class="sugval">'+lbl+'</span>'+
       (i===0?'<span class="sugbest" style="color:'+c+'">Recommended</span>':'')+
       '</button>';}).join('');
@@ -1497,7 +1508,7 @@ function submitChatAnswer(fieldId){
   const uc=turn.agent.color||'#ec1c24';
   const userBub=document.createElement('div');
   userBub.className='chat-bubble-user';
-  userBub.innerHTML='<div class="bub" style="background:'+uc+'">'+(field.money?'S$'+n.toLocaleString():n+(field.unit?' '+field.unit:''))+'</div>';
+  userBub.innerHTML='<div class="bub" style="color:'+uc+'">'+(field.money?'S$'+n.toLocaleString():n+(field.unit?' '+field.unit:''))+'</div>';
   box.appendChild(userBub);
   chatScroll();
 
@@ -2023,7 +2034,9 @@ pilot(){const inv=totalVal(),curV=Math.round(inv*1.047),gain=curV-inv,gpct=(gain
       <div class="feedtext"><b>${n.ev}</b> ${n.ef} ${n.rec}</div>
       <a class="learnlink" onclick="learnMore('${a.id}')">Learn more →</a>
     </div>`;}).filter(Boolean).join('');
-  return appbar('Home','home')+`<div class="pad" style="padding-top:6px">
+  return `<div style="position:relative">
+  <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Home','home',false,true)}<div class="pad" style="padding-top:6px">
   <div class="pilotHero">
     <div class="row" style="margin-bottom:2px"><span class="livedot"></span><div style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.85">Your AI team · watching the markets for you</div></div>
     <div style="font-size:12px;opacity:.8;margin-top:8px">Portfolio value</div>
@@ -2035,23 +2048,23 @@ pilot(){const inv=totalVal(),curV=Math.round(inv*1.047),gain=curV-inv,gpct=(gain
   </div>
 
   <div class="row" style="justify-content:space-between;margin:18px 0 6px"><h2 style="margin:0">What Your Team Noticed</h2><span style="font-size:11px;color:var(--muted)">${sel.length} update${sel.length>1?'s':''}</span></div>
-  <p style="font-size:12px;color:var(--muted);margin:-2px 0 10px">Context and ideas — never a hard sell. Act only if and when you want to.</p>
+  <p style="font-size:12px;color:var(--ink2);margin:-2px 0 10px">Context and ideas — never a hard sell. Act only if and when you want to.</p>
   ${cards||'<div class="card flat" style="text-align:center;color:var(--muted);font-size:13px">All quiet. Your team will surface market moves that affect your plan.</div>'}
 
   <h2>Your Committee</h2>
   <div class="reviewcard" onclick="go('review')">
-    <div class="opt-ic" style="background:#fdecec;color:var(--red)">📅</div>
+    <div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">📅</div>
     <div style="flex:1"><div class="opt-t">Quarterly team review</div><div class="opt-d">Your agents reconvened — a performance recap and a couple of ideas to consider, no pressure.</div></div>
     <span class="newdot">DUE</span>
   </div>
 
   <h2>Manage Your Plan</h2>
-  <div class="reviewcard" style="margin-bottom:10px" onclick="go('portfolio')"><div class="opt-ic" style="background:#eef3ff;color:#2f6fd6">⚙</div><div style="flex:1"><div class="opt-t">Adjust holdings &amp; amounts</div><div class="opt-d">Fine-tune your funds and dollar amounts.</div></div><span class="opt-go">›</span></div>
-  <div class="reviewcard" style="margin-bottom:10px" onclick="updateProfile()"><div class="opt-ic" style="background:#e7f6ee;color:#0c7a4a">✎</div><div style="flex:1"><div class="opt-t">Update goals &amp; risk profile</div><div class="opt-d">Life changed? Re-answer your questionnaire.</div></div><span class="opt-go">›</span></div>
-  <div class="reviewcard" onclick="rebuildPlan()"><div class="opt-ic" style="background:#f4f4f5;color:var(--ink)">↺</div><div style="flex:1"><div class="opt-t">Rebuild my plan from scratch</div><div class="opt-d">Re-pick your AI team and start a fresh plan.</div></div><span class="opt-go">›</span></div>
+  <div class="reviewcard" style="margin-bottom:10px" onclick="go('portfolio')"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">⚙</div><div style="flex:1"><div class="opt-t">Adjust holdings &amp; amounts</div><div class="opt-d">Fine-tune your funds and dollar amounts.</div></div><span class="opt-go">›</span></div>
+  <div class="reviewcard" style="margin-bottom:10px" onclick="updateProfile()"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">✎</div><div style="flex:1"><div class="opt-t">Update goals &amp; risk profile</div><div class="opt-d">Life changed? Re-answer your questionnaire.</div></div><span class="opt-go">›</span></div>
+  <div class="reviewcard" onclick="rebuildPlan()"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">↺</div><div style="flex:1"><div class="opt-t">Rebuild my plan from scratch</div><div class="opt-d">Re-pick your AI team and start a fresh plan.</div></div><span class="opt-go">›</span></div>
 
   <div class="note">Your team works in the background. We'll only ping you when something needs a decision.</div>
-</div>`;},
+</div></div></div>`;},
 
 review(){const aGuard=pickAgent('income'),aGlobal=pickAgent('grow');
   const inv=totalVal(),curV=Math.round(inv*1.047);
@@ -2401,17 +2414,27 @@ function linkSG(){showModal(`<div class="applogo" style="background:#d42e2e">SGF
 const CHANNEL={FI:'Bonds & bond funds',Funds:'ETFs via OCBC',Cash:'Cash funds',Alt:'REITs & Gold'};
 function placeOrder(){const prods=PRODUCTS.filter(p=>p.bucket);const total=totalVal();
   showModal(`<div class="miniprog">
-    <div class="mptop"><span class="mptag">OCBC order ticket</span><span style="font-size:11px;color:var(--muted)">inside OCBC app</span></div>
-    <div class="applogo" style="background:#ec1c24">OCBC</div>
-    <h3 style="text-align:left">Confirm Your Order</h3>
-    <p style="text-align:left;margin-bottom:8px">One order — OCBC executes it across the right channels. Debited from your 360 Account, held in your OEA.</p>
+    <div class="ordhead2">
+      <div class="applogo sm" style="background:linear-gradient(160deg,#e3b04a,#b8790f)">OCBC</div>
+      <div><h3 style="margin:0">Confirm Your Order</h3><span class="mptag">Placed inside the OCBC app</span></div>
+    </div>
+    <p style="text-align:left;margin:12px 0 14px">One order — OCBC executes it across the right channels for you.</p>
+
+    <div class="ordflow">
+      <div class="ordflow-step"><div class="ordflow-lbl">From</div><div class="ordflow-val">360 · •••• 8842</div></div>
+      <div class="ordflow-step"><div class="ordflow-lbl">Into</div><div class="ordflow-val">OEA investment a/c</div></div>
+    </div>
+
     <div class="miniorder">
       <div class="orow"><span class="oname">Holdings</span><span class="oamt">${prods.length} funds · ${KEYS4.filter(k=>PRODUCTS.some(p=>p.bucket===k)).length} asset classes</span></div>
-      <div class="orow"><span class="oname">From</span><span class="oamt">360 · •••• 8842</span></div>
-      <div class="orow"><span class="oname">Into</span><span class="oamt">OEA investment a/c</span></div>
-      <div class="orow total"><span class="oname"><b>Total</b></span><span class="oamt"><b>S$${total.toLocaleString()}</b></span></div>
     </div>
-    <button class="btn primary" onclick="execOrder()">Place Order With OCBC</button>
+
+    <div class="ordtotalhero">
+      <span>Total investing today</span>
+      <b>S$${total.toLocaleString()}</b>
+    </div>
+
+    <button class="btn gold" onclick="execOrder()">Place Order With OCBC</button>
     <button class="btn ghost" onclick="hideModal()">Back</button></div>`);}
 function execOrder(){state.invested=true;const total=totalVal();const n=PRODUCTS.filter(p=>p.bucket).length;hideModal();
   showModal(`<div style="text-align:center">
@@ -2424,7 +2447,7 @@ function execOrder(){state.invested=true;const total=totalVal();const n=PRODUCTS
       <div class="orow"><span class="oname">Status</span><span class="oamt" style="color:#1f9d57">Placed ✓</span></div>
     </div>
     <p style="text-align:center;font-size:12px;color:var(--muted);margin:10px 0 2px">Your AI team keeps watching your plan and flags anything worth your attention.</p>
-    <button class="btn primary" onclick="hideModal();go('pilot')">Go To My OneTeam home →</button>
+    <button class="btn gold" onclick="hideModal();go('pilot')">Go To My OneTeam home →</button>
   </div>`);}
 
 /* ===== persona: always orchestrator for chat ===== */
@@ -2606,34 +2629,34 @@ function sandMiniChart(){const pts=sandSeries(),n=pts.length-1,t=targetVal(),yrs
     </defs>`;
   // 2 horizontal gridlines with real value labels (top & bottom of plot), for an actual readable scale
   [0,1].forEach(g=>{const yy=padT+g*plotH,val=ceil-g*(ceil-floor);
-    out+=`<line x1="${padL}" y1="${yy.toFixed(1)}" x2="${W-padR}" y2="${yy.toFixed(1)}" stroke="rgba(166,113,15,.12)"/>`;
-    out+=`<text x="${padL-6}" y="${(yy+3).toFixed(1)}" text-anchor="end" font-family="Inter" font-size="8" fill="#a89a7d">S$${Math.round(val/1000)}k</text>`;});
+    out+=`<line x1="${padL}" y1="${yy.toFixed(1)}" x2="${W-padR}" y2="${yy.toFixed(1)}" stroke="rgba(20,22,27,.08)"/>`;
+    out+=`<text x="${padL-6}" y="${(yy+3).toFixed(1)}" text-anchor="end" font-family="Inter" font-size="8" fill="#8a8d93">S$${Math.round(val/1000)}k</text>`;});
   // axis lines — y-axis (value) and x-axis (time), framing the plot area
-  out+=`<line x1="${padL}" y1="${padT}" x2="${padL}" y2="${H-padB}" stroke="#c9b077" stroke-width="1"/>`;
-  out+=`<line x1="${padL}" y1="${H-padB}" x2="${W-padR}" y2="${H-padB}" stroke="#c9b077" stroke-width="1"/>`;
-  // goal line — solid gold-brown, clearly distinct from AI plan
-  out+=`<line x1="${padL}" y1="${gy.toFixed(1)}" x2="${W-padR}" y2="${gy.toFixed(1)}" stroke="#a6710f" stroke-width="1.4" stroke-dasharray="5 3"/>`;
-  // AI plan reference — dotted, lighter, visually distinct dash pattern from goal line
-  if(state._aiProj){const ay=Y(state._aiProj);out+=`<line x1="${padL}" y1="${ay.toFixed(1)}" x2="${W-padR}" y2="${ay.toFixed(1)}" stroke="#d3a347" stroke-width="1.4" stroke-dasharray="1.5 3.5"/>`;}
+  out+=`<line x1="${padL}" y1="${padT}" x2="${padL}" y2="${H-padB}" stroke="#14161b" stroke-width="1"/>`;
+  out+=`<line x1="${padL}" y1="${H-padB}" x2="${W-padR}" y2="${H-padB}" stroke="#14161b" stroke-width="1"/>`;
+  // goal line — solid black, clearly distinct from AI plan
+  out+=`<line x1="${padL}" y1="${gy.toFixed(1)}" x2="${W-padR}" y2="${gy.toFixed(1)}" stroke="#14161b" stroke-width="1.4" stroke-dasharray="5 3"/>`;
+  // AI plan reference — dotted, grey, visually distinct dash pattern from goal line
+  if(state._aiProj){const ay=Y(state._aiProj);out+=`<line x1="${padL}" y1="${ay.toFixed(1)}" x2="${W-padR}" y2="${ay.toFixed(1)}" stroke="#8a8d93" stroke-width="1.4" stroke-dasharray="1.5 3.5"/>`;}
   // area + projection line
   let d='';for(let i=0;i<=n;i++)d+=(i?'L':'M')+X(i).toFixed(1)+' '+Y(pts[i]).toFixed(1)+' ';
   out+=`<path d="${d}L ${X(n).toFixed(1)} ${H-padB} L ${X(0).toFixed(1)} ${H-padB} Z" fill="url(#spjfill)"/>`;
   out+=`<path d="${d}" fill="none" stroke="${col}" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>`;
   // starting point marker (small filled dot) + ending point (larger ringed dot)
-  out+=`<circle cx="${X(0).toFixed(1)}" cy="${Y(pts[0]).toFixed(1)}" r="2.6" fill="#a89a7d"/>`;
+  out+=`<circle cx="${X(0).toFixed(1)}" cy="${Y(pts[0]).toFixed(1)}" r="2.6" fill="#8a8d93"/>`;
   out+=`<circle cx="${X(n).toFixed(1)}" cy="${Y(pts[n]).toFixed(1)}" r="4.2" fill="#fff" stroke="${col}" stroke-width="2.6"/>`;
   // x-axis year tick labels, "Now" offset inward so it doesn't collide with the y-axis
   [0,Math.round(n/2),n].forEach(i=>{const yr=2025+Math.round((i/n)*yrs);
-    out+=`<text x="${(X(i)+(i===0?4:0)).toFixed(1)}" y="${H-padB+13}" text-anchor="${i===0?'start':i>=n?'end':'middle'}" font-family="Inter" font-size="8" fill="#a89a7d">${i===0?'Now':yr}</text>`;});
+    out+=`<text x="${(X(i)+(i===0?4:0)).toFixed(1)}" y="${H-padB+13}" text-anchor="${i===0?'start':i>=n?'end':'middle'}" font-family="Inter" font-size="8" fill="#8a8d93">${i===0?'Now':yr}</text>`;});
   // axis titles
-  out+=`<text x="${(padL+(W-padR))/2}" y="${H-6}" text-anchor="middle" font-family="Inter" font-weight="700" font-size="8.5" fill="#8a7a55" letter-spacing="0.02em">YEAR</text>`;
-  out+=`<text x="0" y="0" transform="translate(12,${(padT+(H-padB))/2}) rotate(-90)" text-anchor="middle" font-family="Inter" font-weight="700" font-size="8.5" fill="#8a7a55" letter-spacing="0.02em">PORTFOLIO VALUE</text>`;
+  out+=`<text x="${(padL+(W-padR))/2}" y="${H-6}" text-anchor="middle" font-family="Inter" font-weight="700" font-size="8.5" fill="#5b5e64" letter-spacing="0.02em">YEAR</text>`;
+  out+=`<text x="0" y="0" transform="translate(12,${(padT+(H-padB))/2}) rotate(-90)" text-anchor="middle" font-family="Inter" font-weight="700" font-size="8.5" fill="#5b5e64" letter-spacing="0.02em">PORTFOLIO VALUE</text>`;
   out+=`</svg>`;
   return `<div class="spjchartwrap">${out}</div>
     <div class="spjlegend">
       <span class="lgi"><span class="ln solid" style="border-color:${col}"></span>Projected · S$${Math.round(pts[n]/1000)}k</span>
-      <span class="lgi"><span class="ln dash" style="border-color:#a6710f"></span>Goal · S$${Math.round(t/1000)}k</span>
-      ${state._aiProj?`<span class="lgi"><span class="ln dot" style="border-color:#d3a347"></span>AI Plan · S$${Math.round(state._aiProj/1000)}k</span>`:''}
+      <span class="lgi"><span class="ln dash" style="border-color:#14161b"></span>Goal · S$${Math.round(t/1000)}k</span>
+      ${state._aiProj?`<span class="lgi"><span class="ln dot" style="border-color:#8a8d93"></span>AI Plan · S$${Math.round(state._aiProj/1000)}k</span>`:''}
     </div>`;}
 function sandProjPanel(){const yr=2025+horizon(),proj=sandProjValue(),t=targetVal(),ok=proj>=t,short=Math.max(0,Math.round((t-proj)/1000));
   const r=pRetEff();const ytg=(r>0&&t>POOL)?Math.log(t/POOL)/Math.log(1+r):0;const hitYr=Math.ceil(2025+ytg);const late=Math.max(1,hitYr-yr);
@@ -2700,23 +2723,23 @@ function stressChart(ev,r){const v0=r.v0,trough=r.trough,rec=ev.recover,total=Ma
   const by=Y(v0),reci=Math.min(n,rec);
   let out=`<svg width="100%" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">`;
   // y-axis value labels at top and bottom of plot
-  out+=`<text x="${padL-6}" y="${(padT+3).toFixed(1)}" text-anchor="end" font-family="Inter" font-size="8" fill="#a89a7d">S$${Math.round(maxV/1000)}k</text>`;
-  out+=`<text x="${padL-6}" y="${(H-padB).toFixed(1)}" text-anchor="end" font-family="Inter" font-size="8" fill="#a89a7d">S$${Math.round(minV/1000)}k</text>`;
+  out+=`<text x="${padL-6}" y="${(padT+3).toFixed(1)}" text-anchor="end" font-family="Inter" font-size="8" fill="#8a8d93">S$${Math.round(maxV/1000)}k</text>`;
+  out+=`<text x="${padL-6}" y="${(H-padB).toFixed(1)}" text-anchor="end" font-family="Inter" font-size="8" fill="#8a8d93">S$${Math.round(minV/1000)}k</text>`;
   // axis lines — y-axis (value) and x-axis (time), framing the plot area
-  out+=`<line x1="${padL}" y1="${padT}" x2="${padL}" y2="${H-padB}" stroke="#c9b077" stroke-width="1"/>`;
-  out+=`<line x1="${padL}" y1="${H-padB}" x2="${W-padR}" y2="${H-padB}" stroke="#c9b077" stroke-width="1"/>`;
-  out+=`<line x1="${padL}" y1="${by.toFixed(1)}" x2="${W-padR}" y2="${by.toFixed(1)}" stroke="#c9a44a" stroke-width="1.3" stroke-dasharray="4 4"/>`;
+  out+=`<line x1="${padL}" y1="${padT}" x2="${padL}" y2="${H-padB}" stroke="#14161b" stroke-width="1"/>`;
+  out+=`<line x1="${padL}" y1="${H-padB}" x2="${W-padR}" y2="${H-padB}" stroke="#14161b" stroke-width="1"/>`;
+  out+=`<line x1="${padL}" y1="${by.toFixed(1)}" x2="${W-padR}" y2="${by.toFixed(1)}" stroke="#8a8d93" stroke-width="1.3" stroke-dasharray="4 4"/>`;
   out+=`<path d="${d2}L ${X(n).toFixed(1)} ${H-padB} L ${X(ti).toFixed(1)} ${H-padB} Z" fill="#1f9d5712"/>`;
   out+=`<path d="${d1}" fill="none" stroke="#c0392b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>`;
   out+=`<path d="${d2}" fill="none" stroke="#1f9d57" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>`;
   out+=`<circle cx="${X(ti).toFixed(1)}" cy="${Y(pts[ti]).toFixed(1)}" r="3.8" fill="#fff" stroke="#c0392b" stroke-width="2.2"/>`;
   out+=`<circle cx="${X(reci).toFixed(1)}" cy="${Y(pts[reci]).toFixed(1)}" r="3.8" fill="#fff" stroke="#1f9d57" stroke-width="2.2"/>`;
-  out+=`<text x="${padL}" y="${H-6}" font-family="Inter" font-size="8" fill="#a89a7d">Crash</text>`;
-  out+=`<text x="${X(reci).toFixed(1)}" y="${H-6}" text-anchor="middle" font-family="Inter" font-size="8" fill="#a89a7d">${rec>=12?(rec/12).toFixed(rec%12?1:0)+'y':rec+'mo'} later</text>`;
+  out+=`<text x="${padL}" y="${H-6}" font-family="Inter" font-size="8" fill="#8a8d93">Crash</text>`;
+  out+=`<text x="${X(reci).toFixed(1)}" y="${H-6}" text-anchor="middle" font-family="Inter" font-size="8" fill="#8a8d93">${rec>=12?(rec/12).toFixed(rec%12?1:0)+'y':rec+'mo'} later</text>`;
   out+=`</svg>`;
   return `<div class="spjchartwrap">${out}</div>
     <div class="spjlegend">
-      <span class="lgi"><span class="ln" style="border-color:#c9a44a"></span>Starting · S$${Math.round(v0/1000)}k</span>
+      <span class="lgi"><span class="ln" style="border-color:#8a8d93"></span>Starting · S$${Math.round(v0/1000)}k</span>
       <span class="lgi"><span class="ln solid" style="border-color:#c0392b"></span>Trough · S$${Math.round(trough/1000)}k</span>
       <span class="lgi"><span class="ln solid" style="border-color:#1f9d57"></span>Recovered</span>
     </div>`;}
@@ -3111,7 +3134,8 @@ function render(){
     tune:{img:'images/ocbc-ea-sandbox.png',top:-40,width:100},
     projection:{img:'images/ocbc-ea-projection.png',top:-40,width:100},
     advice:{img:'images/ocbc-ea-finaladvice.png',top:-40,width:100},
-    trade:{img:'images/ocbc-ea-trade.png',top:-40,width:100}
+    trade:{img:'images/ocbc-ea-trade.png',top:-40,width:100},
+    pilot:{img:'images/ocbc-ea-myoneteamhome.png',top:-40,width:100}
   };
   $('statusbar').className='statusbar'+(cur==='home'||cur==='analyze'||BG_SCREENS[cur]?' onhero':cur==='login'?' over':'');
   if($('screenbg')){
@@ -3137,4 +3161,4 @@ function render(){
 }
 setInterval(()=>{$('clock').textContent=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});},1000);
 render();
-</script>
+</script>s
