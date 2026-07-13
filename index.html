@@ -116,11 +116,17 @@
   /* returning-user home */
   .livedot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:lp 1.8s infinite}
   @keyframes lp{0%{box-shadow:0 0 0 0 rgba(52,211,153,.5)}70%{box-shadow:0 0 0 7px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
-  .pilotHero{background:linear-gradient(135deg,#e3b04a,#a6710f);color:#fff;border-radius:20px;padding:18px;box-shadow:0 14px 34px rgba(190,134,45,.30)}
+  .pilotHero{position:relative;background:linear-gradient(135deg,#c9a04a 0%,#b8873c 22%,#a3762f 48%,#c9a04a 65%,#96692a 100%);color:#fff;border-radius:20px;padding:18px;box-shadow:0 10px 26px rgba(120,85,20,.30),inset 0 1px 0 rgba(255,255,255,.35),inset 0 -1px 0 rgba(60,40,10,.25),inset 0 0 0 1px rgba(255,235,190,.18);overflow:hidden}
+  .pilotHero::before{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(180deg,rgba(255,244,215,.22),transparent);pointer-events:none}
+  .pilotHero::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,240,200,.16) 45%,transparent 60%);pointer-events:none}
+  .pilotHero>*{position:relative;z-index:1}
   .pilotHero .hbar{height:8px;border-radius:5px;background:rgba(255,255,255,.25);overflow:hidden;margin-top:6px}
   .pilotHero .hbar span{display:block;height:100%;background:#fff;border-radius:5px}
-  .activeppl{background:rgba(255,255,255,.4);backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);border:1px solid rgba(255,255,255,.5);box-shadow:0 14px 34px rgba(20,10,5,.18)}
-  .activeppl .pt{color:var(--ink)}.activeppl .pd{color:var(--ink2)}
+  .promo.activeppl{position:relative;background:linear-gradient(135deg,#f3d68d 0%,#e8bd66 30%,#d9a44a 60%,#e8bd66 100%);border:1px solid #b8863c;box-shadow:0 10px 26px rgba(150,105,30,.28),inset 0 1px 0 rgba(255,255,255,.5),inset 0 -1px 0 rgba(120,80,20,.18);overflow:hidden}
+  .promo.activeppl::before{content:'';position:absolute;top:0;left:0;right:0;height:45%;background:linear-gradient(180deg,rgba(255,255,255,.35),transparent);pointer-events:none}
+  .promo.activeppl>*{position:relative;z-index:1}
+  .activeppl .pt{color:#3a2a0a}.activeppl .pd{color:#5a4620}
+  .activeppl .livedot{box-shadow:0 0 0 0 rgba(52,211,153,.6),0 0 8px rgba(227,176,74,.5)}
   .feedcard{background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid #e8d6a8;border-radius:15px;padding:14px;box-shadow:0 3px 10px rgba(190,150,60,.08);margin-bottom:11px}
   .feedcard.hot{border-color:#e8d6a8;background:linear-gradient(180deg,#fffbf3,#fff)}
   .feedtop{display:flex;align-items:center;gap:10px;margin-bottom:9px}
@@ -666,7 +672,8 @@
   .cav{width:34px;height:34px;border-radius:10px;overflow:hidden;flex-shrink:0}
   .cav.lg{width:46px;height:46px;border-radius:12px}
   .chn{font-family:'Sora';font-weight:800;font-size:15px}
-  .chs{font-size:11.5px;color:var(--muted)}
+  .chs{font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:5px;margin-top:1px}
+  .chdot{width:6px;height:6px;border-radius:50%;background:#34d399;flex-shrink:0;box-shadow:0 0 0 0 rgba(52,211,153,.5);animation:lp 1.8s infinite}
   .chatbody{max-height:46vh;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:2px 0}
   .cmsg{display:flex;gap:8px;align-items:flex-end}
   .cmsg.me{flex-direction:row-reverse}
@@ -681,7 +688,7 @@
   .cbub.thinking .tdots span:nth-child(3){animation-delay:.3s}
   .chatchips{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 4px}
   .chatinput{display:flex;align-items:center;gap:8px;margin-top:10px;background:#fff;border:1.5px solid #e3cb92;border-radius:24px;padding:5px 5px 5px 15px}
-  .chatinput:focus-within{border-color:var(--red);box-shadow:0 0 0 3px rgba(236,28,36,.1)}
+  .chatinput:focus-within{border-color:#a6710f;box-shadow:0 0 0 3px rgba(166,113,15,.12)}
   .chatintxt{flex:1;border:none;outline:none;background:transparent;font-family:'Inter';font-size:14px;color:var(--ink);padding:7px 0}
   .chatsend{width:36px;height:36px;border-radius:50%;border:none;background:linear-gradient(160deg,#e3b04a,#b8790f);color:#fff;font-size:17px;font-weight:800;cursor:pointer;flex-shrink:0;line-height:1}
   .chatsend:active{transform:scale(.94)}
@@ -1778,7 +1785,7 @@ home(){return `<div style="width:100%;overflow:hidden;line-height:0;height:515px
   </div>
   <div class="pad homesheet" style="position:relative;z-index:2;margin-top:-157px;padding-top:0">
     ${state.invested?`<div class="promo activeppl" onclick="go('pilot')" style="cursor:pointer">
-      <div class="row" style="margin-bottom:6px"><span class="livedot"></span><div class="pt" style="margin:0">My OneTeam · your AI team is active</div><span style="margin-left:auto;font-size:18px">›</span></div>
+      <div class="row" style="margin-bottom:6px"><span class="livedot"></span><div class="pt" style="margin:0">My OneTeam · Your AI Team Is Active</div><span style="margin-left:auto;font-size:18px">›</span></div>
       <div class="pd">${state.pilot.rebalanced?'All caught up. Your team is monitoring markets for you.':'<b>1 new update</b> — markets moved and your team has a suggestion. Tap to review.'}</div>
     </div>`:homePromo()}
 
@@ -2107,6 +2114,7 @@ pilot(){const inv=totalVal(),curV=Math.round(inv*1.047),gain=curV-inv,gpct=(gain
 review(){const aGuard=pickAgent('income'),aGlobal=pickAgent('grow');
   const inv=totalVal(),curV=Math.round(inv*1.047);
   const P=id=>state.proposals.find(p=>p.id===id).on;
+  const qPct=4.2;const qUp=qPct>=0;const qCol=qUp?'#1f9d57':'#c0392b';const qColTint=qUp?'rgba(31,157,87,.14)':'rgba(192,57,43,.14)';
   return `<div style="position:relative">
   <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
   <div style="position:relative;z-index:1;padding-top:50px">${appbar('Quarterly Review','pilot',false,true)}<div class="pad">
@@ -2114,9 +2122,9 @@ review(){const aGuard=pickAgent('income'),aGlobal=pickAgent('grow');
   <h1>Your Quarterly Team Review</h1>
   <p class="sub" style="color:var(--ink2)">Your AI committee met, reviewed performance against your goal, and has a couple of small adjustments for your approval.</p>
 
-  <div class="card" style="background:var(--ink);color:#fff;border:1.5px solid #e3b04a">
+  <div class="card" style="background:var(--ink);color:#fff;border:1.5px solid ${qCol};box-shadow:0 10px 26px ${qColTint}">
     <div style="font-size:12px;opacity:.75">This quarter</div>
-    <div style="font-family:'Sora';font-weight:800;font-size:26px;margin-top:2px;color:#f3d68d">+4.2%</div>
+    <div style="font-family:'Sora';font-weight:800;font-size:26px;margin-top:2px;color:${qCol}">${qUp?'+':''}${qPct}%</div>
     <div style="font-size:12px;opacity:.75;margin-top:4px">Portfolio S$${curV.toLocaleString()} · ahead of a 60/40 benchmark (+3.1%)</div>
   </div>
 
@@ -2463,7 +2471,7 @@ function placeOrder(){const prods=PRODUCTS.filter(p=>p.bucket);const total=total
 
     <div class="ordflow">
       <div class="ordflow-step"><div class="ordflow-lbl">From</div><div class="ordflow-val">360 · •••• 8842</div></div>
-      <div class="ordflow-arrow">→</div>
+      <div class="ordflow-step"><div class="ordflow-lbl">Into</div><div class="ordflow-val">OEA investment a/c</div></div>
     </div>
 
     <div class="miniorder">
@@ -2510,6 +2518,7 @@ function chatIntro(ctx){const p=aiPersona();
     return `${pr?cleanName(pr.name):'This fund'} sits in your ${cls} sleeve. Ask me anything — here are a few starters.`;}
   if(ctx==='projection')return `This is your plan projected forward — with the dips and recoveries a real market throws at you, not a straight line. Ask me about the bumps.`;
   if(ctx.indexOf('coach:')===0){const k=ctx.split(':')[1];return `You're shaping your ${BK[k]?BK[k].name:''} basket. I react to every move you make — ask me why I picked what I did.`;}
+  if(ctx==='global')return `I've weighed what your whole team recommends into one plan, and I'm keeping watch on it for you. Ask me about the mix, the risk, what to expect — or what's next.`;
   return `I'm ${p.name}. Ask me anything about your plan.`;}
 function chatChips(ctx){
   if(ctx.indexOf('product:')===0)return [['why','Why did you recommend this?'],['risk','Is this risky for me?'],['fee','What does it cost?'],['swap','What could I swap it for?']];
@@ -2617,12 +2626,12 @@ function chatFreeAnswer(ctx,text){const s=text.toLowerCase();const goal=state.go
   return `Good question. I can talk through why I picked your funds, how risky your mix is, what it might return, the projection's ups and downs, what to do in a downturn, how top-ups move your goal, fees, tax, withdrawals, or how this compares to leaving it in the bank. What would help most?`;}
 function renderChat(){const c=state._chat;if(!c)return;const p=aiPersona();
   const body=c.msgs.map(m=>m.who==='ai'
-    ?`<div class="cmsg ai"><div class="cav">${avatar(p)}</div><div class="cbub ai${m.thinking?' thinking':''}">${m.thinking?'Analysing<span class="tdots"><span></span><span></span><span></span></span>':m.text}</div></div>`
+    ?`<div class="cmsg ai"><div class="cav">${avatar(p)}</div><div class="cbub ai${m.thinking?' thinking':''}">${m.thinking?'Analyzing<span class="tdots"><span></span><span></span><span></span></span>':m.text}</div></div>`
     :`<div class="cmsg me"><div class="cbub me">${m.text}</div></div>`).join('');
   const busy=c.msgs.length&&c.msgs[c.msgs.length-1].thinking;
   const chips=busy?'':chatChips(c.ctx).map(x=>`<button class="cchip" onclick="chatAsk('${x[0]}')">${x[1]}</button>`).join('');
   showModal(`<div class="chatwrap">
-    <div class="chathead"><div class="cav lg">${avatar(p)}</div><div style="text-align:left"><div class="chn">${p.name}</div><div class="chs">${state.agents.length>1?'Your orchestrator':'Your agent'} · ask me anything</div></div></div>
+    <div class="chathead"><div class="cav lg">${avatar(p)}</div><div style="text-align:left"><div class="chn">${p.name}</div><div class="chs"><span class="chdot"></span>${state.agents.length>1?'Watching your whole plan':'Here for your questions'}</div></div></div>
     <div class="chatbody" id="chatBody">${body}</div>
     <div class="chatchips">${chips}</div>
     <div class="chatinput">
