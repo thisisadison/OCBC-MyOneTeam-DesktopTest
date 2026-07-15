@@ -781,6 +781,56 @@
   .newsartfoot{display:flex;justify-content:space-between;align-items:center;margin-top:9px;font-size:11px}
   .newsarttag{background:#fdf6ea;color:#a6710f;font-weight:700;padding:3px 9px;border-radius:8px}
   .newsartread{color:#a6710f;font-weight:700}
+  /* ===== MBTI / profiling feature ===== */
+  .mbtihero{background:linear-gradient(155deg,#1c1c22,#2e2410);border:1.5px solid #e3b04a;border-radius:20px;padding:20px;margin:6px 0 16px;position:relative;overflow:hidden;box-shadow:0 16px 40px rgba(20,20,25,.24)}
+  .mbtihero-glow{position:absolute;top:-30px;right:-30px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,rgba(227,176,74,.18),transparent 70%)}
+  .mbtihero-eyebrow{font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#e3b04a;position:relative;z-index:1}
+  .mbtihero-quote{font-size:14.5px;color:#f0e6cc;line-height:1.6;margin-top:9px;position:relative;z-index:1;font-style:italic}
+  .mbtiwhy{background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid #e8d6a8;border-radius:15px;padding:14px 16px;margin-bottom:12px;box-shadow:0 3px 10px rgba(190,150,60,.06)}
+  .mbtiwhy-h{font-size:11px;font-weight:800;color:#a6710f;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px;display:flex;align-items:center;gap:6px}
+  .mbtiwhy-body{font-size:13px;color:var(--ink2);line-height:1.55}
+  .mbtiprogwrap{display:flex;align-items:center;gap:10px;margin:2px 0 18px}
+  .mbtiprog{flex:1;height:6px;border-radius:4px;background:#f0e2bb;overflow:hidden}
+  .mbtiprog span{display:block;height:100%;background:linear-gradient(90deg,#e3b04a,#b8790f);border-radius:4px;transition:width .35s ease}
+  .mbtiprognum{font-size:11.5px;font-weight:800;color:var(--muted);flex-shrink:0;white-space:nowrap}
+  .mbtistory{position:relative;background:linear-gradient(160deg,#211c2b 0%,#2e2410 100%);border:1.5px solid #e3b04a;border-radius:22px;padding:30px 22px 26px;margin:8px 0 22px;text-align:center;overflow:hidden;box-shadow:0 16px 40px rgba(20,20,25,.26)}
+  .mbtistory-glow{position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(227,176,74,.22),transparent 70%);pointer-events:none}
+  .mbtistory-spark{position:absolute;color:#e3b04a;opacity:.6;pointer-events:none;animation:mbtitwinkle 2.6s ease-in-out infinite}
+  .mbtistory-spark.s1{top:16px;left:22px;font-size:13px;animation-delay:0s}
+  .mbtistory-spark.s2{top:28px;right:26px;font-size:10px;animation-delay:.8s}
+  .mbtistory-spark.s3{bottom:20px;left:34px;font-size:9px;animation-delay:1.5s}
+  @keyframes mbtitwinkle{0%,100%{opacity:.25;transform:scale(.85)}50%{opacity:.85;transform:scale(1.15)}}
+  .mbtistory-icon{font-size:44px;line-height:1;margin-bottom:14px;position:relative;z-index:1;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))}
+  .mbtistory .mbtiq-eyebrow{color:#e3b04a;position:relative;z-index:1}
+  .mbtistory .mbtiq-text{color:#fdf6ea;position:relative;z-index:1;font-size:18px}
+  .mbtiq-eyebrow{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#a6710f;margin-bottom:10px}
+  .mbtiq-text{font-family:'Sora';font-weight:800;font-size:19px;color:var(--ink);line-height:1.35}
+  .mbtiopts{display:flex;flex-direction:column;gap:12px}
+  .mbtiopt{display:flex;align-items:center;gap:14px;background:linear-gradient(180deg,#fffdf9,#fff);border:1.5px solid #e8d6a8;border-radius:16px;padding:16px 20px;text-align:left;cursor:pointer;transition:transform .12s,box-shadow .12s,border-color .12s;box-shadow:0 3px 10px rgba(190,150,60,.06)}
+  .mbtiopt:active{transform:scale(.98)}
+  .mbtiopt:hover{border-color:#c9a44a;box-shadow:0 6px 16px rgba(190,150,60,.14)}
+  .mbtiopt-ic{font-size:24px;flex-shrink:0;line-height:1}
+  .mbtiopt-label{font-family:'Sora';font-weight:700;font-size:15px;color:var(--ink);line-height:1.3}
+  .mbtiopt-or{text-align:center;font-size:11px;font-weight:800;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin:-2px 0}
+  .mbtiback{display:block;text-align:center;margin-top:20px;font-size:12.5px;font-weight:600;color:var(--muted);cursor:pointer}
+  .mbtireveal-eyebrow{font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#a6710f;margin-top:4px}
+  .mbtireveal-name{font-family:'Sora';font-weight:800;font-size:32px;margin:4px 0 2px;line-height:1.1}
+  .mbtistage{position:relative;margin:20px 0 22px;display:flex;align-items:center;justify-content:center;padding:10px 0}
+  .mbtistage-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:150%;height:92%;border-radius:50%;background:radial-gradient(ellipse,color-mix(in srgb,var(--mbc) 85%,transparent) 0%,color-mix(in srgb,var(--mbc) 55%,transparent) 35%,color-mix(in srgb,var(--mbc) 20%,transparent) 58%,transparent 78%);filter:blur(8px);animation:mbtipulse 4s ease-in-out infinite;pointer-events:none;z-index:0}
+  @keyframes mbtipulse{0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(.98)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.03)}}
+  .mbtistage-spark{position:absolute;pointer-events:none;animation:mbtitwinkle 2.8s ease-in-out infinite;z-index:0}
+  .mbtistage-spark.p1{top:0%;left:2%;font-size:16px;animation-delay:0s;color:var(--mbc)}
+  .mbtistage-spark.p2{top:6%;right:1%;font-size:12px;animation-delay:.7s;color:var(--mbc)}
+  .mbtistage-spark.p3{bottom:2%;left:0%;font-size:11px;animation-delay:1.4s;color:var(--mbc)}
+  .mbtistage-spark.p4{bottom:8%;right:3%;font-size:14px;animation-delay:2.1s;color:var(--mbc)}
+  .mbtistage-img{position:relative;z-index:1;width:88%;max-height:660px;object-fit:contain;display:block;border-radius:22px;box-shadow:0 22px 50px rgba(20,15,10,.28)}
+  .mbtiactions{display:flex;gap:12px;margin-bottom:6px}
+  .mbtiact{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(180deg,#fffdf9,#fff);border:1.5px solid #e8d6a8;border-radius:14px;padding:13px;font-family:'Sora';font-weight:700;font-size:14px;color:var(--ink);cursor:pointer;transition:border-color .12s,box-shadow .12s}
+  .mbtiact:hover{border-color:#c9a44a;box-shadow:0 4px 12px rgba(190,150,60,.14)}
+  .mbtiact-ic{font-size:16px}
+  .mbtiupdated{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#e3b04a,#a6710f);border-radius:18px;padding:18px 20px;color:#fff;margin:10px 0 4px}
+  .mbtiupdated-ic{font-size:26px;flex-shrink:0}
+  .mbtiupdated-txt{font-size:13.5px;line-height:1.5;font-weight:600}
   .stresstab{animation:chatIn .25s ease}
   .stresssel-row{margin-bottom:10px}
   .stresssel-lbl{display:block;font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
@@ -920,7 +970,7 @@
   <div class="screen">
     <div class="notch" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:122px;height:32px;background:#0a0b0d;border-radius:0 0 20px 20px;z-index:50"></div>
     <div class="screenbg" id="screenbg" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;z-index:0;pointer-events:none;background:#fbf3e9">
-      <img id="screenbgImg" src="images/ocbc-ea-myaiteam.png" alt="" style="position:absolute;left:0;top:-40px;width:100%;height:auto;display:block">
+      <img id="screenbgImg" src="images/background/ocbc-ea-myaiteam.png" alt="" style="position:absolute;left:0;top:-40px;width:100%;height:auto;display:block">
     </div>
     <div class="statusbar" id="statusbar"><span id="clock">9:41</span><span>5G&nbsp; 100%</span></div>
     <div class="view" id="view"></div>
@@ -935,10 +985,10 @@
 
 <script>
 /* ============ state ============ */
-const ORDER=['login','home','team','goals','risk','analyze','reco','portfolio','projection','advice','trade','pilot','review'];
+const ORDER=['login','home','mbtiIntro','mbtiQuiz','mbtiResult','team','goals','risk','analyze','reco','portfolio','projection','advice','trade','pilot','review'];
 // Screens that aren't steps of their own get the number of the step they branch from.
 const STEP_ALIAS={link:'portfolio',orchestrate:'portfolio',tune:'portfolio',sandbox:'reco',choose:'reco',paper:'reco',rm:'reco',done:'trade'};
-const NAMES={login:'Log In',home:'Home',team:'Your AI Team',goals:'Your Goals',risk:'Risk Comfort',analyze:'Building Your Plan',reco:'Your Plan',orchestrate:'Orchestrated view',portfolio:'Your Portfolio',link:'Link Accounts',tune:'Edit Basket',sandbox:'Ready To Act',choose:'Choose Next Step',paper:'Paper Trading',rm:'Relationship Manager',done:'Invest',projection:'Projection',advice:'Final Advice',trade:'Trade',pilot:'My OneTeam Home',review:'Quarterly Review'};
+const NAMES={login:'Log In',home:'Home',mbtiIntro:'Personality Profile',mbtiQuiz:'Personality Profile',mbtiResult:'Your Money Identity',team:'Your AI Team',goals:'Your Goals',risk:'Risk Comfort',analyze:'Building Your Plan',reco:'Your Plan',orchestrate:'Orchestrated view',portfolio:'Your Portfolio',link:'Link Accounts',tune:'Edit Basket',sandbox:'Ready To Act',choose:'Choose Next Step',paper:'Paper Trading',rm:'Relationship Manager',done:'Invest',projection:'Projection',advice:'Final Advice',trade:'Trade',pilot:'My OneTeam Home',review:'Quarterly Review'};
 const KEYS4=['FI','Funds','Cash','Alt'];
 const BK={FI:{name:'Fixed Income',color:'var(--fi)',hex:'#2f6fd6',sub:'Stability & income'},
   Funds:{name:'Equities',color:'var(--funds)',hex:'#ec1c24',sub:'Growth engine'},
@@ -1018,6 +1068,128 @@ const AGENT_DETAIL={
 
 };
 
+/* ===================== Money Identity Archetypes (profiling / "MBTI" feature) ===================== */
+/* Coordinate system for scoring: risk 0(very cautious)-4(bold), plan 0(deliberate)-4(spontaneous) */
+const ARCHETYPES=[
+  {id:'anchor',theme:'#654fa5',name:'Anchor',img:'images/mbti/ocbc-ea-anchor.png',risk:0,plan:0.5,
+    superpower:'Never rushes, never loses ground',
+    instinct:'Protects capital above all else — certainty beats upside',
+    personality:['Extremely cautious','Dislikes volatility','Prefers guarantees','Diligent saver','Distrusts hype','Values certainty over upside'],
+    traits:['Keeps a large cash buffer','Avoids market exposure','Prefers capital-guaranteed products','Slow to change habits','Meticulous tracker','Debt-averse'],
+    assets:['Fixed deposits','Singapore Savings Bonds','Capital-guaranteed insurance','T-bills'],
+    meter:{safety:5,growth:1,income:2,adventure:0,liquidity:2},
+    compatible:[{id:'stone',why:'Near-identical values, shared pace'},{id:'lantern',why:'Shares caution and diligence'}],
+    incompatible:[{id:'bolt',why:'Opposite in every way'},{id:'compass',why:'Pace and risk both too high'}],
+    moves:['Move excess cash above the buffer into a low-risk yield product','Set one automatic small investment to start building comfort with markets','Review whether the cash buffer has grown too large','Get a second opinion before assuming "safe" is always cheapest']},
+  {id:'stone',theme:'#454f57',name:'Stone',img:'images/mbti/ocbc-ea-stone.png',risk:0.9,plan:0.7,
+    superpower:'Steady ground, no surprises',
+    instinct:'Prioritises safety and long-term security over quick wins',
+    personality:['Values stability','Plans ahead','Avoids risk','Prefers certainty','Patient saver','Cautious spender'],
+    traits:['Budget-conscious','Builds emergency fund first','Low-risk investor','Dislikes debt','Prefers guarantees','Slow and steady'],
+    assets:['Fixed deposits','Singapore Savings Bonds','Insurance savings plans','T-bills'],
+    meter:{safety:5,growth:1,income:3,adventure:1,liquidity:3},
+    compatible:[{id:'hourglass',why:'Shares the long-term, steady mindset'},{id:'lantern',why:'Shares caution and research before acting'}],
+    incompatible:[{id:'balloon',why:'Spends on impulse, no buffer'},{id:'bolt',why:'Too much volatility for comfort'}],
+    moves:['Top up emergency fund','Diversify a little beyond cash','Ladder fixed deposits','Consider inflation-protected assets']},
+  {id:'lantern',theme:'#005051',name:'Lantern',img:'images/mbti/ocbc-ea-lantern.png',risk:1.9,plan:0.6,
+    superpower:'Loves research and makes smart, informed decisions',
+    instinct:'Analyses before acting — knowledge lowers risk',
+    personality:['Research-driven','Reads the fine print','Compares options','Risk-aware','Patient decision maker','Values expertise'],
+    traits:['Diversifies deliberately','Reads the prospectus','Rebalances the portfolio','Avoids hype','Remembers past mistakes','Calculates before committing'],
+    assets:['Blue-chip stocks','REITs','Bonds','Structured notes'],
+    meter:{safety:3,growth:3,income:4,adventure:2,liquidity:3},
+    compatible:[{id:'stone',why:'Shares caution and diligence'},{id:'compass',why:'Ambition tempered by research'}],
+    incompatible:[{id:'bolt',why:'Acts before analysing'},{id:'cloud',why:'Avoids the homework'}],
+    moves:['Set a rebalancing schedule','Try one new asset class after research','Set an alert instead of checking daily','Document the "why" behind each holding']},
+  {id:'compass',theme:'#022957',name:'Compass',img:'images/mbti/ocbc-ea-compass.png',risk:3.1,plan:0.9,
+    superpower:'Sets a goal and charts the fastest smart route there',
+    instinct:'Takes calculated risk in service of a clear target',
+    personality:['Ambitious','Sets clear targets','Comfortable with moderate risk for a plan','Competitive','Strategic','Adaptable'],
+    traits:['Pursues growth assets','Times big purchases to goals','Negotiates','Open to leveraged opportunities','Tracks milestones','Adjusts course quickly'],
+    assets:['Growth stocks','ETFs','Property','Alternative investments'],
+    meter:{safety:2,growth:5,income:2,adventure:4,liquidity:2},
+    compatible:[{id:'lantern',why:'Research grounds the ambition'},{id:'hourglass',why:'Shared goal discipline'}],
+    incompatible:[{id:'anchor',why:'Too slow for the pace wanted'},{id:'cloud',why:'No plan to rally behind'}],
+    moves:['Write down the next milestone and date','Stress-test the plan against a downturn','Keep a minimum cash buffer despite the pace','Revisit the goal every quarter']},
+  {id:'bolt',theme:'#efa400',name:'Bolt',img:'images/mbti/ocbc-ea-bolt.png',risk:4,plan:3.3,
+    superpower:'Moves fast and loves high risk',
+    instinct:'Chases momentum and thrives on quick, high-reward action',
+    personality:['Impulsive','Thrill-seeking','Confident','Fast decision maker','High risk tolerance','Bored by "safe"'],
+    traits:['Trades actively','Chases trends','Comfortable with volatility','Invests on conviction','Keeps a low cash buffer','Quick to pivot'],
+    assets:['Growth and tech stocks','Crypto','Leveraged products','Thematic investments'],
+    meter:{safety:1,growth:5,income:1,adventure:5,liquidity:4},
+    compatible:[{id:'compass',why:'Shares ambition and speed'},{id:'balloon',why:'Shares spontaneity'}],
+    incompatible:[{id:'stone',why:'Too cautious to keep up'},{id:'anchor',why:'Opposite in every way'}],
+    moves:['Set a hard stop-loss rule','Build a minimum emergency fund outside trading accounts','Cap high-risk exposure as a percent of net worth','Review win/loss history honestly each quarter']},
+  {id:'balloon',theme:'#d54b5e',name:'Balloon',img:'images/mbti/ocbc-ea-balloon.png',risk:2.1,plan:3.4,
+    superpower:'Joy today, memories forever',
+    instinct:'Lives for today and spends on experiences',
+    personality:['Loves experiences','Spends on joy','Values freedom','Lives in the moment','Seeks excitement','Easygoing and optimistic'],
+    traits:['Fun seeker','Experience oriented','Values relationships','Spends on what makes me happy','Positive outlook','Goes with the flow'],
+    assets:['Travel & Leisure Funds','ETFs','Bonds','Thematic Investments'],
+    meter:{safety:1,growth:3,income:2,adventure:5,liquidity:2},
+    compatible:[{id:'hourglass',why:'Grows steadily and builds wealth over time'},{id:'lantern',why:'Loves research, makes informed decisions'}],
+    incompatible:[{id:'stone',why:'Values stability and long-term security'},{id:'bolt',why:'Moves too fast, loves high risk'}],
+    moves:['Build an emergency fund','Invest consistently every month','Review insurance','Plan for retirement']},
+  {id:'cloud',theme:'#69bcf9',name:'Cloud',img:'images/mbti/ocbc-ea-cloud.png',risk:1.0,plan:3.2,
+    superpower:'Keeps things simple and stress-free',
+    instinct:'Avoids complexity and lets good defaults do the work',
+    personality:['Low-maintenance','Avoids financial stress','Trusts default options','Present-minded but not showy','Values peace of mind','Adaptable'],
+    traits:['Set-and-forget saver','Prefers auto-deductions','Rarely checks balances','Minimal budgeting','Comfortable with "good enough"','Low engagement with markets'],
+    assets:['Robo-advisory (auto-invest)','Savings plans','Balanced/multi-asset funds','Insurance savings plans'],
+    meter:{safety:3,growth:2,income:3,adventure:1,liquidity:4},
+    compatible:[{id:'balloon',why:'Shares the easygoing nature'},{id:'stone',why:'Both prefer low effort, low stress'}],
+    incompatible:[{id:'compass',why:'Too demanding a pace'},{id:'bolt',why:'Too intense to keep up with'}],
+    moves:['Turn on auto-invest so growth happens passively','Set one yearly reminder to check progress','Pick one balanced fund instead of none','Name a goal so the drifting has a direction']},
+  {id:'hourglass',theme:'#9e7b3e',name:'Hourglass',img:'images/mbti/ocbc-ea-hourglass.png',risk:2,plan:1.1,
+    superpower:'Grows steadily and builds wealth over time',
+    instinct:'Trusts patient, consistent compounding over shortcuts',
+    personality:['Disciplined saver','Believes in compounding','Goal-oriented','Optimistic about the long run','Consistent','Avoids get-rich-quick schemes'],
+    traits:['Dollar-cost averages','Automates savings','Reinvests dividends','Prefers diversified funds','Tracks net worth','Patient'],
+    assets:['ETFs','Index funds','Robo-advisory portfolios','Blue-chip stocks'],
+    meter:{safety:3,growth:4,income:3,adventure:2,liquidity:3},
+    compatible:[{id:'balloon',why:'Balances joy-spending with steady growth'},{id:'lantern',why:'Shared discipline and long horizon'}],
+    incompatible:[{id:'bolt',why:'Too reckless for the plan'},{id:'cloud',why:'Too passive, no active direction'}],
+    moves:['Automate monthly investing','Review asset allocation yearly','Set a concrete net-worth milestone','Add a small growth allocation']}
+];
+function archetypeById(id){return ARCHETYPES.find(a=>a.id===id);}
+
+/* Forced-choice questionnaire — each option nudges [risk,plan] by a delta */
+const MBTI_Q=[
+  {axis:'risk',icon:'🧙',q:"A wizard offers to swap your one gold coin for a mystery pouch. You…",
+    a:{label:'Keep your coin',ic:'🪙',d:[-1,0]},b:{label:'Make the trade',ic:'🎁',d:[1,0]}},
+  {axis:'risk',icon:'🌲',q:"There's a shortcut through the spooky forest — twice as fast, if you dare. You…",
+    a:{label:'Take the long way round',ic:'🥾',d:[-1,0]},b:{label:'Brave the forest',ic:'🌑',d:[1,0]}},
+  {axis:'risk',icon:'🐈‍⬛',q:"A talking cat says it knows where the treasure is buried, if you follow right now. You…",
+    a:{label:'Wave politely and walk on',ic:'👋',d:[-1,0]},b:{label:'Follow the cat',ic:'🏃',d:[1,0]}},
+  {axis:'risk',icon:'🍄',q:"A glowing mushroom might grant a wish… or turn your tongue purple for a week. You…",
+    a:{label:'Leave it be',ic:'🚫',d:[-1,0]},b:{label:'Take a bite',ic:'😋',d:[1,0]}},
+  {axis:'plan',icon:'🌈',q:"You find a pot of gold at the end of a rainbow. First move?",
+    a:{label:'Tuck it away safely',ic:'🔒',d:[0,-1]},b:{label:'Spend it on something magical right now',ic:'✨',d:[0,1]}},
+  {axis:'plan',icon:'🎒',q:"Setting off on an adventure, you…",
+    a:{label:'Pack days in advance, list in hand',ic:'📋',d:[0,-1]},b:{label:'Grab a bag and go',ic:'🚀',d:[0,1]}},
+  {axis:'plan',icon:'🧚',q:"Your ideal day in fairyland…",
+    a:{label:'Is planned out, stop by stop',ic:'🗺️',d:[0,-1]},b:{label:'Just happens, wherever the wind blows',ic:'🍃',d:[0,1]}},
+  {axis:'plan',icon:'🏰',q:"Before stepping into a mysterious castle, you…",
+    a:{label:'Study the map first',ic:'📜',d:[0,-1]},b:{label:'Just walk in and see',ic:'🚪',d:[0,1]}}
+];
+/* Optional tiebreaker questions — only shown if the top two matches are within a close margin */
+const MBTI_TIEBREAK={
+  'anchor|stone':{icon:'💰',q:"Your treasure chest is already full. You…",
+    a:{label:'Keep stacking coins, safer that way',ic:'🪙',id:'anchor'},b:{label:'Set a few aside in a jar marked "maybe"',ic:'🫙',id:'stone'}},
+  'lantern|compass':{icon:'🌳',q:"A new path opens in the woods. You…",
+    a:{label:"Ask the forest sprites what's down there first",ic:'🧚',id:'lantern'},b:{label:'Just start walking and find out',ic:'👣',id:'compass'}}
+};
+function mbtiScoreToArchetype(risk,plan){
+  let best=null,bestD=Infinity,second=null,secondD=Infinity;
+  ARCHETYPES.forEach(a=>{
+    const d=Math.hypot(a.risk-risk,a.plan-plan);
+    if(d<bestD){second=best;secondD=bestD;best=a;bestD=d;}
+    else if(d<secondD){second=a;secondD=d;}
+  });
+  return {top:best,runnerUp:second,margin:secondD-bestD};
+}
+
 function shade(hex,amt){
   const h=hex.replace('#','');
   let r=parseInt(h.substring(0,2),16),g=parseInt(h.substring(2,4),16),b=parseInt(h.substring(4,6),16);
@@ -1060,11 +1232,11 @@ function accessoryPath(name,outfit,outfitDark){
 function avatar(a){
   const id=a.id==='judge'?'judge':a.id;
   const AVATAR_IMAGES={
-    income:'images/ocbc-ea-incomebuilder.png',
-    grow:'images/ocbc-ea-growthstrategist.png',
-    retire:'images/ocbc-ea-retirementplanner.png',
-    home:'images/ocbc-ea-propertyplanner.png',
-    judge:'images/ocbc-ea-orchestrator.png'
+    income:'images/agents/ocbc-ea-incomebuilder.png',
+    grow:'images/agents/ocbc-ea-growthstrategist.png',
+    retire:'images/agents/ocbc-ea-retirementplanner.png',
+    home:'images/agents/ocbc-ea-propertyplanner.png',
+    judge:'images/agents/ocbc-ea-orchestrator.png'
   };
   if(AVATAR_IMAGES[id]){
     return `<img src="${AVATAR_IMAGES[id]}" alt="${a.name||id}" style="width:100%;height:auto;object-fit:cover;display:block">`;
@@ -1205,7 +1377,8 @@ const state={
   invest:96000, monthly:2500,
   chart:'area',
   paper:{started:false,step:0,series:[],base:0,amount:96000},
-  drag:null
+  drag:null,
+  mbti:{step:0,answers:[],risk:2,plan:2,archetype:null,tieAnswer:null,done:false}
 };
 const REGIONS=['Singapore','United States','Asia ex-Japan','Europe','Emerging Markets','Global / broad'];
 /* 6-question risk comfort assessment (client-friendly) */
@@ -1627,7 +1800,7 @@ function homePromo(){
       <div id="agDots" style="display:flex;gap:5px">${dots}</div>
     </div>
     <div id="agCarousel" style="position:relative;height:128px;margin-bottom:16px;overflow:hidden">${body}</div>
-    <button class="pb" onclick="go('team')">Try It Now \u2192</button>
+    <button class="pb" onclick="go('mbtiIntro')">Try It Now \u2192</button>
   </div>`;
 }
 function appbar(t,back,gold,hideLogo){return `<div class="appbar"><div class="back" onclick="go('${back}')">‹</div><div class="ttl">${t}</div>${hideLogo?'':`<div class="ologo${gold?' ologo-gold':''}">${gold?'<svg class="ologo-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="19" fill="none" stroke="url(#ogGrad)" stroke-width="2.4"/><path d="M20 9 L28 15 V25 L20 31 L12 25 V15 Z" fill="none" stroke="url(#ogGrad)" stroke-width="2.2" stroke-linejoin="round"/><defs><linearGradient id="ogGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d68d"/><stop offset="0.55" stop-color="#d3a347"/><stop offset="1" stop-color="#a8701f"/></linearGradient></defs></svg>':''}OCBC</div>`}</div>`;}
@@ -1720,7 +1893,7 @@ const S={
 login(){return `
 <div style="position:relative;width:100%;height:100%;overflow:hidden;background:#e2efff">
   <img
-      src="images/ocbc-ea-login.png"
+      src="images/background/ocbc-ea-login.png"
       style="position:absolute;top:2px;left:2px;right:2px;bottom:2px;width:calc(100% - 4px);height:calc(100% - 4px);object-fit:cover;object-position:top;border-radius:38px;"
   />
 
@@ -1780,7 +1953,7 @@ login(){return `
 
 
 home(){return `<div style="width:100%;overflow:hidden;line-height:0;height:515px;position:relative">
-    <img src="images/ocbc-ea-home.png" style="width:100%;display:block" alt="OCBC home"/>
+    <img src="images/background/ocbc-ea-home.png" style="width:100%;display:block" alt="OCBC home"/>
     <div style="position:absolute;left:0;right:0;bottom:0;height:130px;background:linear-gradient(to bottom, rgba(245,246,248,0) 0%, rgba(245,246,248,.7) 60%, var(--bg) 100%);pointer-events:none"></div>
   </div>
   <div class="pad homesheet" style="position:relative;z-index:2;margin-top:-157px;padding-top:0">
@@ -1805,7 +1978,7 @@ home(){return `<div style="width:100%;overflow:hidden;line-height:0;height:515px
   </div>
   <div class="bottomnav" style="height:91px;overflow:hidden;position:sticky;bottom:0;background:#f9f6f2">
     <div style="position:absolute;left:0;right:0;top:0;height:14px;background:linear-gradient(to bottom, var(--bg) 0%, rgba(245,246,248,0) 100%);z-index:1;pointer-events:none"></div>
-    <img src="images/ocbc-ea-home.png" style="width:100%;display:block;position:absolute;left:0;top:-730px" alt="OCBC nav"/>
+    <img src="images/background/ocbc-ea-home.png" style="width:100%;display:block;position:absolute;left:0;top:-730px" alt="OCBC nav"/>
   </div>`;},
 
 link(){return `<div style="position:relative">
@@ -1872,9 +2045,99 @@ risk(){const surplus=BANK_KNOWN.monthlyIncome-BANK_KNOWN.monthlySpend;return `<d
   </div>
 </div></div></div>`;},
 
-team(){return `<div style="position:relative">
-  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Home','home',false,true)}<div class="pad" style="padding-bottom:32px">
+mbtiIntro(){return `<div style="position:relative">
+  <div style="position:relative;z-index:1">${appbar('Personality Profile','home',false,true)}<div class="pad" style="padding-bottom:32px">
   <div class="stepbadge gold">Step 1 of 2</div>
+  <h1>We Already Know Your Finances.</h1>
+  <p class="sub">Now help us understand <b style="color:var(--ink)">you</b>.</p>
+
+  <div class="mbtihero">
+    <div class="mbtihero-glow"></div>
+    <div class="mbtihero-eyebrow">✦ Why it matters</div>
+    <div class="mbtihero-quote">"Transaction data can't reveal how a customer makes financial decisions. This behavioural layer personalises everything your AI team says and suggests."</div>
+  </div>
+
+  <div class="mbtiwhy" style="margin-bottom:6px">
+    <div class="mbtiwhy-h">⏱️ ~1 minute · 8 playful questions</div>
+    <div class="mbtiwhy-body">This-or-that instinct calls, no right answers. You'll get your Money Identity at the end.</div>
+  </div>
+
+  <button class="btn gold" onclick="mbtiStart()">Start My Profile →</button>
+  <div style="text-align:center;margin-top:12px"><a onclick="go('team')" style="font-size:12.5px;color:var(--muted);font-weight:600;cursor:pointer">Skip for now</a></div>
+</div></div></div>`;},
+
+mbtiQuiz(){
+  const m=state.mbti;
+  const inTiebreak=m.step>=MBTI_Q.length;
+  const totalSteps=MBTI_Q.length+(m.needsTiebreak?1:0);
+  const pct=Math.round((m.step/totalSteps)*100);
+  let q,onA,onB;
+  if(!inTiebreak){
+    q=MBTI_Q[m.step];
+    onA=`mbtiAnswer('a')`;onB=`mbtiAnswer('b')`;
+  }else{
+    const key=m.tieKey;
+    q=MBTI_TIEBREAK[key];
+    onA=`mbtiAnswerTie('${q.a.id}')`;onB=`mbtiAnswerTie('${q.b.id}')`;
+  }
+  return `<div style="position:relative">
+  <div style="position:relative;z-index:1">${appbar('Personality Profile','mbtiIntro',false,true)}<div class="pad" style="padding-bottom:32px">
+
+  <div class="mbtiprogwrap">
+    <div class="mbtiprog"><span style="width:${pct}%"></span></div>
+    <div class="mbtiprognum">${Math.min(m.step+1,totalSteps)} / ${totalSteps}</div>
+  </div>
+
+  <div class="mbtistory">
+    <div class="mbtistory-glow"></div>
+    <div class="mbtistory-spark s1">✦</div><div class="mbtistory-spark s2">✦</div><div class="mbtistory-spark s3">✧</div>
+    <div class="mbtistory-icon">${q.icon||'✨'}</div>
+    <div class="mbtiq-eyebrow">${inTiebreak?'One more, to be sure':(q.axis==='risk'?'Risk instinct':'Planning style')}</div>
+    <div class="mbtiq-text">${q.q}</div>
+  </div>
+
+  <div class="mbtiopts">
+    <div class="mbtiopt" onclick="${onA}"><span class="mbtiopt-ic">${q.a.ic||'◆'}</span><div class="mbtiopt-label">${q.a.label}</div></div>
+    <div class="mbtiopt-or">or</div>
+    <div class="mbtiopt" onclick="${onB}"><span class="mbtiopt-ic">${q.b.ic||'◆'}</span><div class="mbtiopt-label">${q.b.label}</div></div>
+  </div>
+
+  ${m.step>0?`<a class="mbtiback" onclick="mbtiBack()">← Back</a>`:''}
+</div></div></div>`;},
+
+mbtiResult(){
+  const m=state.mbti;
+  const a=m.archetype||archetypeById('hourglass');
+  return `<div style="position:relative">
+  <div style="position:relative;z-index:1">${appbar('Your Money Identity','mbtiIntro',false,true)}<div class="pad" style="padding-bottom:32px">
+
+  <div class="mbtireveal-eyebrow">✦ Your money identity is</div>
+  <h1 class="mbtireveal-name" style="color:${a.theme}">${a.name}</h1>
+  <p class="sub" style="margin-top:-4px">${a.superpower}</p>
+
+  <div class="mbtistage" id="mbtiStage" style="--mbc:${a.theme}">
+    <div class="mbtistage-glow"></div>
+    <div class="mbtistage-spark p1">✦</div><div class="mbtistage-spark p2">✧</div><div class="mbtistage-spark p3">✦</div><div class="mbtistage-spark p4">✧</div>
+    <img class="mbtistage-img" src="${a.img}" alt="${a.name}">
+  </div>
+
+  <div class="mbtiactions">
+    <button class="mbtiact" onclick="mbtiSaveProfile()"><span class="mbtiact-ic">⬇</span>Save</button>
+    <button class="mbtiact" onclick="mbtiShareProfile()"><span class="mbtiact-ic">↗</span>Share</button>
+  </div>
+
+  <div class="mbtiupdated">
+    <div class="mbtiupdated-ic">✦</div>
+    <div class="mbtiupdated-txt">We've updated how your AI team communicates and prioritises recommendations for you.</div>
+  </div>
+
+  <button class="btn gold" onclick="go('team')" style="margin-top:16px">Continue To Build My Team →</button>
+  <div style="text-align:center;margin-top:12px"><a onclick="mbtiRetake()" style="font-size:12.5px;color:var(--muted);font-weight:600;cursor:pointer">Retake the profile</a></div>
+</div></div></div>`;},
+
+team(){return `<div style="position:relative">
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Home',state.mbti.done?'mbtiResult':'mbtiIntro',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div class="stepbadge gold">Step 2 of 2</div>
   <h1>Build Your AI Team</h1>
   <p class="sub">Choose up to two AI specialists. Your personal orchestrator will combine their expertise into one investment plan.</p>
 
@@ -3061,14 +3324,14 @@ function marketsTab(){
     </div>`;}
 function setMktFilt(f){state._mktFilt=f;keepScroll(render);}
 const NEWS_ARTICLES=[
-  {img:'images/ocbc-ea-article1.jpeg',src:'The Business Times',time:'2h ago',tag:'Markets',title:'Fed signals two rate cuts likely before year-end',snip:'Policymakers point to cooling inflation data, a shift that could lift bond prices and ease borrowing costs across Asia.',cls:['FI'],agents:['income']},
-  {img:'images/ocbc-ea-article2.jpeg',src:'Reuters',time:'5h ago',tag:'Equities',title:'Asian tech stocks rally on strong chip demand outlook',snip:'Semiconductor names led gains across regional markets as AI-driven orders continue to beat expectations.',cls:['Funds'],agents:['grow']},
-  {img:'images/ocbc-ea-article3.jpeg',src:'CNA Business',time:'Yesterday',tag:'Singapore',title:'STI closes at fresh high as banks lead the charge',snip:'Local lenders posted solid results this quarter, lifting the benchmark index to its strongest close in over a year.',cls:['Funds'],agents:['grow']},
-  {img:'images/ocbc-ea-article4.jpeg',src:'Bloomberg',time:'2 days ago',tag:'Global',title:'Gold holds near record highs amid safe-haven demand',snip:'Investors continue rotating into gold as a hedge, even as equity markets post modest gains this week.',cls:['Alt'],agents:['retire']},
-  {img:'images/ocbc-ea-article5.jpeg',src:'Straits Times',time:'3 days ago',tag:'Property',title:'Singapore home prices cool slightly as new supply arrives',snip:'Analysts say the modest pullback gives buyers a little more room, though prices remain well above pre-2020 levels.',cls:[],agents:['home']},
-  {img:'images/ocbc-ea-article6.jpeg',src:'CNBC',time:'3 days ago',tag:'Rates',title:'SGD money market yields ease from recent peak',snip:'Short-term cash yields have started to drift lower, prompting some investors to lock in current rates on longer bonds.',cls:['Cash','FI'],agents:['income']},
-  {img:'images/ocbc-ea-article7.jpeg',src:'Bloomberg',time:'4 days ago',tag:'Retirement',title:'CPF SA interest floor stays at 4% for another year',snip:'The guaranteed floor continues to make CPF top-ups one of the more attractive low-risk options for long-term savers.',cls:[],agents:['retire']},
-  {img:'images/ocbc-ea-article8.jpeg',src:'Reuters',time:'5 days ago',tag:'REITs',title:'S-REITs post steady payouts as borrowing costs stabilise',snip:'Distribution yields held firm this quarter as financing costs plateaued, a relief after two years of rate pressure.',cls:['Alt'],agents:['home']}
+  {img:'images/articles/ocbc-ea-article1.jpeg',src:'The Business Times',time:'2h ago',tag:'Markets',title:'Fed signals two rate cuts likely before year-end',snip:'Policymakers point to cooling inflation data, a shift that could lift bond prices and ease borrowing costs across Asia.',cls:['FI'],agents:['income']},
+  {img:'images/articles/ocbc-ea-article2.jpeg',src:'Reuters',time:'5h ago',tag:'Equities',title:'Asian tech stocks rally on strong chip demand outlook',snip:'Semiconductor names led gains across regional markets as AI-driven orders continue to beat expectations.',cls:['Funds'],agents:['grow']},
+  {img:'images/articles/ocbc-ea-article3.jpeg',src:'CNA Business',time:'Yesterday',tag:'Singapore',title:'STI closes at fresh high as banks lead the charge',snip:'Local lenders posted solid results this quarter, lifting the benchmark index to its strongest close in over a year.',cls:['Funds'],agents:['grow']},
+  {img:'images/articles/ocbc-ea-article4.jpeg',src:'Bloomberg',time:'2 days ago',tag:'Global',title:'Gold holds near record highs amid safe-haven demand',snip:'Investors continue rotating into gold as a hedge, even as equity markets post modest gains this week.',cls:['Alt'],agents:['retire']},
+  {img:'images/articles/ocbc-ea-article5.jpeg',src:'Straits Times',time:'3 days ago',tag:'Property',title:'Singapore home prices cool slightly as new supply arrives',snip:'Analysts say the modest pullback gives buyers a little more room, though prices remain well above pre-2020 levels.',cls:[],agents:['home']},
+  {img:'images/articles/ocbc-ea-article6.jpeg',src:'CNBC',time:'3 days ago',tag:'Rates',title:'SGD money market yields ease from recent peak',snip:'Short-term cash yields have started to drift lower, prompting some investors to lock in current rates on longer bonds.',cls:['Cash','FI'],agents:['income']},
+  {img:'images/articles/ocbc-ea-article7.jpeg',src:'Bloomberg',time:'4 days ago',tag:'Retirement',title:'CPF SA interest floor stays at 4% for another year',snip:'The guaranteed floor continues to make CPF top-ups one of the more attractive low-risk options for long-term savers.',cls:[],agents:['retire']},
+  {img:'images/articles/ocbc-ea-article8.jpeg',src:'Reuters',time:'5 days ago',tag:'REITs',title:'S-REITs post steady payouts as borrowing costs stabilise',snip:'Distribution yields held firm this quarter as financing costs plateaued, a relief after two years of rate pressure.',cls:['Alt'],agents:['home']}
 ];
 function newsImgSlot(a){
   if(a.img)return `<img src="${a.img}" alt="${a.title}" onerror="this.parentElement.innerHTML='<div class=&quot;ph&quot;><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;><rect x=&quot;3&quot; y=&quot;5&quot; width=&quot;18&quot; height=&quot;14&quot; rx=&quot;2&quot;/><circle cx=&quot;8.5&quot; cy=&quot;10&quot; r=&quot;1.5&quot;/><path d=&quot;M21 15l-5-5-9 9&quot;/></svg><span>Image unavailable</span></div>'">`;
@@ -3122,6 +3385,74 @@ function learnMore(id){const n=pilotNews()[id];const a=AGENTS.find(x=>x.id===id)
   <button class="btn link" onclick="hideModal()">Close</button>`);}
 function applyRec(msg){toast(msg+' ✓');}
 function rebalance(){state.pilot.rebalanced=true;state.pilot.drift=state.buckets.Funds;keepScroll(()=>render());toast('Rebalanced back to your target mix ✓');}
+function mbtiStart(){state.mbti={step:0,answers:[],risk:2,plan:2,archetype:null,tieAnswer:null,needsTiebreak:false,tieKey:null,done:false};go('mbtiQuiz');}
+function mbtiRecompute(){
+  let dr=0,dp=0;
+  state.mbti.answers.forEach(ans=>{dr+=ans.d[0];dp+=ans.d[1];});
+  const clamp=v=>Math.max(0,Math.min(4,2+v/2));
+  state.mbti.risk=clamp(dr);
+  state.mbti.plan=clamp(dp);
+}
+function mbtiAnswer(choice){
+  const m=state.mbti;
+  const q=MBTI_Q[m.step];
+  const picked=q[choice];
+  m.answers[m.step]={d:picked.d};
+  m.step++;
+  mbtiRecompute();
+  if(m.step>=MBTI_Q.length){
+    const res=mbtiScoreToArchetype(m.risk,m.plan);
+    const key=res.top.id+'|'+res.runnerUp.id;
+    if(res.margin<0.6 && MBTI_TIEBREAK[key]){
+      m.needsTiebreak=true;m.tieKey=key;
+      keepScroll(()=>render());
+    }else{
+      m.archetype=res.top;m.done=true;
+      go('mbtiResult');
+    }
+  }else{
+    keepScroll(()=>render());
+  }
+}
+function mbtiAnswerTie(archetypeId){
+  state.mbti.archetype=archetypeById(archetypeId);
+  state.mbti.done=true;
+  go('mbtiResult');
+}
+function mbtiBack(){
+  const m=state.mbti;
+  if(m.needsTiebreak){m.needsTiebreak=false;m.tieKey=null;m.step--;m.answers.pop();mbtiRecompute();keepScroll(()=>render());return;}
+  if(m.step>0){m.step--;m.answers.pop();mbtiRecompute();keepScroll(()=>render());}
+}
+function mbtiRetake(){mbtiStart();}
+function mbtiSaveProfile(){
+  const a=state.mbti.archetype||archetypeById('hourglass');
+  const filename='my-money-identity-'+a.id+'.png';
+  fetch(a.img).then(r=>r.blob()).then(blob=>{
+    const url=URL.createObjectURL(blob);
+    const link=document.createElement('a');
+    link.href=url;
+    link.download=filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+    toast('Saved '+a.name+' to your device ✓');
+  }).catch(()=>{
+    toast('Long-press or right-click the image to save it');
+  });
+}
+function mbtiShareProfile(){
+  const a=state.mbti.archetype||archetypeById('hourglass');
+  const text=`My Money Identity is ${a.name} — ${a.superpower}. Discover yours with OCBC My OneTeam.`;
+  if(navigator.share){
+    navigator.share({title:'My Money Identity: '+a.name,text}).catch(()=>{});
+  }else if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(()=>toast('Copied to clipboard ✓')).catch(()=>toast('Share this with your friends: '+a.name));
+  }else{
+    toast('You are a '+a.name+' — share the news!');
+  }
+}
 function updateProfile(){go('team');}
 function rebuildPlan(){state.invested=false;state.rmApproved=false;state.qa={};state.regions=['Singapore'];state.pilot={drift:58,rebalanced:false};applyAgents();toast('Starting a fresh plan');go('team');}
 function toggleProp(id){const p=state.proposals.find(x=>x.id===id);p.on=!p.on;keepScroll(()=>render());}
@@ -3248,18 +3579,18 @@ function render(){
   if(cur!=='analyze')stopNetMesh();
   closePicker();hideModal();$('view').innerHTML=S[cur]();$('view').scrollTop=0;
   const BG_SCREENS={
-    team:{img:'images/ocbc-ea-myaiteam.png',top:-40,width:100},
-    goals:{img:'images/ocbc-ea-yourgoals.png',top:-40,width:100},
-    risk:{img:'images/ocbc-ea-risk.png',top:-40,width:100},
-    reco:{img:'images/ocbc-ea-yourplan.png',top:-40,width:100},
-    portfolio:{img:'images/ocbc-ea-portfolio.png',top:-40,width:100},
-    link:{img:'images/ocbc-ea-link.png',top:-40,width:100},
-    tune:{img:'images/ocbc-ea-sandbox.png',top:-40,width:100},
-    projection:{img:'images/ocbc-ea-projection.png',top:-40,width:100},
-    advice:{img:'images/ocbc-ea-finaladvice.png',top:-40,width:100},
-    trade:{img:'images/ocbc-ea-trade.png',top:-40,width:100},
-    pilot:{img:'images/ocbc-ea-myoneteamhome.png',top:-40,width:100},
-    review:{img:'images/ocbc-ea-quarterlyreview.png',top:-40,width:100}
+    team:{img:'images/background/ocbc-ea-myaiteam.png',top:-40,width:100},
+    goals:{img:'images/background/ocbc-ea-yourgoals.png',top:-40,width:100},
+    risk:{img:'images/background/ocbc-ea-risk.png',top:-40,width:100},
+    reco:{img:'images/background/ocbc-ea-yourplan.png',top:-40,width:100},
+    portfolio:{img:'images/background/ocbc-ea-portfolio.png',top:-40,width:100},
+    link:{img:'images/background/ocbc-ea-link.png',top:-40,width:100},
+    tune:{img:'images/background/ocbc-ea-sandbox.png',top:-40,width:100},
+    projection:{img:'images/background/ocbc-ea-projection.png',top:-40,width:100},
+    advice:{img:'images/background/ocbc-ea-finaladvice.png',top:-40,width:100},
+    trade:{img:'images/background/ocbc-ea-trade.png',top:-40,width:100},
+    pilot:{img:'images/background/ocbc-ea-myoneteamhome.png',top:-40,width:100},
+    review:{img:'images/background/ocbc-ea-quarterlyreview.png',top:-40,width:100}
   };
   $('statusbar').className='statusbar'+(cur==='home'||cur==='analyze'||BG_SCREENS[cur]?' onhero':cur==='login'?' over':'');
   if($('screenbg')){
