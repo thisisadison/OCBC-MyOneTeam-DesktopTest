@@ -2046,7 +2046,7 @@ risk(){const surplus=BANK_KNOWN.monthlyIncome-BANK_KNOWN.monthlySpend;return `<d
 </div></div></div>`;},
 
 mbtiIntro(){return `<div style="position:relative">
-  <div style="position:relative;z-index:1">${appbar('Personality Profile','home',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Personality Profile','home',false,true)}<div class="pad" style="padding-bottom:32px">
   <div class="stepbadge gold">Step 1 of 2</div>
   <h1>We Already Know Your Finances.</h1>
   <p class="sub">Now help us understand <b style="color:var(--ink)">you</b>.</p>
@@ -2081,7 +2081,7 @@ mbtiQuiz(){
     onA=`mbtiAnswerTie('${q.a.id}')`;onB=`mbtiAnswerTie('${q.b.id}')`;
   }
   return `<div style="position:relative">
-  <div style="position:relative;z-index:1">${appbar('Personality Profile','mbtiIntro',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Personality Profile','mbtiIntro',false,true)}<div class="pad" style="padding-bottom:32px">
 
   <div class="mbtiprogwrap">
     <div class="mbtiprog"><span style="width:${pct}%"></span></div>
@@ -2109,7 +2109,7 @@ mbtiResult(){
   const m=state.mbti;
   const a=m.archetype||archetypeById('hourglass');
   return `<div style="position:relative">
-  <div style="position:relative;z-index:1">${appbar('Your Money Identity','mbtiIntro',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Your Money Identity','mbtiIntro',false,true)}<div class="pad" style="padding-bottom:32px">
 
   <div class="mbtireveal-eyebrow">✦ Your money identity is</div>
   <h1 class="mbtireveal-name" style="color:${a.theme}">${a.name}</h1>
@@ -3556,6 +3556,9 @@ function render(){
   if(cur!=='analyze')stopNetMesh();
   closePicker();hideModal();$('view').innerHTML=S[cur]();$('view').scrollTop=0;
   const BG_SCREENS={
+    mbtiIntro:{img:'images/background/ocbc-ea-profiling.png',top:-40,width:100},
+    mbtiQuiz:{img:'images/background/ocbc-ea-profiling.png',top:-40,width:100},
+    mbtiResult:{img:'images/background/ocbc-ea-yourmoneyidentity.png',top:-40,width:100},
     team:{img:'images/background/ocbc-ea-myaiteam.png',top:-40,width:100},
     goals:{img:'images/background/ocbc-ea-yourgoals.png',top:-40,width:100},
     risk:{img:'images/background/ocbc-ea-risk.png',top:-40,width:100},
