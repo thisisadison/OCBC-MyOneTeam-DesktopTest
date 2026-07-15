@@ -816,14 +816,14 @@
   .mbtireveal-eyebrow{font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#a6710f;margin-top:4px}
   .mbtireveal-name{font-family:'Sora';font-weight:800;font-size:32px;margin:4px 0 2px;line-height:1.1}
   .mbtistage{position:relative;margin:20px 0 22px;display:flex;align-items:center;justify-content:center;padding:10px 0}
-  .mbtistage-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:150%;height:92%;border-radius:50%;background:radial-gradient(ellipse,color-mix(in srgb,var(--mbc) 85%,transparent) 0%,color-mix(in srgb,var(--mbc) 55%,transparent) 35%,color-mix(in srgb,var(--mbc) 20%,transparent) 58%,transparent 78%);filter:blur(8px);animation:mbtipulse 4s ease-in-out infinite;pointer-events:none;z-index:0}
+  .mbtistage-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:158%;height:94%;border-radius:50%;background:radial-gradient(ellipse,color-mix(in srgb,var(--mbc) 85%,transparent) 0%,color-mix(in srgb,var(--mbc) 55%,transparent) 35%,color-mix(in srgb,var(--mbc) 20%,transparent) 58%,transparent 78%);filter:blur(8px);animation:mbtipulse 4s ease-in-out infinite;pointer-events:none;z-index:0}
   @keyframes mbtipulse{0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(.98)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.03)}}
   .mbtistage-spark{position:absolute;pointer-events:none;animation:mbtitwinkle 2.8s ease-in-out infinite;z-index:0}
   .mbtistage-spark.p1{top:0%;left:2%;font-size:16px;animation-delay:0s;color:var(--mbc)}
   .mbtistage-spark.p2{top:6%;right:1%;font-size:12px;animation-delay:.7s;color:var(--mbc)}
   .mbtistage-spark.p3{bottom:2%;left:0%;font-size:11px;animation-delay:1.4s;color:var(--mbc)}
   .mbtistage-spark.p4{bottom:8%;right:3%;font-size:14px;animation-delay:2.1s;color:var(--mbc)}
-  .mbtistage-img{position:relative;z-index:1;width:88%;max-height:660px;object-fit:contain;display:block;border-radius:22px;box-shadow:0 22px 50px rgba(20,15,10,.28)}
+  .mbtistage-img{position:relative;z-index:1;width:98%;max-height:760px;object-fit:contain;display:block;border-radius:22px;box-shadow:0 22px 50px rgba(20,15,10,.28)}
   .mbtiactions{display:flex;gap:12px;margin-bottom:6px}
   .mbtiact{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(180deg,#fffdf9,#fff);border:1.5px solid #e8d6a8;border-radius:14px;padding:13px;font-family:'Sora';font-weight:700;font-size:14px;color:var(--ink);cursor:pointer;transition:border-color .12s,box-shadow .12s}
   .mbtiact:hover{border-color:#c9a44a;box-shadow:0 4px 12px rgba(190,150,60,.14)}
@@ -1770,7 +1770,7 @@ function overAppetite(){return planRiskLevel()>riskProfileLevel()+1;}
 /* ============ shared bits ============ */
 function homePromo(){
   const slides=[{intro:true}].concat(CARAG.map(a=>({a:a})));
-  const dots=slides.map((_,i)=>`<span id="agdot${i}" style="display:inline-block;width:${i===0?16:6}px;height:6px;border-radius:3px;background:${i===0?'#b8791f':'rgba(196,138,26,.25)'};transition:all .35s ease"></span>`).join('');
+  const dots=slides.map((_,i)=>`<button onclick="event.stopPropagation();agJump(${i})" aria-label="Go to slide ${i+1}" style="display:flex;align-items:center;justify-content:center;width:20px;height:20px;padding:0;margin:0;border:none;background:transparent;cursor:pointer"><span id="agdot${i}" style="display:inline-block;width:${i===0?16:6}px;height:6px;border-radius:3px;background:${i===0?'#b8791f':'rgba(196,138,26,.25)'};transition:all .35s ease"></span></button>`).join('');
   const facepile=CARAG.map((a,i)=>`<div style="width:38px;height:38px;border-radius:11px;overflow:hidden;border:2px solid rgba(196,138,26,.35);margin-left:${i?-11:0}px;box-shadow:0 3px 8px rgba(20,10,5,.15);position:relative;z-index:${10-i}">${avatar(a)}</div>`).join('');
   const body=slides.map((sl,i)=>{
     const base=`position:absolute;inset:0;opacity:${i===0?1:0};transform:translateX(${i===0?0:24}px);transition:opacity .45s ease,transform .45s ease;pointer-events:${i===0?'auto':'none'}`;
@@ -2053,16 +2053,16 @@ mbtiIntro(){return `<div style="position:relative">
 
   <div class="mbtihero">
     <div class="mbtihero-glow"></div>
-    <div class="mbtihero-eyebrow">✦ Why it matters</div>
-    <div class="mbtihero-quote">"Transaction data can't reveal how a customer makes financial decisions. This behavioural layer personalises everything your AI team says and suggests."</div>
+    <div class="mbtihero-eyebrow">✦ What you'll discover</div>
+    <div class="mbtihero-quote">Every investor has a Money Identity — the instincts behind how you really decide. Answer a few playful prompts and we'll reveal yours.</div>
   </div>
 
   <div class="mbtiwhy" style="margin-bottom:6px">
     <div class="mbtiwhy-h">⏱️ ~1 minute · 8 playful questions</div>
-    <div class="mbtiwhy-body">This-or-that instinct calls, no right answers. You'll get your Money Identity at the end.</div>
+    <div class="mbtiwhy-body">This-or-that instinct calls, no right answers. Your AI team then adapts — how it talks to you, what it prioritises — around who you really are.</div>
   </div>
 
-  <button class="btn gold" onclick="mbtiStart()">Start My Profile →</button>
+  <button class="btn gold" onclick="mbtiStart()">Discover My Money Identity →</button>
   <div style="text-align:center;margin-top:12px"><a onclick="go('team')" style="font-size:12.5px;color:var(--muted);font-weight:600;cursor:pointer">Skip for now</a></div>
 </div></div></div>`;},
 
@@ -3163,33 +3163,6 @@ function toggleAgRow(id){
 }
 
 function bumpTarget(d){state.target=Math.max(50000,state.target+d);if($('tgtS'))$('tgtS').textContent='S$'+state.target.toLocaleString();if(cur==='sandbox')refreshChrome();}
-if(cur==='home'&&!state.invested){
-  setTimeout(()=>{
-    let agIdx=0;
-    const agN=CARAG.length+1;
-    function agTo(n){
-      const prev=agIdx;
-      agIdx=(n+agN)%agN;
-      for(let i=0;i<agN;i++){
-        const el=document.getElementById('agslide'+i);
-        const dot=document.getElementById('agdot'+i);
-        const active=(i===agIdx);
-        if(el){el.style.opacity=active?'1':'0';el.style.transform=active?'translateX(0px)':'translateX(24px)';el.style.pointerEvents=active?'auto':'none';}
-        if(dot){dot.style.width=active?'16px':'6px';dot.style.background=active?'#fff':'rgba(255,255,255,.4)';}
-      }
-    }
-    // Auto-advance every 5s
-    window._agTimer=setInterval(()=>agTo(agIdx+1),3000);
-    // Tap carousel to advance manually
-    const car=document.getElementById('agCarousel');
-    if(car)car.addEventListener('click',()=>{agTo(agIdx+1);clearInterval(window._agTimer);window._agTimer=setInterval(()=>agTo(agIdx+1),3000);});
-    // Tap dots to jump to specific agent
-    for(let i=0;i<agN;i++){
-      const dot=document.getElementById('agdot'+i);
-      if(dot)dot.addEventListener('click',(e)=>{e.stopPropagation();agTo(i-(agIdx-agIdx));agIdx=((i-1)+agN)%agN;agTo(i);clearInterval(window._agTimer);window._agTimer=setInterval(()=>agTo(agIdx+1),3000);});
-    }
-  },0);
-}
 function bumpYears(d){state.years=Math.min(40,Math.max(1,state.years+d));if($('yrS'))$('yrS').textContent=(2025+state.years);if(cur==='sandbox')refreshChrome();}
 
 function linkSGFinDex(){let n=0;state.providers.forEach(p=>{if(p.sgfx&&!p.linked){p.linked=true;n++;}});
@@ -3473,8 +3446,12 @@ function agTo(n){
     const dot=document.getElementById('agdot'+i);
     const on=(i===window._agIdx);
     if(el){el.style.opacity=on?'1':'0';el.style.transform=on?'translateX(0px)':'translateX(28px)';el.style.pointerEvents=on?'auto':'none';}
-    if(dot){dot.style.width=on?'16px':'6px';dot.style.background=on?'#fff':'rgba(255,255,255,.4)';}
+    if(dot){dot.style.width=on?'16px':'6px';dot.style.background=on?'#b8791f':'rgba(196,138,26,.25)';}
   }
+}
+function agJump(i){
+  agTo(i);
+  if(window._agTimer){clearInterval(window._agTimer);window._agTimer=setInterval(()=>agTo(window._agIdx+1),3500);}
 }
 function startCarousel(){
   if(window._agTimer){clearInterval(window._agTimer);window._agTimer=null;}
