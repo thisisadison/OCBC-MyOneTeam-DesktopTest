@@ -815,15 +815,15 @@
   .mbtiback{display:block;text-align:center;margin-top:20px;font-size:12.5px;font-weight:600;color:var(--muted);cursor:pointer}
   .mbtireveal-eyebrow{font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#a6710f;margin-top:4px}
   .mbtireveal-name{font-family:'Sora';font-weight:800;font-size:32px;margin:4px 0 2px;line-height:1.1}
-  .mbtistage{position:relative;margin:20px 0 22px;display:flex;align-items:center;justify-content:center;padding:10px 0}
-  .mbtistage-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:158%;height:94%;border-radius:50%;background:radial-gradient(ellipse,color-mix(in srgb,var(--mbc) 85%,transparent) 0%,color-mix(in srgb,var(--mbc) 55%,transparent) 35%,color-mix(in srgb,var(--mbc) 20%,transparent) 58%,transparent 78%);filter:blur(8px);animation:mbtipulse 4s ease-in-out infinite;pointer-events:none;z-index:0}
-  @keyframes mbtipulse{0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(.98)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.03)}}
+  .mbtistage{position:relative;margin:20px 0 22px;display:flex;align-items:center;justify-content:center;padding:10px 0;isolation:isolate}
+  .mbtistage-glow{position:absolute;top:50%;left:50%;transform:translate3d(-50%,-50%,0);width:158%;height:94%;border-radius:50%;background:radial-gradient(ellipse,color-mix(in srgb,var(--mbc) 85%,transparent) 0%,color-mix(in srgb,var(--mbc) 55%,transparent) 35%,color-mix(in srgb,var(--mbc) 20%,transparent) 58%,transparent 78%);filter:blur(8px);animation:mbtipulse 4s ease-in-out infinite;pointer-events:none;z-index:0;will-change:transform,opacity}
+  @keyframes mbtipulse{0%,100%{opacity:.85;transform:translate3d(-50%,-50%,0) scale(.98)}50%{opacity:1;transform:translate3d(-50%,-50%,0) scale(1.03)}}
   .mbtistage-spark{position:absolute;pointer-events:none;animation:mbtitwinkle 2.8s ease-in-out infinite;z-index:0}
   .mbtistage-spark.p1{top:0%;left:2%;font-size:16px;animation-delay:0s;color:var(--mbc)}
   .mbtistage-spark.p2{top:6%;right:1%;font-size:12px;animation-delay:.7s;color:var(--mbc)}
   .mbtistage-spark.p3{bottom:2%;left:0%;font-size:11px;animation-delay:1.4s;color:var(--mbc)}
   .mbtistage-spark.p4{bottom:8%;right:3%;font-size:14px;animation-delay:2.1s;color:var(--mbc)}
-  .mbtistage-img{position:relative;z-index:1;width:98%;max-height:760px;object-fit:contain;display:block;border-radius:22px;box-shadow:0 22px 50px rgba(20,15,10,.28)}
+  .mbtistage-img{position:relative;z-index:1;width:98%;max-height:760px;object-fit:contain;display:block;border-radius:22px;box-shadow:0 22px 50px rgba(20,15,10,.28);transform:translateZ(0)}
   .mbtiactions{display:flex;gap:12px;margin-bottom:6px}
   .mbtiact{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(180deg,#fffdf9,#fff);border:1.5px solid #e8d6a8;border-radius:14px;padding:13px;font-family:'Sora';font-weight:700;font-size:14px;color:var(--ink);cursor:pointer;transition:border-color .12s,box-shadow .12s}
   .mbtiact:hover{border-color:#c9a44a;box-shadow:0 4px 12px rgba(190,150,60,.14)}
@@ -1157,37 +1157,36 @@ function archetypeById(id){return ARCHETYPES.find(a=>a.id===id);}
 /* Forced-choice questionnaire — each option nudges [risk,plan] by a delta */
 const MBTI_Q=[
   {axis:'risk',icon:'🧙',q:"A wizard offers to swap your one gold coin for a mystery pouch. You…",
-    a:{label:'Keep your coin',ic:'🪙',d:[-1,0]},b:{label:'Make the trade',ic:'🎁',d:[1,0]}},
+    a:{label:'Keep your coin',ic:'🪙',pts:0},b:{label:'Make the trade',ic:'🎁',pts:1}},
   {axis:'risk',icon:'🌲',q:"There's a shortcut through the spooky forest — twice as fast, if you dare. You…",
-    a:{label:'Take the long way round',ic:'🥾',d:[-1,0]},b:{label:'Brave the forest',ic:'🌑',d:[1,0]}},
-  {axis:'risk',icon:'🐈‍⬛',q:"A talking cat says it knows where the treasure is buried, if you follow right now. You…",
-    a:{label:'Wave politely and walk on',ic:'👋',d:[-1,0]},b:{label:'Follow the cat',ic:'🏃',d:[1,0]}},
+    a:{label:'Take the long way round',ic:'🥾',pts:0},b:{label:'Brave the forest',ic:'🌑',pts:1}},
   {axis:'risk',icon:'🍄',q:"A glowing mushroom might grant a wish… or turn your tongue purple for a week. You…",
-    a:{label:'Leave it be',ic:'🚫',d:[-1,0]},b:{label:'Take a bite',ic:'😋',d:[1,0]}},
+    a:{label:'Leave it be',ic:'🚫',pts:0},b:{label:'Take a bite',ic:'😋',pts:1}},
   {axis:'plan',icon:'🌈',q:"You find a pot of gold at the end of a rainbow. First move?",
-    a:{label:'Tuck it away safely',ic:'🔒',d:[0,-1]},b:{label:'Spend it on something magical right now',ic:'✨',d:[0,1]}},
+    a:{label:'Tuck it away safely',ic:'🔒',pts:0},b:{label:'Spend it on something magical right now',ic:'✨',pts:1}},
   {axis:'plan',icon:'🎒',q:"Setting off on an adventure, you…",
-    a:{label:'Pack days in advance, list in hand',ic:'📋',d:[0,-1]},b:{label:'Grab a bag and go',ic:'🚀',d:[0,1]}},
-  {axis:'plan',icon:'🧚',q:"Your ideal day in fairyland…",
-    a:{label:'Is planned out, stop by stop',ic:'🗺️',d:[0,-1]},b:{label:'Just happens, wherever the wind blows',ic:'🍃',d:[0,1]}},
-  {axis:'plan',icon:'🏰',q:"Before stepping into a mysterious castle, you…",
-    a:{label:'Study the map first',ic:'📜',d:[0,-1]},b:{label:'Just walk in and see',ic:'🚪',d:[0,1]}}
+    a:{label:'Pack days in advance, list in hand',ic:'📋',pts:0},b:{label:'Grab a bag and go',ic:'🚀',pts:1}}
 ];
-/* Optional tiebreaker questions — only shown if the top two matches are within a close margin */
-const MBTI_TIEBREAK={
-  'anchor|stone':{icon:'💰',q:"Your treasure chest is already full. You…",
-    a:{label:'Keep stacking coins, safer that way',ic:'🪙',id:'anchor'},b:{label:'Set a few aside in a jar marked "maybe"',ic:'🫙',id:'stone'}},
-  'lantern|compass':{icon:'🌳',q:"A new path opens in the woods. You…",
-    a:{label:"Ask the forest sprites what's down there first",ic:'🧚',id:'lantern'},b:{label:'Just start walking and find out',ic:'👣',id:'compass'}}
+/* Conditional tiebreaker — only asked when Risk score = 2 AND Planning score = 0,
+   the one cell where Lantern and Hourglass overlap and nothing else separates them. */
+const MBTI_Q6={icon:'🧞',q:"A merchant offers a deal that looks good on the surface. You…",
+  a:{label:'Investigate every detail before deciding',ic:'🔍',id:'lantern'},
+  b:{label:"Trust your steady plan and don't get distracted",ic:'⏳',id:'hourglass'}};
+/* Result lookup table: [riskScore][planCategory] -> archetype id. planCategory: 0 = deliberate (score 0), 1 = spontaneous (score 1-2) */
+const MBTI_LOOKUP={
+  '0_0':'anchor', '0_1':'cloud',
+  '1_0':'stone',  '1_1':'cloud',
+  '2_0':null,     '2_1':'balloon',   // 2_0 resolved via Q6
+  '3_0':'compass','3_1':'bolt'
 };
-function mbtiScoreToArchetype(risk,plan){
-  let best=null,bestD=Infinity,second=null,secondD=Infinity;
-  ARCHETYPES.forEach(a=>{
-    const d=Math.hypot(a.risk-risk,a.plan-plan);
-    if(d<bestD){second=best;secondD=bestD;best=a;bestD=d;}
-    else if(d<secondD){second=a;secondD=d;}
-  });
-  return {top:best,runnerUp:second,margin:secondD-bestD};
+function mbtiResolve(riskScore,planScore){
+  // Per the spec: if planning score = 1 (one deliberate, one spontaneous answer),
+  // Q4 (the windfall-spending question) is the decider rather than a true midpoint.
+  const planCat=planScore===0?0:1;
+  const key=riskScore+'_'+planCat;
+  const id=MBTI_LOOKUP[key];
+  if(id===null)return null; // needs Q6 (risk=2, plan=0)
+  return archetypeById(id);
 }
 
 function shade(hex,amt){
@@ -2058,7 +2057,7 @@ mbtiIntro(){return `<div style="position:relative">
   </div>
 
   <div class="mbtiwhy" style="margin-bottom:6px">
-    <div class="mbtiwhy-h">⏱️ ~1 minute · 8 playful questions</div>
+    <div class="mbtiwhy-h">⏱️ ~30 seconds · 5 playful questions</div>
     <div class="mbtiwhy-body">This-or-that instinct calls, no right answers. Your AI team then adapts — how it talks to you, what it prioritises — around who you really are.</div>
   </div>
 
@@ -2068,17 +2067,16 @@ mbtiIntro(){return `<div style="position:relative">
 
 mbtiQuiz(){
   const m=state.mbti;
-  const inTiebreak=m.step>=MBTI_Q.length;
-  const totalSteps=MBTI_Q.length+(m.needsTiebreak?1:0);
+  const onQ6=m.step>=MBTI_Q.length;
+  const totalSteps=MBTI_Q.length+(m.needsQ6?1:0);
   const pct=Math.round((m.step/totalSteps)*100);
   let q,onA,onB;
-  if(!inTiebreak){
+  if(!onQ6){
     q=MBTI_Q[m.step];
     onA=`mbtiAnswer('a')`;onB=`mbtiAnswer('b')`;
   }else{
-    const key=m.tieKey;
-    q=MBTI_TIEBREAK[key];
-    onA=`mbtiAnswerTie('${q.a.id}')`;onB=`mbtiAnswerTie('${q.b.id}')`;
+    q=MBTI_Q6;
+    onA=`mbtiAnswerQ6('${q.a.id}')`;onB=`mbtiAnswerQ6('${q.b.id}')`;
   }
   return `<div style="position:relative">
   <div style="position:relative;z-index:1;padding-top:50px">${appbar('Personality Profile','mbtiIntro',false,true)}<div class="pad" style="padding-bottom:32px">
@@ -2092,7 +2090,7 @@ mbtiQuiz(){
     <div class="mbtistory-glow"></div>
     <div class="mbtistory-spark s1">✦</div><div class="mbtistory-spark s2">✦</div><div class="mbtistory-spark s3">✧</div>
     <div class="mbtistory-icon">${q.icon||'✨'}</div>
-    <div class="mbtiq-eyebrow">${inTiebreak?'One more, to be sure':(q.axis==='risk'?'Risk instinct':'Planning style')}</div>
+    <div class="mbtiq-eyebrow">${onQ6?'One more, to be sure':(q.axis==='risk'?'Risk instinct':'Planning style')}</div>
     <div class="mbtiq-text">${q.q}</div>
   </div>
 
@@ -3358,43 +3356,45 @@ function learnMore(id){const n=pilotNews()[id];const a=AGENTS.find(x=>x.id===id)
   <button class="btn link" onclick="hideModal()">Close</button>`);}
 function applyRec(msg){toast(msg+' ✓');}
 function rebalance(){state.pilot.rebalanced=true;state.pilot.drift=state.buckets.Funds;keepScroll(()=>render());toast('Rebalanced back to your target mix ✓');}
-function mbtiStart(){state.mbti={step:0,answers:[],risk:2,plan:2,archetype:null,tieAnswer:null,needsTiebreak:false,tieKey:null,done:false};go('mbtiQuiz');}
+function mbtiStart(){state.mbti={step:0,answers:[],riskScore:0,planScore:0,archetype:null,needsQ6:false,done:false};go('mbtiQuiz');}
 function mbtiRecompute(){
-  let dr=0,dp=0;
-  state.mbti.answers.forEach(ans=>{dr+=ans.d[0];dp+=ans.d[1];});
-  const clamp=v=>Math.max(0,Math.min(4,2+v/2));
-  state.mbti.risk=clamp(dr);
-  state.mbti.plan=clamp(dp);
+  const m=state.mbti;
+  let rs=0,ps=0;
+  m.answers.forEach((ans,i)=>{
+    const q=MBTI_Q[i];
+    if(q.axis==='risk')rs+=ans.pts; else ps+=ans.pts;
+  });
+  m.riskScore=rs;m.planScore=ps;
 }
 function mbtiAnswer(choice){
   const m=state.mbti;
   const q=MBTI_Q[m.step];
   const picked=q[choice];
-  m.answers[m.step]={d:picked.d};
+  m.answers[m.step]={pts:picked.pts};
   m.step++;
   mbtiRecompute();
   if(m.step>=MBTI_Q.length){
-    const res=mbtiScoreToArchetype(m.risk,m.plan);
-    const key=res.top.id+'|'+res.runnerUp.id;
-    if(res.margin<0.6 && MBTI_TIEBREAK[key]){
-      m.needsTiebreak=true;m.tieKey=key;
+    const result=mbtiResolve(m.riskScore,m.planScore);
+    if(result===null){
+      // risk=2, plan=0 — the one cell needing the Q6 tiebreaker
+      m.needsQ6=true;
       keepScroll(()=>render());
     }else{
-      m.archetype=res.top;m.done=true;
+      m.archetype=result;m.done=true;
       go('mbtiResult');
     }
   }else{
     keepScroll(()=>render());
   }
 }
-function mbtiAnswerTie(archetypeId){
+function mbtiAnswerQ6(archetypeId){
   state.mbti.archetype=archetypeById(archetypeId);
   state.mbti.done=true;
   go('mbtiResult');
 }
 function mbtiBack(){
   const m=state.mbti;
-  if(m.needsTiebreak){m.needsTiebreak=false;m.tieKey=null;m.step--;m.answers.pop();mbtiRecompute();keepScroll(()=>render());return;}
+  if(m.needsQ6){m.needsQ6=false;m.step--;m.answers.pop();mbtiRecompute();keepScroll(()=>render());return;}
   if(m.step>0){m.step--;m.answers.pop();mbtiRecompute();keepScroll(()=>render());}
 }
 function mbtiRetake(){mbtiStart();}
