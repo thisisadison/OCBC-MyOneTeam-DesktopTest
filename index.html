@@ -988,7 +988,7 @@
 const ORDER=['login','home','mbtiIntro','mbtiQuiz','mbtiResult','team','goals','risk','analyze','reco','portfolio','projection','advice','trade','pilot','review'];
 // Screens that aren't steps of their own get the number of the step they branch from.
 const STEP_ALIAS={link:'portfolio',orchestrate:'portfolio',tune:'portfolio',sandbox:'reco',choose:'reco',paper:'reco',rm:'reco',done:'trade'};
-const NAMES={login:'Log In',home:'Home',mbtiIntro:'Personality Profile',mbtiQuiz:'Personality Profile',mbtiResult:'Your Money Identity',team:'Your AI Team',goals:'Your Goals',risk:'Risk Comfort',analyze:'Building Your Plan',reco:'Your Plan',orchestrate:'Orchestrated view',portfolio:'Your Portfolio',link:'Link Accounts',tune:'Edit Basket',sandbox:'Ready To Act',choose:'Choose Next Step',paper:'Paper Trading',rm:'Relationship Manager',done:'Invest',projection:'Projection',advice:'Final Advice',trade:'Trade',pilot:'My OneTeam Home',review:'Quarterly Review'};
+const NAMES={login:'Log In',home:'Home',mbtiIntro:'Financial Profile',mbtiQuiz:'Financial Profile',mbtiResult:'Your Money Identity',team:'Your AI Team',goals:'Your Goals',risk:'Risk Comfort',analyze:'Building Your Plan',reco:'Your Plan',orchestrate:'Orchestrated view',portfolio:'Your Portfolio',link:'Link Accounts',tune:'Edit Basket',sandbox:'Ready To Act',choose:'Choose Next Step',paper:'Paper Trading',rm:'Relationship Manager',done:'Invest',projection:'Projection',advice:'Final Advice',trade:'Trade',pilot:'My OneTeam Home',review:'Quarterly Review'};
 const KEYS4=['FI','Funds','Cash','Alt'];
 const BK={FI:{name:'Fixed Income',color:'var(--fi)',hex:'#2f6fd6',sub:'Stability & income'},
   Funds:{name:'Equities',color:'var(--funds)',hex:'#ec1c24',sub:'Growth engine'},
@@ -2045,7 +2045,7 @@ risk(){const surplus=BANK_KNOWN.monthlyIncome-BANK_KNOWN.monthlySpend;return `<d
 </div></div></div>`;},
 
 mbtiIntro(){return `<div style="position:relative">
-  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Personality Profile','home',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Financial Profile','home',false,true)}<div class="pad" style="padding-bottom:32px">
   <div class="stepbadge gold">Step 1 of 2</div>
   <h1>We Already Know Your Finances.</h1>
   <p class="sub">Now help us understand <b style="color:var(--ink)">you</b>.</p>
@@ -2079,7 +2079,7 @@ mbtiQuiz(){
     onA=`mbtiAnswerQ6('${q.a.id}')`;onB=`mbtiAnswerQ6('${q.b.id}')`;
   }
   return `<div style="position:relative">
-  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Personality Profile','mbtiIntro',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Financial Profile','mbtiIntro',false,true)}<div class="pad" style="padding-bottom:32px">
 
   <div class="mbtiprogwrap">
     <div class="mbtiprog"><span style="width:${pct}%"></span></div>
@@ -2344,9 +2344,9 @@ pilot(){const inv=totalVal(),curV=Math.round(inv*1.047),gain=curV-inv,gpct=(gain
   </div>
 
   <h2>Manage Your Plan</h2>
-  <div class="reviewcard" style="margin-bottom:10px" onclick="go('portfolio')"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">⚙</div><div style="flex:1"><div class="opt-t">Adjust holdings &amp; amounts</div><div class="opt-d">Fine-tune your funds and dollar amounts.</div></div><span class="opt-go">›</span></div>
-  <div class="reviewcard" style="margin-bottom:10px" onclick="updateProfile()"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">✎</div><div style="flex:1"><div class="opt-t">Update goals &amp; risk profile</div><div class="opt-d">Life changed? Re-answer your questionnaire.</div></div><span class="opt-go">›</span></div>
-  <div class="reviewcard" onclick="rebuildPlan()"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">↺</div><div style="flex:1"><div class="opt-t">Rebuild my plan from scratch</div><div class="opt-d">Re-pick your AI team and start a fresh plan.</div></div><span class="opt-go">›</span></div>`;
+  <div class="reviewcard" style="margin-bottom:10px" onclick="go('portfolio')"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">⚙</div><div style="flex:1"><div class="opt-t">Adjust holdings &amp; Amounts</div><div class="opt-d">Fine-tune your funds and dollar amounts.</div></div><span class="opt-go">›</span></div>
+  <div class="reviewcard" style="margin-bottom:10px" onclick="updateProfile()"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">✎</div><div style="flex:1"><div class="opt-t">Update goals &amp; Risk profile</div><div class="opt-d">Life changed? Re-answer your questionnaire.</div></div><span class="opt-go">›</span></div>
+  <div class="reviewcard" onclick="rebuildPlan()"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">↺</div><div style="flex:1"><div class="opt-t">Rebuild my plan from scratch</div><div class="opt-d">Re-pick your AI team &amp; Start a fresh plan.</div></div><span class="opt-go">›</span></div>`;
   const tabContent=((state._pilotTab||'overview')==='markets') ? marketsTab() : ((state._pilotTab==='news') ? newsTab() : overviewHtml);
   return `<div style="position:relative">
   <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
