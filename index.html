@@ -831,6 +831,95 @@
   .mbtiupdated{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#e3b04a,#a6710f);border-radius:18px;padding:18px 20px;color:#fff;margin:10px 0 4px}
   .mbtiupdated-ic{font-size:26px;flex-shrink:0}
   .mbtiupdated-txt{font-size:13.5px;line-height:1.5;font-weight:600}
+
+  /* ===== Life Simulator ===== */
+  .lifesimcard{border:1.5px solid #e3b04a}
+  .lifesim-ic{background:linear-gradient(160deg,#2d2a3d,#1b1926);color:#f3d68d}
+  .lifesim-inputwrap{margin-top:6px}
+  .lifesim-input{width:100%;min-height:96px;border:1.5px solid #e8d6a8;border-radius:16px;padding:16px 18px;font-family:'Inter';font-weight:600;font-size:14.5px;color:var(--ink);background:linear-gradient(180deg,#fffdf9,#fff);resize:none;outline:none;box-shadow:0 3px 10px rgba(190,150,60,.06);transition:border-color .15s,box-shadow .15s}
+  .lifesim-input::placeholder{font-family:'Inter';font-weight:600;color:var(--muted);opacity:.7}
+  .lifesim-input:focus{border-color:#c9a44a;box-shadow:0 0 0 3px rgba(201,164,74,.14)}
+  .lifesim-chiphead{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:20px 0 10px}
+  .lifesim-chips{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:22px}
+  .lifesim-chip{display:flex;flex-direction:column;align-items:center;gap:6px;background:#fff;border:1.5px solid #e8d6a8;border-radius:14px;padding:14px 6px;font-family:'Sora';font-size:12px;font-weight:700;color:var(--ink);cursor:pointer;transition:.12s;text-align:center}
+  .lifesim-chip:active{background:#fdf6ea;border-color:#c9a44a}
+  .lifesim-chip-ic{font-size:22px}
+
+  .lifesim-analyzewrap{padding:30px 4px 10px;text-align:center}
+  .lifesim-analyzetitle{font-family:'Sora';font-weight:800;font-size:21px;color:var(--ink)}
+  .lifesim-analyzesub{font-size:13px;color:var(--muted);margin-top:6px;margin-bottom:26px}
+  .lifesim-steps{display:flex;flex-direction:column;gap:12px;text-align:left}
+  .lifesim-step{display:flex;align-items:center;gap:13px;background:linear-gradient(180deg,#fffdf9,#fff);border:1.5px solid #e8d6a8;border-radius:15px;padding:13px 15px;opacity:.4;transform:translateX(-6px);transition:opacity .4s ease,transform .4s ease}
+  .lifesim-step.done{opacity:1;transform:translateX(0);border-color:#c9a44a;box-shadow:0 3px 10px rgba(190,150,60,.1)}
+  .lifesim-step-av{width:38px;height:38px;border-radius:11px;overflow:hidden;flex-shrink:0}
+  .lifesim-step-mid{flex:1;min-width:0}
+  .lifesim-step-name{font-family:'Sora';font-weight:800;font-size:13.5px;color:var(--ink)}
+  .lifesim-step-line{font-size:12px;color:var(--muted);margin-top:1px}
+  .lifesim-step-check{width:24px;height:24px;border-radius:50%;background:#f0e2bb;color:#a6710f;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;opacity:0;transform:scale(.5);transition:opacity .25s ease,transform .25s ease,background .25s ease,color .25s ease}
+  .lifesim-step.done .lifesim-step-check{opacity:1;transform:scale(1);background:#1f9d57;color:#fff}
+
+  .lifesim-orch{display:flex;gap:14px;background:linear-gradient(160deg,#2d2a3d,#1b1926);border-radius:20px;padding:20px;margin:6px 0 22px;box-shadow:0 12px 28px rgba(20,18,30,.22)}
+  .lifesim-orch-av{width:48px;height:48px;border-radius:14px;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 2px rgba(243,214,141,.4)}
+  .lifesim-orch-name{font-family:'Sora';font-weight:800;font-size:13px;color:#f3d68d;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+  .lifesim-orch-txt{font-size:14px;line-height:1.55;color:#fdf6ea}
+
+  .lifesim-agentcard{background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid #e8d6a8;border-radius:16px;padding:16px 18px;margin-bottom:12px;box-shadow:0 3px 10px rgba(190,150,60,.06)}
+  .lifesim-agentcard-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .lifesim-agentcard-av{width:32px;height:32px;border-radius:10px;overflow:hidden;flex-shrink:0}
+  .lifesim-agentcard-name{font-family:'Sora';font-weight:800;font-size:14px;color:var(--ink)}
+  .lifesim-agentcard-sec{margin-bottom:10px}
+  .lifesim-agentcard-sec:last-child{margin-bottom:0}
+  .lifesim-agentcard-lbl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#a6710f;margin-bottom:3px}
+  .lifesim-agentcard-txt{font-size:13px;line-height:1.5;color:var(--ink2)}
+
+  .lifesim-sechead{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:20px 0 10px}
+  .lifesim-rows{background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid #e8d6a8;border-radius:16px;overflow:hidden;margin-bottom:6px;box-shadow:0 3px 10px rgba(190,150,60,.06)}
+  .lifesim-row{display:flex;align-items:center;gap:11px;padding:13px 16px;border-bottom:1px solid #f0e6cc;cursor:pointer;transition:background .12s}
+  .lifesim-row:last-child{border-bottom:none}
+  .lifesim-row.open{background:#fdf6ea}
+  .lifesim-row-av{width:32px;height:32px;border-radius:10px;overflow:hidden;flex-shrink:0}
+  .lifesim-row-mid{flex:1;min-width:0}
+  .lifesim-row-name{font-family:'Sora';font-weight:800;font-size:13px;color:var(--ink)}
+  .lifesim-row-brief{font-size:11.5px;color:var(--muted);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .lifesim-row-chev{color:#a6710f;font-weight:800;font-size:11px;flex-shrink:0}
+  .lifesim-row-detail{background:#fdf6ea;padding:4px 16px 16px;border-bottom:1px solid #f0e6cc}
+  .lifesim-row-detail-lbl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#a6710f;margin:8px 0 3px}
+  .lifesim-row-detail-lbl:first-child{margin-top:2px}
+  .lifesim-row-detail-txt{font-size:12.5px;line-height:1.5;color:var(--ink2)}
+
+  .lifesim-impacts{background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid #e8d6a8;border-radius:16px;overflow:hidden;margin-bottom:6px;box-shadow:0 3px 10px rgba(190,150,60,.06)}
+  .lifesim-impact-row{display:flex;align-items:center;gap:11px;padding:12px 15px;border-bottom:1px solid #f0e6cc;cursor:pointer}
+  .lifesim-impact-row:last-child{border-bottom:none}
+  .lifesim-impact-row.hl{background:#fdf6ea}
+  .lifesim-impact-ic{font-size:17px;flex-shrink:0}
+  .lifesim-impact-mid{flex:1;min-width:0}
+  .lifesim-impact-lbl{font-weight:700;font-size:13px;color:var(--ink)}
+  .lifesim-impact-note{font-size:10.5px;color:var(--muted);margin-top:1px}
+  .lifesim-impact-val{font-family:'Sora';font-weight:800;font-size:13px;white-space:nowrap;flex-shrink:0}
+  .lifesim-impact-val.ok{color:#1f9d57}
+  .lifesim-impact-val.warn{color:#c9791a}
+  .lifesim-impact-hint{font-size:10.5px;color:var(--muted);text-align:center;margin:7px 0 2px}
+
+  .lifesim-compare{display:flex;align-items:stretch;gap:8px;margin-bottom:6px}
+  .lifesim-compare-col{flex:1;background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid #e8d6a8;border-radius:13px;padding:13px;text-align:center}
+  .lifesim-compare-col.after{border-color:#e3b04a;background:linear-gradient(180deg,#fffaf0,#fff)}
+  .lifesim-compare-h{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:4px}
+  .lifesim-compare-big{font-family:'Sora';font-weight:800;font-size:17px;color:var(--ink)}
+  .lifesim-compare-sub{font-size:10.5px;color:var(--muted);margin-top:2px}
+  .lifesim-compare-arrow{display:flex;align-items:center;color:#a6710f;font-weight:800;font-size:15px}
+  .reviewcard.hot{border-color:#c9a44a;box-shadow:0 5px 16px rgba(190,150,60,.16)}
+
+
+  .lifesim-reducecard{display:flex;gap:13px;align-items:flex-start;background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid #e8d6a8;border-left:3px solid #1f9d57;border-radius:14px;padding:14px 16px;margin-bottom:10px}
+  .lifesim-reducecard-av{width:34px;height:34px;border-radius:10px;overflow:hidden;flex-shrink:0}
+  .lifesim-reducecard-name{font-family:'Sora';font-weight:800;font-size:12.5px;color:var(--ink);margin-bottom:2px}
+  .lifesim-reducecard-txt{font-size:13px;line-height:1.5;color:var(--ink2)}
+
+  .lifesim-rmicon{width:64px;height:64px;border-radius:50%;background:linear-gradient(160deg,#f3d68d,#e3b04a);display:flex;align-items:center;justify-content:center;font-size:28px;margin:10px auto 18px}
+  .lifesim-rm-row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 4px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+  .lifesim-rm-row:last-child{border-bottom:none}
+  .lifesim-rm-row b{color:var(--ink);text-align:right;font-family:'Sora';font-weight:700;font-size:13px}
+
   .stresstab{animation:chatIn .25s ease}
   .stresssel-row{margin-bottom:10px}
   .stresssel-lbl{display:block;font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
@@ -985,10 +1074,10 @@
 
 <script>
 /* ============ state ============ */
-const ORDER=['login','home','mbtiIntro','mbtiQuiz','mbtiResult','team','goals','risk','analyze','reco','portfolio','projection','advice','trade','pilot','review'];
+const ORDER=['login','home','mbtiIntro','mbtiQuiz','mbtiResult','team','goals','risk','analyze','reco','portfolio','projection','advice','trade','pilot','review','lifesimIntro','lifesimAnalyzing','lifesimResults','lifesimReduce','lifesimRM'];
 // Screens that aren't steps of their own get the number of the step they branch from.
 const STEP_ALIAS={link:'portfolio',orchestrate:'portfolio',tune:'portfolio',sandbox:'reco',choose:'reco',paper:'reco',rm:'reco',done:'trade'};
-const NAMES={login:'Log In',home:'Home',mbtiIntro:'Financial Profile',mbtiQuiz:'Financial Profile',mbtiResult:'Your Money Identity',team:'Your AI Team',goals:'Your Goals',risk:'Risk Comfort',analyze:'Building Your Plan',reco:'Your Plan',orchestrate:'Orchestrated view',portfolio:'Your Portfolio',link:'Link Accounts',tune:'Edit Basket',sandbox:'Ready To Act',choose:'Choose Next Step',paper:'Paper Trading',rm:'Relationship Manager',done:'Invest',projection:'Projection',advice:'Final Advice',trade:'Trade',pilot:'My OneTeam Home',review:'Quarterly Review'};
+const NAMES={login:'Log In',home:'Home',mbtiIntro:'Financial Profile',mbtiQuiz:'Financial Profile',mbtiResult:'Your Money Identity',team:'Your AI Team',goals:'Your Goals',risk:'Risk Comfort',analyze:'Building Your Plan',reco:'Your Plan',orchestrate:'Orchestrated view',portfolio:'Your Portfolio',link:'Link Accounts',tune:'Edit Basket',sandbox:'Ready To Act',choose:'Choose Next Step',paper:'Paper Trading',rm:'Relationship Manager',done:'Invest',projection:'Projection',advice:'Final Advice',trade:'Trade',pilot:'My OneTeam Home',review:'Quarterly Review',lifesimIntro:'Life Simulator',lifesimAnalyzing:'Life Simulator',lifesimResults:'Life Simulator',lifesimReduce:'Reduce The Impact',lifesimRM:'Relationship Manager'};
 const KEYS4=['FI','Funds','Cash','Alt'];
 const BK={FI:{name:'Fixed Income',color:'var(--fi)',hex:'#2f6fd6',sub:'Stability & income'},
   Funds:{name:'Equities',color:'var(--funds)',hex:'#ec1c24',sub:'Growth engine'},
@@ -1070,6 +1159,137 @@ const AGENT_DETAIL={
 
 /* ===================== Money Identity Archetypes (profiling / "MBTI" feature) ===================== */
 /* Coordinate system for scoring: risk 0(very cautious)-4(bold), plan 0(deliberate)-4(spontaneous) */
+/* ===================== Life Simulator ===================== */
+const LIFESIM_CHIPS=[
+  {id:'car',icon:'🚗',label:'Buy a Car'},
+  {id:'condo',icon:'🏠',label:'Buy a Condo'},
+  {id:'family',icon:'👶',label:'Start a Family'},
+  {id:'japan',icon:'✈️',label:'Japan Trip'},
+  {id:'study',icon:'🎓',label:'Further Studies'},
+  {id:'wedding',icon:'💍',label:'Wedding'},
+  {id:'retire',icon:'📈',label:'Retire Earlier'},
+  {id:'luxury',icon:'👜',label:'Luxury Purchase'}
+];
+const LIFESIM_SCENARIOS={
+  car:{label:'Buy a Car',cost:45000,summary:"this purchase is achievable. We'll make a few adjustments to keep your long-term goals on track.",
+    impacts:{
+      income:{impact:'Monthly disposable income decreases by approximately S$650, mostly from loan repayments and higher running costs.',action:"I'll identify opportunities to improve your monthly cash flow and optimise discretionary spending so we can recover most of this impact."},
+      grow:{impact:'Monthly investment contributions may temporarily reduce to free up cash for the down payment.',action:"I'll rebalance your investment roadmap and gradually restore your contributions as your cash flow improves."},
+      retire:{impact:'Your projected retirement timeline shifts by approximately one year.',action:"I'll adjust your retirement roadmap and recommend small monthly changes that minimise this delay."},
+      home:{impact:'Your property affordability remains healthy — this purchase doesn\'t compete with your home savings goal.',action:"I'll continue monitoring your long-term affordability and financing options as your financial situation evolves."}
+    },
+    holistic:{monthlyHit:650,retireDelay:1,emgBefore:8,emgAfter:7,homeNote:'No change — this purchase doesn\'t compete with it.',homeSame:true},
+    reduce:[
+      {agent:'income',text:'Trim discretionary spending by S$250/month rather than dipping into your Cash buffer (Fullerton SGD Cash Fund), keeping your emergency fund intact.'},
+      {agent:'grow',text:'Pause new contributions to your Equities holdings (iShares Core S&P 500 ETF) for a few months, rather than reducing risk across the whole portfolio.'},
+      {agent:'retire',text:'Redirect S$150/month back into your Fixed Income retirement sleeve (PIMCO GIS Income Fund) once the purchase is completed.'},
+      {agent:'home',text:'No change needed — your Property savings fund stays fully on track.'}
+    ]},
+  condo:{label:'Buy a Condo',cost:1800000,summary:"this is a bigger move, but still achievable with some sequencing. We'll make a few adjustments to keep your long-term goals on track.",
+    impacts:{
+      income:{impact:'Monthly disposable income decreases by approximately S$3,200 once mortgage payments begin.',action:"I'll identify recurring costs we can trim and build a cash-flow buffer before your loan starts."},
+      grow:{impact:'A meaningful portion of your investable assets will be redirected toward the down payment.',action:"I'll rebalance your portfolio to free up liquidity gradually, without selling into a downturn."},
+      retire:{impact:'Your projected retirement timeline shifts by approximately 3 years.',action:"I'll extend your contribution runway and look for catch-up opportunities once the mortgage is more manageable."},
+      home:{impact:'This effectively becomes your primary property goal — your existing home savings target will be superseded by this purchase.',action:"I'll rebuild your property plan around this specific condo, including financing and timeline."}
+    },
+    holistic:{monthlyHit:3200,retireDelay:3,emgBefore:8,emgAfter:4,homeNote:'This becomes your home goal — the purchase itself.',homeSame:false},
+    reduce:[
+      {agent:'income',text:'Trim discretionary spending by S$500/month, funded from your Cash holdings (Fullerton SGD Cash Fund) rather than your investment accounts.'},
+      {agent:'grow',text:'Phase the down-payment withdrawal from your Equities holdings (iShares Core S&P 500 ETF, Schroder Asian Growth Fund) over 6 months to reduce market-timing risk.'},
+      {agent:'retire',text:'Redirect S$400/month back into your Fixed Income retirement sleeve (PIMCO GIS Income Fund) starting 2 years after purchase.'},
+      {agent:'home',text:'Consider a smaller unit or later completion date to reduce the upfront draw on your Property savings fund by ~15%.'}
+    ]},
+  family:{label:'Start a Family',cost:80000,summary:"this is one of life's biggest milestones, and your plan can absolutely support it. We'll make a few adjustments to keep your long-term goals on track.",
+    impacts:{
+      income:{impact:'Monthly household expenses increase by approximately S$1,200 for childcare and related costs.',action:"I'll help you build a dedicated buffer for the first two years, when costs are typically highest."},
+      grow:{impact:'Investment contributions may pause briefly around the birth, then resume at a similar pace.',action:"I'll keep your portfolio on autopilot during the pause and resume contributions once you're ready."},
+      retire:{impact:'Your projected retirement timeline shifts by approximately 8 months.',action:"I'll recommend a modest top-up once household expenses stabilise to help close this gap."},
+      home:{impact:"You may want more space sooner — I'll flag this against your current property timeline.",action:"I'll keep an eye on family-driven housing needs and flag if your timeline should move up."}
+    },
+    holistic:{monthlyHit:1200,retireDelay:0.7,emgBefore:8,emgAfter:6,homeNote:'You may want more space sooner — worth revisiting in 12 months.',homeSame:false},
+    reduce:[
+      {agent:'income',text:'Build a S$15,000 childcare buffer over 8 months in your Cash holdings (Fullerton SGD Cash Fund), separate from your emergency fund.'},
+      {agent:'grow',text:'Pause new contributions to your Equities holdings (Schroder Asian Growth Fund) for up to 3 months around the birth, with no change to existing positions.'},
+      {agent:'retire',text:'Redirect S$100/month back into your Fixed Income retirement sleeve (PIMCO GIS Income Fund) once household costs stabilise.'},
+      {agent:'home',text:'Re-run your Property savings plan in 12 months once your family\'s space needs are clearer.'}
+    ]},
+  japan:{label:'Japan Trip',cost:6000,summary:"this is an easy yes — a well-earned trip that barely moves the needle on your long-term goals.",
+    impacts:{
+      income:{impact:'A one-time dip in your savings buffer of about S$6,000, recovered within 2-3 months.',action:"I'll make sure this doesn't touch your emergency fund or monthly contributions."},
+      grow:{impact:'No meaningful impact — this is well within your discretionary spending capacity.',action:"I'll keep your investment contributions exactly as they are."},
+      retire:{impact:'No measurable impact on your retirement timeline.',action:"Nothing needed here — your retirement plan is unaffected."},
+      home:{impact:'No impact on your property affordability or timeline.',action:"I'll keep monitoring as usual — no changes required."}
+    },
+    holistic:{monthlyHit:0,retireDelay:0,emgBefore:8,emgAfter:7.7,homeNote:'No impact on your property affordability or timeline.',homeSame:true},
+    reduce:[
+      {agent:'income',text:'Spread the cost over 2 months of saving from your Cash holdings (Fullerton SGD Cash Fund) instead of a lump sum, if preferred.'},
+      {agent:'grow',text:'No adjustment needed — your Equities and Growth holdings stay untouched.'},
+      {agent:'retire',text:'No adjustment needed — your Fixed Income retirement sleeve is unaffected.'},
+      {agent:'home',text:'No adjustment needed — your Property savings fund is unaffected.'}
+    ]},
+  study:{label:'Further Studies',cost:60000,summary:"this is a strong long-term investment in yourself, and your plan can support it. We'll make a few adjustments to keep your other goals on track.",
+    impacts:{
+      income:{impact:'Monthly disposable income decreases by approximately S$800 if self-funded rather than through a loan.',action:"I'll help you compare self-funding against an education loan to find the better cash-flow fit."},
+      grow:{impact:'Investment contributions may pause during the study period.',action:"I'll pause contributions without disrupting your existing portfolio, and resume once you're working again."},
+      retire:{impact:'Your projected retirement timeline shifts by approximately 6 months, offset by higher future earning potential.',action:"I'll factor in your expected post-study income increase when re-projecting your retirement path."},
+      home:{impact:'Your property timeline may extend slightly while you\'re studying.',action:"I'll adjust your property glidepath to account for the pause in savings."}
+    },
+    holistic:{monthlyHit:800,retireDelay:0.5,emgBefore:8,emgAfter:7,homeNote:'Timeline may extend slightly while you\'re studying.',homeSame:false},
+    reduce:[
+      {agent:'income',text:'Draw the tuition shortfall from your Cash and short-term Fixed Income holdings (e.g. Nikko AM Shenton Short Term Bond) rather than an education loan, preserving up to S$500/month in interest costs.'},
+      {agent:'grow',text:'Pause new contributions to your Equities holdings (e.g. Schroder Asian Growth Fund) but keep a minimal S$100/month into your core Growth fund so the position and habit stay intact.'},
+      {agent:'retire',text:'Redirect S$200/month back into your Fixed Income retirement sleeve (e.g. PIMCO GIS Income Fund) once your post-study income kicks in, to rebuild the paused contributions.'},
+      {agent:'home',text:'Leave your Property savings fund untouched, but extend the target date by 1 year so the paused contributions don\'t force a shortfall at completion.'}
+    ]},
+  wedding:{label:'Wedding',cost:50000,summary:"congratulations — this is achievable. We'll make a few adjustments to keep your long-term goals on track.",
+    impacts:{
+      income:{impact:'A one-time reduction in savings of approximately S$50,000, likely drawn from a mix of savings and cash.',action:"I'll help you sequence withdrawals to minimise disruption to your monthly cash flow."},
+      grow:{impact:'A portion of your invested assets may need to be liquidated ahead of the date.',action:"I'll plan the liquidation timeline in advance to avoid selling during a market dip."},
+      retire:{impact:'Your projected retirement timeline shifts by approximately 4 months.',action:"I'll suggest a modest top-up over the following year to close this gap."},
+      home:{impact:'Your property savings pace slows temporarily around the wedding date.',action:"I'll resume your property glidepath at full pace right after."}
+    },
+    holistic:{monthlyHit:0,retireDelay:0.35,emgBefore:8,emgAfter:5.5,homeNote:'Savings pace slows temporarily, then resumes at full pace.',homeSame:false},
+    reduce:[
+      {agent:'income',text:'Set aside funds over 10 months in your Cash holdings (Fullerton SGD Cash Fund) instead of drawing it all down at once.'},
+      {agent:'grow',text:'If liquidating, sell lower-conviction positions first (Schroder Asian Growth Fund) to preserve your core Equities holding (iShares Core S&P 500 ETF).'},
+      {agent:'retire',text:'Redirect S$120/month back into your Fixed Income retirement sleeve (PIMCO GIS Income Fund) for 12 months after the wedding.'},
+      {agent:'home',text:'No change to your Property savings fund needed if funded from separate savings.'}
+    ]},
+  retire:{label:'Retire Earlier',cost:0,summary:"retiring earlier is possible, but it will take some deliberate adjustments starting now. We'll make a few changes to keep this goal realistic.",
+    impacts:{
+      income:{impact:'You\'ll need to increase your savings rate now to support a shorter working period.',action:"I'll help you find an additional S$400-600/month in savings capacity."},
+      grow:{impact:'Your portfolio will need a higher growth allocation earlier to compound for longer.',action:"I'll tilt your mix toward growth assets while you still have time on your side."},
+      retire:{impact:'Bringing your retirement date forward by 5 years requires meaningfully higher monthly contributions.',action:"I'll rebuild your retirement roadmap around the new target date and track progress closely."},
+      home:{impact:'Your property goal may need to be completed before scaling back retirement contributions.',action:"I'll sequence your goals so property and retirement don't compete for the same dollars."}
+    },
+    holistic:{monthlyHit:-500,retireDelay:-5,emgBefore:8,emgAfter:8,homeNote:'Complete your property goal first, then redirect toward retirement.',homeSame:true},
+    reduce:[
+      {agent:'income',text:'Find an extra S$400/month through a structured savings plan, built up in your Cash holdings (Fullerton SGD Cash Fund).'},
+      {agent:'grow',text:'Shift 10% more of your portfolio into Equities and Alternatives (iShares Core S&P 500 ETF, SPDR Gold Shares) while your horizon is still long.'},
+      {agent:'retire',text:'Increase contributions to your Fixed Income retirement sleeve (PIMCO GIS Income Fund) by S$600/month to hit the earlier target date.'},
+      {agent:'home',text:'Complete your Property savings goal first, then redirect those contributions toward retirement.'}
+    ]},
+  luxury:{label:'Luxury Purchase',cost:15000,summary:"this is a manageable indulgence. We'll make a small adjustment to keep your long-term goals fully on track.",
+    impacts:{
+      income:{impact:'A one-time reduction in your savings buffer of about S$15,000.',action:"I'll make sure this comes from discretionary savings, not your core emergency fund."},
+      grow:{impact:'A small, temporary reduction in available funds for investing this month.',action:"I'll resume your regular contribution schedule immediately next month."},
+      retire:{impact:'No measurable impact on your retirement timeline.',action:"Nothing needed here — your retirement plan is unaffected."},
+      home:{impact:'No impact on your property affordability or timeline.',action:"I'll keep monitoring as usual — no changes required."}
+    },
+    holistic:{monthlyHit:0,retireDelay:0,emgBefore:8,emgAfter:7.6,homeNote:'No impact on your property affordability or timeline.',homeSame:true},
+    reduce:[
+      {agent:'income',text:'Spread the cost over 3 months from your Cash holdings (Fullerton SGD Cash Fund) to avoid a single large cash-flow hit.'},
+      {agent:'grow',text:'No adjustment needed — your Equities and Growth holdings stay untouched.'},
+      {agent:'retire',text:'No adjustment needed — your Fixed Income retirement sleeve is unaffected.'},
+      {agent:'home',text:'No adjustment needed — your Property savings fund is unaffected.'}
+    ]}
+};
+function lifesimScenarioFor(text){
+  const t=(text||'').toLowerCase();
+  const hit=LIFESIM_CHIPS.find(c=>t.includes(c.label.toLowerCase())||t.includes(c.id));
+  return hit ? hit.id : null;
+}
+
 const ARCHETYPES=[
   {id:'anchor',theme:'#654fa5',name:'Anchor',img:'images/mbti/ocbc-ea-anchor.png',risk:0,plan:0.5,
     superpower:'Never rushes, never loses ground',
@@ -1377,7 +1597,8 @@ const state={
   chart:'area',
   paper:{started:false,step:0,series:[],base:0,amount:96000},
   drag:null,
-  mbti:{step:0,answers:[],risk:2,plan:2,archetype:null,tieAnswer:null,done:false}
+  mbti:{step:0,answers:[],risk:2,plan:2,archetype:null,tieAnswer:null,done:false},
+  lifesim:{scenario:null,customText:'',analyzeStep:0,showWorking:false,expandedRow:null,selectedImpact:null}
 };
 const REGIONS=['Singapore','United States','Asia ex-Japan','Europe','Emerging Markets','Global / broad'];
 /* 6-question risk comfort assessment (client-friendly) */
@@ -1737,6 +1958,7 @@ applyAgents();
 let cur='login';
 
 const $=id=>document.getElementById(id);
+function fmtSGD(n){return 'S$'+Math.round(n).toLocaleString();}
 function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2000);}
 function go(id){if(window._agTimer){clearInterval(window._agTimer);window._agTimer=null;}cur=id;render();}
 function next(){const i=ORDER.indexOf(cur);if(i<ORDER.length-1)go(ORDER[i+1]);}
@@ -2346,7 +2568,7 @@ pilot(){const inv=totalVal(),curV=Math.round(inv*1.047),gain=curV-inv,gpct=(gain
   <h2>Manage Your Plan</h2>
   <div class="reviewcard" style="margin-bottom:10px" onclick="go('portfolio')"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">⚙</div><div style="flex:1"><div class="opt-t">Adjust holdings &amp; Amounts</div><div class="opt-d">Fine-tune your funds and dollar amounts.</div></div><span class="opt-go">›</span></div>
   <div class="reviewcard" style="margin-bottom:10px" onclick="updateProfile()"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">✎</div><div style="flex:1"><div class="opt-t">Update goals &amp; Risk profile</div><div class="opt-d">Life changed? Re-answer your questionnaire.</div></div><span class="opt-go">›</span></div>
-  <div class="reviewcard" onclick="rebuildPlan()"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">↺</div><div style="flex:1"><div class="opt-t">Rebuild my plan from scratch</div><div class="opt-d">Re-pick your AI team &amp; Start a fresh plan.</div></div><span class="opt-go">›</span></div>`;
+  <div class="reviewcard lifesimcard" onclick="go('lifesimIntro')"><div class="opt-ic lifesim-ic">💭</div><div style="flex:1"><div class="opt-t">Life Simulator</div><div class="opt-d">Thinking about buying something or planning a life event? Ask MyOneTeam before you decide.</div></div><span class="opt-go">›</span></div>`;
   const tabContent=((state._pilotTab||'overview')==='markets') ? marketsTab() : ((state._pilotTab==='news') ? newsTab() : overviewHtml);
   return `<div style="position:relative">
   <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
@@ -2370,6 +2592,148 @@ pilot(){const inv=totalVal(),curV=Math.round(inv*1.047),gain=curV-inv,gpct=(gain
   ${tabContent}
 
   <div class="note">Your team works in the background. We'll only ping you when something needs a decision.</div>
+</div></div></div>`;},
+
+lifesimIntro(){const m=state.lifesim;
+  return `<div style="position:relative">
+  <div style="position:relative;z-index:1">${appbar('Life Simulator','pilot',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div class="stepbadge gold">✦ Your MyOneTeam, on call</div>
+  <h1>What are you thinking about today?</h1>
+  <p class="sub">Tell your team what you're considering — big or small — and they'll show you what it means for your plan, together.</p>
+
+  <div class="lifesim-inputwrap">
+    <textarea id="lifesimInput" class="lifesim-input" placeholder="What are you thinking about today?" oninput="lifesimOnInput()">${m.customText||''}</textarea>
+  </div>
+
+  <div class="lifesim-chiphead">Or pick something to start with</div>
+  <div class="lifesim-chips">
+    ${LIFESIM_CHIPS.map(c=>`<div class="lifesim-chip" onclick="lifesimPickChip('${c.id}')"><span class="lifesim-chip-ic">${c.icon}</span><span>${c.label}</span></div>`).join('')}
+  </div>
+
+  <button class="btn gold" id="lifesimAskBtn" onclick="lifesimAsk()" disabled>Ask MyOneTeam →</button>
+  <div class="note" style="margin-top:14px">Every recommendation here comes from your whole team working together — not a single calculator.</div>
+</div></div></div>`;},
+
+lifesimAnalyzing(){
+  const steps=[
+    {id:'income',label:'Income Builder',line:'Reviewing monthly cash flow…'},
+    {id:'grow',label:'Growth Strategist',line:'Assessing investment implications…'},
+    {id:'retire',label:'Retirement Planner',line:'Projecting retirement impact…'},
+    {id:'home',label:'Property Planner',line:'Reviewing housing implications…'},
+    {id:'judge',label:'Orchestrator',line:"Bringing together your team's recommendations…"}
+  ];
+  return `<div style="position:relative">
+  <div style="position:relative;z-index:1">${appbar('Life Simulator','lifesimIntro',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div class="lifesim-analyzewrap">
+    <div class="lifesim-analyzetitle">Your team is on it</div>
+    <div class="lifesim-analyzesub" id="lifesimScenarioLabel">Looking at your scenario…</div>
+    <div class="lifesim-steps" id="lifesimSteps">
+      ${steps.map((s,i)=>{const a=s.id==='judge'?JUDGE:AGENTS.find(x=>x.id===s.id);
+        return `<div class="lifesim-step" id="lifesim-step-${i}" data-step="${i}">
+          <div class="lifesim-step-av">${avatar(a)}</div>
+          <div class="lifesim-step-mid"><div class="lifesim-step-name">${s.label}</div><div class="lifesim-step-line">${s.line}</div></div>
+          <div class="lifesim-step-check">✓</div>
+        </div>`;}).join('')}
+    </div>
+  </div>
+</div></div></div>`;},
+
+lifesimResults(){
+  const m=state.lifesim; const sc=LIFESIM_SCENARIOS[m.scenario]||LIFESIM_SCENARIOS.car;
+  const order=['income','grow','retire','home'];
+  const expanded=m.expandedRow;
+  const impactRows=lifesimImpactRows(sc);
+  const selId=(m.selectedImpact&&impactRows.some(r=>r.id===m.selectedImpact))?m.selectedImpact:'cashflow';
+  const cmp=lifesimCompareFor(sc,selId);
+  return `<div style="position:relative">
+  <div style="position:relative;z-index:1">${appbar('Life Simulator','lifesimIntro',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div class="stepbadge gold">✦ ${sc.label}${sc.cost?' · '+fmtSGD(sc.cost):''}</div>
+
+  <div class="lifesim-sechead" style="margin-top:8px">How we made this decision <span onclick="lifesimToggleWorking()" style="color:#a6710f;font-weight:800;cursor:pointer;text-transform:none;letter-spacing:0;font-size:11px">${m.showWorking?'Hide ▲':'Show ▾'}</span></div>
+  ${m.showWorking?`<div class="lifesim-rows">
+    ${order.map(id=>{const a=AGENTS.find(x=>x.id===id),info=sc.impacts[id];const isOpen=expanded===id;
+      return `<div class="lifesim-row ${isOpen?'open':''}" onclick="lifesimToggleRow('${id}')">
+        <div class="lifesim-row-av">${avatar(a)}</div>
+        <div class="lifesim-row-mid"><div class="lifesim-row-name">${a.name}</div>${!isOpen?`<div class="lifesim-row-brief">${info.impact}</div>`:''}</div>
+        <span class="lifesim-row-chev">${isOpen?'▲':'▾'}</span>
+      </div>
+      ${isOpen?`<div class="lifesim-row-detail">
+        <div class="lifesim-row-detail-lbl">Impact</div><div class="lifesim-row-detail-txt">${info.impact}</div>
+        <div class="lifesim-row-detail-lbl" style="color:#1f9d57">Action</div><div class="lifesim-row-detail-txt">${info.action}</div>
+      </div>`:''}`;}).join('')}
+    ${(()=>{const isOrchOpen=expanded==='judge';
+      return `<div class="lifesim-row ${isOrchOpen?'open':''}" onclick="lifesimToggleRow('judge')">
+        <div class="lifesim-row-av">${avatar(JUDGE)}</div>
+        <div class="lifesim-row-mid"><div class="lifesim-row-name">Orchestrator</div>${!isOrchOpen?`<div class="lifesim-row-brief">Combines your whole team's input into one final answer.</div>`:''}</div>
+        <span class="lifesim-row-chev">${isOrchOpen?'▲':'▾'}</span>
+      </div>
+      ${isOrchOpen?`<div class="lifesim-row-detail">
+        <div class="lifesim-row-detail-txt">We've reviewed your decision across the entire team.<br><br><b>Good news — ${sc.summary}</b></div>
+      </div>`:''}`;})()}
+  </div>`:''}
+
+  <div class="lifesim-sechead">Holistic impact</div>
+  <div class="lifesim-impacts">
+    ${impactRows.map(r=>`<div class="lifesim-impact-row ${r.id===selId?'hl':''}" onclick="lifesimSelectImpact('${r.id}')">
+      <span class="lifesim-impact-ic">${r.icon}</span>
+      <div class="lifesim-impact-mid"><div class="lifesim-impact-lbl">${r.label}</div>${r.note?`<div class="lifesim-impact-note">${r.note}</div>`:''}</div>
+      <span class="lifesim-impact-val ${r.tone}">${r.value}</span>
+    </div>`).join('')}
+  </div>
+  <div class="lifesim-impact-hint">Tap any impact above to explore it below</div>
+
+  <div class="lifesim-sechead">If you go ahead vs if you don't · ${cmp.title}</div>
+  <div class="lifesim-compare">
+    <div class="lifesim-compare-col"><div class="lifesim-compare-h">${cmp.L.h}</div><div class="lifesim-compare-big">${cmp.L.big}</div><div class="lifesim-compare-sub">${cmp.L.sub}</div></div>
+    <div class="lifesim-compare-arrow">→</div>
+    <div class="lifesim-compare-col after"><div class="lifesim-compare-h">${cmp.R.h}</div><div class="lifesim-compare-big">${cmp.R.big}</div><div class="lifesim-compare-sub">${cmp.R.sub}</div></div>
+  </div>
+
+  <div class="lifesim-sechead">What would you like to do?</div>
+  <div class="reviewcard hot" onclick="go('lifesimReduce')"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">📉</div><div style="flex:1"><div class="opt-t">Reduce The Impact</div><div class="opt-d">Softer trade-offs from your team to ease this decision.</div></div><span class="opt-go">›</span></div>
+  <div class="reviewcard" style="margin-top:10px" onclick="go('lifesimRM')"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">🤝</div><div style="flex:1"><div class="opt-t">Speak With My Relationship Manager</div><div class="opt-d">They'll already have this whole conversation on file.</div></div><span class="opt-go">›</span></div>
+  <div class="reviewcard" style="margin-top:10px" onclick="lifesimProceed()"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">✓</div><div style="flex:1"><div class="opt-t">I'm Comfortable With This</div><div class="opt-d">Log this decision and continue — no changes needed.</div></div><span class="opt-go">›</span></div>
+
+  <div class="note" style="margin-top:16px">You're in control — your team is here to support this decision, not push you into it.</div>
+</div></div></div>`;},
+
+lifesimReduce(){
+  const m=state.lifesim; const sc=LIFESIM_SCENARIOS[m.scenario]||LIFESIM_SCENARIOS.car;
+  const order=['income','grow','retire','home'];
+  return `<div style="position:relative">
+  <div style="position:relative;z-index:1">${appbar('Reduce The Impact','lifesimResults',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div class="stepbadge gold">✦ ${sc.label}</div>
+  <h1>Here's How Your Team Would Soften This</h1>
+  <p class="sub">Collaborative moves from across your team — not generic advice — to reduce the impact while keeping your goals intact.</p>
+
+  ${order.map((id,i)=>{const a=AGENTS.find(x=>x.id===id),rec=sc.reduce[i];
+    return `<div class="lifesim-reducecard">
+      <div class="lifesim-reducecard-av">${avatar(a)}</div>
+      <div class="lifesim-reducecard-mid"><div class="lifesim-reducecard-name">${a.name}</div><div class="lifesim-reducecard-txt">${rec.text}</div></div>
+    </div>`;}).join('')}
+
+  <button class="btn gold" onclick="lifesimApplyReduce()" style="margin-top:6px">Apply These Adjustments →</button>
+  <div style="text-align:center;margin-top:12px"><a onclick="go('lifesimResults')" style="font-size:12.5px;color:var(--muted);font-weight:600;cursor:pointer">← Back to recommendations</a></div>
+</div></div></div>`;},
+
+lifesimRM(){
+  const m=state.lifesim; const sc=LIFESIM_SCENARIOS[m.scenario]||LIFESIM_SCENARIOS.car;
+  return `<div style="position:relative">
+  <div style="position:relative;z-index:1">${appbar('Relationship Manager','lifesimResults',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div class="lifesim-rmicon">🤝</div>
+  <h1 style="text-align:center">You're All Set to Talk to Jasmine</h1>
+  <p class="sub" style="text-align:center">Your Relationship Manager already has the full picture — no need to repeat yourself.</p>
+
+  <div class="card" style="background:#fff;margin-top:8px">
+    <div class="lifesim-rm-row"><span>Scenario</span><b>${sc.label}${sc.cost?' · '+fmtSGD(sc.cost):''}</b></div>
+    <div class="lifesim-rm-row"><span>Sent to</span><b>Jasmine Lau, Relationship Manager</b></div>
+    <div class="lifesim-rm-row"><span>Includes</span><b>Full impact analysis + team recommendations</b></div>
+    <div class="lifesim-rm-row"><span>Includes</span><b>Mitigation strategies already discussed</b></div>
+  </div>
+
+  <div class="note" style="margin-top:16px">Jasmine will reach out shortly. When you speak, you can pick up exactly where you left off with your AI team — nothing gets lost in translation.</div>
+
+  <button class="btn gold" onclick="go('pilot')" style="margin-top:16px">Back to MyOneTeam →</button>
 </div></div></div>`;},
 
 review(){const aGuard=pickAgent('income'),aGlobal=pickAgent('grow');
@@ -3356,6 +3720,103 @@ function learnMore(id){const n=pilotNews()[id];const a=AGENTS.find(x=>x.id===id)
   <button class="btn link" onclick="hideModal()">Close</button>`);}
 function applyRec(msg){toast(msg+' ✓');}
 function rebalance(){state.pilot.rebalanced=true;state.pilot.drift=state.buckets.Funds;keepScroll(()=>render());toast('Rebalanced back to your target mix ✓');}
+/* ===================== Life Simulator interactions ===================== */
+function lifesimOnInput(){
+  const val=$('lifesimInput').value;
+  state.lifesim.customText=val;
+  $('lifesimAskBtn').disabled=val.trim().length<3;
+}
+function lifesimPickChip(id){
+  const chip=LIFESIM_CHIPS.find(c=>c.id===id);
+  state.lifesim.customText=chip.label;
+  state.lifesim.scenario=id;
+  keepScroll(()=>render());
+  setTimeout(()=>{ const input=$('lifesimInput'); if(input){input.value=chip.label;} const btn=$('lifesimAskBtn'); if(btn)btn.disabled=false; },0);
+}
+function lifesimAsk(){
+  const text=state.lifesim.customText||'';
+  if(text.trim().length<3)return;
+  const matched=lifesimScenarioFor(text);
+  state.lifesim.scenario=matched||state.lifesim.scenario||'car';
+  state.lifesim.analyzeStep=0;
+  go('lifesimAnalyzing');
+  lifesimRunAnalysis();
+}
+function lifesimRunAnalysis(){
+  const totalSteps=5;
+  function tick(){
+    const i=state.lifesim.analyzeStep;
+    const el=$('lifesim-step-'+i);
+    if(el)el.classList.add('done');
+    state.lifesim.analyzeStep++;
+    if(state.lifesim.analyzeStep<totalSteps){
+      setTimeout(tick,700);
+    }else{
+      setTimeout(()=>{ state.lifesim.done=true; go('lifesimResults'); },550);
+    }
+  }
+  setTimeout(tick,500);
+}
+function lifesimToggleWorking(){
+  state.lifesim.showWorking=!state.lifesim.showWorking;
+  if(state.lifesim.showWorking && !state.lifesim.expandedRow) state.lifesim.expandedRow=null;
+  keepScroll(()=>render());
+}
+function lifesimToggleRow(id){
+  state.lifesim.expandedRow = state.lifesim.expandedRow===id ? null : id;
+  keepScroll(()=>render());
+}
+function lifesimImpactRows(sc){
+  const h=sc.holistic;
+  const rows=[
+    {id:'cashflow',icon:'💸',label:'Monthly cash flow',
+      value:h.monthlyHit>0?'−'+fmtSGD(h.monthlyHit)+'/mo':(h.monthlyHit<0?'+'+fmtSGD(Math.abs(h.monthlyHit))+' needed/mo':'No change'),
+      note:h.monthlyHit>800?'Significant impact':(h.monthlyHit>0?'Moderate impact':(h.monthlyHit<0?'Needs new savings':'Barely moves the needle')),
+      tone:h.monthlyHit>800?'warn':'ok'},
+    {id:'retire',icon:'🌴',label:'Retirement timeline',
+      value:h.retireDelay>0?'+'+h.retireDelay+' yr'+(h.retireDelay!==1?'s':''):(h.retireDelay<0?h.retireDelay+' yrs':'No change'),
+      note:h.retireDelay>1?'Pushed back':(h.retireDelay<0?'Brought forward':'On track'),
+      tone:h.retireDelay>1?'warn':'ok'},
+    {id:'home',icon:'🏠',label:'Home goal',value:h.homeSame?'On track':'Affected',note:h.homeNote,tone:h.homeSame?'ok':'warn'},
+    {id:'emg',icon:'🛡️',label:'Emergency fund',value:h.emgAfter+' months',note:h.emgAfter>=6?'Still healthy':'Getting lean',tone:h.emgAfter>=6?'ok':'warn'}
+  ];
+  return rows;
+}
+function lifesimCompareFor(sc,rowId){
+  const h=sc.holistic;
+  if(rowId==='retire'){
+    return {title:'Retirement timeline',
+      L:{h:'Status quo',big:h.retireDelay>=0?'On original track':'Original date',sub:'no change to plan'},
+      R:{h:'If you go ahead',big:h.retireDelay>0?'+'+h.retireDelay+' yr'+(h.retireDelay!==1?'s':''):(h.retireDelay<0?h.retireDelay+' yrs':'No change'),sub:h.retireDelay>0?'later than planned':(h.retireDelay<0?'earlier than planned':'unaffected')}};
+  }
+  if(rowId==='home'){
+    return {title:'Home goal',
+      L:{h:'Status quo',big:'As planned',sub:'current property timeline'},
+      R:{h:'If you go ahead',big:h.homeSame?'Unaffected':'Adjusted',sub:h.homeNote}};
+  }
+  if(rowId==='emg'){
+    return {title:'Emergency fund',
+      L:{h:'Today',big:h.emgBefore+' months',sub:'cash buffer'},
+      R:{h:'If you go ahead',big:h.emgAfter+' months',sub:h.emgAfter>=6?'still healthy':'getting lean'}};
+  }
+  // default: cashflow
+  return {title:'Monthly cash flow',
+    L:{h:'Today',big:'No extra outlay',sub:'current monthly surplus'},
+    R:{h:'If you go ahead',big:h.monthlyHit>0?'−'+fmtSGD(h.monthlyHit)+'/mo':(h.monthlyHit<0?'+'+fmtSGD(Math.abs(h.monthlyHit))+'/mo needed':'No change'),sub:h.monthlyHit>0?'lower monthly surplus':(h.monthlyHit<0?'new savings required':'unaffected')}};
+}
+function lifesimSelectImpact(id){
+  state.lifesim.selectedImpact=id;
+  keepScroll(()=>render());
+}
+function lifesimProceed(){
+  toast('Your team is making these adjustments to your plan ✓');
+  go('pilot');
+}
+function lifesimApplyReduce(){
+  toast("Adjustments applied across your team's plan ✓");
+  go('pilot');
+}
+
 function mbtiStart(){state.mbti={step:0,answers:[],riskScore:0,planScore:0,archetype:null,needsQ6:false,done:false};go('mbtiQuiz');}
 function mbtiRecompute(){
   const m=state.mbti;
@@ -3427,7 +3888,6 @@ function mbtiShareProfile(){
   }
 }
 function updateProfile(){go('team');}
-function rebuildPlan(){state.invested=false;state.rmApproved=false;state.qa={};state.regions=['Singapore'];state.pilot={drift:58,rebalanced:false};applyAgents();toast('Starting a fresh plan');go('team');}
 function toggleProp(id){const p=state.proposals.find(x=>x.id===id);p.on=!p.on;keepScroll(()=>render());}
 function applyReview(){const n=state.proposals.filter(p=>p.on).length;
   if(state.proposals.find(p=>p.id==='pr1').on){state.pilot.rebalanced=true;state.pilot.drift=state.buckets.Funds;}
@@ -3583,7 +4043,7 @@ function render(){
     }
   }
   const i=ORDER.indexOf(STEP_ALIAS[cur]||cur);$('stepLabel').textContent=(i+1)+' / '+ORDER.length+' · '+NAMES[cur];
-  const fabScreens=['reco','portfolio','tune','projection','advice','trade','pilot','review'];
+  const fabScreens=['reco','portfolio','tune','projection','advice','trade','pilot','review','lifesimIntro','lifesimResults','lifesimReduce'];
   const showFab=fabScreens.indexOf(cur)>=0;
   if($('chatFab'))$('chatFab').classList.toggle('show',showFab);
   $('view').classList.toggle('hasfab',showFab);
