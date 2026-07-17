@@ -816,14 +816,14 @@
   .mbtireveal-eyebrow{font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#a6710f;margin-top:4px}
   .mbtireveal-name{font-family:'Sora';font-weight:800;font-size:32px;margin:4px 0 2px;line-height:1.1}
   .mbtistage{position:relative;margin:20px 0 22px;display:flex;align-items:center;justify-content:center;padding:10px 0;isolation:isolate}
-  .mbtistage-glow{position:absolute;top:50%;left:50%;transform:translate3d(-50%,-50%,0);width:158%;height:94%;border-radius:50%;background:radial-gradient(ellipse,color-mix(in srgb,var(--mbc) 85%,transparent) 0%,color-mix(in srgb,var(--mbc) 55%,transparent) 35%,color-mix(in srgb,var(--mbc) 20%,transparent) 58%,transparent 78%);filter:blur(8px);animation:mbtipulse 4s ease-in-out infinite;pointer-events:none;z-index:0;will-change:transform,opacity}
+  .mbtistage-glow{position:absolute;top:50%;left:50%;transform:translate3d(-50%,-50%,0);width:158%;height:94%;border-radius:50%;background:radial-gradient(ellipse,color-mix(in srgb,var(--mbc) 85%,transparent) 0%,color-mix(in srgb,var(--mbc) 55%,transparent) 35%,color-mix(in srgb,var(--mbc) 20%,transparent) 58%,transparent 78%);filter:blur(8px);animation:mbtipulse 4s ease-in-out infinite;pointer-events:none;z-index:-1;will-change:transform,opacity}
   @keyframes mbtipulse{0%,100%{opacity:.85;transform:translate3d(-50%,-50%,0) scale(.98)}50%{opacity:1;transform:translate3d(-50%,-50%,0) scale(1.03)}}
   .mbtistage-spark{position:absolute;pointer-events:none;animation:mbtitwinkle 2.8s ease-in-out infinite;z-index:0}
   .mbtistage-spark.p1{top:0%;left:2%;font-size:16px;animation-delay:0s;color:var(--mbc)}
   .mbtistage-spark.p2{top:6%;right:1%;font-size:12px;animation-delay:.7s;color:var(--mbc)}
   .mbtistage-spark.p3{bottom:2%;left:0%;font-size:11px;animation-delay:1.4s;color:var(--mbc)}
   .mbtistage-spark.p4{bottom:8%;right:3%;font-size:14px;animation-delay:2.1s;color:var(--mbc)}
-  .mbtistage-img{position:relative;z-index:1;width:98%;max-height:760px;object-fit:contain;display:block;border-radius:22px;box-shadow:0 22px 50px rgba(20,15,10,.28);transform:translateZ(0)}
+  .mbtistage-img{position:relative;z-index:1;width:98%;max-height:760px;aspect-ratio:1023/1537;object-fit:contain;display:block;border-radius:22px;box-shadow:0 22px 50px rgba(20,15,10,.28);transform:translateZ(0)}
   .mbtiactions{display:flex;gap:12px;margin-bottom:6px}
   .mbtiact{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(180deg,#fffdf9,#fff);border:1.5px solid #e8d6a8;border-radius:14px;padding:13px;font-family:'Sora';font-weight:700;font-size:14px;color:var(--ink);cursor:pointer;transition:border-color .12s,box-shadow .12s}
   .mbtiact:hover{border-color:#c9a44a;box-shadow:0 4px 12px rgba(190,150,60,.14)}
@@ -835,6 +835,19 @@
   /* ===== Life Simulator ===== */
   .lifesimcard{border:1.5px solid #e3b04a}
   .lifesim-ic{background:linear-gradient(160deg,#2d2a3d,#1b1926);color:#f3d68d}
+  .pilot-toggle{position:relative;display:flex;background:#fdf6ea;border:1px solid #f0e2bb;border-radius:16px;padding:4px;margin:2px 0 14px}
+  .pilot-toggle-thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:12px;background:linear-gradient(160deg,#2d2a3d,#1b1926);box-shadow:0 6px 16px rgba(20,18,30,.22);transition:transform .25s cubic-bezier(.4,0,.2,1)}
+  .pilot-toggle.on-life .pilot-toggle-thumb{transform:translateX(100%)}
+  .pilot-toggle-btn{position:relative;z-index:1;flex:1;border:none;background:transparent;display:flex;align-items:center;justify-content:center;gap:6px;padding:11px 6px;font-family:'Sora';font-weight:800;font-size:13.5px;color:var(--muted);cursor:pointer;transition:color .2s ease}
+  .pilot-toggle-btn.active{color:#f3d68d}
+  .lifetab-panel{background:linear-gradient(160deg,#2d2a3d,#1b1926);border-radius:20px;padding:22px 20px;margin-bottom:14px;box-shadow:0 12px 28px rgba(20,18,30,.22)}
+  .lifetab-ic{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px;background:rgba(243,214,141,.14);margin-bottom:14px}
+  .lifetab-title{font-family:'Sora';font-weight:800;font-size:18px;color:#fdf6ea;margin-bottom:6px}
+  .lifetab-sub{font-size:13.5px;line-height:1.55;color:#cfc9dc;margin-bottom:18px}
+  .lifetab-open{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.06);border:1px solid rgba(243,214,141,.35);border-radius:14px;padding:14px 16px;cursor:pointer;transition:.15s}
+  .lifetab-open:active{background:rgba(255,255,255,.12)}
+  .lifetab-open-t{font-family:'Sora';font-weight:700;font-size:14px;color:#f3d68d}
+  .lifetab-open-d{font-size:11.5px;color:#cfc9dc;margin-top:2px}
   .lifesim-inputwrap{margin-top:6px}
   .lifesim-input{width:100%;min-height:96px;border:1.5px solid #e8d6a8;border-radius:16px;padding:16px 18px;font-family:'Inter';font-weight:600;font-size:14.5px;color:var(--ink);background:linear-gradient(180deg,#fffdf9,#fff);resize:none;outline:none;box-shadow:0 3px 10px rgba(190,150,60,.06);transition:border-color .15s,box-shadow .15s}
   .lifesim-input::placeholder{font-family:'Inter';font-weight:600;color:var(--muted);opacity:.7}
@@ -862,6 +875,17 @@
   .lifesim-orch-av{width:48px;height:48px;border-radius:14px;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 2px rgba(243,214,141,.4)}
   .lifesim-orch-name{font-family:'Sora';font-weight:800;font-size:13px;color:#f3d68d;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
   .lifesim-orch-txt{font-size:14px;line-height:1.55;color:#fdf6ea}
+  /* hierarchy loading layout: orchestrator on top, its agents underneath */
+  .lifesim-hier{margin-top:6px}
+  .lifesim-orch.pending{opacity:.45}
+  .lifesim-orch{transition:opacity .4s ease;align-items:center}
+  .lifesim-orch-check{margin-left:8px;color:#3ddc97;font-weight:900;font-size:15px;opacity:0;transform:scale(.5);transition:opacity .25s ease,transform .25s ease;flex-shrink:0}
+  .lifesim-orch.done .lifesim-orch-check{opacity:1;transform:scale(1)}
+  .lifesim-hier-line{width:2px;height:22px;background:#e3cb92;margin:0 auto}
+  .lifesim-hier-branch{position:relative;padding-left:18px}
+  .lifesim-hier-branch:before{content:'';position:absolute;left:6px;top:0;bottom:0;width:2px;background:#f0e2bb}
+  .lifesim-hier-branch .lifesim-step{position:relative}
+  .lifesim-hier-branch .lifesim-step:before{content:'';position:absolute;left:-18px;top:50%;width:14px;height:2px;background:#f0e2bb}
 
   .lifesim-agentcard{background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid #e8d6a8;border-radius:16px;padding:16px 18px;margin-bottom:12px;box-shadow:0 3px 10px rgba(190,150,60,.06)}
   .lifesim-agentcard-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
@@ -1087,16 +1111,16 @@ const RET={FI:.04,Funds:.085,Cash:.025,Alt:.09}, VOL={FI:.04,Funds:.14,Cash:.006
 
 /* ---- AI committee: each agent is a goal + risk-appetite persona ---- */
 const AGENTS=[
-  {id:'home',name:'Property Planner',desc:'Save toward a home',goal:'property goal',risk:2,target:400000,years:6,lean:{FI:35,Funds:35,Cash:25,Alt:5},
+  {id:'home',name:'Property Paige',desc:'Save toward a home',goal:'property goal',risk:2,target:400000,years:6,lean:{FI:35,Funds:35,Cash:25,Alt:5},
    noticed:{t:'Your goal is a few years out',d:'So I kept a glidepath — safer as it gets closer.'},explain:'Protected your timeline as the goal nears.',
    skin:'#e3b08a',hair:'#2b3a67',outfit:'#0fa37f',accent:'#bff0e2',acc:'cap',color:'#0fa37f'},
-  {id:'retire',name:'Retirement Planner',desc:'Build a long-term nest egg',goal:'retirement',risk:2,target:1500000,years:20,lean:{FI:20,Funds:50,Cash:10,Alt:20},
+  {id:'retire',name:'Retirement Ryan',desc:'Build a long-term nest egg',goal:'retirement',risk:2,target:1500000,years:20,lean:{FI:20,Funds:50,Cash:10,Alt:20},
    noticed:{t:'Decades of runway',d:'Long horizon — I let it compound in growth assets.'},explain:'Used your long horizon to compound growth.',
    skin:'#e7b58c',hair:'#7a4a2b',outfit:'#e08600',accent:'#ffe2b8',acc:'visor',color:'#e08600'},
-  {id:'grow',name:'Growth Strategist',desc:'Chase higher long-term growth',goal:'wealth growth',risk:3,target:300000,years:8,lean:{FI:10,Funds:60,Cash:5,Alt:25},
+  {id:'grow',name:'Growth Gary',desc:'Chase higher long-term growth',goal:'wealth growth',risk:3,target:300000,years:8,lean:{FI:10,Funds:60,Cash:5,Alt:25},
    noticed:{t:'Appetite for growth',d:'I tilted hard into equities and alternatives.'},explain:'Maximised growth for a higher-risk appetite.',
    skin:'#e7b58c',hair:'#7a4a2b',outfit:'#ec6e6e',accent:'#ffd0d2',acc:'headset',color:'#ec6e6e'},
-  {id:'income',name:'Income Builder',desc:'Generate regular income',goal:'passive income',risk:2,target:250000,years:7,lean:{FI:45,Funds:20,Cash:10,Alt:25},
+  {id:'income',name:'Income Ivy',desc:'Generate regular income',goal:'passive income',risk:2,target:250000,years:7,lean:{FI:45,Funds:20,Cash:10,Alt:25},
    noticed:{t:'You want regular payouts',d:'I added income bonds and REIT alternatives.'},explain:'Built for steady income from bonds & REITs.',
    skin:'#e0a87f',hair:'#3a2a1c',outfit:'#2f6fd6',accent:'#cfe0ff',acc:'glasses',color:'#2f6fd6'}
 ];
@@ -2567,12 +2591,30 @@ pilot(){const inv=totalVal(),curV=Math.round(inv*1.047),gain=curV-inv,gpct=(gain
 
   <h2>Manage Your Plan</h2>
   <div class="reviewcard" style="margin-bottom:10px" onclick="go('portfolio')"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">⚙</div><div style="flex:1"><div class="opt-t">Adjust holdings &amp; Amounts</div><div class="opt-d">Fine-tune your funds and dollar amounts.</div></div><span class="opt-go">›</span></div>
-  <div class="reviewcard" style="margin-bottom:10px" onclick="updateProfile()"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">✎</div><div style="flex:1"><div class="opt-t">Update goals &amp; Risk profile</div><div class="opt-d">Life changed? Re-answer your questionnaire.</div></div><span class="opt-go">›</span></div>
-  <div class="reviewcard lifesimcard" onclick="go('lifesimIntro')"><div class="opt-ic lifesim-ic">💭</div><div style="flex:1"><div class="opt-t">Life Simulator</div><div class="opt-d">Thinking about buying something or planning a life event? Ask MyOneTeam before you decide.</div></div><span class="opt-go">›</span></div>`;
+  <div class="reviewcard" style="margin-bottom:10px" onclick="updateProfile()"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">✎</div><div style="flex:1"><div class="opt-t">Update goals &amp; Risk profile</div><div class="opt-d">Life changed? Re-answer your questionnaire.</div></div><span class="opt-go">›</span></div>`;
   const tabContent=((state._pilotTab||'overview')==='markets') ? marketsTab() : ((state._pilotTab==='news') ? newsTab() : overviewHtml);
+  const topTab=state._topTab||'myoneteam';
+  const lifePanel=`
+  <div class="lifetab-panel">
+    <div class="lifetab-ic">💭</div>
+    <div class="lifetab-title">Life Simulator</div>
+    <div class="lifetab-sub">Thinking about buying something or planning a life event? Ask MyOneTeam before you decide — your whole team weighs in before you commit.</div>
+    <div class="lifetab-open" onclick="go('lifesimIntro')">
+      <div><div class="lifetab-open-t">Open Life Simulator</div><div class="lifetab-open-d">Tell your team what you're considering</div></div>
+      <span class="opt-go" style="color:#f3d68d">›</span>
+    </div>
+  </div>`;
   return `<div style="position:relative">
   <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
   <div style="position:relative;z-index:1;padding-top:50px">${appbar('Home','home',false,true)}<div class="pad" style="padding-top:6px">
+
+  <div class="pilot-toggle ${topTab==='life'?'on-life':''}">
+    <div class="pilot-toggle-thumb"></div>
+    <button class="pilot-toggle-btn ${topTab==='myoneteam'?'active':''}" onclick="setPilotTopTab('myoneteam')">🏠 MyOneTeam</button>
+    <button class="pilot-toggle-btn ${topTab==='life'?'active':''}" onclick="setPilotTopTab('life')">💭 Life Sim</button>
+  </div>
+
+  ${topTab==='life'?lifePanel:`
   <div class="pilotHero">
     <div class="row" style="margin-bottom:2px"><span class="livedot"></span><div style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.85">Your AI team · watching the markets for you</div></div>
     <div style="font-size:12px;opacity:.8;margin-top:8px">Portfolio value</div>
@@ -2589,7 +2631,7 @@ pilot(){const inv=totalVal(),curV=Math.round(inv*1.047),gain=curV-inv,gpct=(gain
     <button class="sbtab ${state._pilotTab==='news'?'on':''}" onclick="setPilotTab('news')">News</button>
   </div>
 
-  ${tabContent}
+  ${tabContent}`}
 
   <div class="note">Your team works in the background. We'll only ping you when something needs a decision.</div>
 </div></div></div>`;},
@@ -2617,11 +2659,10 @@ lifesimIntro(){const m=state.lifesim;
 
 lifesimAnalyzing(){
   const steps=[
-    {id:'income',label:'Income Builder',line:'Reviewing monthly cash flow…'},
-    {id:'grow',label:'Growth Strategist',line:'Assessing investment implications…'},
-    {id:'retire',label:'Retirement Planner',line:'Projecting retirement impact…'},
-    {id:'home',label:'Property Planner',line:'Reviewing housing implications…'},
-    {id:'judge',label:'Orchestrator',line:"Bringing together your team's recommendations…"}
+    {id:'income',label:'Income Ivy',line:'Reviewing monthly cash flow…'},
+    {id:'grow',label:'Growth Gary',line:'Assessing investment implications…'},
+    {id:'retire',label:'Retirement Ryan',line:'Projecting retirement impact…'},
+    {id:'home',label:'Property Paige',line:'Reviewing housing implications…'}
   ];
   return `<div style="position:relative">
   <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
@@ -2629,13 +2670,25 @@ lifesimAnalyzing(){
   <div class="lifesim-analyzewrap">
     <div class="lifesim-analyzetitle">Your team is on it</div>
     <div class="lifesim-analyzesub" id="lifesimScenarioLabel">Looking at your scenario…</div>
-    <div class="lifesim-steps" id="lifesimSteps">
-      ${steps.map((s,i)=>{const a=s.id==='judge'?JUDGE:AGENTS.find(x=>x.id===s.id);
-        return `<div class="lifesim-step" id="lifesim-step-${i}" data-step="${i}">
-          <div class="lifesim-step-av">${avatar(a)}</div>
-          <div class="lifesim-step-mid"><div class="lifesim-step-name">${s.label}</div><div class="lifesim-step-line">${s.line}</div></div>
-          <div class="lifesim-step-check">✓</div>
-        </div>`;}).join('')}
+
+    <div class="lifesim-hier">
+      <div class="lifesim-orch pending" id="lifesim-step-4" data-step="4">
+        <div class="lifesim-orch-av">${avatar(JUDGE)}</div>
+        <div style="flex:1;min-width:0">
+          <div class="lifesim-orch-name">Orchestrator</div>
+          <div class="lifesim-orch-txt" id="lifesimOrchLine">Waiting on your team's input…</div>
+        </div>
+        <div class="lifesim-orch-check">✓</div>
+      </div>
+      <div class="lifesim-hier-line"></div>
+      <div class="lifesim-steps lifesim-hier-branch" id="lifesimSteps">
+        ${steps.map((s,i)=>{const a=AGENTS.find(x=>x.id===s.id);
+          return `<div class="lifesim-step" id="lifesim-step-${i}" data-step="${i}">
+            <div class="lifesim-step-av">${avatar(a)}</div>
+            <div class="lifesim-step-mid"><div class="lifesim-step-name">${s.label}</div><div class="lifesim-step-line">${s.line}</div></div>
+            <div class="lifesim-step-check">✓</div>
+          </div>`;}).join('')}
+      </div>
     </div>
   </div>
 </div></div></div>`;},
@@ -2652,8 +2705,35 @@ lifesimResults(){
   <div style="position:relative;z-index:1;padding-top:50px">${appbar('Life Simulator','lifesimIntro',false,true)}<div class="pad" style="padding-bottom:32px">
   <div class="stepbadge gold">✦ ${sc.label}${sc.cost?' · '+fmtSGD(sc.cost):''}</div>
 
-  <div class="lifesim-sechead" style="margin-top:8px">How we made this decision <span onclick="lifesimToggleWorking()" style="color:#a6710f;font-weight:800;cursor:pointer;text-transform:none;letter-spacing:0;font-size:11px">${m.showWorking?'Hide ▲':'Show ▾'}</span></div>
-  ${m.showWorking?`<div class="lifesim-rows">
+  <div class="lifesim-sechead" style="margin-top:8px">Holistic impact</div>
+  <div class="lifesim-impacts">
+    ${impactRows.map(r=>`<div class="lifesim-impact-row ${r.id===selId?'hl':''}" onclick="lifesimSelectImpact('${r.id}')">
+      <span class="lifesim-impact-ic">${r.icon}</span>
+      <div class="lifesim-impact-mid"><div class="lifesim-impact-lbl">${r.label}</div>${r.note?`<div class="lifesim-impact-note">${r.note}</div>`:''}</div>
+      <span class="lifesim-impact-val ${r.tone}">${r.value}</span>
+    </div>`).join('')}
+  </div>
+  <div class="lifesim-impact-hint">Tap any impact above to explore it below</div>
+
+  <div class="lifesim-sechead">If you go ahead vs if you don't · ${cmp.title}</div>
+  <div class="lifesim-compare">
+    <div class="lifesim-compare-col"><div class="lifesim-compare-h">${cmp.L.h}</div><div class="lifesim-compare-big">${cmp.L.big}</div><div class="lifesim-compare-sub">${cmp.L.sub}</div></div>
+    <div class="lifesim-compare-arrow">→</div>
+    <div class="lifesim-compare-col after"><div class="lifesim-compare-h">${cmp.R.h}</div><div class="lifesim-compare-big">${cmp.R.big}</div><div class="lifesim-compare-sub">${cmp.R.sub}</div></div>
+  </div>
+
+  <div style="text-align:center;margin:2px 0 16px">
+    <a onclick="lifesimToggleWorking()" style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:#a6710f;font-weight:700;cursor:pointer">
+      ${m.showWorking?'Hide how we got this number ▲':'How did we get this number? ▾'}
+    </a>
+  </div>
+  ${m.showWorking?`
+  <div class="lifesim-orch" style="margin-bottom:12px">
+    <div class="lifesim-orch-av">${avatar(JUDGE)}</div>
+    <div><div class="lifesim-orch-name">Orchestrator</div>
+    <div class="lifesim-orch-txt">Here's how your team landed on <b>${cmp.R.big}</b> for ${cmp.title.toLowerCase()} — each of them checked this decision against their part of your plan, then I combined it into one number.</div></div>
+  </div>
+  <div class="lifesim-rows">
     ${order.map(id=>{const a=AGENTS.find(x=>x.id===id),info=sc.impacts[id];const isOpen=expanded===id;
       return `<div class="lifesim-row ${isOpen?'open':''}" onclick="lifesimToggleRow('${id}')">
         <div class="lifesim-row-av">${avatar(a)}</div>
@@ -2673,24 +2753,8 @@ lifesimResults(){
       ${isOrchOpen?`<div class="lifesim-row-detail">
         <div class="lifesim-row-detail-txt">We've reviewed your decision across the entire team.<br><br><b>Good news — ${sc.summary}</b></div>
       </div>`:''}`;})()}
-  </div>`:''}
-
-  <div class="lifesim-sechead">Holistic impact</div>
-  <div class="lifesim-impacts">
-    ${impactRows.map(r=>`<div class="lifesim-impact-row ${r.id===selId?'hl':''}" onclick="lifesimSelectImpact('${r.id}')">
-      <span class="lifesim-impact-ic">${r.icon}</span>
-      <div class="lifesim-impact-mid"><div class="lifesim-impact-lbl">${r.label}</div>${r.note?`<div class="lifesim-impact-note">${r.note}</div>`:''}</div>
-      <span class="lifesim-impact-val ${r.tone}">${r.value}</span>
-    </div>`).join('')}
   </div>
-  <div class="lifesim-impact-hint">Tap any impact above to explore it below</div>
-
-  <div class="lifesim-sechead">If you go ahead vs if you don't · ${cmp.title}</div>
-  <div class="lifesim-compare">
-    <div class="lifesim-compare-col"><div class="lifesim-compare-h">${cmp.L.h}</div><div class="lifesim-compare-big">${cmp.L.big}</div><div class="lifesim-compare-sub">${cmp.L.sub}</div></div>
-    <div class="lifesim-compare-arrow">→</div>
-    <div class="lifesim-compare-col after"><div class="lifesim-compare-h">${cmp.R.h}</div><div class="lifesim-compare-big">${cmp.R.big}</div><div class="lifesim-compare-sub">${cmp.R.sub}</div></div>
-  </div>
+  `:''}
 
   <div class="lifesim-sechead">What would you like to do?</div>
   <div class="reviewcard hot" onclick="go('lifesimReduce')"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">📉</div><div style="flex:1"><div class="opt-t">Reduce The Impact</div><div class="opt-d">Softer trade-offs from your team to ease this decision.</div></div><span class="opt-go">›</span></div>
@@ -3055,6 +3119,7 @@ function sandTile(p,mode){const tk=prodTicker(p.name),hex=BK[p.cls]?BK[p.cls].he
     <div style="flex:1;min-width:0"><div class="tname" style="text-align:left">${cleanName(p.name)}</div><div class="ttk" style="text-align:left">${tk}${p.why?' · '+p.why:''}</div></div><span class="tileadd">＋</span></div>`;}
 function setBucket(k){state.activeBucket=k;keepScroll(render);}
 function setPilotTab(t){state._pilotTab=t;keepScroll(render);}
+function setPilotTopTab(t){state._topTab=t;keepScroll(render);}
 function seededRandom(seed,index){const x=Math.sin(seed+index*12.9898)*43758.5453;return x-Math.floor(x);}
 function assetGrowthMult(asset,t){const seed=state.simSeed||42;const months=Math.round(t*12);let mult=1;
   for(let m=1;m<=months;m++){
@@ -3748,10 +3813,19 @@ function lifesimAsk(){
 }
 function lifesimRunAnalysis(){
   const totalSteps=5;
+  const agentNames=['Income Ivy','Growth Gary','Retirement Ryan','Property Paige'];
   function tick(){
     const i=state.lifesim.analyzeStep;
     const el=$('lifesim-step-'+i);
     if(el)el.classList.add('done');
+    const orch=$('lifesim-step-4'), orchLine=$('lifesimOrchLine');
+    if(i<4){
+      if(orch)orch.classList.remove('pending');
+      if(orchLine)orchLine.textContent = i<3 ? `Heard back from ${agentNames[i]} — ${i+1} of 4 in…` : 'All 4 inputs in — synthesizing…';
+    }else{
+      if(orch){orch.classList.remove('pending');orch.classList.add('done');}
+      if(orchLine)orchLine.textContent = "Bringing together your team's recommendations…";
+    }
     state.lifesim.analyzeStep++;
     if(state.lifesim.analyzeStep<totalSteps){
       setTimeout(tick,700);
