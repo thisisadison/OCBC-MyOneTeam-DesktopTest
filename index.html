@@ -539,6 +539,14 @@
   .chatfab .cft::before{content:'💬';font-size:15px}
   .chatfab .cfs{font-size:12.5px;opacity:.72;font-weight:600;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .chatfab .cfgo{font-size:18px;flex-shrink:0;line-height:1;background:#34d399;color:#0c1f16;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800}
+
+  .rmfab{position:absolute;right:16px;bottom:24px;z-index:55;display:none;width:54px;height:54px;border-radius:50%;background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a;font-size:22px;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(190,150,60,.4);cursor:pointer;border:2px solid #fff}
+  .rmfab.show{display:flex}
+  .rmfab-menu{position:absolute;right:16px;bottom:86px;z-index:56;background:#fff;border:1px solid #e8d6a8;border-radius:16px;box-shadow:0 12px 30px rgba(20,18,30,.22);overflow:hidden;min-width:190px}
+  .rmfab-menu-item{display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;border-bottom:1px solid var(--line)}
+  .rmfab-menu-item:last-child{border-bottom:none}
+  .rmfab-menu-item:active{background:#fdf6ea}
+  .rmfab-menu-ic{font-size:16px;flex-shrink:0}
   .view.hasfab{padding-top:96px}
   .overlay{position:absolute;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:flex-end;z-index:70;border-radius:40px;overflow:hidden}
   .sheet{background:#fff;width:100%;border-radius:24px 24px 0 0;padding:22px 20px 24px;animation:slideup .25s ease;text-align:center}
@@ -858,6 +866,22 @@
   .lifesim-chip:active{background:#fdf6ea;border-color:#c9a44a}
   .lifesim-chip-ic{font-size:22px}
 
+  .lifesim-detailfield{margin-bottom:18px}
+  .lifesim-detailfield-lbl{font-size:12.5px;font-weight:700;color:var(--ink2);margin-bottom:7px}
+  .lifesim-amtwrap{display:flex;align-items:center;gap:8px;border:1.5px solid #e8d6a8;border-radius:14px;background:linear-gradient(180deg,#fffdf9,#fff);padding:13px 16px;box-shadow:0 3px 10px rgba(190,150,60,.06);transition:border-color .15s}
+  .lifesim-amtwrap:focus-within{border-color:#c9a44a}
+  .lifesim-amtpfx{font-family:'Sora';font-weight:800;font-size:15px;color:var(--muted);flex-shrink:0}
+  .lifesim-amtin{flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:'Sora';font-weight:700;font-size:15px;color:var(--ink)}
+  .lifesim-amtsfx{font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap;flex-shrink:0}
+
+  .lifesim-decisionlist{background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid #e8d6a8;border-radius:16px;overflow:hidden;box-shadow:0 3px 10px rgba(190,150,60,.06)}
+  .lifesim-decisionrow{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid #f0e6cc;cursor:pointer}
+  .lifesim-decisionrow:last-child{border-bottom:none}
+  .lifesim-decisionrow-ic{font-size:18px;flex-shrink:0}
+  .lifesim-decisionrow-mid{flex:1;min-width:0}
+  .lifesim-decisionrow-t{font-family:'Sora';font-weight:800;font-size:13px;color:var(--ink)}
+  .lifesim-decisionrow-d{font-size:11.5px;color:var(--muted);margin-top:1px}
+
   .lifesim-analyzewrap{padding:30px 4px 10px;text-align:center}
   .lifesim-analyzetitle{font-family:'Sora';font-weight:800;font-size:21px;color:var(--ink)}
   .lifesim-analyzesub{font-size:13px;color:var(--muted);margin-top:6px;margin-bottom:26px}
@@ -871,10 +895,10 @@
   .lifesim-step-check{width:24px;height:24px;border-radius:50%;background:#f0e2bb;color:#a6710f;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;opacity:0;transform:scale(.5);transition:opacity .25s ease,transform .25s ease,background .25s ease,color .25s ease}
   .lifesim-step.done .lifesim-step-check{opacity:1;transform:scale(1);background:#1f9d57;color:#fff}
 
-  .lifesim-orch{display:flex;gap:14px;background:linear-gradient(160deg,#2d2a3d,#1b1926);border-radius:20px;padding:20px;margin:6px 0 22px;box-shadow:0 12px 28px rgba(20,18,30,.22)}
-  .lifesim-orch-av{width:48px;height:48px;border-radius:14px;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 2px rgba(243,214,141,.4)}
-  .lifesim-orch-name{font-family:'Sora';font-weight:800;font-size:13px;color:#f3d68d;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
-  .lifesim-orch-txt{font-size:14px;line-height:1.55;color:#fdf6ea}
+  .lifesim-orch{display:flex;gap:10px;background:linear-gradient(160deg,#2d2a3d,#1b1926);border-radius:14px;padding:11px 13px;margin:6px 0 14px;box-shadow:0 6px 16px rgba(20,18,30,.18)}
+  .lifesim-orch-av{width:32px;height:32px;border-radius:10px;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 2px rgba(243,214,141,.4)}
+  .lifesim-orch-name{font-family:'Sora';font-weight:800;font-size:10.5px;color:#f3d68d;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
+  .lifesim-orch-txt{font-size:12.5px;line-height:1.4;color:#fdf6ea}
   /* hierarchy loading layout: orchestrator on top, its agents underneath */
   .lifesim-hier{margin-top:6px}
   .lifesim-orch.pending{opacity:.45}
@@ -1092,16 +1116,21 @@
       <div style="flex:1;text-align:left;min-width:0"><div class="cft" id="chatFabName">Ask your AI team</div><div class="cfs">Tap to chat about your plan</div></div>
       <div class="cfgo">›</div>
     </div>
+    <div class="rmfab-menu" id="rmFabMenu" style="display:none">
+      <div class="rmfab-menu-item" onclick="rmFabAction('message')"><span class="rmfab-menu-ic">✉️</span><span>Message my RM</span></div>
+      <div class="rmfab-menu-item" onclick="rmFabAction('call')"><span class="rmfab-menu-ic">📞</span><span>Call RM now</span></div>
+    </div>
+    <div class="rmfab" id="rmFab" onclick="rmFabToggle()">🤝</div>
     <div class="toast" id="toast"></div>
   </div>
 </div>
 
 <script>
 /* ============ state ============ */
-const ORDER=['login','home','mbtiIntro','mbtiQuiz','mbtiResult','team','goals','risk','analyze','reco','portfolio','projection','advice','trade','pilot','review','lifesimIntro','lifesimAnalyzing','lifesimResults','lifesimReduce','lifesimRM'];
+const ORDER=['login','home','mbtiIntro','mbtiQuiz','mbtiResult','team','goals','risk','analyze','reco','portfolio','projection','advice','trade','pilot','review','lifesimIntro','lifesimDetails','lifesimAnalyzing','lifesimResults','lifesimReduce','lifesimRM'];
 // Screens that aren't steps of their own get the number of the step they branch from.
 const STEP_ALIAS={link:'portfolio',orchestrate:'portfolio',tune:'portfolio',sandbox:'reco',choose:'reco',paper:'reco',rm:'reco',done:'trade'};
-const NAMES={login:'Log In',home:'Home',mbtiIntro:'Financial Profile',mbtiQuiz:'Financial Profile',mbtiResult:'Your Money Identity',team:'Your AI Team',goals:'Your Goals',risk:'Risk Comfort',analyze:'Building Your Plan',reco:'Your Plan',orchestrate:'Orchestrated view',portfolio:'Your Portfolio',link:'Link Accounts',tune:'Edit Basket',sandbox:'Ready To Act',choose:'Choose Next Step',paper:'Paper Trading',rm:'Relationship Manager',done:'Invest',projection:'Projection',advice:'Final Advice',trade:'Trade',pilot:'My OneTeam Home',review:'Quarterly Review',lifesimIntro:'Life Simulator',lifesimAnalyzing:'Life Simulator',lifesimResults:'Life Simulator',lifesimReduce:'Reduce The Impact',lifesimRM:'Relationship Manager'};
+const NAMES={login:'Log In',home:'Home',mbtiIntro:'Financial Profile',mbtiQuiz:'Financial Profile',mbtiResult:'Your Money Identity',team:'Your AI Team',goals:'Your Goals',risk:'Risk Comfort',analyze:'Building Your Plan',reco:'Your Plan',orchestrate:'Orchestrated view',portfolio:'Your Portfolio',link:'Link Accounts',tune:'Edit Basket',sandbox:'Ready To Act',choose:'Choose Next Step',paper:'Paper Trading',rm:'Relationship Manager',done:'Invest',projection:'Projection',advice:'Final Advice',trade:'Trade',pilot:'My OneTeam Home',review:'Quarterly Review',lifesimIntro:'Life Simulator',lifesimDetails:'A Few Details',lifesimAnalyzing:'Life Simulator',lifesimResults:'Life Simulator',lifesimReduce:'Reduce The Impact',lifesimRM:'Relationship Manager'};
 const KEYS4=['FI','Funds','Cash','Alt'];
 const BK={FI:{name:'Fixed Income',color:'var(--fi)',hex:'#2f6fd6',sub:'Stability & income'},
   Funds:{name:'Equities',color:'var(--funds)',hex:'#ec1c24',sub:'Growth engine'},
@@ -1622,7 +1651,7 @@ const state={
   paper:{started:false,step:0,series:[],base:0,amount:96000},
   drag:null,
   mbti:{step:0,answers:[],risk:2,plan:2,archetype:null,tieAnswer:null,done:false},
-  lifesim:{scenario:null,customText:'',analyzeStep:0,showWorking:false,expandedRow:null,selectedImpact:null}
+  lifesim:{decisions:[],activeDecisionId:null,customText:'',analyzeStep:0,pendingScenario:null,pendingCost:null,pendingYears:null}
 };
 const REGIONS=['Singapore','United States','Asia ex-Japan','Europe','Emerging Markets','Global / broad'];
 /* 6-question risk comfort assessment (client-friendly) */
@@ -2611,7 +2640,7 @@ pilot(){const inv=totalVal(),curV=Math.round(inv*1.047),gain=curV-inv,gpct=(gain
   <div class="pilot-toggle ${topTab==='life'?'on-life':''}">
     <div class="pilot-toggle-thumb"></div>
     <button class="pilot-toggle-btn ${topTab==='myoneteam'?'active':''}" onclick="setPilotTopTab('myoneteam')">🏠 MyOneTeam</button>
-    <button class="pilot-toggle-btn ${topTab==='life'?'active':''}" onclick="setPilotTopTab('life')">💭 Life Sim</button>
+    <button class="pilot-toggle-btn ${topTab==='life'?'active':''}" onclick="setPilotTopTab('life')">💭 Life Simulator</button>
   </div>
 
   ${topTab==='life'?lifePanel:`
@@ -2654,7 +2683,54 @@ lifesimIntro(){const m=state.lifesim;
   </div>
 
   <button class="btn gold" id="lifesimAskBtn" onclick="lifesimAsk()" disabled>Ask MyOneTeam →</button>
-  <div class="note" style="margin-top:14px">Every recommendation here comes from your whole team working together — not a single calculator.</div>
+  <div class="note" style="margin-top:14px">Every recommendation here comes from your whole team working together — not a single calculator. You can explore as many decisions as you like, even the same one more than once.</div>
+
+  ${m.decisions.length?`
+  <div class="lifesim-sechead" style="margin-top:22px">Your decisions so far <span style="text-transform:none;letter-spacing:0;font-weight:600">· ${m.decisions.length}</span></div>
+  <div class="lifesim-decisionlist">
+    ${m.decisions.map(d=>{const sc=LIFESIM_SCENARIOS[d.scenario];
+      return `<div class="lifesim-decisionrow" onclick="lifesimOpenDecision('${d.id}')">
+        <span class="lifesim-decisionrow-ic">${LIFESIM_CHIPS.find(c=>c.id===d.scenario).icon}</span>
+        <div class="lifesim-decisionrow-mid"><div class="lifesim-decisionrow-t">${sc.label}</div><div class="lifesim-decisionrow-d">${d.cost?fmtSGD(d.cost):(d.years?d.years+' yr timeframe':'No amount set')}</div></div>
+        <span class="opt-go">›</span>
+      </div>`;}).join('')}
+  </div>`:''}
+</div></div></div>`;},
+
+lifesimDetails(){
+  const m=state.lifesim; const sc=LIFESIM_SCENARIOS[m.pendingScenario]||LIFESIM_SCENARIOS.car;
+  const chip=LIFESIM_CHIPS.find(c=>c.id===m.pendingScenario);
+  const needsCost=sc.cost>0;
+  return `<div style="position:relative">
+  <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Life Simulator','lifesimIntro',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div class="stepbadge gold">${chip.icon} ${sc.label}</div>
+  <h1>A Couple Quick Details</h1>
+  <p class="sub">This helps your team run the numbers against your actual plan instead of a rough estimate.</p>
+
+  ${needsCost?`
+  <div class="lifesim-detailfield">
+    <div class="lifesim-detailfield-lbl">${m.pendingScenario==='study'?'Expected cost of tuition & fees':m.pendingScenario==='family'?'Expected cost in the first year':'Expense you foresee'}</div>
+    <div class="lifesim-inputwrap">
+      <div class="lifesim-amtwrap">
+        <span class="lifesim-amtpfx">S$</span>
+        <input class="lifesim-amtin" inputmode="numeric" value="${m.pendingCost!=null?m.pendingCost:''}" placeholder="${sc.cost.toLocaleString()}" oninput="lifesimSetPendingCost(this.value)">
+      </div>
+    </div>
+  </div>`:''}
+
+  <div class="lifesim-detailfield">
+    <div class="lifesim-detailfield-lbl">${m.pendingScenario==='retire'?'How many years earlier do you want to retire?':'When are you aiming to do this?'}</div>
+    <div class="lifesim-inputwrap">
+      <div class="lifesim-amtwrap">
+        <input class="lifesim-amtin" inputmode="decimal" value="${m.pendingYears!=null?m.pendingYears:''}" placeholder="${m.pendingScenario==='retire'?'e.g. 5':'e.g. 2'}" oninput="lifesimSetPendingYears(this.value)">
+        <span class="lifesim-amtsfx">${m.pendingScenario==='retire'?'years earlier':'years from now'}</span>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn gold" onclick="lifesimConfirmDetails()">Analyze This →</button>
+  <div class="note" style="margin-top:14px">Leave a field blank and your team will use a typical estimate instead.</div>
 </div></div></div>`;},
 
 lifesimAnalyzing(){
@@ -2694,16 +2770,18 @@ lifesimAnalyzing(){
 </div></div></div>`;},
 
 lifesimResults(){
-  const m=state.lifesim; const sc=LIFESIM_SCENARIOS[m.scenario]||LIFESIM_SCENARIOS.car;
+  const m=state.lifesim; const d=lifesimActiveDecision();
+  if(!d)return `<div style="position:relative"><div style="position:relative;z-index:1;padding-top:50px">${appbar('Life Simulator','lifesimIntro',false,true)}<div class="pad"><p class="sub">No decision selected yet.</p><button class="btn gold" onclick="go('lifesimIntro')">Start a new one →</button></div></div></div>`;
+  const sc=lifesimScaledScenario(d.scenario,d.cost,d.years);
   const order=['income','grow','retire','home'];
-  const expanded=m.expandedRow;
+  const expanded=d.expandedRow;
   const impactRows=lifesimImpactRows(sc);
-  const selId=(m.selectedImpact&&impactRows.some(r=>r.id===m.selectedImpact))?m.selectedImpact:'cashflow';
+  const selId=(d.selectedImpact&&impactRows.some(r=>r.id===d.selectedImpact))?d.selectedImpact:'cashflow';
   const cmp=lifesimCompareFor(sc,selId);
   return `<div style="position:relative">
   <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
   <div style="position:relative;z-index:1;padding-top:50px">${appbar('Life Simulator','lifesimIntro',false,true)}<div class="pad" style="padding-bottom:32px">
-  <div class="stepbadge gold">✦ ${sc.label}${sc.cost?' · '+fmtSGD(sc.cost):''}</div>
+  <div class="stepbadge gold">✦ ${sc.label}${sc.cost?' · '+fmtSGD(sc.cost):''}${sc.years?' · '+sc.years+'y':''}</div>
 
   <div class="lifesim-sechead" style="margin-top:8px">Holistic impact</div>
   <div class="lifesim-impacts">
@@ -2724,14 +2802,14 @@ lifesimResults(){
 
   <div style="text-align:center;margin:2px 0 16px">
     <a onclick="lifesimToggleWorking()" style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:#a6710f;font-weight:700;cursor:pointer">
-      ${m.showWorking?'Hide how we got this number ▲':'How did we get this number? ▾'}
+      ${d.showWorking?'Hide how we got this number ▲':'How did we get this number? ▾'}
     </a>
   </div>
-  ${m.showWorking?`
-  <div class="lifesim-orch" style="margin-bottom:12px">
+  ${d.showWorking?`
+  <div class="lifesim-orch">
     <div class="lifesim-orch-av">${avatar(JUDGE)}</div>
     <div><div class="lifesim-orch-name">Orchestrator</div>
-    <div class="lifesim-orch-txt">Here's how your team landed on <b>${cmp.R.big}</b> for ${cmp.title.toLowerCase()} — each of them checked this decision against their part of your plan, then I combined it into one number.</div></div>
+    <div class="lifesim-orch-txt">Here's how your team landed on <b>${cmp.R.big}</b> for ${cmp.title.toLowerCase()}.</div></div>
   </div>
   <div class="lifesim-rows">
     ${order.map(id=>{const a=AGENTS.find(x=>x.id===id),info=sc.impacts[id];const isOpen=expanded===id;
@@ -2760,12 +2838,15 @@ lifesimResults(){
   <div class="reviewcard hot" onclick="go('lifesimReduce')"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">📉</div><div style="flex:1"><div class="opt-t">Reduce The Impact</div><div class="opt-d">Softer trade-offs from your team to ease this decision.</div></div><span class="opt-go">›</span></div>
   <div class="reviewcard" style="margin-top:10px" onclick="go('lifesimRM')"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">🤝</div><div style="flex:1"><div class="opt-t">Speak With My Relationship Manager</div><div class="opt-d">They'll already have this whole conversation on file.</div></div><span class="opt-go">›</span></div>
   <div class="reviewcard" style="margin-top:10px" onclick="lifesimProceed()"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">✓</div><div style="flex:1"><div class="opt-t">I'm Comfortable With This</div><div class="opt-d">Log this decision and continue — no changes needed.</div></div><span class="opt-go">›</span></div>
+  <div class="reviewcard" style="margin-top:10px" onclick="go('lifesimIntro')"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">➕</div><div style="flex:1"><div class="opt-t">Add Another Decision</div><div class="opt-d">Exploring more than one? Add as many as you like — even the same kind twice.</div></div><span class="opt-go">›</span></div>
 
   <div class="note" style="margin-top:16px">You're in control — your team is here to support this decision, not push you into it.</div>
 </div></div></div>`;},
 
 lifesimReduce(){
-  const m=state.lifesim; const sc=LIFESIM_SCENARIOS[m.scenario]||LIFESIM_SCENARIOS.car;
+  const d=lifesimActiveDecision();
+  if(!d)return `<div style="position:relative"><div style="position:relative;z-index:1;padding-top:50px">${appbar('Reduce The Impact','lifesimIntro',false,true)}<div class="pad"><p class="sub">No decision selected yet.</p><button class="btn gold" onclick="go('lifesimIntro')">Start a new one →</button></div></div></div>`;
+  const sc=lifesimScaledScenario(d.scenario,d.cost,d.years);
   const order=['income','grow','retire','home'];
   return `<div style="position:relative">
   <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
@@ -2785,7 +2866,8 @@ lifesimReduce(){
 </div></div></div>`;},
 
 lifesimRM(){
-  const m=state.lifesim; const sc=LIFESIM_SCENARIOS[m.scenario]||LIFESIM_SCENARIOS.car;
+  const d=lifesimActiveDecision();
+  const sc=d?lifesimScaledScenario(d.scenario,d.cost,d.years):null;
   return `<div style="position:relative">
   <div style="position:relative;z-index:1">${appbar('Relationship Manager','lifesimResults',false,true)}<div class="pad" style="padding-bottom:32px">
   <div class="lifesim-rmicon">🤝</div>
@@ -2793,7 +2875,7 @@ lifesimRM(){
   <p class="sub" style="text-align:center">Your Relationship Manager already has the full picture — no need to repeat yourself.</p>
 
   <div class="card" style="background:#fff;margin-top:8px">
-    <div class="lifesim-rm-row"><span>Scenario</span><b>${sc.label}${sc.cost?' · '+fmtSGD(sc.cost):''}</b></div>
+    <div class="lifesim-rm-row"><span>Scenario</span><b>${sc?sc.label+(sc.cost?' · '+fmtSGD(sc.cost):''):'General enquiry'}</b></div>
     <div class="lifesim-rm-row"><span>Sent to</span><b>Jasmine Lau, Relationship Manager</b></div>
     <div class="lifesim-rm-row"><span>Includes</span><b>Full impact analysis + team recommendations</b></div>
     <div class="lifesim-rm-row"><span>Includes</span><b>Mitigation strategies already discussed</b></div>
@@ -3798,7 +3880,7 @@ function lifesimOnInput(){
 function lifesimPickChip(id){
   const chip=LIFESIM_CHIPS.find(c=>c.id===id);
   state.lifesim.customText=chip.label;
-  state.lifesim.scenario=id;
+  state.lifesim.pendingScenario=id;
   keepScroll(()=>render());
   setTimeout(()=>{ const input=$('lifesimInput'); if(input){input.value=chip.label;} const btn=$('lifesimAskBtn'); if(btn)btn.disabled=false; },0);
 }
@@ -3806,7 +3888,21 @@ function lifesimAsk(){
   const text=state.lifesim.customText||'';
   if(text.trim().length<3)return;
   const matched=lifesimScenarioFor(text);
-  state.lifesim.scenario=matched||state.lifesim.scenario||'car';
+  state.lifesim.pendingScenario=matched||state.lifesim.pendingScenario||'car';
+  const sc=LIFESIM_SCENARIOS[state.lifesim.pendingScenario];
+  state.lifesim.pendingCost=sc.cost>0?sc.cost:null;
+  state.lifesim.pendingYears=null;
+  go('lifesimDetails');
+}
+function lifesimSetPendingCost(val){
+  const n=parseInt(String(val).replace(/[^0-9]/g,''),10);
+  state.lifesim.pendingCost=isNaN(n)?null:n;
+}
+function lifesimSetPendingYears(val){
+  const n=parseFloat(val);
+  state.lifesim.pendingYears=isNaN(n)?null:n;
+}
+function lifesimConfirmDetails(){
   state.lifesim.analyzeStep=0;
   go('lifesimAnalyzing');
   lifesimRunAnalysis();
@@ -3830,19 +3926,49 @@ function lifesimRunAnalysis(){
     if(state.lifesim.analyzeStep<totalSteps){
       setTimeout(tick,700);
     }else{
-      setTimeout(()=>{ state.lifesim.done=true; go('lifesimResults'); },550);
+      setTimeout(()=>{
+        const id='dec'+Date.now()+Math.floor(Math.random()*1000);
+        state.lifesim.decisions.push({
+          id, scenario:state.lifesim.pendingScenario,
+          cost:state.lifesim.pendingCost, years:state.lifesim.pendingYears,
+          showWorking:false, expandedRow:null, selectedImpact:null, status:'pending'
+        });
+        state.lifesim.activeDecisionId=id;
+        go('lifesimResults');
+      },550);
     }
   }
   setTimeout(tick,500);
 }
+function lifesimActiveDecision(){
+  return state.lifesim.decisions.find(d=>d.id===state.lifesim.activeDecisionId)||null;
+}
 function lifesimToggleWorking(){
-  state.lifesim.showWorking=!state.lifesim.showWorking;
-  if(state.lifesim.showWorking && !state.lifesim.expandedRow) state.lifesim.expandedRow=null;
+  const d=lifesimActiveDecision(); if(!d)return;
+  d.showWorking=!d.showWorking;
   keepScroll(()=>render());
 }
 function lifesimToggleRow(id){
-  state.lifesim.expandedRow = state.lifesim.expandedRow===id ? null : id;
+  const d=lifesimActiveDecision(); if(!d)return;
+  d.expandedRow = d.expandedRow===id ? null : id;
   keepScroll(()=>render());
+}
+/* Produces a scaled copy of a scenario's holistic figures based on what the user actually entered
+   (cost and years-until-purchase), instead of always using the scenario's fixed default numbers. */
+function lifesimScaledScenario(scenarioId,userCost,userYears){
+  const base=LIFESIM_SCENARIOS[scenarioId]||LIFESIM_SCENARIOS.car;
+  const baseCost=base.cost;
+  const ratio=baseCost>0 ? Math.max(0.15,(userCost!=null?userCost:baseCost)/baseCost) : 1;
+  const yearsFactor=(userYears!=null && userYears>0) ? Math.max(0.4,3/userYears) : 1; // sooner purchase = sharper near-term impact
+  const h=base.holistic;
+  const scaledMonthlyHit=Math.round(h.monthlyHit*ratio*yearsFactor);
+  const scaledRetireDelay=Math.round((h.retireDelay*ratio)*10)/10;
+  const scaledEmgAfter=Math.max(0,Math.round((h.emgBefore-(h.emgBefore-h.emgAfter)*ratio)*10)/10);
+  return Object.assign({},base,{
+    cost:(userCost!=null?userCost:baseCost),
+    years:(userYears!=null?userYears:null),
+    holistic:Object.assign({},h,{monthlyHit:scaledMonthlyHit,retireDelay:scaledRetireDelay,emgAfter:scaledEmgAfter})
+  });
 }
 function lifesimImpactRows(sc){
   const h=sc.holistic;
@@ -3883,14 +4009,33 @@ function lifesimCompareFor(sc,rowId){
     R:{h:'If you go ahead',big:h.monthlyHit>0?'−'+fmtSGD(h.monthlyHit)+'/mo':(h.monthlyHit<0?'+'+fmtSGD(Math.abs(h.monthlyHit))+'/mo needed':'No change'),sub:h.monthlyHit>0?'lower monthly surplus':(h.monthlyHit<0?'new savings required':'unaffected')}};
 }
 function lifesimSelectImpact(id){
-  state.lifesim.selectedImpact=id;
+  const d=lifesimActiveDecision(); if(!d)return;
+  d.selectedImpact=id;
   keepScroll(()=>render());
 }
+function rmFabToggle(){
+  const menu=$('rmFabMenu');
+  menu.style.display = menu.style.display==='block' ? 'none' : 'block';
+}
+function rmFabAction(kind){
+  $('rmFabMenu').style.display='none';
+  if(kind==='call'){
+    toast('Calling Jasmine Lau, your Relationship Manager… 📞');
+  }else{
+    toast('Message sent to Jasmine Lau — she has your Life Simulator context ✓');
+  }
+}
+function lifesimOpenDecision(id){
+  state.lifesim.activeDecisionId=id;
+  go('lifesimResults');
+}
 function lifesimProceed(){
+  const d=lifesimActiveDecision(); if(d)d.status='accepted';
   toast('Your team is making these adjustments to your plan ✓');
   go('pilot');
 }
 function lifesimApplyReduce(){
+  const d=lifesimActiveDecision(); if(d)d.status='reduced';
   toast("Adjustments applied across your team's plan ✓");
   go('pilot');
 }
@@ -4132,6 +4277,10 @@ function render(){
   if(showFab){const per=aiPersona();
     if($('chatFabAv'))$('chatFabAv').innerHTML=avatar(per);
     if($('chatFabName'))$('chatFabName').textContent='Ask '+per.name;}
+  const lifesimScreens=['lifesimIntro','lifesimDetails','lifesimAnalyzing','lifesimResults','lifesimReduce','lifesimRM'];
+  const showRmFab=lifesimScreens.indexOf(cur)>=0 && cur!=='lifesimRM';
+  if($('rmFab'))$('rmFab').classList.toggle('show',showRmFab);
+  if(!showRmFab){$('rmFabMenu').style.display='none';}
   if(cur==='sandbox')refreshChrome();
   if(cur==='goals')setTimeout(startGoalChat,0);
   setTimeout(startCarousel,0);
