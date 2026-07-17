@@ -2596,7 +2596,8 @@ pilot(){const inv=totalVal(),curV=Math.round(inv*1.047),gain=curV-inv,gpct=(gain
 
 lifesimIntro(){const m=state.lifesim;
   return `<div style="position:relative">
-  <div style="position:relative;z-index:1">${appbar('Life Simulator','pilot',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Life Simulator','pilot',false,true)}<div class="pad" style="padding-bottom:32px">
   <div class="stepbadge gold">✦ Your MyOneTeam, on call</div>
   <h1>What are you thinking about today?</h1>
   <p class="sub">Tell your team what you're considering — big or small — and they'll show you what it means for your plan, together.</p>
@@ -2623,7 +2624,8 @@ lifesimAnalyzing(){
     {id:'judge',label:'Orchestrator',line:"Bringing together your team's recommendations…"}
   ];
   return `<div style="position:relative">
-  <div style="position:relative;z-index:1">${appbar('Life Simulator','lifesimIntro',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Life Simulator','lifesimIntro',false,true)}<div class="pad" style="padding-bottom:32px">
   <div class="lifesim-analyzewrap">
     <div class="lifesim-analyzetitle">Your team is on it</div>
     <div class="lifesim-analyzesub" id="lifesimScenarioLabel">Looking at your scenario…</div>
@@ -2646,7 +2648,8 @@ lifesimResults(){
   const selId=(m.selectedImpact&&impactRows.some(r=>r.id===m.selectedImpact))?m.selectedImpact:'cashflow';
   const cmp=lifesimCompareFor(sc,selId);
   return `<div style="position:relative">
-  <div style="position:relative;z-index:1">${appbar('Life Simulator','lifesimIntro',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Life Simulator','lifesimIntro',false,true)}<div class="pad" style="padding-bottom:32px">
   <div class="stepbadge gold">✦ ${sc.label}${sc.cost?' · '+fmtSGD(sc.cost):''}</div>
 
   <div class="lifesim-sechead" style="margin-top:8px">How we made this decision <span onclick="lifesimToggleWorking()" style="color:#a6710f;font-weight:800;cursor:pointer;text-transform:none;letter-spacing:0;font-size:11px">${m.showWorking?'Hide ▲':'Show ▾'}</span></div>
@@ -2701,7 +2704,8 @@ lifesimReduce(){
   const m=state.lifesim; const sc=LIFESIM_SCENARIOS[m.scenario]||LIFESIM_SCENARIOS.car;
   const order=['income','grow','retire','home'];
   return `<div style="position:relative">
-  <div style="position:relative;z-index:1">${appbar('Reduce The Impact','lifesimResults',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Reduce The Impact','lifesimResults',false,true)}<div class="pad" style="padding-bottom:32px">
   <div class="stepbadge gold">✦ ${sc.label}</div>
   <h1>Here's How Your Team Would Soften This</h1>
   <p class="sub">Collaborative moves from across your team — not generic advice — to reduce the impact while keeping your goals intact.</p>
@@ -4030,7 +4034,11 @@ function render(){
     advice:{img:'images/background/ocbc-ea-finaladvice.png',top:-40,width:100},
     trade:{img:'images/background/ocbc-ea-trade.png',top:-40,width:100},
     pilot:{img:'images/background/ocbc-ea-myoneteamhome.png',top:-40,width:100},
-    review:{img:'images/background/ocbc-ea-quarterlyreview.png',top:-40,width:100}
+    review:{img:'images/background/ocbc-ea-quarterlyreview.png',top:-40,width:100},
+    lifesimIntro:{img:'images/background/ocbc-ea-lifesim.png',top:-40,width:100},
+    lifesimAnalyzing:{img:'images/background/ocbc-ea-lifesim.png',top:-40,width:100},
+    lifesimResults:{img:'images/background/ocbc-ea-lifesim.png',top:-40,width:100},
+    lifesimReduce:{img:'images/background/ocbc-ea-lifefollowup.png',top:-40,width:100}
   };
   $('statusbar').className='statusbar'+(cur==='home'||cur==='analyze'||BG_SCREENS[cur]?' onhero':cur==='login'?' over':'');
   if($('screenbg')){
