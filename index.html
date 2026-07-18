@@ -542,11 +542,6 @@
 
   .rmfab{position:absolute;right:16px;bottom:24px;z-index:55;display:none;width:54px;height:54px;border-radius:50%;background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a;font-size:22px;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(190,150,60,.4);cursor:pointer;border:2px solid #fff}
   .rmfab.show{display:flex}
-  .rmfab-menu{position:absolute;right:16px;bottom:86px;z-index:56;background:#fff;border:1px solid #e8d6a8;border-radius:16px;box-shadow:0 12px 30px rgba(20,18,30,.22);overflow:hidden;min-width:190px}
-  .rmfab-menu-item{display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;border-bottom:1px solid var(--line)}
-  .rmfab-menu-item:last-child{border-bottom:none}
-  .rmfab-menu-item:active{background:#fdf6ea}
-  .rmfab-menu-ic{font-size:16px;flex-shrink:0}
   .view.hasfab{padding-top:96px}
   .overlay{position:absolute;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:flex-end;z-index:70;border-radius:40px;overflow:hidden}
   .sheet{background:#fff;width:100%;border-radius:24px 24px 0 0;padding:22px 20px 24px;animation:slideup .25s ease;text-align:center}
@@ -857,8 +852,8 @@
   .lifetab-open-t{font-family:'Sora';font-weight:700;font-size:14px;color:#f3d68d}
   .lifetab-open-d{font-size:11.5px;color:#cfc9dc;margin-top:2px}
   .lifesim-inputwrap{margin-top:6px}
-  .lifesim-input{width:100%;min-height:96px;border:1.5px solid #e8d6a8;border-radius:16px;padding:16px 18px;font-family:'Inter';font-weight:600;font-size:14.5px;color:var(--ink);background:linear-gradient(180deg,#fffdf9,#fff);resize:none;outline:none;box-shadow:0 3px 10px rgba(190,150,60,.06);transition:border-color .15s,box-shadow .15s}
-  .lifesim-input::placeholder{font-family:'Inter';font-weight:600;color:var(--muted);opacity:.7}
+  .lifesim-input{width:100%;min-height:96px;border:1.5px solid #e8d6a8;border-radius:16px;padding:16px 18px;font-family:'Sora','Inter',sans-serif;font-weight:700;font-size:16px;color:var(--ink);background:linear-gradient(180deg,#fffdf9,#fff);resize:none;outline:none;box-shadow:0 3px 10px rgba(190,150,60,.06);transition:border-color .15s,box-shadow .15s}
+  .lifesim-input::placeholder{font-family:'Sora','Inter',sans-serif;font-weight:700;color:var(--muted);opacity:.6}
   .lifesim-input:focus{border-color:#c9a44a;box-shadow:0 0 0 3px rgba(201,164,74,.14)}
   .lifesim-chiphead{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:20px 0 10px}
   .lifesim-chips{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:22px}
@@ -1115,10 +1110,6 @@
       <div class="cfic" id="chatFabAv">💬</div>
       <div style="flex:1;text-align:left;min-width:0"><div class="cft" id="chatFabName">Ask your AI team</div><div class="cfs">Tap to chat about your plan</div></div>
       <div class="cfgo">›</div>
-    </div>
-    <div class="rmfab-menu" id="rmFabMenu" style="display:none">
-      <div class="rmfab-menu-item" onclick="rmFabAction('message')"><span class="rmfab-menu-ic">✉️</span><span>Message my RM</span></div>
-      <div class="rmfab-menu-item" onclick="rmFabAction('call')"><span class="rmfab-menu-ic">📞</span><span>Call RM now</span></div>
     </div>
     <div class="rmfab" id="rmFab" onclick="rmFabToggle()">🤝</div>
     <div class="toast" id="toast"></div>
@@ -2398,6 +2389,7 @@ mbtiResult(){
     <button class="mbtiact" onclick="mbtiSaveProfile()"><span class="mbtiact-ic">⬇</span>Save</button>
     <button class="mbtiact" onclick="mbtiShareProfile()"><span class="mbtiact-ic">↗</span>Share</button>
   </div>
+  <button class="btn ghost" onclick="go('home')" style="margin-top:10px">← Not ready yet — return to Home</button>
 
   <div class="mbtiupdated">
     <div class="mbtiupdated-ic">✦</div>
@@ -2405,7 +2397,7 @@ mbtiResult(){
   </div>
 
   <button class="btn gold" onclick="go('team')" style="margin-top:16px">Continue To Build My Team →</button>
-  <div style="text-align:center;margin-top:12px"><a onclick="mbtiRetake()" style="font-size:12.5px;color:var(--muted);font-weight:600;cursor:pointer">Retake the profile</a></div>
+  <button class="btn ghost" onclick="mbtiRetake()" style="margin-top:10px">Retake the profile</button>
 </div></div></div>`;},
 
 team(){return `<div style="position:relative">
@@ -4014,16 +4006,17 @@ function lifesimSelectImpact(id){
   keepScroll(()=>render());
 }
 function rmFabToggle(){
-  const menu=$('rmFabMenu');
-  menu.style.display = menu.style.display==='block' ? 'none' : 'block';
+  showModal(`<div style="text-align:center">
+    <div class="lifesim-rmicon" style="margin:0 auto 14px">🤝</div>
+    <h3 style="text-align:center;margin-bottom:4px">Contact Your Relationship Manager?</h3>
+    <p style="text-align:center;color:var(--muted);font-size:13px;line-height:1.5;margin-bottom:4px">Jasmine will receive your current context — whatever you've been looking at — so you won't need to repeat yourself.</p>
+    <button class="btn gold" onclick="rmFabConfirm()" style="margin-top:18px">Confirm →</button>
+    <button class="btn ghost" onclick="hideModal()" style="margin-top:10px">Not now</button>
+  </div>`);
 }
-function rmFabAction(kind){
-  $('rmFabMenu').style.display='none';
-  if(kind==='call'){
-    toast('Calling Jasmine Lau, your Relationship Manager… 📞');
-  }else{
-    toast('Message sent to Jasmine Lau — she has your Life Simulator context ✓');
-  }
+function rmFabConfirm(){
+  hideModal();
+  go('lifesimRM');
 }
 function lifesimOpenDecision(id){
   state.lifesim.activeDecisionId=id;
@@ -4241,7 +4234,7 @@ function render(){
   const BG_SCREENS={
     mbtiIntro:{img:'images/background/ocbc-ea-profiling.png',top:-40,width:100},
     mbtiQuiz:{img:'images/background/ocbc-ea-profiling.png',top:-40,width:100},
-    mbtiResult:{img:'images/background/ocbc-ea-yourmoneyidentity.png',top:-40,width:100},
+    mbtiResult:{img:'images/background/ocbc-ea-lifefollowup.png',top:-40,width:100},
     team:{img:'images/background/ocbc-ea-myaiteam.png',top:-40,width:100},
     goals:{img:'images/background/ocbc-ea-yourgoals.png',top:-40,width:100},
     risk:{img:'images/background/ocbc-ea-risk.png',top:-40,width:100},
@@ -4278,9 +4271,13 @@ function render(){
     if($('chatFabAv'))$('chatFabAv').innerHTML=avatar(per);
     if($('chatFabName'))$('chatFabName').textContent='Ask '+per.name;}
   const lifesimScreens=['lifesimIntro','lifesimDetails','lifesimAnalyzing','lifesimResults','lifesimReduce','lifesimRM'];
-  const showRmFab=lifesimScreens.indexOf(cur)>=0 && cur!=='lifesimRM';
+  // RM FAB is available from screen 5 (mbtiResult) through screen 21 (lifesimReduce) inclusive — i.e. once the
+  // client has a money identity worth discussing, all the way through the Life Simulator — but not on the
+  // RM contact screen itself, since that screen IS the "talk to your RM" destination.
+  const rmFabStart=ORDER.indexOf('mbtiResult'), rmFabEnd=ORDER.indexOf('lifesimReduce');
+  const curIdx=ORDER.indexOf(cur);
+  const showRmFab=curIdx>=rmFabStart && curIdx<=rmFabEnd;
   if($('rmFab'))$('rmFab').classList.toggle('show',showRmFab);
-  if(!showRmFab){$('rmFabMenu').style.display='none';}
   if(cur==='sandbox')refreshChrome();
   if(cur==='goals')setTimeout(startGoalChat,0);
   setTimeout(startCarousel,0);
