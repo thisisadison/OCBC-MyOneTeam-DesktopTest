@@ -1385,7 +1385,7 @@ const ARCHETYPES=[
     compatible:[{id:'compass',why:'Shares ambition and speed'},{id:'balloon',why:'Shares spontaneity'}],
     incompatible:[{id:'stone',why:'Too cautious to keep up'},{id:'anchor',why:'Opposite in every way'}],
     moves:['Set a hard stop-loss rule','Build a minimum emergency fund outside trading accounts','Cap high-risk exposure as a percent of net worth','Review win/loss history honestly each quarter']},
-  {id:'balloon',theme:'#d54b5e',name:'Balloon',img:'images/mbti/ocbc-ea-balloon.png',risk:2.1,plan:3.4,
+  {id:'balloon',theme:'#d54b5e',name:'Bandung',img:'images/mbti/ocbc-ea-bandung.png',risk:2.1,plan:3.4,
     superpower:'Joy today, memories forever',
     instinct:'Lives for today and spends on experiences',
     personality:['Loves experiences','Spends on joy','Values freedom','Lives in the moment','Seeks excitement','Easygoing and optimistic'],
@@ -2034,7 +2034,8 @@ function overAppetite(){return planRiskLevel()>riskProfileLevel()+1;}
 
 /* ============ shared bits ============ */
 function homePromo(){
-  const slides=[{intro:true}].concat(CARAG.map(a=>({a:a})));
+  const mbtiSlide=state.mbti.done && state.mbti.archetype ? [{identity:true}] : [];
+  const slides=[{intro:true}].concat(mbtiSlide).concat(CARAG.map(a=>({a:a})));
   const dots=slides.map((_,i)=>`<button onclick="event.stopPropagation();agJump(${i})" aria-label="Go to slide ${i+1}" style="display:flex;align-items:center;justify-content:center;width:20px;height:20px;padding:0;margin:0;border:none;background:transparent;cursor:pointer"><span id="agdot${i}" style="display:inline-block;width:${i===0?16:6}px;height:6px;border-radius:3px;background:${i===0?'#b8791f':'rgba(196,138,26,.25)'};transition:all .35s ease"></span></button>`).join('');
   const facepile=CARAG.map((a,i)=>`<div style="width:38px;height:38px;border-radius:11px;overflow:hidden;border:2px solid rgba(196,138,26,.35);margin-left:${i?-11:0}px;box-shadow:0 3px 8px rgba(20,10,5,.15);position:relative;z-index:${10-i}">${avatar(a)}</div>`).join('');
   const body=slides.map((sl,i)=>{
@@ -2049,6 +2050,15 @@ function homePromo(){
           <div style="font-size:12px;color:var(--muted);line-height:1.4">A personalised plan built from what OCBC already knows about you \u2014 in minutes, no forms.</div>
         </div>
       </div>`;
+    if(sl.identity){const arc=state.mbti.archetype;
+      return `<div id="agslide${i}" style="${base};display:flex;align-items:center;gap:18px" onclick="event.stopPropagation();go('mbtiResult')">
+        <div style="width:74px;height:74px;flex-shrink:0;border-radius:18px;overflow:hidden;box-shadow:0 4px 16px rgba(20,10,5,.18);border:2px solid ${arc.theme}55"><img src="${arc.img}" style="width:100%;height:100%;object-fit:cover" alt="${arc.name}"></div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:10px;color:#b8791f;margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em;font-weight:700">Your Money Identity</div>
+          <div style="font-family:'Sora';font-weight:800;font-size:17px;color:${arc.theme};line-height:1.2;margin-bottom:4px">${arc.name}</div>
+          <div style="font-size:12.5px;color:var(--ink2);line-height:1.4">${arc.superpower}</div>
+        </div>
+      </div>`;}
     const a=sl.a;
     return `<div id="agslide${i}" style="${base};display:flex;align-items:center;gap:18px">
         <div style="width:74px;height:74px;flex-shrink:0;border-radius:18px;overflow:hidden;box-shadow:0 4px 16px rgba(20,10,5,.18);border:2px solid rgba(196,138,26,.3)">${avatar(a)}</div>
@@ -2065,7 +2075,7 @@ function homePromo(){
       <div id="agDots" style="display:flex;gap:5px">${dots}</div>
     </div>
     <div id="agCarousel" style="position:relative;height:128px;margin-bottom:16px;overflow:hidden">${body}</div>
-    <button class="pb" onclick="go('mbtiIntro')">Try It Now \u2192</button>
+    <button class="pb" onclick="${state.mbti.done?"go('team')":"go('mbtiIntro')"}">Try It Now \u2192</button>
   </div>`;
 }
 function appbar(t,back,gold,hideLogo){return `<div class="appbar"><div class="back" onclick="go('${back}')">‹</div><div class="ttl">${t}</div>${hideLogo?'':`<div class="ologo${gold?' ologo-gold':''}">${gold?'<svg class="ologo-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="19" fill="none" stroke="url(#ogGrad)" stroke-width="2.4"/><path d="M20 9 L28 15 V25 L20 31 L12 25 V15 Z" fill="none" stroke="url(#ogGrad)" stroke-width="2.2" stroke-linejoin="round"/><defs><linearGradient id="ogGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d68d"/><stop offset="0.55" stop-color="#d3a347"/><stop offset="1" stop-color="#a8701f"/></linearGradient></defs></svg>':''}OCBC</div>`}</div>`;}
@@ -2389,7 +2399,6 @@ mbtiResult(){
     <button class="mbtiact" onclick="mbtiSaveProfile()"><span class="mbtiact-ic">⬇</span>Save</button>
     <button class="mbtiact" onclick="mbtiShareProfile()"><span class="mbtiact-ic">↗</span>Share</button>
   </div>
-  <button class="btn ghost" onclick="go('home')" style="margin-top:10px">← Not ready yet — return to Home</button>
 
   <div class="mbtiupdated">
     <div class="mbtiupdated-ic">✦</div>
@@ -2398,6 +2407,7 @@ mbtiResult(){
 
   <button class="btn gold" onclick="go('team')" style="margin-top:16px">Continue To Build My Team →</button>
   <button class="btn ghost" onclick="mbtiRetake()" style="margin-top:10px">Retake the profile</button>
+  <button class="btn ghost" onclick="go('home')" style="margin-top:10px">← Not ready yet — return to Home</button>
 </div></div></div>`;},
 
 team(){return `<div style="position:relative">
@@ -4115,7 +4125,7 @@ function hideModal(){const o=$('ov');if(o)o.remove();}
 
 /* ============ render ============ */
 function agTo(n){
-  const agN=CARAG.length+1;
+  const agN=CARAG.length+1+(state.mbti.done&&state.mbti.archetype?1:0);
   window._agIdx=((n%agN)+agN)%agN;
   for(let i=0;i<agN;i++){
     const el=document.getElementById('agslide'+i);
