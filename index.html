@@ -826,7 +826,7 @@
   .mbtistage-spark.p2{top:6%;right:1%;font-size:12px;animation-delay:.7s;color:var(--mbc)}
   .mbtistage-spark.p3{bottom:2%;left:0%;font-size:11px;animation-delay:1.4s;color:var(--mbc)}
   .mbtistage-spark.p4{bottom:8%;right:3%;font-size:14px;animation-delay:2.1s;color:var(--mbc)}
-  .mbtistage-img{position:relative;z-index:1;width:98%;max-height:760px;aspect-ratio:1023/1537;object-fit:contain;display:block;border-radius:22px;box-shadow:0 22px 50px rgba(20,15,10,.28);transform:translateZ(0)}
+  .mbtistage-img{position:relative;z-index:1;width:106%;margin:0 -3%;max-height:830px;aspect-ratio:1023/1537;object-fit:contain;display:block;box-shadow:0 22px 50px rgba(20,15,10,.28);transform:translateZ(0)}
   .mbtiactions{display:flex;gap:12px;margin-bottom:6px}
   .mbtiact{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(180deg,#fffdf9,#fff);border:1.5px solid #e8d6a8;border-radius:14px;padding:13px;font-family:'Sora';font-weight:700;font-size:14px;color:var(--ink);cursor:pointer;transition:border-color .12s,box-shadow .12s}
   .mbtiact:hover{border-color:#c9a44a;box-shadow:0 4px 12px rgba(190,150,60,.14)}
@@ -1335,7 +1335,7 @@ function lifesimScenarioFor(text){
 }
 
 const ARCHETYPES=[
-  {id:'anchor',theme:'#654fa5',name:'Anchor',img:'images/mbti/ocbc-ea-anchor.png',risk:0,plan:0.5,
+  {id:'anchor',theme:'#5949a0',name:'Bubble Tea',img:'images/mbti/ocbc-ea-bubbletea.png',risk:0,plan:0.5,
     superpower:'Never rushes, never loses ground',
     instinct:'Protects capital above all else — certainty beats upside',
     personality:['Extremely cautious','Dislikes volatility','Prefers guarantees','Diligent saver','Distrusts hype','Values certainty over upside'],
@@ -1345,7 +1345,7 @@ const ARCHETYPES=[
     compatible:[{id:'stone',why:'Near-identical values, shared pace'},{id:'lantern',why:'Shares caution and diligence'}],
     incompatible:[{id:'bolt',why:'Opposite in every way'},{id:'compass',why:'Pace and risk both too high'}],
     moves:['Move excess cash above the buffer into a low-risk yield product','Set one automatic small investment to start building comfort with markets','Review whether the cash buffer has grown too large','Get a second opinion before assuming "safe" is always cheapest']},
-  {id:'stone',theme:'#454f57',name:'Stone',img:'images/mbti/ocbc-ea-stone.png',risk:0.9,plan:0.7,
+  {id:'stone',theme:'#2c3841',name:'Kopi O Kosong',img:'images/mbti/ocbc-ea-kopiokosong.png',risk:0.9,plan:0.7,
     superpower:'Steady ground, no surprises',
     instinct:'Prioritises safety and long-term security over quick wins',
     personality:['Values stability','Plans ahead','Avoids risk','Prefers certainty','Patient saver','Cautious spender'],
@@ -1355,7 +1355,7 @@ const ARCHETYPES=[
     compatible:[{id:'hourglass',why:'Shares the long-term, steady mindset'},{id:'lantern',why:'Shares caution and research before acting'}],
     incompatible:[{id:'balloon',why:'Spends on impulse, no buffer'},{id:'bolt',why:'Too much volatility for comfort'}],
     moves:['Top up emergency fund','Diversify a little beyond cash','Ladder fixed deposits','Consider inflation-protected assets']},
-  {id:'lantern',theme:'#005051',name:'Lantern',img:'images/mbti/ocbc-ea-lantern.png',risk:1.9,plan:0.6,
+  {id:'lantern',theme:'#919c27',name:'Sugarcane',img:'images/mbti/ocbc-ea-sugarcane.png',risk:1.9,plan:0.6,
     superpower:'Loves research and makes smart, informed decisions',
     instinct:'Analyses before acting — knowledge lowers risk',
     personality:['Research-driven','Reads the fine print','Compares options','Risk-aware','Patient decision maker','Values expertise'],
@@ -1365,7 +1365,7 @@ const ARCHETYPES=[
     compatible:[{id:'stone',why:'Shares caution and diligence'},{id:'compass',why:'Ambition tempered by research'}],
     incompatible:[{id:'bolt',why:'Acts before analysing'},{id:'cloud',why:'Avoids the homework'}],
     moves:['Set a rebalancing schedule','Try one new asset class after research','Set an alert instead of checking daily','Document the "why" behind each holding']},
-  {id:'compass',theme:'#022957',name:'Compass',img:'images/mbti/ocbc-ea-compass.png',risk:3.1,plan:0.9,
+  {id:'compass',theme:'#0052a3',name:'Soya Milk',img:'images/mbti/ocbc-ea-soyamilk.png',risk:3.1,plan:0.9,
     superpower:'Sets a goal and charts the fastest smart route there',
     instinct:'Takes calculated risk in service of a clear target',
     personality:['Ambitious','Sets clear targets','Comfortable with moderate risk for a plan','Competitive','Strategic','Adaptable'],
@@ -1375,7 +1375,7 @@ const ARCHETYPES=[
     compatible:[{id:'lantern',why:'Research grounds the ambition'},{id:'hourglass',why:'Shared goal discipline'}],
     incompatible:[{id:'anchor',why:'Too slow for the pace wanted'},{id:'cloud',why:'No plan to rally behind'}],
     moves:['Write down the next milestone and date','Stress-test the plan against a downturn','Keep a minimum cash buffer despite the pace','Revisit the goal every quarter']},
-  {id:'bolt',theme:'#efa400',name:'Bolt',img:'images/mbti/ocbc-ea-bolt.png',risk:4,plan:3.3,
+  {id:'bolt',theme:'#ed9e02',name:'Honey Lemon',img:'images/mbti/ocbc-ea-honeylemon.png',risk:4,plan:3.3,
     superpower:'Moves fast and loves high risk',
     instinct:'Chases momentum and thrives on quick, high-reward action',
     personality:['Impulsive','Thrill-seeking','Confident','Fast decision maker','High risk tolerance','Bored by "safe"'],
@@ -1395,7 +1395,7 @@ const ARCHETYPES=[
     compatible:[{id:'hourglass',why:'Grows steadily and builds wealth over time'},{id:'lantern',why:'Loves research, makes informed decisions'}],
     incompatible:[{id:'stone',why:'Values stability and long-term security'},{id:'bolt',why:'Moves too fast, loves high risk'}],
     moves:['Build an emergency fund','Invest consistently every month','Review insurance','Plan for retirement']},
-  {id:'cloud',theme:'#69bcf9',name:'Cloud',img:'images/mbti/ocbc-ea-cloud.png',risk:1.0,plan:3.2,
+  {id:'cloud',theme:'#2680de',name:'Barley Water',img:'images/mbti/ocbc-ea-barleywater.png',risk:1.0,plan:3.2,
     superpower:'Keeps things simple and stress-free',
     instinct:'Avoids complexity and lets good defaults do the work',
     personality:['Low-maintenance','Avoids financial stress','Trusts default options','Present-minded but not showy','Values peace of mind','Adaptable'],
@@ -1405,7 +1405,7 @@ const ARCHETYPES=[
     compatible:[{id:'balloon',why:'Shares the easygoing nature'},{id:'stone',why:'Both prefer low effort, low stress'}],
     incompatible:[{id:'compass',why:'Too demanding a pace'},{id:'bolt',why:'Too intense to keep up with'}],
     moves:['Turn on auto-invest so growth happens passively','Set one yearly reminder to check progress','Pick one balanced fund instead of none','Name a goal so the drifting has a direction']},
-  {id:'hourglass',theme:'#9e7b3e',name:'Hourglass',img:'images/mbti/ocbc-ea-hourglass.png',risk:2,plan:1.1,
+  {id:'hourglass',theme:'#7a562c',name:'Milo Dinosaur',img:'images/mbti/ocbc-ea-milodinosaur.png',risk:2,plan:1.1,
     superpower:'Grows steadily and builds wealth over time',
     instinct:'Trusts patient, consistent compounding over shortcuts',
     personality:['Disciplined saver','Believes in compounding','Goal-oriented','Optimistic about the long run','Consistent','Avoids get-rich-quick schemes'],
@@ -2407,7 +2407,7 @@ mbtiResult(){
 
   <button class="btn gold" onclick="go('team')" style="margin-top:16px">Continue To Build My Team →</button>
   <button class="btn ghost" onclick="mbtiRetake()" style="margin-top:10px">Retake the profile</button>
-  <button class="btn ghost" onclick="go('home')" style="margin-top:10px">← Not ready yet — return to Home</button>
+  <button class="btn ghost" onclick="go('home')" style="margin-top:10px">← Back To Home</button>
 </div></div></div>`;},
 
 team(){return `<div style="position:relative">
@@ -2616,7 +2616,7 @@ pilot(){const inv=totalVal(),curV=Math.round(inv*1.047),gain=curV-inv,gpct=(gain
   <h2>Your Committee</h2>
   <div class="reviewcard" onclick="go('review')">
     <div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">📅</div>
-    <div style="flex:1"><div class="opt-t">Quarterly team review</div><div class="opt-d">Your agents reconvened — a performance recap and a couple of ideas to consider, no pressure.</div></div>
+    <div style="flex:1"><div class="opt-t">Quarterly Team Review</div><div class="opt-d">Your agents reconvened — a performance recap and a couple of ideas to consider, no pressure.</div></div>
     <span class="newdot">DUE</span>
   </div>
 
@@ -4244,7 +4244,7 @@ function render(){
   const BG_SCREENS={
     mbtiIntro:{img:'images/background/ocbc-ea-profiling.png',top:-40,width:100},
     mbtiQuiz:{img:'images/background/ocbc-ea-profiling.png',top:-40,width:100},
-    mbtiResult:{img:'images/background/ocbc-ea-lifefollowup.png',top:-40,width:100},
+    mbtiResult:{img:'images/background/ocbc-ea-yourmoneyidentity.png',top:-40,width:100},
     team:{img:'images/background/ocbc-ea-myaiteam.png',top:-40,width:100},
     goals:{img:'images/background/ocbc-ea-yourgoals.png',top:-40,width:100},
     risk:{img:'images/background/ocbc-ea-risk.png',top:-40,width:100},
