@@ -2172,37 +2172,39 @@ login(){return `
       style="position:absolute;top:2px;left:2px;right:2px;bottom:2px;width:calc(100% - 4px);height:calc(100% - 4px);object-fit:cover;object-position:top;border-radius:38px;"
   />
 
-  <div class="logincta" style="position:absolute;bottom:85px;left:26px;right:26px;padding:0;background:transparent;">
+  <div class="logincta" style="position:absolute;bottom:85px;left:22px;right:26px;padding:0;background:transparent;">
   <button
       class="ologin"
       onclick="go('home')"
       style="
           width:100%;
-          height:58px;
+          height:62px;
+          margin-top:-4px;
           border:none;
-          border-radius:10px;
+          border-radius:14px;
           cursor:pointer;
 
       background: linear-gradient(
-          180deg,
-          #F3D68D 0%,
-          #E3BE67 25%,
-          #D3A347 55%,
-          #BE862D 100%
+          160deg,
+          #f8e6b8 0%,
+          #f3d68d 22%,
+          #e3be67 48%,
+          #d3a347 72%,
+          #c4913a 100%
       );
 
-          border:1px solid rgba(200,205,212,.65);
+          border:1px solid rgba(190,150,60,.4);
 
           box-shadow:
-              inset 0 1px 0 1px rgba(255,255,255,.7),
-              inset 0 -1px 1px rgba(80,85,92,.08),
-              0 2px 6px rgba(0,0,0,.06),
-              0 8px 18px rgba(0,0,0,.10),
-              0 0 0 1px rgba(180,185,192,.25);
+              inset 0 1.5px 0 1px rgba(255,255,255,.75),
+              inset 0 -1px 2px rgba(120,85,25,.12),
+              0 8px 22px rgba(160,120,40,.28),
+              0 2px 6px rgba(120,85,25,.16);
 
-          color:#1F2229;
+          color:#241A08;
 
           font-family:
+              'Sora',
               'SF Pro Display',
               'Inter',
               -apple-system,
@@ -2210,16 +2212,19 @@ login(){return `
               'Segoe UI',
               sans-serif;
 
-          font-size:17px;
-          font-weight:700;
-          letter-spacing:0.35px;
+          font-size:16px;
+          font-weight:800;
+          letter-spacing:0.2px;
 
           text-shadow:
-              0 1px 0 rgba(255,255,255,.45);
+              0 1px 0 rgba(255,255,255,.6);
 
-          transition:.2s;
-      ">
-      Log In To OCBC Singapore
+          transition:transform .12s ease,box-shadow .2s ease,filter .2s ease;
+      "
+      onmousedown="this.style.transform='scale(.98)'"
+      onmouseup="this.style.transform='scale(1)'"
+      onmouseleave="this.style.transform='scale(1)'">
+      Log In to OCBC Singapore
   </button>
   </div>
 </div>`;
@@ -2736,6 +2741,7 @@ lifesimDetails(){
 </div></div></div>`;},
 
 lifesimAnalyzing(){
+  setTimeout(initNetMesh,0);
   const steps=[
     {id:'income',label:'Income Ivy',line:'Reviewing monthly cash flow…'},
     {id:'grow',label:'Growth Gary',line:'Assessing investment implications…'},
@@ -2743,7 +2749,7 @@ lifesimAnalyzing(){
     {id:'home',label:'Property Paige',line:'Reviewing housing implications…'}
   ];
   return `<div style="position:relative">
-  <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
+  <div class="netmesh-wrap"><canvas id="netmesh"></canvas></div>
   <div style="position:relative;z-index:1;padding-top:50px">${appbar('Life Simulator','lifesimIntro',false,true)}<div class="pad" style="padding-bottom:32px">
   <div class="lifesim-analyzewrap">
     <div class="lifesim-analyzetitle">Your team is on it</div>
@@ -2870,8 +2876,9 @@ lifesimReduce(){
 lifesimRM(){
   const d=lifesimActiveDecision();
   const sc=d?lifesimScaledScenario(d.scenario,d.cost,d.years):null;
-  return `<div style="position:relative">
-  <div style="position:relative;z-index:1">${appbar('Relationship Manager','lifesimResults',false,true)}<div class="pad" style="padding-bottom:32px">
+  return `<div style="position:relative;min-height:100%">
+  <div style="position:absolute;top:60px;left:0;right:0;bottom:0;background:linear-gradient(180deg,rgba(255,251,244,0) 0%,rgba(255,251,244,.38) 100px,rgba(255,251,244,.38) 100%);z-index:0;pointer-events:none"></div>
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Relationship Manager','lifesimResults',false,true)}<div class="pad" style="padding-bottom:32px">
   <div class="lifesim-rmicon">🤝</div>
   <h1 style="text-align:center">You're All Set to Talk to Jasmine</h1>
   <p class="sub" style="text-align:center">Your Relationship Manager already has the full picture — no need to repeat yourself.</p>
@@ -4239,7 +4246,7 @@ function stopNetMesh(){
 
 function render(){
   if(window._agTimer){clearInterval(window._agTimer);window._agTimer=null;}
-  if(cur!=='analyze')stopNetMesh();
+  if(cur!=='analyze'&&cur!=='lifesimAnalyzing')stopNetMesh();
   closePicker();hideModal();$('view').innerHTML=S[cur]();$('view').scrollTop=0;
   const BG_SCREENS={
     mbtiIntro:{img:'images/background/ocbc-ea-profiling.png',top:-40,width:100},
@@ -4258,11 +4265,12 @@ function render(){
     pilot:{img:'images/background/ocbc-ea-myoneteamhome.png',top:-40,width:100},
     review:{img:'images/background/ocbc-ea-quarterlyreview.png',top:-40,width:100},
     lifesimIntro:{img:'images/background/ocbc-ea-lifesim.png',top:-40,width:100},
-    lifesimAnalyzing:{img:'images/background/ocbc-ea-lifesim.png',top:-40,width:100},
+    lifesimDetails:{img:'images/background/ocbc-ea-myaiteam.png',top:-40,width:100},
     lifesimResults:{img:'images/background/ocbc-ea-lifesim.png',top:-40,width:100},
-    lifesimReduce:{img:'images/background/ocbc-ea-lifefollowup.png',top:-40,width:100}
+    lifesimReduce:{img:'images/background/ocbc-ea-lifefollowup.png',top:-40,width:100},
+    lifesimRM:{img:'images/background/ocbc-ea-rm.png',top:-40,width:100}
   };
-  $('statusbar').className='statusbar'+(cur==='home'||cur==='analyze'||BG_SCREENS[cur]?' onhero':cur==='login'?' over':'');
+  $('statusbar').className='statusbar'+(cur==='home'||cur==='analyze'||cur==='lifesimAnalyzing'||BG_SCREENS[cur]?' onhero':cur==='login'?' over':'');
   if($('screenbg')){
     const bgCfg=BG_SCREENS[cur];
     $('screenbg').style.display=bgCfg?'block':'none';
