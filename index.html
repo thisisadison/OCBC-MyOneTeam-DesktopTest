@@ -35,7 +35,7 @@
   }
   *{box-sizing:border-box}
   html,body{margin:0;height:100%}
-  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#d7dbe2;color:var(--ink);
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#26282e;color:var(--ink);
     -webkit-font-smoothing:antialiased;display:flex;flex-direction:column;align-items:center;padding:20px 14px 40px}
   h1,h2,h3,.disp{font-family:'Sora','Inter',sans-serif;letter-spacing:-.02em}
 
@@ -193,6 +193,8 @@
   .ologin-wrap{position:sticky;bottom:0;background:#fff;padding:8px 16px 0;margin-top:auto;box-shadow:0 -8px 20px rgba(255,255,255,.95)}
   .ologin{width:100%;background:#3a4754;color:#fff;border:none;border-radius:12px;padding:16px;font-size:15px;font-weight:700;font-family:'Sora';cursor:pointer;display:block}
   .ologin:active{background:#2c3741}
+  .loginBtnOverlay{position:absolute;border:1px solid rgba(230,190,110,.4);background:linear-gradient(165deg,#f6e2ab 0%,#e8c164 32%,#cf9f45 62%,#b17e28 100%);color:#2a1c05;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 8px 18px rgba(180,130,40,.28);padding:0;margin:0;cursor:pointer;border-radius:6px;font-family:'Sora',sans-serif;font-weight:500;font-size:15px;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:rgba(0,0,0,.08)}
+  .loginBtnOverlay:active{filter:brightness(.97)}
   .omaint{font-size:11px;color:#6b7280;line-height:1.45;padding:10px 2px 16px}
   .omaint b{color:#3a3f47}
   .omaint a{color:var(--red);font-weight:600;cursor:pointer}
@@ -792,10 +794,47 @@
   .mbtiwhy{background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid #e8d6a8;border-radius:15px;padding:14px 16px;margin-bottom:12px;box-shadow:0 3px 10px rgba(190,150,60,.06)}
   .mbtiwhy-h{font-size:11px;font-weight:800;color:#a6710f;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px;display:flex;align-items:center;gap:6px}
   .mbtiwhy-body{font-size:13px;color:var(--ink2);line-height:1.55}
+  .mbtipreview{margin:16px 0 4px}
+  .mbtipreview-label{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;text-align:center}
+  .mbtipreview-row{display:flex;gap:14px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:none;-ms-overflow-style:none}
+  .mbtipreview-row::-webkit-scrollbar{display:none}
+  .mbtipreview-chip{flex-shrink:0;width:64px;display:flex;flex-direction:column;align-items:center;gap:6px}
+  .mbtipreview-avatar{width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid var(--pc);box-shadow:0 3px 8px rgba(20,10,5,.12)}
+  .mbtipreview-avatar img{width:100%;height:100%;object-fit:cover}
+  .mbtipreview-name{font-size:10px;font-weight:700;color:var(--ink2);text-align:center;line-height:1.2}
+  .mbtiflash{position:absolute;inset:0;z-index:30;pointer-events:none;opacity:0;background:radial-gradient(circle at 50% 38%,#fff8e1,#f3d68d 45%,#e3b04a 75%,transparent 100%)}
+  .mbtiflash.mbtiflash-go{animation:mbtiflashpulse .5s ease forwards}
+  @keyframes mbtiflashpulse{0%{opacity:0}18%{opacity:.55}100%{opacity:0}}
+  .mbtisuspense{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;min-height:65vh;gap:14px;padding:20px 0;transition:opacity .4s ease;animation:mbtisuspensein .5s ease}
+  .mbtisuspense.mbtisuspense-out{opacity:0}
+  .mbtisuspense-titlewrap{position:relative;display:flex;align-items:center;justify-content:center;width:100%;padding:22px 12px}
+  .mbtisuspense-title{font-family:'Sora';font-weight:800;font-size:27px;text-align:center;line-height:1.35;letter-spacing:.01em;
+    background:linear-gradient(100deg,#6b4a1a 0%,#a6710f 22%,#c9922a 42%,#a6710f 62%,#6b4a1a 88%);
+    background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:mbtititleshimmer 2.6s linear infinite,mbtititlepulse 1.9s ease-in-out infinite}
+  .mbtisuspense-spark{position:absolute;color:#c9922a;pointer-events:none;animation:mbtitwinkle 2.4s ease-in-out infinite}
+  .mbtisuspense-spark.sp1{top:-2px;left:10%;font-size:17px;animation-delay:0s}
+  .mbtisuspense-spark.sp2{top:6px;right:9%;font-size:13px;animation-delay:.6s}
+  .mbtisuspense-spark.sp3{bottom:2px;left:16%;font-size:12px;animation-delay:1.2s}
+  .mbtisuspense-spark.sp4{bottom:-4px;right:14%;font-size:16px;animation-delay:1.8s}
+  .mbtisuspense-dots span{opacity:0;animation:mbtidotblink 1.2s infinite;background:linear-gradient(100deg,#a6710f,#c9922a);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .mbtisuspense-dots span:nth-child(1){animation-delay:0s}
+  .mbtisuspense-dots span:nth-child(2){animation-delay:.2s}
+  .mbtisuspense-dots span:nth-child(3){animation-delay:.4s}
+  @keyframes mbtititleshimmer{0%{background-position:0% 50%}100%{background-position:250% 50%}}
+  @keyframes mbtititlepulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 rgba(166,113,15,0))}50%{transform:scale(1.015);filter:drop-shadow(0 0 5px rgba(166,113,15,.28))}}
+  @keyframes mbtidotblink{0%,80%,100%{opacity:0}40%{opacity:1}}
+  @keyframes mbtisuspensein{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:none}}
+  .homeactive-btns{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .homeactive-btn{background:rgba(255,255,255,.55);border:1px solid rgba(58,42,10,.18);border-radius:10px;padding:9px 8px;font-family:'Sora';font-weight:800;font-size:12px;color:#3a2a0a;cursor:pointer;text-align:center;transition:background .15s}
+  .homeactive-btn:active{background:rgba(255,255,255,.85)}
+  .okbadge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;padding:6px 14px;border-radius:20px;background:#e7f8ef;color:#1f9d57;margin-bottom:10px}
   .mbtiprogwrap{display:flex;align-items:center;gap:10px;margin:2px 0 18px}
   .mbtiprog{flex:1;height:6px;border-radius:4px;background:#f0e2bb;overflow:hidden}
   .mbtiprog span{display:block;height:100%;background:linear-gradient(90deg,#e3b04a,#b8790f);border-radius:4px;transition:width .35s ease}
   .mbtiprognum{font-size:11.5px;font-weight:800;color:var(--muted);flex-shrink:0;white-space:nowrap}
+  .mbtiphoto{position:relative;z-index:1;width:100%;aspect-ratio:1070/992;border-radius:18px;overflow:hidden;margin:8px 0 16px;border:1.5px solid #e3b04a;box-shadow:0 12px 28px rgba(20,20,25,.24)}
+  .mbtiphoto img{width:100%;height:100%;object-fit:cover;display:block}
   .mbtistory{position:relative;background:linear-gradient(160deg,#211c2b 0%,#2e2410 100%);border:1.5px solid #e3b04a;border-radius:22px;padding:30px 22px 26px;margin:8px 0 22px;text-align:center;overflow:hidden;box-shadow:0 16px 40px rgba(20,20,25,.26)}
   .mbtistory-glow{position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(227,176,74,.22),transparent 70%);pointer-events:none}
   .mbtistory-spark{position:absolute;color:#e3b04a;opacity:.6;pointer-events:none;animation:mbtitwinkle 2.6s ease-in-out infinite}
@@ -816,6 +855,13 @@
   .mbtiopt-label{font-family:'Sora';font-weight:700;font-size:15px;color:var(--ink);line-height:1.3}
   .mbtiopt-or{text-align:center;font-size:11px;font-weight:800;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin:-2px 0}
   .mbtiback{display:block;text-align:center;margin-top:20px;font-size:12.5px;font-weight:600;color:var(--muted);cursor:pointer}
+  .mbtireveal{opacity:0}
+  .mbtireveal.mbtireveal-in{animation:mbtirevealpop .7s cubic-bezier(.22,1,.36,1) forwards}
+  @keyframes mbtirevealpop{
+    0%{opacity:0;transform:scale(1.22);filter:blur(10px)}
+    70%{opacity:1;transform:scale(.98);filter:blur(0)}
+    100%{opacity:1;transform:scale(1)}
+  }
   .mbtireveal-eyebrow{font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#a6710f;margin-top:4px}
   .mbtireveal-name{font-family:'Sora';font-weight:800;font-size:32px;margin:4px 0 2px;line-height:1.1}
   .mbtistage{position:relative;margin:20px 0 22px;display:flex;align-items:center;justify-content:center;padding:10px 0;isolation:isolate}
@@ -843,6 +889,8 @@
   .pilot-toggle.on-life .pilot-toggle-thumb{transform:translateX(100%)}
   .pilot-toggle-btn{position:relative;z-index:1;flex:1;border:none;background:transparent;display:flex;align-items:center;justify-content:center;gap:6px;padding:11px 6px;font-family:'Sora';font-weight:800;font-size:13.5px;color:var(--muted);cursor:pointer;transition:color .2s ease}
   .pilot-toggle-btn.active{color:#f3d68d}
+  .pilot-toggle-btn.lifehint{animation:lifehintpulse 1.8s ease-in-out infinite}
+  @keyframes lifehintpulse{0%,100%{opacity:.75;transform:scale(1);text-shadow:0 0 0 rgba(227,176,74,0)}50%{opacity:1;transform:scale(1.08);text-shadow:0 0 6px rgba(227,176,74,.85),0 0 14px rgba(227,176,74,.6),0 0 22px rgba(227,176,74,.35)}}
   .lifetab-panel{background:linear-gradient(160deg,#2d2a3d,#1b1926);border-radius:20px;padding:22px 20px;margin-bottom:14px;box-shadow:0 12px 28px rgba(20,18,30,.22)}
   .lifetab-ic{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px;background:rgba(243,214,141,.14);margin-bottom:14px}
   .lifetab-title{font-family:'Sora';font-weight:800;font-size:18px;color:#fdf6ea;margin-bottom:6px}
@@ -857,7 +905,8 @@
   .lifesim-input:focus{border-color:#c9a44a;box-shadow:0 0 0 3px rgba(201,164,74,.14)}
   .lifesim-chiphead{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:20px 0 10px}
   .lifesim-chips{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:22px}
-  .lifesim-chip{display:flex;flex-direction:column;align-items:center;gap:6px;background:#fff;border:1.5px solid #e8d6a8;border-radius:14px;padding:14px 6px;font-family:'Sora';font-size:12px;font-weight:700;color:var(--ink);cursor:pointer;transition:.12s;text-align:center}
+  .lifesim-chip{display:flex;flex-direction:column;align-items:center;gap:6px;background:#fff;border:1.5px solid #e8d6a8;border-radius:14px;padding:14px 6px;font-family:'Sora';font-size:12px;font-weight:700;color:var(--ink);cursor:pointer;transition:.12s;text-align:center;position:relative}
+  .lifesim-chip-check{position:absolute;top:6px;right:6px;width:18px;height:18px;border-radius:50%;background:#1f9d57;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center}
   .lifesim-chip:active{background:#fdf6ea;border-color:#c9a44a}
   .lifesim-chip-ic{font-size:22px}
 
@@ -1102,7 +1151,7 @@
   <div class="screen">
     <div class="notch" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:122px;height:32px;background:#0a0b0d;border-radius:0 0 20px 20px;z-index:50"></div>
     <div class="screenbg" id="screenbg" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;overflow:hidden;z-index:0;pointer-events:none;background:#fbf3e9">
-      <img id="screenbgImg" src="images/background/ocbc-ea-myaiteam.png" alt="" style="position:absolute;left:0;top:-40px;width:100%;height:auto;display:block">
+      <img id="screenbgImg" src="images/background/ocbc-ea-myaiteam.jpg" alt="" style="position:absolute;left:0;top:-40px;width:100%;height:auto;display:block">
     </div>
     <div class="statusbar" id="statusbar"><span id="clock">9:41</span><span>5G&nbsp; 100%</span></div>
     <div class="view" id="view"></div>
@@ -1118,10 +1167,10 @@
 
 <script>
 /* ============ state ============ */
-const ORDER=['login','home','mbtiIntro','mbtiQuiz','mbtiResult','team','goals','risk','analyze','reco','portfolio','projection','advice','trade','pilot','review','lifesimIntro','lifesimDetails','lifesimAnalyzing','lifesimResults','lifesimReduce','lifesimRM'];
+const ORDER=['login','home','mbtiIntro','mbtiQuiz','mbtiResult','team','goals','risk','analyze','portfolio','projection','pilot','review','lifesimIntro','lifesimDetails','lifesimAnalyzing','lifesimResults','lifesimReduce','lifesimConfirmed','lifesimRM'];
 // Screens that aren't steps of their own get the number of the step they branch from.
-const STEP_ALIAS={link:'portfolio',orchestrate:'portfolio',tune:'portfolio',sandbox:'reco',choose:'reco',paper:'reco',rm:'reco',done:'trade'};
-const NAMES={login:'Log In',home:'Home',mbtiIntro:'Financial Profile',mbtiQuiz:'Financial Profile',mbtiResult:'Your Money Identity',team:'Your AI Team',goals:'Your Goals',risk:'Risk Comfort',analyze:'Building Your Plan',reco:'Your Plan',orchestrate:'Orchestrated view',portfolio:'Your Portfolio',link:'Link Accounts',tune:'Edit Basket',sandbox:'Ready To Act',choose:'Choose Next Step',paper:'Paper Trading',rm:'Relationship Manager',done:'Invest',projection:'Projection',advice:'Final Advice',trade:'Trade',pilot:'My OneTeam Home',review:'Quarterly Review',lifesimIntro:'Life Simulator',lifesimDetails:'A Few Details',lifesimAnalyzing:'Life Simulator',lifesimResults:'Life Simulator',lifesimReduce:'Reduce The Impact',lifesimRM:'Relationship Manager'};
+const STEP_ALIAS={link:'portfolio',orchestrate:'portfolio',tune:'portfolio',sandbox:'portfolio',choose:'portfolio',paper:'portfolio',rm:'portfolio',done:'projection'};
+const NAMES={login:'Log In',home:'Home',mbtiIntro:'Financial Profile',mbtiQuiz:'Financial Profile',mbtiResult:'Your Money Identity',team:'Your AI Team',goals:'Your Goals',risk:'Risk Comfort',analyze:'Building Your Plan',orchestrate:'Orchestrated view',portfolio:'Your Portfolio',link:'Link Accounts',tune:'Edit Basket',sandbox:'Ready To Act',choose:'Choose Next Step',paper:'Paper Trading',rm:'Relationship Manager',done:'Invest',projection:'Projection',pilot:'My OneTeam Home',review:'Quarterly Review',lifesimIntro:'Life Simulator',lifesimDetails:'A Few Details',lifesimAnalyzing:'Life Simulator',lifesimResults:'Life Simulator',lifesimReduce:'Reduce The Impact',lifesimConfirmed:'Life Simulator',lifesimRM:'Relationship Manager'};
 const KEYS4=['FI','Funds','Cash','Alt'];
 const BK={FI:{name:'Fixed Income',color:'var(--fi)',hex:'#2f6fd6',sub:'Stability & income'},
   Funds:{name:'Equities',color:'var(--funds)',hex:'#ec1c24',sub:'Growth engine'},
@@ -1206,35 +1255,36 @@ const AGENT_DETAIL={
 /* ===================== Life Simulator ===================== */
 const LIFESIM_CHIPS=[
   {id:'car',icon:'🚗',label:'Buy a Car'},
-  {id:'condo',icon:'🏠',label:'Buy a Condo'},
+  {id:'condo',icon:'🏠',label:'Buy a House'},
   {id:'family',icon:'👶',label:'Start a Family'},
-  {id:'japan',icon:'✈️',label:'Japan Trip'},
+  {id:'japan',icon:'✈️',label:'Holiday'},
   {id:'study',icon:'🎓',label:'Further Studies'},
   {id:'wedding',icon:'💍',label:'Wedding'},
   {id:'retire',icon:'📈',label:'Retire Earlier'},
-  {id:'luxury',icon:'👜',label:'Luxury Purchase'}
+  {id:'luxury',icon:'👜',label:'Luxury Purchase'},
+  {id:'others',icon:'✨',label:'Others'}
 ];
 const LIFESIM_SCENARIOS={
-  car:{label:'Buy a Car',cost:45000,summary:"this purchase is achievable. We'll make a few adjustments to keep your long-term goals on track.",
+  car:{label:'Buy a Car',cost:200000,summary:"this purchase is achievable. We'll make a few adjustments to keep your long-term goals on track.",
     impacts:{
-      income:{impact:'Monthly disposable income decreases by approximately S$650, mostly from loan repayments and higher running costs.',action:"I'll identify opportunities to improve your monthly cash flow and optimise discretionary spending so we can recover most of this impact."},
+      income:{impact:'Monthly disposable income decreases by approximately S$2,900, mostly from loan repayments, COE costs, and higher running costs.',action:"I'll identify opportunities to improve your monthly cash flow and optimise discretionary spending so we can recover most of this impact."},
       grow:{impact:'Monthly investment contributions may temporarily reduce to free up cash for the down payment.',action:"I'll rebalance your investment roadmap and gradually restore your contributions as your cash flow improves."},
       retire:{impact:'Your projected retirement timeline shifts by approximately one year.',action:"I'll adjust your retirement roadmap and recommend small monthly changes that minimise this delay."},
       home:{impact:'Your property affordability remains healthy — this purchase doesn\'t compete with your home savings goal.',action:"I'll continue monitoring your long-term affordability and financing options as your financial situation evolves."}
     },
-    holistic:{monthlyHit:650,retireDelay:1,emgBefore:8,emgAfter:7,homeNote:'No change — this purchase doesn\'t compete with it.',homeSame:true},
+    holistic:{monthlyHit:2900,retireDelay:1,emgBefore:8,emgAfter:7,homeNote:'No change — this purchase doesn\'t compete with it.',homeSame:true},
     reduce:[
-      {agent:'income',text:'Trim discretionary spending by S$250/month rather than dipping into your Cash buffer (Fullerton SGD Cash Fund), keeping your emergency fund intact.'},
+      {agent:'income',text:'Trim discretionary spending by S$400/month rather than dipping into your Cash buffer (Fullerton SGD Cash Fund), keeping your emergency fund intact.'},
       {agent:'grow',text:'Pause new contributions to your Equities holdings (iShares Core S&P 500 ETF) for a few months, rather than reducing risk across the whole portfolio.'},
       {agent:'retire',text:'Redirect S$150/month back into your Fixed Income retirement sleeve (PIMCO GIS Income Fund) once the purchase is completed.'},
       {agent:'home',text:'No change needed — your Property savings fund stays fully on track.'}
     ]},
-  condo:{label:'Buy a Condo',cost:1800000,summary:"this is a bigger move, but still achievable with some sequencing. We'll make a few adjustments to keep your long-term goals on track.",
+  condo:{label:'Buy a House',cost:1800000,summary:"this is a bigger move, but still achievable with some sequencing. We'll make a few adjustments to keep your long-term goals on track.",
     impacts:{
       income:{impact:'Monthly disposable income decreases by approximately S$3,200 once mortgage payments begin.',action:"I'll identify recurring costs we can trim and build a cash-flow buffer before your loan starts."},
-      grow:{impact:'A meaningful portion of your investable assets will be redirected toward the down payment.',action:"I'll rebalance your portfolio to free up liquidity gradually, without selling into a downturn."},
+      grow:{impact:'Your downpayment (cash + CPF) works out to roughly S$500,000–600,000 — a meaningful portion of your investable assets will be redirected to cover this.',action:"I'll rebalance your portfolio to free up liquidity gradually, without selling into a downturn."},
       retire:{impact:'Your projected retirement timeline shifts by approximately 3 years.',action:"I'll extend your contribution runway and look for catch-up opportunities once the mortgage is more manageable."},
-      home:{impact:'This effectively becomes your primary property goal — your existing home savings target will be superseded by this purchase.',action:"I'll rebuild your property plan around this specific condo, including financing and timeline."}
+      home:{impact:'This effectively becomes your primary property goal — your existing home savings target will be superseded by this purchase.',action:"I'll rebuild your property plan around this specific home, including financing and timeline."}
     },
     holistic:{monthlyHit:3200,retireDelay:3,emgBefore:8,emgAfter:4,homeNote:'This becomes your home goal — the purchase itself.',homeSame:false},
     reduce:[
@@ -1257,7 +1307,7 @@ const LIFESIM_SCENARIOS={
       {agent:'retire',text:'Redirect S$100/month back into your Fixed Income retirement sleeve (PIMCO GIS Income Fund) once household costs stabilise.'},
       {agent:'home',text:'Re-run your Property savings plan in 12 months once your family\'s space needs are clearer.'}
     ]},
-  japan:{label:'Japan Trip',cost:6000,summary:"this is an easy yes — a well-earned trip that barely moves the needle on your long-term goals.",
+  japan:{label:'Holiday',cost:6000,summary:"this is an easy yes — a well-earned trip that barely moves the needle on your long-term goals.",
     impacts:{
       income:{impact:'A one-time dip in your savings buffer of about S$6,000, recovered within 2-3 months.',action:"I'll make sure this doesn't touch your emergency fund or monthly contributions."},
       grow:{impact:'No meaningful impact — this is well within your discretionary spending capacity.',action:"I'll keep your investment contributions exactly as they are."},
@@ -1326,16 +1376,77 @@ const LIFESIM_SCENARIOS={
       {agent:'grow',text:'No adjustment needed — your Equities and Growth holdings stay untouched.'},
       {agent:'retire',text:'No adjustment needed — your Fixed Income retirement sleeve is unaffected.'},
       {agent:'home',text:'No adjustment needed — your Property savings fund is unaffected.'}
+    ]},
+  others:{label:'Something Else',cost:20000,summary:"we've run this through the same checks as everything else. We'll make a few adjustments to keep your long-term goals on track.",
+    impacts:{
+      income:{impact:'Monthly disposable income decreases by approximately S$700, based on a typical expense of this size.',action:"I'll identify opportunities to improve your monthly cash flow and optimise discretionary spending to help offset this."},
+      grow:{impact:'Investment contributions may temporarily reduce to free up cash for this expense.',action:"I'll rebalance your investment roadmap and gradually restore contributions once cash flow improves."},
+      retire:{impact:'Your projected retirement timeline may shift slightly, depending on how this is funded.',action:"I'll monitor the impact and suggest small adjustments if the delay becomes meaningful."},
+      home:{impact:'Your property affordability should remain largely unaffected, assuming this is funded separately.',action:"I'll continue monitoring your affordability as your plans become clearer."}
+    },
+    holistic:{monthlyHit:700,retireDelay:1,emgBefore:8,emgAfter:7,homeNote:'Assumed separate from your property savings — let us know if that changes.',homeSame:true},
+    reduce:[
+      {agent:'income',text:'Trim discretionary spending by S$250/month rather than dipping into your Cash buffer (Fullerton SGD Cash Fund).'},
+      {agent:'grow',text:'Pause new contributions to your Equities holdings (iShares Core S&P 500 ETF) for a few months instead of reducing risk across the whole portfolio.'},
+      {agent:'retire',text:'Redirect S$150/month back into your Fixed Income retirement sleeve (PIMCO GIS Income Fund) once this is settled.'},
+      {agent:'home',text:'No change needed — your Property savings fund stays on track, assuming this is funded separately.'}
     ]}
+};
+const LIFESIM_KEYWORDS={
+  car:['car','vehicle','auto'],
+  condo:['condo','house','home','property','flat','apartment','hdb'],
+  family:['family','baby','kid','child','pregnant'],
+  japan:['holiday','trip','vacation','travel','japan'],
+  study:['study','studies','tuition','degree','course','university','school'],
+  wedding:['wedding','marry','marriage','engaged'],
+  retire:['retire','retirement'],
+  luxury:['luxury','bag','watch','indulgence','splurge']
 };
 function lifesimScenarioFor(text){
   const t=(text||'').toLowerCase();
-  const hit=LIFESIM_CHIPS.find(c=>t.includes(c.label.toLowerCase())||t.includes(c.id));
-  return hit ? hit.id : null;
+  for(const c of LIFESIM_CHIPS){
+    if(c.id==='others')continue;
+    if(t.includes(c.label.toLowerCase())||t.includes(c.id))return c.id;
+  }
+  for(const [id,words] of Object.entries(LIFESIM_KEYWORDS)){
+    if(words.some(w=>t.includes(w)))return id;
+  }
+  return null;
+}
+/* Pulls a dollar amount out of free text in whatever format someone naturally types it —
+   "$2mil", "2 million", "S$1,800,000", "800k", or a bare number — trying the more specific,
+   less ambiguous patterns first before falling back to a bare 4+ digit number. */
+function lifesimParseAmount(text){
+  const patterns=[
+    [/(?:s?\$)?\s*([\d,]+\.?\d*)\s*(?:mil(?:lion)?|m)\b/i, 1000000],
+    [/(?:s?\$)?\s*([\d,]+\.?\d*)\s*k\b/i, 1000],
+    [/s?\$\s*([\d,]+\.?\d*)/i, 1],
+    [/\b(\d{4,}(?:,\d{3})*)\b/, 1] // bare 4+ digit number as a last resort, avoids matching small numbers like "5" from "5 years"
+  ];
+  for(const [re,mult] of patterns){
+    const m=text.match(re);
+    if(m){
+      const n=parseFloat(m[1].replace(/,/g,''));
+      if(!isNaN(n))return Math.round(n*mult);
+    }
+  }
+  return null;
+}
+/* Pulls a timeframe out of free text — "next year", "in 3 years", "6 months from now" —
+   converting months to a fractional-year figure so it's consistent with how years are used elsewhere. */
+function lifesimParseYears(text){
+  const t=text.toLowerCase();
+  if(/next year/.test(t))return 1;
+  if(/this year/.test(t))return 0.5;
+  let m=t.match(/(\d+\.?\d*)\s*months?\s*(?:from now|later|out|away|time)?/);
+  if(m)return Math.round((parseFloat(m[1])/12)*10)/10;
+  m=t.match(/(?:in|within|next)?\s*(\d+\.?\d*)\s*years?\s*(?:from now|later|out|away|time)?/);
+  if(m)return parseFloat(m[1]);
+  return null;
 }
 
 const ARCHETYPES=[
-  {id:'anchor',theme:'#5949a0',name:'Bubble Tea',img:'images/mbti/ocbc-ea-bubbletea.png',risk:0,plan:0.5,
+  {id:'anchor',theme:'#5949a0',name:'Bubble Tea',img:'images/mbti/ocbc-ea-bubbletea.png',preview:'images/mbti/preview/ocbc-ea-bubbletea-preview.jpg',risk:0,plan:0.5,
     superpower:'Never rushes, never loses ground',
     instinct:'Protects capital above all else — certainty beats upside',
     personality:['Extremely cautious','Dislikes volatility','Prefers guarantees','Diligent saver','Distrusts hype','Values certainty over upside'],
@@ -1345,7 +1456,7 @@ const ARCHETYPES=[
     compatible:[{id:'stone',why:'Near-identical values, shared pace'},{id:'lantern',why:'Shares caution and diligence'}],
     incompatible:[{id:'bolt',why:'Opposite in every way'},{id:'compass',why:'Pace and risk both too high'}],
     moves:['Move excess cash above the buffer into a low-risk yield product','Set one automatic small investment to start building comfort with markets','Review whether the cash buffer has grown too large','Get a second opinion before assuming "safe" is always cheapest']},
-  {id:'stone',theme:'#2c3841',name:'Kopi O Kosong',img:'images/mbti/ocbc-ea-kopiokosong.png',risk:0.9,plan:0.7,
+  {id:'stone',theme:'#2c3841',name:'Kopi O Kosong',img:'images/mbti/ocbc-ea-kopiokosong.png',preview:'images/mbti/preview/ocbc-ea-kopiokosong-preview.jpg',risk:0.9,plan:0.7,
     superpower:'Steady ground, no surprises',
     instinct:'Prioritises safety and long-term security over quick wins',
     personality:['Values stability','Plans ahead','Avoids risk','Prefers certainty','Patient saver','Cautious spender'],
@@ -1355,7 +1466,7 @@ const ARCHETYPES=[
     compatible:[{id:'hourglass',why:'Shares the long-term, steady mindset'},{id:'lantern',why:'Shares caution and research before acting'}],
     incompatible:[{id:'balloon',why:'Spends on impulse, no buffer'},{id:'bolt',why:'Too much volatility for comfort'}],
     moves:['Top up emergency fund','Diversify a little beyond cash','Ladder fixed deposits','Consider inflation-protected assets']},
-  {id:'lantern',theme:'#919c27',name:'Sugarcane',img:'images/mbti/ocbc-ea-sugarcane.png',risk:1.9,plan:0.6,
+  {id:'lantern',theme:'#919c27',name:'Sugarcane',img:'images/mbti/ocbc-ea-sugarcane.png',preview:'images/mbti/preview/ocbc-ea-sugarcane-preview.jpg',risk:1.9,plan:0.6,
     superpower:'Loves research and makes smart, informed decisions',
     instinct:'Analyses before acting — knowledge lowers risk',
     personality:['Research-driven','Reads the fine print','Compares options','Risk-aware','Patient decision maker','Values expertise'],
@@ -1365,7 +1476,7 @@ const ARCHETYPES=[
     compatible:[{id:'stone',why:'Shares caution and diligence'},{id:'compass',why:'Ambition tempered by research'}],
     incompatible:[{id:'bolt',why:'Acts before analysing'},{id:'cloud',why:'Avoids the homework'}],
     moves:['Set a rebalancing schedule','Try one new asset class after research','Set an alert instead of checking daily','Document the "why" behind each holding']},
-  {id:'compass',theme:'#0052a3',name:'Soya Milk',img:'images/mbti/ocbc-ea-soyamilk.png',risk:3.1,plan:0.9,
+  {id:'compass',theme:'#0052a3',name:'Soya Milk',img:'images/mbti/ocbc-ea-soyamilk.png',preview:'images/mbti/preview/ocbc-ea-soyamilk-preview.jpg',risk:3.1,plan:0.9,
     superpower:'Sets a goal and charts the fastest smart route there',
     instinct:'Takes calculated risk in service of a clear target',
     personality:['Ambitious','Sets clear targets','Comfortable with moderate risk for a plan','Competitive','Strategic','Adaptable'],
@@ -1375,7 +1486,7 @@ const ARCHETYPES=[
     compatible:[{id:'lantern',why:'Research grounds the ambition'},{id:'hourglass',why:'Shared goal discipline'}],
     incompatible:[{id:'anchor',why:'Too slow for the pace wanted'},{id:'cloud',why:'No plan to rally behind'}],
     moves:['Write down the next milestone and date','Stress-test the plan against a downturn','Keep a minimum cash buffer despite the pace','Revisit the goal every quarter']},
-  {id:'bolt',theme:'#ed9e02',name:'Honey Lemon',img:'images/mbti/ocbc-ea-honeylemon.png',risk:4,plan:3.3,
+  {id:'bolt',theme:'#ed9e02',name:'Honey Lemon',img:'images/mbti/ocbc-ea-honeylemon.png',preview:'images/mbti/preview/ocbc-ea-honeylemon-preview.jpg',risk:4,plan:3.3,
     superpower:'Moves fast and loves high risk',
     instinct:'Chases momentum and thrives on quick, high-reward action',
     personality:['Impulsive','Thrill-seeking','Confident','Fast decision maker','High risk tolerance','Bored by "safe"'],
@@ -1385,7 +1496,7 @@ const ARCHETYPES=[
     compatible:[{id:'compass',why:'Shares ambition and speed'},{id:'balloon',why:'Shares spontaneity'}],
     incompatible:[{id:'stone',why:'Too cautious to keep up'},{id:'anchor',why:'Opposite in every way'}],
     moves:['Set a hard stop-loss rule','Build a minimum emergency fund outside trading accounts','Cap high-risk exposure as a percent of net worth','Review win/loss history honestly each quarter']},
-  {id:'balloon',theme:'#d54b5e',name:'Bandung',img:'images/mbti/ocbc-ea-bandung.png',risk:2.1,plan:3.4,
+  {id:'balloon',theme:'#d54b5e',name:'Bandung',img:'images/mbti/ocbc-ea-bandung.png',preview:'images/mbti/preview/ocbc-ea-bandung-preview.jpg',risk:2.1,plan:3.4,
     superpower:'Joy today, memories forever',
     instinct:'Lives for today and spends on experiences',
     personality:['Loves experiences','Spends on joy','Values freedom','Lives in the moment','Seeks excitement','Easygoing and optimistic'],
@@ -1395,7 +1506,7 @@ const ARCHETYPES=[
     compatible:[{id:'hourglass',why:'Grows steadily and builds wealth over time'},{id:'lantern',why:'Loves research, makes informed decisions'}],
     incompatible:[{id:'stone',why:'Values stability and long-term security'},{id:'bolt',why:'Moves too fast, loves high risk'}],
     moves:['Build an emergency fund','Invest consistently every month','Review insurance','Plan for retirement']},
-  {id:'cloud',theme:'#2680de',name:'Barley Water',img:'images/mbti/ocbc-ea-barleywater.png',risk:1.0,plan:3.2,
+  {id:'cloud',theme:'#2680de',name:'Barley Water',img:'images/mbti/ocbc-ea-barleywater.png',preview:'images/mbti/preview/ocbc-ea-barleywater-preview.jpg',risk:1.0,plan:3.2,
     superpower:'Keeps things simple and stress-free',
     instinct:'Avoids complexity and lets good defaults do the work',
     personality:['Low-maintenance','Avoids financial stress','Trusts default options','Present-minded but not showy','Values peace of mind','Adaptable'],
@@ -1405,7 +1516,7 @@ const ARCHETYPES=[
     compatible:[{id:'balloon',why:'Shares the easygoing nature'},{id:'stone',why:'Both prefer low effort, low stress'}],
     incompatible:[{id:'compass',why:'Too demanding a pace'},{id:'bolt',why:'Too intense to keep up with'}],
     moves:['Turn on auto-invest so growth happens passively','Set one yearly reminder to check progress','Pick one balanced fund instead of none','Name a goal so the drifting has a direction']},
-  {id:'hourglass',theme:'#7a562c',name:'Milo Dinosaur',img:'images/mbti/ocbc-ea-milodinosaur.png',risk:2,plan:1.1,
+  {id:'hourglass',theme:'#7a562c',name:'Milo Dinosaur',img:'images/mbti/ocbc-ea-milodinosaur.png',preview:'images/mbti/preview/ocbc-ea-milodinosaur-preview.jpg',risk:2,plan:1.1,
     superpower:'Grows steadily and builds wealth over time',
     instinct:'Trusts patient, consistent compounding over shortcuts',
     personality:['Disciplined saver','Believes in compounding','Goal-oriented','Optimistic about the long run','Consistent','Avoids get-rich-quick schemes'],
@@ -1420,22 +1531,30 @@ function archetypeById(id){return ARCHETYPES.find(a=>a.id===id);}
 
 /* Forced-choice questionnaire — each option nudges [risk,plan] by a delta */
 const MBTI_Q=[
-  {axis:'risk',icon:'🧙',q:"A wizard offers to swap your one gold coin for a mystery pouch. You…",
-    a:{label:'Keep your coin',ic:'🪙',pts:0},b:{label:'Make the trade',ic:'🎁',pts:1}},
-  {axis:'risk',icon:'🌲',q:"There's a shortcut through the spooky forest — twice as fast, if you dare. You…",
-    a:{label:'Take the long way round',ic:'🥾',pts:0},b:{label:'Brave the forest',ic:'🌑',pts:1}},
-  {axis:'risk',icon:'🍄',q:"A glowing mushroom might grant a wish… or turn your tongue purple for a week. You…",
-    a:{label:'Leave it be',ic:'🚫',pts:0},b:{label:'Take a bite',ic:'😋',pts:1}},
-  {axis:'plan',icon:'🌈',q:"You find a pot of gold at the end of a rainbow. First move?",
-    a:{label:'Tuck it away safely',ic:'🔒',pts:0},b:{label:'Spend it on something magical right now',ic:'✨',pts:1}},
-  {axis:'plan',icon:'🎒',q:"Setting off on an adventure, you…",
-    a:{label:'Pack days in advance, list in hand',ic:'📋',pts:0},b:{label:'Grab a bag and go',ic:'🚀',pts:1}}
+  {axis:'risk',img:'images/questionnaire/ocbc-ea-q1.jpg',eyebrow:'The New Stall',
+    q:["You arrive at Maxwell Food Centre. One stall has a long queue. Right beside it is a brand new stall with no queue.",
+       "The owner smiles. \"Everyone starts somewhere.\""],
+    a:{label:'Queue for the popular stall',ic:'🍜',pts:0},b:{label:'Try the new stall',ic:'✨',pts:1}},
+  {axis:'risk',img:'images/questionnaire/ocbc-ea-q3.jpg',eyebrow:'The Shared Table',
+    q:["Every table is full except one. An elderly uncle waves you over.",
+       "\"Plenty of space here.\" You've never met him before."],
+    a:{label:'Wait for another table to free up',ic:'🪑',pts:0},b:{label:'Share the table',ic:'🤝',pts:1}},
+  {axis:'risk',img:'images/questionnaire/ocbc-ea-q4.jpg',eyebrow:'The Recommendation',
+    q:["You ask the stall owner what they recommend. Instead of the bestseller, they point to another item.",
+       "\"It's my personal favourite.\" You've never heard of it before."],
+    a:{label:'Order the popular choice',ic:'⭐',pts:0},b:{label:"Trust his recommendation",ic:'🎲',pts:1}},
+  {axis:'plan',img:'images/questionnaire/ocbc-ea-q5.jpg',eyebrow:'The Weekend Market',
+    q:["You arrive at a weekend food market with dozens of stalls.",
+       "You only have enough room to try a few."],
+    a:{label:'Walk through the market first before deciding',ic:'🗺️',pts:0},b:{label:'Start buying as soon as something looks good',ic:'🛍️',pts:1}}
 ];
 /* Conditional tiebreaker — only asked when Risk score = 2 AND Planning score = 0,
    the one cell where Lantern and Hourglass overlap and nothing else separates them. */
-const MBTI_Q6={icon:'🧞',q:"A merchant offers a deal that looks good on the surface. You…",
-  a:{label:'Investigate every detail before deciding',ic:'🔍',id:'lantern'},
-  b:{label:"Trust your steady plan and don't get distracted",ic:'⏳',id:'hourglass'}};
+const MBTI_Q6={img:'images/questionnaire/ocbc-ea-q6.jpg',eyebrow:'The Apprentice',
+  q:["Two apprentice hawkers have just opened neighbouring stalls. One has spent years perfecting every recipe before opening.",
+     "The other says, \"I'll keep improving based on every customer who comes.\" Both have long queues."],
+  a:{label:'The one who perfected everything before opening',ic:'📖',id:'lantern'},
+  b:{label:'The one who learns by doing',ic:'🔥',id:'hourglass'}};
 /* Result lookup table: [riskScore][planCategory] -> archetype id. planCategory: 0 = deliberate (score 0), 1 = spontaneous (score 1-2) */
 const MBTI_LOOKUP={
   '0_0':'anchor', '0_1':'cloud',
@@ -1642,7 +1761,7 @@ const state={
   paper:{started:false,step:0,series:[],base:0,amount:96000},
   drag:null,
   mbti:{step:0,answers:[],risk:2,plan:2,archetype:null,tieAnswer:null,done:false},
-  lifesim:{decisions:[],activeDecisionId:null,customText:'',analyzeStep:0,pendingScenario:null,pendingCost:null,pendingYears:null}
+  lifesim:{decisions:[],activeDecisionId:null,customText:'',analyzeStep:0,pendingScenarios:[],detailsQueue:[],detailsIndex:0,pendingDetails:{},detectFeedback:null}
 };
 const REGIONS=['Singapore','United States','Asia ex-Japan','Europe','Emerging Markets','Global / broad'];
 /* 6-question risk comfort assessment (client-friendly) */
@@ -2004,7 +2123,7 @@ let cur='login';
 const $=id=>document.getElementById(id);
 function fmtSGD(n){return 'S$'+Math.round(n).toLocaleString();}
 function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2000);}
-function go(id){if(window._agTimer){clearInterval(window._agTimer);window._agTimer=null;}cur=id;render();}
+function go(id){if(window._agTimer){clearInterval(window._agTimer);window._agTimer=null;}if(id==='pilot')state._topTab='myoneteam';cur=id;render();}
 function next(){const i=ORDER.indexOf(cur);if(i<ORDER.length-1)go(ORDER[i+1]);}
 function prev(){const i=ORDER.indexOf(cur);if(i>0)go(ORDER[i-1]);}
 function keepScroll(fn){const v=$('view'),y=v.scrollTop;fn();v.scrollTop=y;}
@@ -2166,80 +2285,37 @@ function setAI(key,custom){const el=$('aiMsg');if(!el)return;el.innerHTML=custom
 const S={
 
 login(){return `
-<div style="position:relative;width:100%;height:100%;overflow:hidden;background:#e2efff">
+<div id="loginStage" style="position:absolute;inset:0;width:100%;height:100%;background:var(--bg);border-radius:38px;overflow:hidden;">
   <img
-      src="images/background/ocbc-ea-login.png"
-      style="position:absolute;top:2px;left:2px;right:2px;bottom:2px;width:calc(100% - 4px);height:calc(100% - 4px);object-fit:cover;object-position:top;border-radius:38px;"
+      id="loginImg"
+      src="images/background/ocbc-ea-login.jpg"
+      alt="OCBC Singapore login"
+      onload="positionLoginBtn()"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"
   />
-
-  <div class="logincta" style="position:absolute;bottom:85px;left:22px;right:26px;padding:0;background:transparent;">
   <button
-      class="ologin"
+      id="loginBtnOverlay"
+      class="loginBtnOverlay"
       onclick="go('home')"
-      style="
-          width:100%;
-          height:62px;
-          margin-top:-4px;
-          border:none;
-          border-radius:14px;
-          cursor:pointer;
-
-      background: linear-gradient(
-          160deg,
-          #f8e6b8 0%,
-          #f3d68d 22%,
-          #e3be67 48%,
-          #d3a347 72%,
-          #c4913a 100%
-      );
-
-          border:1px solid rgba(190,150,60,.4);
-
-          box-shadow:
-              inset 0 1.5px 0 1px rgba(255,255,255,.75),
-              inset 0 -1px 2px rgba(120,85,25,.12),
-              0 8px 22px rgba(160,120,40,.28),
-              0 2px 6px rgba(120,85,25,.16);
-
-          color:#241A08;
-
-          font-family:
-              'Sora',
-              'SF Pro Display',
-              'Inter',
-              -apple-system,
-              BlinkMacSystemFont,
-              'Segoe UI',
-              sans-serif;
-
-          font-size:16px;
-          font-weight:800;
-          letter-spacing:0.2px;
-
-          text-shadow:
-              0 1px 0 rgba(255,255,255,.6);
-
-          transition:transform .12s ease,box-shadow .2s ease,filter .2s ease;
-      "
-      onmousedown="this.style.transform='scale(.98)'"
-      onmouseup="this.style.transform='scale(1)'"
-      onmouseleave="this.style.transform='scale(1)'">
-      Log In to OCBC Singapore
-  </button>
-  </div>
+      aria-label="Log In To OCBC Singapore"
+  >Log In to OCBC Singapore</button>
 </div>`;
 },
 
 
 
-home(){return `<div style="width:100%;overflow:hidden;line-height:0;height:515px;position:relative">
-    <img src="images/background/ocbc-ea-home.png" style="width:100%;display:block" alt="OCBC home"/>
-    <div style="position:absolute;left:0;right:0;bottom:0;height:130px;background:linear-gradient(to bottom, rgba(245,246,248,0) 0%, rgba(245,246,248,.7) 60%, var(--bg) 100%);pointer-events:none"></div>
+home(){return `<div style="width:100%;overflow:hidden;line-height:0;position:relative;aspect-ratio:853/820">
+    <img src="images/background/ocbc-ea-home.jpg" style="width:100%;display:block" alt="OCBC home"/>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:10%;background:linear-gradient(to bottom, rgba(245,246,248,0) 60%, rgba(245,246,248,.7) 85%, var(--bg) 100%);pointer-events:none"></div>
   </div>
-  <div class="pad homesheet" style="position:relative;z-index:2;margin-top:-157px;padding-top:0">
-    ${state.invested?`<div class="promo activeppl" onclick="go('pilot')" style="cursor:pointer">
-      <div class="row" style="margin-bottom:6px"><span class="livedot"></span><div class="pt" style="margin:0">My OneTeam · Your AI Team Is Active</div><span style="margin-left:auto;font-size:18px">›</span></div>
+  <div class="pad homesheet" style="position:relative;z-index:2;margin-top:-2%;padding-top:0">
+    ${state.invested?`<div class="promo activeppl">
+      <div class="row" style="margin-bottom:6px;cursor:pointer" onclick="enterPilot('myoneteam')"><span class="livedot"></span><div class="pt" style="margin:0">My OneTeam · Your AI Team Is Active</div><span style="margin-left:auto;font-size:18px">›</span></div>
       <div class="pd">${state.pilot.rebalanced?'All caught up. Your team is monitoring markets for you.':'<b>1 new update</b> — markets moved and your team has a suggestion. Tap to review.'}</div>
+      <div class="homeactive-btns">
+        <button class="homeactive-btn" onclick="event.stopPropagation();enterPilot('myoneteam')">🏠 Review My OneTeam</button>
+        <button class="homeactive-btn" onclick="event.stopPropagation();enterPilot('life')">💭 Life Simulator</button>
+      </div>
     </div>`:homePromo()}
 
     <div class="hacctcard">
@@ -2256,9 +2332,11 @@ home(){return `<div style="width:100%;overflow:hidden;line-height:0;height:515px
 
     ${state.invested?`<div class="card flat" style="background:#fff;margin-top:14px"><div class="row"><div style="font-size:22px">🎯</div><div style="font-size:13px;color:var(--muted);line-height:1.45">You're <b>${Math.round(totalVal()*1.047/state.target*100)}% toward your ${goalLabel()}</b>. Your team will keep you on track.</div></div></div>`:''}
   </div>
-  <div class="bottomnav" style="height:91px;overflow:hidden;position:sticky;bottom:0;background:#f9f6f2">
+  <div class="bottomnav" style="overflow:hidden;position:sticky;bottom:0;background:#f9f6f2">
     <div style="position:absolute;left:0;right:0;top:0;height:14px;background:linear-gradient(to bottom, var(--bg) 0%, rgba(245,246,248,0) 100%);z-index:1;pointer-events:none"></div>
-    <img src="images/background/ocbc-ea-home.png" style="width:100%;display:block;position:absolute;left:0;top:-730px" alt="OCBC nav"/>
+    <div style="width:100%;overflow:hidden;line-height:0;position:relative;aspect-ratio:853/200">
+      <img src="images/background/ocbc-ea-home.jpg" style="width:100%;display:block;position:absolute;left:0;top:0;transform:translateY(-88.9%)" alt="OCBC nav"/>
+    </div>
   </div>`;},
 
 link(){return `<div style="position:relative">
@@ -2279,7 +2357,7 @@ link(){return `<div style="position:relative">
   <div id="provList">${state.providers.filter(p=>p.manual).map(p=>provRow(p)).join('')||'<div class="sbempty" style="background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid var(--line)">None added yet — add an overseas broker, robo, or property below.</div>'}</div>
   <div class="lrow" onclick="manualModal()" style="background:linear-gradient(180deg,#fffdf9,#fff);border-style:dashed;border-color:#dcbb72;justify-content:center;color:#a6710f;font-weight:700;margin-top:12px">＋ Add a brokerage manually</div>
 
-  <button class="btn gold" onclick="go('portfolio')">Done — back to my plan →</button>
+  <button class="btn gold" onclick="go('portfolio')">Done — Back To My Plan →</button>
 </div></div></div>`;},
 
 goals(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
@@ -2342,6 +2420,16 @@ mbtiIntro(){return `<div style="position:relative">
     <div class="mbtiwhy-body">This-or-that instinct calls, no right answers. Your AI team then adapts — how it talks to you, what it prioritises — around who you really are.</div>
   </div>
 
+  <div class="mbtipreview">
+    <div class="mbtipreview-label">✦ 8 Singaporean Drink Personas To Discover</div>
+    <div class="mbtipreview-row">
+      ${ARCHETYPES.map(a=>`<div class="mbtipreview-chip" style="--pc:${a.theme}">
+        <div class="mbtipreview-avatar"><img src="${a.preview}" alt="${a.name}"></div>
+        <div class="mbtipreview-name">${a.name}</div>
+      </div>`).join('')}
+    </div>
+  </div>
+
   <button class="btn gold" onclick="mbtiStart()">Discover My Money Identity →</button>
   <div style="text-align:center;margin-top:12px"><a onclick="go('team')" style="font-size:12.5px;color:var(--muted);font-weight:600;cursor:pointer">Skip for now</a></div>
 </div></div></div>`;},
@@ -2367,12 +2455,13 @@ mbtiQuiz(){
     <div class="mbtiprognum">${Math.min(m.step+1,totalSteps)} / ${totalSteps}</div>
   </div>
 
+  ${q.img?`<div class="mbtiphoto"><img src="${q.img}" alt="${q.eyebrow||''}"></div>`:''}
   <div class="mbtistory">
     <div class="mbtistory-glow"></div>
     <div class="mbtistory-spark s1">✦</div><div class="mbtistory-spark s2">✦</div><div class="mbtistory-spark s3">✧</div>
-    <div class="mbtistory-icon">${q.icon||'✨'}</div>
-    <div class="mbtiq-eyebrow">${onQ6?'One more, to be sure':(q.axis==='risk'?'Risk instinct':'Planning style')}</div>
-    <div class="mbtiq-text">${q.q}</div>
+    ${!q.img?`<div class="mbtistory-icon">${q.icon||'✨'}</div>`:''}
+    <div class="mbtiq-eyebrow">${q.eyebrow?q.eyebrow:(onQ6?'One more, to be sure':(q.axis==='risk'?'Risk instinct':'Planning style'))}</div>
+    <div class="mbtiq-text">${mbtiFormatStory(q.q)}</div>
   </div>
 
   <div class="mbtiopts">
@@ -2387,9 +2476,19 @@ mbtiQuiz(){
 mbtiResult(){
   const m=state.mbti;
   const a=m.archetype||archetypeById('hourglass');
+  setTimeout(mbtiRunReveal,0);
   return `<div style="position:relative">
+  <div class="mbtiflash" id="mbtiFlash"></div>
   <div style="position:relative;z-index:1;padding-top:50px">${appbar('Your Money Identity','mbtiIntro',false,true)}<div class="pad" style="padding-bottom:32px">
 
+  <div class="mbtisuspense" id="mbtiSuspense">
+    <div class="mbtisuspense-titlewrap">
+      <span class="mbtisuspense-spark sp1">✦</span><span class="mbtisuspense-spark sp2">✧</span><span class="mbtisuspense-spark sp3">✦</span><span class="mbtisuspense-spark sp4">✧</span>
+      <div class="mbtisuspense-title">Your Financial Profile Is<span class="mbtisuspense-dots"><span>.</span><span>.</span><span>.</span></span></div>
+    </div>
+  </div>
+
+  <div class="mbtireveal" id="mbtiRevealBox">
   <div class="mbtireveal-eyebrow">✦ Your money identity is</div>
   <h1 class="mbtireveal-name" style="color:${a.theme}">${a.name}</h1>
   <p class="sub" style="margin-top:-4px">${a.superpower}</p>
@@ -2413,6 +2512,7 @@ mbtiResult(){
   <button class="btn gold" onclick="go('team')" style="margin-top:16px">Continue To Build My Team →</button>
   <button class="btn ghost" onclick="mbtiRetake()" style="margin-top:10px">Retake the profile</button>
   <button class="btn ghost" onclick="go('home')" style="margin-top:10px">← Back To Home</button>
+  </div>
 </div></div></div>`;},
 
 team(){return `<div style="position:relative">
@@ -2487,42 +2587,7 @@ analyze(){runAnalyze();const sel=AGENTS.filter(a=>state.agents.includes(a.id));s
   <div id="analyzeCta"></div>
 </div></div></div>`;},
 
-reco(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
-  const signals=sel.map(a=>({ag:a,...noticedDynamic(a)}));
-  const prof=state.riskAssessed||riskProfile();
-  return `<div style="position:relative">
-  <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
-  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Your Plan','analyze',false,true)}<div class="pad">
-  <div style="background:rgba(255,253,248,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:16px;padding:14px 16px;margin:0 0 14px">
-    <div class="eyebrow" style="background:linear-gradient(120deg,#e3b04a,#a6710f);-webkit-background-clip:text;background-clip:text;color:transparent">Your AI team's recommendation</div>
-    <h1 style="margin:6px 0 6px">A Plan Built Around Your Goals</h1>
-    <p class="sub" style="margin:0;color:var(--ink2)">Here's what each agent flagged in your situation — and the mix it points to, kept within your ${prof} risk profile.</p>
-  </div>
-
-  <h2>What Your AI Team Noticed</h2>
-  ${signals.map(s=>`<div class="signal" style="border-left:3px solid ${s.ag.color};background:linear-gradient(180deg,#fffdf9,#fff);box-shadow:0 3px 10px rgba(20,22,27,.06)">
-    <div class="miniframe" style="box-shadow:0 2px 8px ${s.ag.color}40">${avatar(s.ag)}</div>
-    <div><div class="byag" style="color:${s.ag.color}">${s.ag.name} noticed</div><div class="st">${s.t}</div></div></div>`).join('')}
-
-  <h2 style="margin-top:8px">The Orchestrator's Verdict</h2>
-  <div class="judgestrip"><div class="pixframe gold" style="width:44px;flex-shrink:0">${avatar(JUDGE)}</div>
-    <div><div style="font-family:'Sora';font-weight:800;font-size:14px;color:#fff">Orchestrator</div>
-      <div style="font-size:12px;color:#e8d8ad;line-height:1.45">Weighed against your <b style="color:#fff">${prof}</b> profile, here's your recommended mix across four asset classes. Open your plan next to see — and adjust — the funds I've picked in each.</div></div></div>
-
-  <div class="card" style="text-align:center;margin-top:11px;background:linear-gradient(180deg,#fffbf3,#fff);border:1px solid #e8d6a8">
-    <div style="display:flex;justify-content:center">${pieSVG(150)}</div>
-    <div class="legend4">${KEYS4.map(x=>`<div class="lg"><span class="swatch" style="background:${BK[x].hex}"></span>${BK[x].name} <b>${state.buckets[x]}%</b></div>`).join('')}</div>
-    <div class="recorisk">
-      <div><span>Your risk profile</span><b>${prof}</b></div>
-      <div><span>This plan's risk</span><b style="color:${riskWeight()>=75?'var(--red)':'var(--ink)'}">${riskLabel()}</b></div>
-    </div>
-  </div>
-
-  <button class="btn gold" onclick="go('portfolio')">Adjust &amp; Explore My Plan →</button>
-  <div class="disc">Illustrative only. Projections are not guaranteed and your capital is at risk.</div>
-</div></div></div>`;},
-
-sandbox(){return appbar('Adjust Your Plan','reco')+`<div class="pad">
+sandbox(){return appbar('Adjust Your Plan','portfolio')+`<div class="pad">
   <div class="row" style="justify-content:space-between;margin-bottom:8px"><div class="eyebrow ai">Your sandbox · adjust freely, risk-free</div><span class="goalbadge" id="goalChip" style="background:${goalStatus().ok?'#e7f8ef':'#fdeee8'};color:${goalStatus().ok?'#0c7a4a':'#b1560f'}">${goalStatus().label}</span></div>
 
   <div id="riskWarn">${overAppetite()?warnHTML():''}</div>
@@ -2552,14 +2617,14 @@ sandbox(){return appbar('Adjust Your Plan','reco')+`<div class="pad">
 
   <div class="alloc" id="allocBox"></div>
 
-  <h2>Asset baskets <span style="font-weight:500;color:var(--muted);font-size:12px">— tap a class to view & adjust its funds</span></h2>
+  <h2>Asset Baskets <span style="font-weight:500;color:var(--muted);font-size:12px">— tap a class to view & adjust its funds</span></h2>
   <div id="buckets">${renderBuckets()}</div>
 
   <button class="btn primary" onclick="go('choose')">Continue →</button>
 </div>`;},
 
 choose(){return appbar('Ready To Act','sandbox')+`<div class="pad">
-  <h1>How would you like to proceed?</h1>
+  <h1>How Would You Like To Proceed?</h1>
   <p class="sub">Your plan is ready. Test it, get a second opinion, or invest now — your call.</p>
   <div class="optcard" onclick="go('paper')"><div class="opt-ic" style="background:#eef3ff;color:#2f6fd6">▶</div>
     <div><div class="opt-t">Paper trade first</div><div class="opt-d">Run it forward risk-free with virtual money before committing.</div></div><span class="opt-go">›</span></div>
@@ -2572,14 +2637,14 @@ choose(){return appbar('Ready To Act','sandbox')+`<div class="pad">
 
 paper(){return appbar('Paper Trading','choose')+`<div class="pad">
   <div class="eyebrow ai">Paper trading · no real money</div>
-  <h1>Test-drive your plan</h1>
+  <h1>Test-Drive Your Plan</h1>
   <p class="sub">We'll open simulated positions from your plan and run the market forward. Watch how it behaves before you commit.</p>
   <div id="paperBody">${paperBody()}</div>
 </div>`;},
 
 rm(){state.rmApproved=true;return appbar('Relationship Manager','choose')+`<div class="pad done" style="text-align:center">
   <div class="done-ic">✓</div>
-  <h1>Sent to your Relationship Manager</h1>
+  <h1>Sent To Your Relationship Manager</h1>
   <p class="copy" style="text-align:center">Your Relationship Manager will review your plan, paper-trading results, and notes to ensure everything is in place. Once documented and approved, you'll be ready to invest.</p>
   <div class="card flat" style="text-align:left">
     <div class="kpi"><span class="muted">Goal</span><b>${goalLabel()} · S$${state.target.toLocaleString()} / ${state.years}y</b></div>
@@ -2588,17 +2653,17 @@ rm(){state.rmApproved=true;return appbar('Relationship Manager','choose')+`<div 
     <div class="kpi"><span class="muted">Suitability</span><b class="good">Reviewed by your RM ✓</b></div>
   </div>
   <div class="trust"><b>Documented by your Relationship Manager.</b> Trade whenever you're ready — executed on OCBC Securities. <b>Not guaranteed returns; capital at risk.</b></div>
-  <button class="btn primary pulse" onclick="go('done')">Execute this plan →</button>
+  <button class="btn primary pulse" onclick="go('done')">Execute This Plan →</button>
   <div style="text-align:center;margin-top:12px"><a onclick="go('paper')" style="font-size:13px;font-weight:600;color:var(--red);cursor:pointer">Paper trade it first</a></div>
 </div>`;},
 
 done(){const prods=PRODUCTS.filter(p=>p.bucket);const approved=state.rmApproved;return appbar('Invest','choose')+`<div class="pad">
-  <h1>Invest in your portfolio</h1>
+  <h1>Invest In Your Portfolio</h1>
   <p class="sub">${approved?'Your Relationship Manager has approved your plan. It\u2019s now ready to go live in the iOCBC app, where you can execute trades and manage your investments.':'Your plan is ready to go live in the iOCBC app, where you can execute trades and manage your investments.'}</p>
   <div class="card" style="background:var(--ink);color:#fff;border:none"><div style="font-size:12px;opacity:.7">Your plan · ${prods.length} funds · S$${totalVal().toLocaleString()}</div><div class="bigval" style="margin-top:2px">S$${state.invest.toLocaleString()}</div><div style="font-size:11px;opacity:.6;margin-top:6px">Projected S$${projValue().toLocaleString()} by ${2025+horizon()} · risk ${riskLabel()}</div></div>
-  <h2>What you'll hold</h2>
+  <h2>What You'll Hold</h2>
   ${prods.map(p=>`<div class="prod" style="cursor:default"><span class="swatch" style="background:${BK[p.bucket].hex}"></span><span class="pn">${p.name}</span><span class="amttag">S$${(p.amt||0).toLocaleString()}</span>${p.ow?`<span class="hv ow">★</span>`:''}</div>`).join('')}
-  <button class="btn primary pulse" style="margin-top:14px" onclick="openIOCBC()">Execute this plan on iOCBC →</button>
+  <button class="btn primary pulse" style="margin-top:14px" onclick="openIOCBC()">Execute This Plan On iOCBC →</button>
   ${state.rmApproved?'':`<div style="text-align:center;margin-top:12px"><a onclick="go('rm')" style="font-size:13px;font-weight:600;color:var(--red);cursor:pointer">Have my Relationship Manager review first</a></div>`}
   <div class="disc">Investments are subject to risk; past performance and projections do not guarantee future returns. Trades are executed by OCBC Securities (iOCBC).</div>
 </div>`;},
@@ -2634,7 +2699,7 @@ pilot(){const inv=totalVal(),curV=Math.round(inv*1.047),gain=curV-inv,gpct=(gain
   <div class="lifetab-panel">
     <div class="lifetab-ic">💭</div>
     <div class="lifetab-title">Life Simulator</div>
-    <div class="lifetab-sub">Thinking about buying something or planning a life event? Ask MyOneTeam before you decide — your whole team weighs in before you commit.</div>
+    <div class="lifetab-sub">Thinking about buying something or planning a life event? Ask My OneTeam before you decide — your whole team weighs in before you commit.</div>
     <div class="lifetab-open" onclick="go('lifesimIntro')">
       <div><div class="lifetab-open-t">Open Life Simulator</div><div class="lifetab-open-d">Tell your team what you're considering</div></div>
       <span class="opt-go" style="color:#f3d68d">›</span>
@@ -2646,8 +2711,8 @@ pilot(){const inv=totalVal(),curV=Math.round(inv*1.047),gain=curV-inv,gpct=(gain
 
   <div class="pilot-toggle ${topTab==='life'?'on-life':''}">
     <div class="pilot-toggle-thumb"></div>
-    <button class="pilot-toggle-btn ${topTab==='myoneteam'?'active':''}" onclick="setPilotTopTab('myoneteam')">🏠 MyOneTeam</button>
-    <button class="pilot-toggle-btn ${topTab==='life'?'active':''}" onclick="setPilotTopTab('life')">💭 Life Simulator</button>
+    <button class="pilot-toggle-btn ${topTab==='myoneteam'?'active':''}" onclick="setPilotTopTab('myoneteam')">🏠 My OneTeam</button>
+    <button class="pilot-toggle-btn ${topTab==='life'?'active':'lifehint'}" onclick="setPilotTopTab('life')">💭 Life Simulator</button>
   </div>
 
   ${topTab==='life'?lifePanel:`
@@ -2673,70 +2738,87 @@ pilot(){const inv=totalVal(),curV=Math.round(inv*1.047),gain=curV-inv,gpct=(gain
 </div></div></div>`;},
 
 lifesimIntro(){const m=state.lifesim;
+  const selected=m.pendingScenarios||[];
   return `<div style="position:relative">
   <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
   <div style="position:relative;z-index:1;padding-top:50px">${appbar('Life Simulator','pilot',false,true)}<div class="pad" style="padding-bottom:32px">
-  <div class="stepbadge gold">✦ Your MyOneTeam, on call</div>
-  <h1>What are you thinking about today?</h1>
-  <p class="sub">Tell your team what you're considering — big or small — and they'll show you what it means for your plan, together.</p>
+  <div class="stepbadge gold">✦ Your My OneTeam, on call</div>
+  <h1>What Are You Thinking About Today?</h1>
+  <p class="sub">Tell your team what you're considering, or pick from the list below — you can select more than one, and your team will show you their combined impact together.</p>
 
   <div class="lifesim-inputwrap">
-    <textarea id="lifesimInput" class="lifesim-input" placeholder="What are you thinking about today?" oninput="lifesimOnInput()">${m.customText||''}</textarea>
+    <textarea id="lifesimInput" class="lifesim-input" placeholder="e.g. I want to buy a $2mil house next year" oninput="lifesimOnInput()">${m.customText||''}</textarea>
   </div>
+  <button class="btn ghost" id="lifesimDetectBtn" onclick="lifesimDetectFromText()" style="margin-top:8px" ${(m.customText||'').trim().length<3?'disabled':''}>Detect from what I typed →</button>
+  ${m.detectFeedback?`<div class="note" style="margin-top:8px;color:#a6710f;font-weight:600">${m.detectFeedback}</div>`:''}
 
-  <div class="lifesim-chiphead">Or pick something to start with</div>
+  <div class="lifesim-chiphead" style="margin-top:20px">Or tap to select — pick as many as you like</div>
   <div class="lifesim-chips">
-    ${LIFESIM_CHIPS.map(c=>`<div class="lifesim-chip" onclick="lifesimPickChip('${c.id}')"><span class="lifesim-chip-ic">${c.icon}</span><span>${c.label}</span></div>`).join('')}
+    ${LIFESIM_CHIPS.map(c=>`<div class="lifesim-chip ${selected.includes(c.id)?'sel':''}" onclick="lifesimToggleChip('${c.id}')"><span class="lifesim-chip-ic">${c.icon}</span><span>${c.label}</span>${selected.includes(c.id)?'<span class="lifesim-chip-check">✓</span>':''}</div>`).join('')}
   </div>
 
-  <button class="btn gold" id="lifesimAskBtn" onclick="lifesimAsk()" disabled>Ask MyOneTeam →</button>
-  <div class="note" style="margin-top:14px">Every recommendation here comes from your whole team working together — not a single calculator. You can explore as many decisions as you like, even the same one more than once.</div>
+  <button class="btn gold" id="lifesimAskBtn" onclick="lifesimAsk()" ${selected.length?'':'disabled'}>${selected.length>1?`Continue with ${selected.length} decisions →`:'Continue →'}</button>
+  <div class="note" style="margin-top:14px">Every recommendation here comes from your whole team working together — not a single calculator. Select more than one to see their combined impact.</div>
 
   ${m.decisions.length?`
   <div class="lifesim-sechead" style="margin-top:22px">Your decisions so far <span style="text-transform:none;letter-spacing:0;font-weight:600">· ${m.decisions.length}</span></div>
   <div class="lifesim-decisionlist">
-    ${m.decisions.map(d=>{const sc=LIFESIM_SCENARIOS[d.scenario];
+    ${m.decisions.map(d=>{const scenarios=d.picks.map(p=>p.label||LIFESIM_SCENARIOS[p.scenario].label).join(' + ');
+      const icons=d.picks.map(p=>LIFESIM_CHIPS.find(c=>c.id===p.scenario).icon).join('');
       return `<div class="lifesim-decisionrow" onclick="lifesimOpenDecision('${d.id}')">
-        <span class="lifesim-decisionrow-ic">${LIFESIM_CHIPS.find(c=>c.id===d.scenario).icon}</span>
-        <div class="lifesim-decisionrow-mid"><div class="lifesim-decisionrow-t">${sc.label}</div><div class="lifesim-decisionrow-d">${d.cost?fmtSGD(d.cost):(d.years?d.years+' yr timeframe':'No amount set')}</div></div>
+        <span class="lifesim-decisionrow-ic">${icons}</span>
+        <div class="lifesim-decisionrow-mid"><div class="lifesim-decisionrow-t">${scenarios}</div><div class="lifesim-decisionrow-d">${d.picks.length>1?d.picks.length+' decisions combined':(d.picks[0].cost?fmtSGD(d.picks[0].cost):(d.picks[0].years?d.picks[0].years+' yr timeframe':'No amount set'))}</div></div>
         <span class="opt-go">›</span>
       </div>`;}).join('')}
   </div>`:''}
 </div></div></div>`;},
 
 lifesimDetails(){
-  const m=state.lifesim; const sc=LIFESIM_SCENARIOS[m.pendingScenario]||LIFESIM_SCENARIOS.car;
-  const chip=LIFESIM_CHIPS.find(c=>c.id===m.pendingScenario);
+  const m=state.lifesim;
+  const queue=m.detailsQueue||[];
+  const idx=m.detailsIndex||0;
+  const currentId=queue[idx];
+  const sc=LIFESIM_SCENARIOS[currentId]||LIFESIM_SCENARIOS.car;
+  const chip=LIFESIM_CHIPS.find(c=>c.id===currentId);
   const needsCost=sc.cost>0;
+  const pending=(m.pendingDetails&&m.pendingDetails[currentId])||{};
   return `<div style="position:relative">
   <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
   <div style="position:relative;z-index:1;padding-top:50px">${appbar('Life Simulator','lifesimIntro',false,true)}<div class="pad" style="padding-bottom:32px">
-  <div class="stepbadge gold">${chip.icon} ${sc.label}</div>
+  <div class="stepbadge gold">${chip.icon} ${currentId==='others'&&pending.label?pending.label:sc.label}${queue.length>1?` · ${idx+1} of ${queue.length}`:''}</div>
   <h1>A Couple Quick Details</h1>
-  <p class="sub">This helps your team run the numbers against your actual plan instead of a rough estimate.</p>
+  <p class="sub">${queue.length>1?"This helps your team run the numbers against your actual plan instead of a rough estimate. We'll go through each of your selections one at a time.":"This helps your team run the numbers against your actual plan instead of a rough estimate."}</p>
+
+  ${currentId==='others'?`
+  <div class="lifesim-detailfield">
+    <div class="lifesim-detailfield-lbl">What are you considering?</div>
+    <div class="lifesim-inputwrap">
+      <input class="lifesim-amtin" style="width:100%;padding:13px 16px;border:1.5px solid #e8d6a8;border-radius:14px;background:linear-gradient(180deg,#fffdf9,#fff);font-family:'Sora';font-weight:700" type="text" value="${pending.label||''}" placeholder="e.g. New laptop, medical bill, gift" oninput="lifesimSetPendingLabel(this.value)">
+    </div>
+  </div>`:''}
 
   ${needsCost?`
   <div class="lifesim-detailfield">
-    <div class="lifesim-detailfield-lbl">${m.pendingScenario==='study'?'Expected cost of tuition & fees':m.pendingScenario==='family'?'Expected cost in the first year':'Expense you foresee'}</div>
+    <div class="lifesim-detailfield-lbl">${currentId==='study'?'Expected cost of tuition & fees':currentId==='family'?'Expected cost in the first year':'Target Amount'}</div>
     <div class="lifesim-inputwrap">
       <div class="lifesim-amtwrap">
         <span class="lifesim-amtpfx">S$</span>
-        <input class="lifesim-amtin" inputmode="numeric" value="${m.pendingCost!=null?m.pendingCost:''}" placeholder="${sc.cost.toLocaleString()}" oninput="lifesimSetPendingCost(this.value)">
+        <input class="lifesim-amtin" inputmode="numeric" value="${pending.cost!=null?pending.cost:''}" placeholder="${sc.cost.toLocaleString()}" oninput="lifesimSetPendingCost(this.value)">
       </div>
     </div>
   </div>`:''}
 
   <div class="lifesim-detailfield">
-    <div class="lifesim-detailfield-lbl">${m.pendingScenario==='retire'?'How many years earlier do you want to retire?':'When are you aiming to do this?'}</div>
+    <div class="lifesim-detailfield-lbl">${currentId==='retire'?'How many years earlier do you want to retire?':'When are you aiming to do this?'}</div>
     <div class="lifesim-inputwrap">
       <div class="lifesim-amtwrap">
-        <input class="lifesim-amtin" inputmode="decimal" value="${m.pendingYears!=null?m.pendingYears:''}" placeholder="${m.pendingScenario==='retire'?'e.g. 5':'e.g. 2'}" oninput="lifesimSetPendingYears(this.value)">
-        <span class="lifesim-amtsfx">${m.pendingScenario==='retire'?'years earlier':'years from now'}</span>
+        <input class="lifesim-amtin" inputmode="decimal" value="${pending.years!=null?pending.years:''}" placeholder="${currentId==='retire'?'e.g. 5':'e.g. 2'}" oninput="lifesimSetPendingYears(this.value)">
+        <span class="lifesim-amtsfx">${currentId==='retire'?'years earlier':'years from now'}</span>
       </div>
     </div>
   </div>
 
-  <button class="btn gold" onclick="lifesimConfirmDetails()">Analyze This →</button>
+  <button class="btn gold" onclick="lifesimConfirmDetails()">${idx<queue.length-1?`Next: ${LIFESIM_SCENARIOS[queue[idx+1]].label} →`:'Analyze This →'}</button>
   <div class="note" style="margin-top:14px">Leave a field blank and your team will use a typical estimate instead.</div>
 </div></div></div>`;},
 
@@ -2779,10 +2861,8 @@ lifesimAnalyzing(){
 
 lifesimResults(){
   const m=state.lifesim; const d=lifesimActiveDecision();
-  if(!d)return `<div style="position:relative"><div style="position:relative;z-index:1;padding-top:50px">${appbar('Life Simulator','lifesimIntro',false,true)}<div class="pad"><p class="sub">No decision selected yet.</p><button class="btn gold" onclick="go('lifesimIntro')">Start a new one →</button></div></div></div>`;
-  const sc=lifesimScaledScenario(d.scenario,d.cost,d.years);
-  const order=['income','grow','retire','home'];
-  const expanded=d.expandedRow;
+  if(!d)return `<div style="position:relative"><div style="position:relative;z-index:1;padding-top:50px">${appbar('Life Simulator','lifesimIntro',false,true)}<div class="pad"><p class="sub">No decision selected yet.</p><button class="btn gold" onclick="go('lifesimIntro')">Start A New One →</button></div></div></div>`;
+  const sc=lifesimCombinedScenario(d);
   const impactRows=lifesimImpactRows(sc);
   const selId=(d.selectedImpact&&impactRows.some(r=>r.id===d.selectedImpact))?d.selectedImpact:'cashflow';
   const cmp=lifesimCompareFor(sc,selId);
@@ -2817,44 +2897,22 @@ lifesimResults(){
   <div class="lifesim-orch">
     <div class="lifesim-orch-av">${avatar(JUDGE)}</div>
     <div><div class="lifesim-orch-name">Orchestrator</div>
-    <div class="lifesim-orch-txt">Here's how your team landed on <b>${cmp.R.big}</b> for ${cmp.title.toLowerCase()}.</div></div>
-  </div>
-  <div class="lifesim-rows">
-    ${order.map(id=>{const a=AGENTS.find(x=>x.id===id),info=sc.impacts[id];const isOpen=expanded===id;
-      return `<div class="lifesim-row ${isOpen?'open':''}" onclick="lifesimToggleRow('${id}')">
-        <div class="lifesim-row-av">${avatar(a)}</div>
-        <div class="lifesim-row-mid"><div class="lifesim-row-name">${a.name}</div>${!isOpen?`<div class="lifesim-row-brief">${info.impact}</div>`:''}</div>
-        <span class="lifesim-row-chev">${isOpen?'▲':'▾'}</span>
-      </div>
-      ${isOpen?`<div class="lifesim-row-detail">
-        <div class="lifesim-row-detail-lbl">Impact</div><div class="lifesim-row-detail-txt">${info.impact}</div>
-        <div class="lifesim-row-detail-lbl" style="color:#1f9d57">Action</div><div class="lifesim-row-detail-txt">${info.action}</div>
-      </div>`:''}`;}).join('')}
-    ${(()=>{const isOrchOpen=expanded==='judge';
-      return `<div class="lifesim-row ${isOrchOpen?'open':''}" onclick="lifesimToggleRow('judge')">
-        <div class="lifesim-row-av">${avatar(JUDGE)}</div>
-        <div class="lifesim-row-mid"><div class="lifesim-row-name">Orchestrator</div>${!isOrchOpen?`<div class="lifesim-row-brief">Combines your whole team's input into one final answer.</div>`:''}</div>
-        <span class="lifesim-row-chev">${isOrchOpen?'▲':'▾'}</span>
-      </div>
-      ${isOrchOpen?`<div class="lifesim-row-detail">
-        <div class="lifesim-row-detail-txt">We've reviewed your decision across the entire team.<br><br><b>Good news — ${sc.summary}</b></div>
-      </div>`:''}`;})()}
+    <div class="lifesim-orch-txt">${lifesimOrchestratorExplain(sc,selId)}</div></div>
   </div>
   `:''}
 
   <div class="lifesim-sechead">What would you like to do?</div>
   <div class="reviewcard hot" onclick="go('lifesimReduce')"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">📉</div><div style="flex:1"><div class="opt-t">Reduce The Impact</div><div class="opt-d">Softer trade-offs from your team to ease this decision.</div></div><span class="opt-go">›</span></div>
-  <div class="reviewcard" style="margin-top:10px" onclick="go('lifesimRM')"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">🤝</div><div style="flex:1"><div class="opt-t">Speak With My Relationship Manager</div><div class="opt-d">They'll already have this whole conversation on file.</div></div><span class="opt-go">›</span></div>
+  <div class="reviewcard" style="margin-top:10px" onclick="state._rmFrom=cur;go('lifesimRM')"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">🤝</div><div style="flex:1"><div class="opt-t">Speak With My Relationship Manager</div><div class="opt-d">They'll already have this whole conversation on file.</div></div><span class="opt-go">›</span></div>
   <div class="reviewcard" style="margin-top:10px" onclick="lifesimProceed()"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">✓</div><div style="flex:1"><div class="opt-t">I'm Comfortable With This</div><div class="opt-d">Log this decision and continue — no changes needed.</div></div><span class="opt-go">›</span></div>
-  <div class="reviewcard" style="margin-top:10px" onclick="go('lifesimIntro')"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">➕</div><div style="flex:1"><div class="opt-t">Add Another Decision</div><div class="opt-d">Exploring more than one? Add as many as you like — even the same kind twice.</div></div><span class="opt-go">›</span></div>
 
   <div class="note" style="margin-top:16px">You're in control — your team is here to support this decision, not push you into it.</div>
 </div></div></div>`;},
 
 lifesimReduce(){
   const d=lifesimActiveDecision();
-  if(!d)return `<div style="position:relative"><div style="position:relative;z-index:1;padding-top:50px">${appbar('Reduce The Impact','lifesimIntro',false,true)}<div class="pad"><p class="sub">No decision selected yet.</p><button class="btn gold" onclick="go('lifesimIntro')">Start a new one →</button></div></div></div>`;
-  const sc=lifesimScaledScenario(d.scenario,d.cost,d.years);
+  if(!d)return `<div style="position:relative"><div style="position:relative;z-index:1;padding-top:50px">${appbar('Reduce The Impact','lifesimIntro',false,true)}<div class="pad"><p class="sub">No decision selected yet.</p><button class="btn gold" onclick="go('lifesimIntro')">Start A New One →</button></div></div></div>`;
+  const sc=lifesimCombinedScenario(d);
   const order=['income','grow','retire','home'];
   return `<div style="position:relative">
   <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
@@ -2863,22 +2921,46 @@ lifesimReduce(){
   <h1>Here's How Your Team Would Soften This</h1>
   <p class="sub">Collaborative moves from across your team — not generic advice — to reduce the impact while keeping your goals intact.</p>
 
-  ${order.map((id,i)=>{const a=AGENTS.find(x=>x.id===id),rec=sc.reduce[i];
-    return `<div class="lifesim-reducecard">
+  ${order.map((id,i)=>{const a=AGENTS.find(x=>x.id===id),recs=sc.reduce.filter(r=>r.agent===id);
+    return recs.map(rec=>`<div class="lifesim-reducecard">
       <div class="lifesim-reducecard-av">${avatar(a)}</div>
       <div class="lifesim-reducecard-mid"><div class="lifesim-reducecard-name">${a.name}</div><div class="lifesim-reducecard-txt">${rec.text}</div></div>
-    </div>`;}).join('')}
+    </div>`).join('');}).join('')}
 
   <button class="btn gold" onclick="lifesimApplyReduce()" style="margin-top:6px">Apply These Adjustments →</button>
   <div style="text-align:center;margin-top:12px"><a onclick="go('lifesimResults')" style="font-size:12.5px;color:var(--muted);font-weight:600;cursor:pointer">← Back to recommendations</a></div>
 </div></div></div>`;},
 
-lifesimRM(){
+lifesimConfirmed(){
   const d=lifesimActiveDecision();
-  const sc=d?lifesimScaledScenario(d.scenario,d.cost,d.years):null;
+  const sc=d?lifesimCombinedScenario(d):null;
+  const wasReduced=d&&d.status==='reduced';
   return `<div style="position:relative;min-height:100%">
   <div style="position:absolute;top:60px;left:0;right:0;bottom:0;background:linear-gradient(180deg,rgba(255,251,244,0) 0%,rgba(255,251,244,.38) 100px,rgba(255,251,244,.38) 100%);z-index:0;pointer-events:none"></div>
-  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Relationship Manager','lifesimResults',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Life Simulator','pilot',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div class="lifesim-rmicon">✅</div>
+  <h1 style="text-align:center">${wasReduced?"You're All Set — Adjustments Applied":"You're All Set"}</h1>
+  <p class="sub" style="text-align:center">${wasReduced?"Your team has softened the trade-offs and updated your plan.":"Your team has logged this decision — no changes needed."}</p>
+
+  <div class="card" style="background:#fff;margin-top:8px">
+    <div class="lifesim-rm-row"><span>Scenario</span><b>${sc?sc.label+(sc.cost?' · '+fmtSGD(sc.cost):''):'—'}</b></div>
+    <div class="lifesim-rm-row"><span>Status</span><b>${wasReduced?'Adjustments applied':'Comfortable as-is'}</b></div>
+    <div class="lifesim-rm-row"><span>Your plan</span><b>Updated just now</b></div>
+  </div>
+
+  <div class="note" style="margin-top:16px">${wasReduced?"You can review the updated mix any time from your plan — nothing further needed from you right now.":"Your AI team will keep monitoring this alongside your other goals."}</div>
+
+  <button class="btn gold" onclick="go('pilot')" style="margin-top:16px">Back To My OneTeam →</button>
+  <button class="btn ghost" onclick="go('lifesimIntro')" style="margin-top:10px">Explore another decision →</button>
+</div></div></div>`;},
+
+lifesimRM(){
+  const d=lifesimActiveDecision();
+  const sc=d?lifesimCombinedScenario(d):null;
+  return `<div style="position:relative;min-height:100%">
+  <div style="position:absolute;top:60px;left:0;right:0;bottom:0;background:linear-gradient(180deg,rgba(255,251,244,0) 0%,rgba(255,251,244,.38) 100px,rgba(255,251,244,.38) 100%);z-index:0;pointer-events:none"></div>
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Relationship Manager',state._rmFrom||'lifesimResults',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div style="text-align:center"><span class="okbadge">✓ Booking Confirmed</span></div>
   <div class="lifesim-rmicon">🤝</div>
   <h1 style="text-align:center">You're All Set to Talk to Jasmine</h1>
   <p class="sub" style="text-align:center">Your Relationship Manager already has the full picture — no need to repeat yourself.</p>
@@ -2890,9 +2972,12 @@ lifesimRM(){
     <div class="lifesim-rm-row"><span>Includes</span><b>Mitigation strategies already discussed</b></div>
   </div>
 
-  <div class="note" style="margin-top:16px">Jasmine will reach out shortly. When you speak, you can pick up exactly where you left off with your AI team — nothing gets lost in translation.</div>
+  <button class="btn gold" onclick="lifesimRMCall()" style="margin-top:16px">📞 Call Jasmine Now</button>
+  <button class="btn ghost" onclick="lifesimRMText()" style="margin-top:10px">💬 Text Jasmine Now</button>
 
-  <button class="btn gold" onclick="go('pilot')" style="margin-top:16px">Back to MyOneTeam →</button>
+  <div class="note" style="margin-top:16px">Prefer to wait? Jasmine will reach out shortly either way — when you speak, you can pick up exactly where you left off with your AI team, nothing gets lost in translation.</div>
+
+  <button class="btn ghost" onclick="go('pilot')" style="margin-top:16px">Back To My OneTeam →</button>
 </div></div></div>`;},
 
 review(){const aGuard=pickAgent('income'),aGlobal=pickAgent('grow');
@@ -2937,7 +3022,7 @@ orchestrate(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));applyAgent
   return appbar('Orchestrated View','goals')+`<div class="pad">
   <div class="judgestrip"><div class="pixframe gold" style="width:46px;flex-shrink:0">${avatar(JUDGE)}</div>
     <div><div style="font-family:'Sora';font-weight:800;font-size:14px;color:#fff">Orchestrator</div><div style="font-size:12px;color:#e8d8ad">Weighing ${sel.length} agents into one plan</div></div></div>
-  <h1 style="margin-top:16px">Your agents weighed and combined</h1>
+  <h1 style="margin-top:16px">Your Agents Weighed And Combined</h1>
   <p class="sub">Each agent pulls in a different direction. I weighted them by your goals and what your data implies, then blended their target mixes into one.</p>
   <div class="weighwrap">
     ${sel.map(a=>{const w=Math.round(100/sel.length);return `<div class="weighrow">
@@ -2952,7 +3037,7 @@ orchestrate(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));applyAgent
     </div>
     <div class="disc">The blended allocation across your four asset classes. You can reshape it next.</div>
   </div>
-  <button class="btn ai glowpulse" onclick="go('analyze')">Watch my team decide →</button>
+  <button class="btn ai glowpulse" onclick="go('analyze')">Watch My Team Decide →</button>
 </div>`;},
 
 /* ===== AI recommended portfolio: donut + bucket toggles + products ===== */
@@ -2962,7 +3047,7 @@ portfolio(){if(!PRODUCTS.some(p=>p.bucket&&p.amt)){applyAgents();recommendAmount
   const k=state.activeBucket;
   return `<div style="position:relative">
   <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
-  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Your Portfolio','reco',false,true)}<div class="pad">
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Your Portfolio','analyze',false,true)}<div class="pad">
   <div style="background:rgba(255,253,248,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:16px;padding:14px 16px;margin:0 0 14px">
     <div class="eyebrow" style="background:linear-gradient(120deg,#e3b04a,#a6710f);-webkit-background-clip:text;background-clip:text;color:transparent">Your AI-recommended portfolio</div>
     <h1 style="margin:6px 0 4px">${riskComfort().word} ${PNAME[state.agents[0]]||''} Mix</h1>
@@ -2976,7 +3061,7 @@ portfolio(){if(!PRODUCTS.some(p=>p.bucket&&p.amt)){applyAgents();recommendAmount
 
   <div class="sgbanner" onclick="go('link')"><span>🔗</span><div>Link SGFinDex &amp; other brokerages so your team sees everything — sharper plan, optional.</div><span class="sglink">Link</span></div>
 
-  <h2 style="margin-bottom:4px">Your asset classes</h2>
+  <h2 style="margin-bottom:4px">Your Asset Classes</h2>
   <p class="sub" style="margin:0 0 8px">Tap a class to see its funds, and tap <b>Edit</b> to reshape any basket in the sandbox.</p>
   ${bucketSeg(k)}
   <div style="text-align:center;font-size:11.5px;color:var(--muted);margin:-6px 0 10px">${BK[k].name} · ${state.buckets[k]}% of your plan</div>
@@ -3007,7 +3092,7 @@ tune(){const k=state.editBucket||state.activeBucket;const active=PRODUCTS.filter
   </div>
 
   <div class="sblegend"><span><span class="pbadge ai">AI</span> recommended by ${p.name}</span><span><span class="pbadge ed">Edited</span> changed by you</span></div>
-  <button class="btn gold" onclick="closeTune()">Done — back to portfolio</button>
+  <button class="btn gold" onclick="closeTune()">Done — Back To Portfolio</button>
 </div></div></div>`;},
 
 /* ===== projection with per-product growth + advance sim ===== */
@@ -3049,70 +3134,7 @@ projection(){recalcBuckets();state.chart='line';state.invest=Math.max(1000,total
   <div class="hsumwrap">${holdingsSummary()}</div>
   <div class="hsumhint" style="background:linear-gradient(180deg,#fffdf9,#fff);border:1px solid var(--line)">Each holding's growth moves with the simulation above — advance by week, month or year to watch it compound. To change the mix, edit a basket in the sandbox.</div>
 
-  <button class="btn gold glowpulse" onclick="go('advice')">What Does My Team Think? →</button>
-</div></div></div>`;},
-
-/* ===== final orchestrator + agents (family tree) ===== */
-advice(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
-  return `<div style="position:relative">
-  <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
-  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Final Advice','projection',false,true)}<div class="pad">
-  <div class="eyebrow" style="background:linear-gradient(120deg,#e3b04a,#a6710f);-webkit-background-clip:text;background-clip:text;color:transparent">Your team's sign-off</div>
-  <h1 style="margin-bottom:4px">The Committee On Your Final Mix</h1>
-  <p class="sub" style="margin-bottom:14px;color:var(--ink2)">They've seen your confirmed portfolio and its projection. Here's their closing word.</p>
-
-  <div class="tree">
-    <div class="treetop"><div class="pixframe gold" style="width:56px">${avatar(JUDGE)}</div>
-      <div class="treename">Orchestrator</div>
-      <div class="treesay">Balanced across your team and kept within the risk your data implies. I'm comfortable signing this off.</div>
-    </div>
-    <div class="treeline"></div>
-    <div class="treekids ${sel.length===1?'one':''}">
-      ${sel.map(a=>`<div class="treekid" style="background:linear-gradient(180deg,#fffdf9,#fff);border-color:#e8d6a8"><span class="kidconn" style="background:#e3cb92"></span><div class="miniframe" style="width:42px">${avatar(a)}</div>
-        <div class="treename" style="color:${a.color}">${a.name}</div>
-        <div class="treesay">${AGENT_ADVICE(a.id)}</div></div>`).join('')}
-    </div>
-  </div>
-
-  <button class="btn gold" onclick="go('trade')">I'm Ready To Trade →</button>
-  <div style="text-align:center;margin-top:10px"><a onclick="go('portfolio')" style="font-size:12.5px;color:#a6710f;font-weight:600;cursor:pointer">← Adjust the mix first</a></div>
-</div></div></div>`;},
-
-/* ===== trade: Oscar AI fed; iOCBC equities / OCBC the rest ===== */
-trade(){const prods=PRODUCTS.filter(p=>p.bucket);const total=totalVal();
-  return `<div style="position:relative">
-  <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
-  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Trade','advice',false,true)}<div class="pad">
-  <div class="eyebrow" style="background:linear-gradient(120deg,#e3b04a,#a6710f);-webkit-background-clip:text;background-clip:text;color:transparent">Right inside the OCBC app you already use</div>
-  <h1 style="margin-bottom:4px">Place Your Whole Plan In A Tap</h1>
-  <p class="sub" style="margin-bottom:14px;color:var(--ink2)">Your AI-built mix carries straight into your OCBC app — every fund across all four asset classes is pre-loaded. OCBC routes each one to the right channel, so there's nothing to set up, find, or key in.</p>
-
-  <div class="acctcard">
-    <div class="acctrow"><div class="acctic" style="background:linear-gradient(160deg,#e3b04a,#b8790f)">360</div>
-      <div style="flex:1;min-width:0"><div class="acctlbl">Funded from</div><div class="acctname">OCBC 360 Account · •••• 8842</div></div>
-      <div class="acctav">S$${BANK_KNOWN.investableAssets.toLocaleString()}<span>available</span></div></div>
-    <div class="acctdiv"></div>
-    <div class="acctrow"><div class="acctic" style="background:#14233a">OEA</div>
-      <div style="flex:1;min-width:0"><div class="acctlbl">Held in</div><div class="acctname">OCBC Investment Account (OEA)</div></div>
-      <span class="acctready"><span class="rdot"></span>Ready</span></div>
-  </div>
-
-  <h2 style="margin-top:16px">Your order</h2>
-  ${KEYS4.map(k=>{const ps=PRODUCTS.filter(p=>p.bucket===k);if(!ps.length)return '';const bv=ps.reduce((s,p)=>s+(p.amt||0),0);
-    return `<div class="ordgroup">
-      <div class="ordhead"><span class="bdot" style="background:${BK[k].hex}"></span>${BK[k].name}<span class="ordvia">${CHANNEL[k]}</span><span class="ordsum">S$${bv.toLocaleString()}</span></div>
-      ${ps.map(p=>`<div class="ordrow"><div class="picon sm" style="background:${BK[k].hex}">${prodTicker(p.name).slice(0,2)}</div>
-        <div style="flex:1;min-width:0"><div class="pname">${cleanName(p.name)}</div><div class="ptk">${prodTicker(p.name)}</div></div>
-        <div class="ordamt">S$${(p.amt||0).toLocaleString()}</div></div>`).join('')}
-    </div>`;}).join('')}
-  <div class="ordtotal2">
-    <div class="otr"><span>Invest today</span><b>S$${total.toLocaleString()}</b></div>
-    <div class="otr sub"><span>Then top up monthly</span><b>S$${state.monthly.toLocaleString()}/mo</b></div>
-  </div>
-  <div class="plannote">Suggested by your AI team for your ${goalLabel()} — your full S$${Math.round(BANK_KNOWN.investableAssets/1000)}k investable balance now, plus a monthly contribution. It never places more than you actually have; the rest of the journey to your goal comes from these top-ups and time.</div>
-
-  <button class="btn gold" onclick="placeOrder()">Review &amp; Place Order →</button>
-  <div class="disc">One order, executed by OCBC across the relevant channels (Unit Trusts, ETFs, bonds, cash & REITs). Investments carry risk; projections aren't guaranteed.</div>
+  <button class="btn gold" onclick="placeOrder()">Review Your Trade →</button>
 </div></div></div>`;},
 };
 
@@ -3211,6 +3233,12 @@ function sandTile(p,mode){const tk=prodTicker(p.name),hex=BK[p.cls]?BK[p.cls].he
 function setBucket(k){state.activeBucket=k;keepScroll(render);}
 function setPilotTab(t){state._pilotTab=t;keepScroll(render);}
 function setPilotTopTab(t){state._topTab=t;keepScroll(render);}
+function enterPilot(tab){
+  if(window._agTimer){clearInterval(window._agTimer);window._agTimer=null;}
+  state._topTab=tab;
+  cur='pilot';
+  render();
+}
 function seededRandom(seed,index){const x=Math.sin(seed+index*12.9898)*43758.5453;return x-Math.floor(x);}
 function assetGrowthMult(asset,t){const seed=state.simSeed||42;const months=Math.round(t*12);let mult=1;
   for(let m=1;m<=months;m++){
@@ -3725,7 +3753,7 @@ function runAnalyze(){analyzeRun=false;setTimeout(()=>{
         <div><div class="veyebrow">Orchestrator · The Verdict</div><div class="vtitle">Your recommended allocation</div></div></div>
       <div class="vsub">Balancing ${names} for your ${goalLabel()}. Figures are the share (%) of your portfolio in each asset class.</div>
       <div class="vbars">${bars}</div></div>`;}
-    const cta=$('analyzeCta');if(cta)cta.innerHTML=`<button class="btn gold glowpulse" style="animation:slideup .3s ease" onclick="go('reco')">See My Recommended Plan →</button>`;},after);
+    const cta=$('analyzeCta');if(cta)cta.innerHTML=`<button class="btn gold glowpulse" style="animation:slideup .3s ease" onclick="go('portfolio')">See My Recommended Plan →</button>`;},after);
 },60);}
 
 function setChart(t){state.chart=t;document.querySelectorAll('.chartcard .seg .s').forEach(s=>s.classList.remove('on'));event.target.classList.add('on');$('chartBox').innerHTML=projChart();}
@@ -3884,35 +3912,80 @@ function rebalance(){state.pilot.rebalanced=true;state.pilot.drift=state.buckets
 function lifesimOnInput(){
   const val=$('lifesimInput').value;
   state.lifesim.customText=val;
-  $('lifesimAskBtn').disabled=val.trim().length<3;
+  state.lifesim.detectFeedback=null;
+  const btn=$('lifesimDetectBtn');
+  if(btn)btn.disabled=val.trim().length<3;
 }
-function lifesimPickChip(id){
-  const chip=LIFESIM_CHIPS.find(c=>c.id===id);
-  state.lifesim.customText=chip.label;
-  state.lifesim.pendingScenario=id;
+function lifesimDetectFromText(){
+  const m=state.lifesim;
+  const text=(m.customText||'').trim();
+  if(text.length<3)return;
+  const scenarioId=lifesimScenarioFor(text);
+  if(!scenarioId){
+    m.detectFeedback="Couldn't quite make that out — try picking from the list below instead.";
+    keepScroll(()=>render());
+    return;
+  }
+  const amount=lifesimParseAmount(text);
+  const years=lifesimParseYears(text);
+  if(!m.pendingScenarios)m.pendingScenarios=[];
+  if(!m.pendingScenarios.includes(scenarioId))m.pendingScenarios.push(scenarioId);
+  if(!m.pendingDetails)m.pendingDetails={};
+  m.pendingDetails[scenarioId]={
+    cost: amount!=null ? amount : (m.pendingDetails[scenarioId]?m.pendingDetails[scenarioId].cost:null),
+    years: years!=null ? years : (m.pendingDetails[scenarioId]?m.pendingDetails[scenarioId].years:null)
+  };
+  const sc=LIFESIM_SCENARIOS[scenarioId];
+  const parts=[`Got it — ${sc.label}`];
+  if(amount!=null)parts.push(fmtSGD(amount));
+  if(years!=null)parts.push(years+' yr'+(years!==1?'s':'')+(scenarioId==='retire'?' earlier':' from now'));
+  m.detectFeedback=parts.join(' · ')+". Selected below — tap Continue when you're ready, or add more.";
   keepScroll(()=>render());
-  setTimeout(()=>{ const input=$('lifesimInput'); if(input){input.value=chip.label;} const btn=$('lifesimAskBtn'); if(btn)btn.disabled=false; },0);
+}
+function lifesimToggleChip(id){
+  const m=state.lifesim;
+  if(!m.pendingScenarios)m.pendingScenarios=[];
+  const idx=m.pendingScenarios.indexOf(id);
+  if(idx>=0)m.pendingScenarios.splice(idx,1);
+  else m.pendingScenarios.push(id);
+  keepScroll(()=>render());
 }
 function lifesimAsk(){
-  const text=state.lifesim.customText||'';
-  if(text.trim().length<3)return;
-  const matched=lifesimScenarioFor(text);
-  state.lifesim.pendingScenario=matched||state.lifesim.pendingScenario||'car';
-  const sc=LIFESIM_SCENARIOS[state.lifesim.pendingScenario];
-  state.lifesim.pendingCost=sc.cost>0?sc.cost:null;
-  state.lifesim.pendingYears=null;
+  const m=state.lifesim;
+  if(!m.pendingScenarios||!m.pendingScenarios.length)return;
+  m.detailsQueue=m.pendingScenarios.slice();
+  m.detailsIndex=0;
+  if(!m.pendingDetails)m.pendingDetails={};
   go('lifesimDetails');
 }
 function lifesimSetPendingCost(val){
+  const m=state.lifesim;
+  const currentId=m.detailsQueue[m.detailsIndex];
   const n=parseInt(String(val).replace(/[^0-9]/g,''),10);
-  state.lifesim.pendingCost=isNaN(n)?null:n;
+  if(!m.pendingDetails[currentId])m.pendingDetails[currentId]={};
+  m.pendingDetails[currentId].cost=isNaN(n)?null:n;
+}
+function lifesimSetPendingLabel(val){
+  const m=state.lifesim;
+  const currentId=m.detailsQueue[m.detailsIndex];
+  if(!m.pendingDetails[currentId])m.pendingDetails[currentId]={};
+  m.pendingDetails[currentId].label=val.trim().slice(0,40);
 }
 function lifesimSetPendingYears(val){
+  const m=state.lifesim;
+  const currentId=m.detailsQueue[m.detailsIndex];
   const n=parseFloat(val);
-  state.lifesim.pendingYears=isNaN(n)?null:n;
+  if(!m.pendingDetails[currentId])m.pendingDetails[currentId]={};
+  m.pendingDetails[currentId].years=isNaN(n)?null:n;
 }
 function lifesimConfirmDetails(){
-  state.lifesim.analyzeStep=0;
+  const m=state.lifesim;
+  if(m.detailsIndex<m.detailsQueue.length-1){
+    m.detailsIndex++;
+    keepScroll(()=>render());
+    return;
+  }
+  m.analyzeStep=0;
   go('lifesimAnalyzing');
   lifesimRunAnalysis();
 }
@@ -3937,12 +4010,17 @@ function lifesimRunAnalysis(){
     }else{
       setTimeout(()=>{
         const id='dec'+Date.now()+Math.floor(Math.random()*1000);
-        state.lifesim.decisions.push({
-          id, scenario:state.lifesim.pendingScenario,
-          cost:state.lifesim.pendingCost, years:state.lifesim.pendingYears,
-          showWorking:false, expandedRow:null, selectedImpact:null, status:'pending'
+        const m=state.lifesim;
+        const picks=m.detailsQueue.map(scenarioId=>{
+          const d=m.pendingDetails[scenarioId]||{};
+          return {scenario:scenarioId, cost:d.cost!=null?d.cost:null, years:d.years!=null?d.years:null, label:d.label||null};
         });
-        state.lifesim.activeDecisionId=id;
+        m.decisions.push({id, picks, showWorking:false, expandedRow:null, selectedImpact:null, status:'pending'});
+        m.activeDecisionId=id;
+        m.pendingScenarios=[];
+        m.pendingDetails={};
+        m.customText='';
+        m.detectFeedback=null;
         go('lifesimResults');
       },550);
     }
@@ -3964,15 +4042,65 @@ function lifesimToggleRow(id){
 }
 /* Produces a scaled copy of a scenario's holistic figures based on what the user actually entered
    (cost and years-until-purchase), instead of always using the scenario's fixed default numbers. */
+/* Combines multiple scenario picks (e.g. car + condo) into one summed pseudo-scenario, so every
+   downstream function (impact rows, comparisons, the Orchestrator's explanation) can keep working
+   with a single scenario-shaped object regardless of whether one or several decisions were combined. */
+function lifesimCombinedScenario(decision){
+  const scaled=decision.picks.map(p=>lifesimScaledScenario(p.scenario,p.cost,p.years));
+  const labelFor=(p,i)=>p.label||LIFESIM_SCENARIOS[p.scenario].label;
+  if(scaled.length===1){
+    const only=Object.assign({},scaled[0],{label:labelFor(decision.picks[0])});
+    return Object.assign({},only,{_picks:[{scenarioId:decision.picks[0].scenario,sc:only}]});
+  }
+  const totalCost=scaled.reduce((s,sc)=>s+(sc.cost||0),0);
+  const combinedHolistic={
+    monthlyHit: scaled.reduce((s,sc)=>s+sc.holistic.monthlyHit,0),
+    retireDelay: Math.round(scaled.reduce((s,sc)=>s+sc.holistic.retireDelay,0)*10)/10,
+    emgBefore: scaled[0].holistic.emgBefore,
+    emgAfter: Math.max(0,Math.round((scaled[0].holistic.emgBefore-scaled.reduce((s,sc)=>s+(scaled[0].holistic.emgBefore-sc.holistic.emgAfter),0))*10)/10),
+    homeSame: scaled.every(sc=>sc.holistic.homeSame),
+    homeNote: scaled.every(sc=>sc.holistic.homeSame) ? 'None of these draw from your home savings.' : scaled.find(sc=>!sc.holistic.homeSame).holistic.homeNote
+  };
+  const label=decision.picks.map((p,i)=>labelFor(p,i)).join(' + ');
+  const summary=`combining ${decision.picks.length} decisions together, ${combinedHolistic.monthlyHit>1500?'this is a meaningful stretch on your plan':'this is achievable'}. We'll make a few adjustments across the board to keep your long-term goals on track.`;
+  const combinedImpacts={};
+  ['income','grow','retire','home'].forEach(agentId=>{
+    const lines=decision.picks.map(p=>LIFESIM_SCENARIOS[p.scenario].impacts[agentId]);
+    combinedImpacts[agentId]={
+      impact: lines.map(l=>l.impact).join(' '),
+      action: lines[lines.length-1].action
+    };
+  });
+  return {
+    label, cost:totalCost, years:null, summary,
+    holistic:combinedHolistic, impacts:combinedImpacts,
+    reduce: decision.picks.flatMap(p=>LIFESIM_SCENARIOS[p.scenario].reduce),
+    _picks: decision.picks.map((p,i)=>({scenarioId:p.scenario,sc:scaled[i]}))
+  };
+}
+/* Centralised so every screen shows the same figure and it only needs updating in one place.
+   ~S$120k/year persona: after CPF and living costs, a realistic monthly surplus sits well above
+   the old 1.6x multiplier (which produced just S$4,000 — thin enough that almost any real
+   decision looked like it nearly wiped the person out). 2.6x lands around S$6,500/month, which
+   still shows a genuine, felt impact from a big decision without every scenario reading as a crisis. */
+function lifesimCurrentSurplus(){
+  return Math.round((state.monthly||2500)*2.6);
+}
 function lifesimScaledScenario(scenarioId,userCost,userYears){
   const base=LIFESIM_SCENARIOS[scenarioId]||LIFESIM_SCENARIOS.car;
   const baseCost=base.cost;
-  const ratio=baseCost>0 ? Math.max(0.15,(userCost!=null?userCost:baseCost)/baseCost) : 1;
-  const yearsFactor=(userYears!=null && userYears>0) ? Math.max(0.4,3/userYears) : 1; // sooner purchase = sharper near-term impact
   const h=base.holistic;
+  // Scenarios with no dollar cost (currently just "Retire Earlier") are scaled by years instead —
+  // the baseline retireDelay figure represents a 5-year-earlier retirement, so scale proportionally
+  // against whatever the user actually entered instead of ignoring their input.
+  const isYearsBased = baseCost===0 && h.retireDelay!==0;
+  const baseYears = isYearsBased ? Math.abs(h.retireDelay) : null;
+  const ratio = isYearsBased ? 1 : (baseCost>0 ? Math.max(0.15,(userCost!=null?userCost:baseCost)/baseCost) : 1);
+  const yearsRatio = isYearsBased && userYears!=null && userYears>0 ? userYears/baseYears : 1;
+  const yearsFactor=(!isYearsBased && userYears!=null && userYears>0) ? Math.max(0.4,3/userYears) : 1; // sooner purchase = sharper near-term impact
   const scaledMonthlyHit=Math.round(h.monthlyHit*ratio*yearsFactor);
-  const scaledRetireDelay=Math.round((h.retireDelay*ratio)*10)/10;
-  const scaledEmgAfter=Math.max(0,Math.round((h.emgBefore-(h.emgBefore-h.emgAfter)*ratio)*10)/10);
+  const scaledRetireDelay=isYearsBased ? Math.round((h.retireDelay*yearsRatio)*10)/10 : Math.round((h.retireDelay*ratio)*10)/10;
+  const scaledEmgAfter=Math.max(0,Math.round((h.emgBefore-(h.emgBefore-h.emgAfter)*(isYearsBased?yearsRatio:ratio))*10)/10);
   return Object.assign({},base,{
     cost:(userCost!=null?userCost:baseCost),
     years:(userYears!=null?userYears:null),
@@ -3981,10 +4109,12 @@ function lifesimScaledScenario(scenarioId,userCost,userYears){
 }
 function lifesimImpactRows(sc){
   const h=sc.holistic;
+  const currentSurplus=lifesimCurrentSurplus();
+  const remaining=currentSurplus-h.monthlyHit;
   const rows=[
     {id:'cashflow',icon:'💸',label:'Monthly cash flow',
       value:h.monthlyHit>0?'−'+fmtSGD(h.monthlyHit)+'/mo':(h.monthlyHit<0?'+'+fmtSGD(Math.abs(h.monthlyHit))+' needed/mo':'No change'),
-      note:h.monthlyHit>800?'Significant impact':(h.monthlyHit>0?'Moderate impact':(h.monthlyHit<0?'Needs new savings':'Barely moves the needle')),
+      note:h.monthlyHit>800?`Still ${fmtSGD(remaining)}/mo left over`:(h.monthlyHit>0?`Still ${fmtSGD(remaining)}/mo left over`:(h.monthlyHit<0?'Needs new savings':'Barely moves the needle')),
       tone:h.monthlyHit>800?'warn':'ok'},
     {id:'retire',icon:'🌴',label:'Retirement timeline',
       value:h.retireDelay>0?'+'+h.retireDelay+' yr'+(h.retireDelay!==1?'s':''):(h.retireDelay<0?h.retireDelay+' yrs':'No change'),
@@ -4013,9 +4143,89 @@ function lifesimCompareFor(sc,rowId){
       R:{h:'If you go ahead',big:h.emgAfter+' months',sub:h.emgAfter>=6?'still healthy':'getting lean'}};
   }
   // default: cashflow
+  const currentSurplus=lifesimCurrentSurplus();
+  if(h.monthlyHit>0){
+    const remaining=currentSurplus-h.monthlyHit;
+    return {title:'Monthly cash flow',
+      L:{h:'Today',big:fmtSGD(currentSurplus),sub:'your monthly surplus'},
+      R:{h:'If you go ahead',big:fmtSGD(remaining),sub:'−'+fmtSGD(h.monthlyHit)+'/mo · still S$'+remaining.toLocaleString()+' left over'}};
+  }
+  if(h.monthlyHit<0){
+    return {title:'Monthly cash flow',
+      L:{h:'Today',big:fmtSGD(currentSurplus),sub:'your monthly surplus'},
+      R:{h:'If you go ahead',big:'+'+fmtSGD(Math.abs(h.monthlyHit))+'/mo needed',sub:'new savings required, on top of your surplus'}};
+  }
   return {title:'Monthly cash flow',
-    L:{h:'Today',big:'No extra outlay',sub:'current monthly surplus'},
-    R:{h:'If you go ahead',big:h.monthlyHit>0?'−'+fmtSGD(h.monthlyHit)+'/mo':(h.monthlyHit<0?'+'+fmtSGD(Math.abs(h.monthlyHit))+'/mo needed':'No change'),sub:h.monthlyHit>0?'lower monthly surplus':(h.monthlyHit<0?'new savings required':'unaffected')}};
+    L:{h:'Today',big:fmtSGD(currentSurplus),sub:'your monthly surplus'},
+    R:{h:'If you go ahead',big:fmtSGD(currentSurplus),sub:'unaffected — no change'}};
+}
+/* The Orchestrator's own synthesis of how a number was reached — draws on every agent's
+   findings but is written as a single voice explaining the reasoning, rather than showing
+   each agent as its own separate expandable row (which felt cluttered with 5 things to open). */
+function lifesimOrchestratorExplain(sc,rowId){
+  const h=sc.holistic;
+  const isCombo=sc._picks&&sc._picks.length>1;
+  const comboLead=isCombo?`Adding up ${sc._picks.length} decisions together: `:'';
+
+  if(rowId==='retire'){
+    const delay=h.retireDelay;
+    const monthlyContribution=state.monthly||2500;
+    const monthlyLifestyle=Math.round((state.target||1500000)/25/12); // reverse the 25x-annual-expenses rule to estimate monthly cost of living
+
+    if(!sc.cost && sc.years){
+      const yearsShort=Math.abs(delay);
+      return `Here's the calculation: ${comboLead}I looked at what you spend monthly to maintain your current lifestyle — about ${fmtSGD(monthlyLifestyle)} — to work out what your savings need to cover once you stop working. Retiring ${sc.years} year${sc.years!==1?'s':''} earlier means ${sc.years} fewer year${sc.years!==1?'s':''} of contributions at your current rate of ${fmtSGD(monthlyContribution)}/month going toward that pot. To still afford your current lifestyle without that shortfall, you'd need to work about ${yearsShort} extra year${yearsShort!==1?'s':''} — which is the push-back you're seeing.`;
+    }
+    if(delay===0){
+      return `Here's the calculation: ${comboLead}I checked ${fmtSGD(sc.cost||0)} against your current savings and monthly contributions, and it doesn't dip into the money set aside for retirement — so your retirement date doesn't move.`;
+    }
+    const dir = delay>0 ? 'push back' : 'bring forward';
+    const monthsOfLifestyle=Math.max(1,Math.round((sc.cost||0)/monthlyLifestyle));
+    return `Here's the calculation: ${comboLead}I worked out your monthly cost of maintaining your current lifestyle — about ${fmtSGD(monthlyLifestyle)} — since that's what your retirement savings ultimately need to cover. ${isCombo?`Together, these decisions come to ${fmtSGD(sc.cost||0)}`:fmtSGD(sc.cost||0)}, roughly ${monthsOfLifestyle} month${monthsOfLifestyle!==1?'s':''} worth of that lifestyle — money that would otherwise have kept going into your retirement savings at ${fmtSGD(monthlyContribution)}/month. To make up for that gap and still retire able to afford your current lifestyle, you'd need to ${dir} your retirement by about ${Math.abs(delay)} year${Math.abs(delay)!==1?'s':''}.`;
+  }
+
+  if(rowId==='home'){
+    const homeAgent=AGENTS.find(a=>a.id==='home')||{target:400000,years:6};
+    const homeTarget=homeAgent.target, homeYears=homeAgent.years;
+    const homeMonthly=Math.round(homeTarget/Math.max(1,homeYears)/12);
+    if(h.homeSame){
+      return `Here's the calculation: ${comboLead}your home goal needs ${fmtSGD(homeTarget)} saved over ${homeYears} years — about ${fmtSGD(homeMonthly)}/month. I checked whether ${isCombo?'any of these decisions come':fmtSGD(sc.cost||0)+' comes'} out of that same monthly amount, and ${isCombo?'none do':"it doesn't"} — ${isCombo?"they're":"it's"} funded separately, so your home goal timeline stays at ${homeYears} years, untouched.`;
+    }
+    return `Here's the calculation: ${comboLead}your home goal needs ${fmtSGD(homeTarget)} saved over ${homeYears} years — about ${fmtSGD(homeMonthly)}/month. ${isCombo?'At least one of these decisions draws':fmtSGD(sc.cost||0)+' draws'} from that same pool of savings rather than sitting separately, so the goals are now competing for the same money. ${h.homeNote}`;
+  }
+
+  if(rowId==='emg'){
+    const monthlyLifestyle=Math.round((state.target||1500000)/25/12);
+    const bufferBeforeAmt=Math.round(h.emgBefore*monthlyLifestyle);
+    const bufferAfterAmt=Math.round(h.emgAfter*monthlyLifestyle);
+    const pulled=bufferBeforeAmt-bufferAfterAmt;
+    return `Here's the calculation: ${comboLead}at your monthly expenses of about ${fmtSGD(monthlyLifestyle)}, your emergency fund of ${fmtSGD(bufferBeforeAmt)} covers ${h.emgBefore} months today. Of the ${isCombo?fmtSGD(sc.cost||0)+' combined':fmtSGD(sc.cost||0)} for ${isCombo?'these decisions':'this decision'}, I estimated about ${fmtSGD(pulled)} would realistically come out of that cash buffer rather than your investments, leaving ${fmtSGD(bufferAfterAmt)} — which covers ${h.emgAfter} months.`;
+  }
+
+  // default: cashflow
+  const hit=h.monthlyHit;
+  const currentSurplus=lifesimCurrentSurplus();
+  if(hit===0){
+    return `Here's the calculation: ${comboLead}your current monthly surplus is about ${fmtSGD(currentSurplus)}. ${isCombo?'These decisions add':'This decision adds'} no new recurring expense, so that surplus is unaffected — your monthly cash flow stays the same.`;
+  }
+  const first=sc._picks?sc._picks[0]:null;
+  const base=first?LIFESIM_SCENARIOS[first.scenarioId]:null;
+  const baseCost=base?base.cost:null;
+  const baseHit=base?base.holistic.monthlyHit:hit;
+  const showsWorking = !isCombo && sc.cost && baseCost && sc.cost!==baseCost;
+  let workingLine;
+  if(showsWorking){
+    workingLine = ` The typical figure for "${base.label}" is ${fmtSGD(baseCost)}, costing about ${fmtSGD(baseHit)} a month — scaling that to your ${fmtSGD(sc.cost)} figure${sc.years?`, over ${sc.years} year${sc.years!==1?'s':''},`:''} gives about ${fmtSGD(Math.abs(hit))} a month.`;
+  }else if(sc.cost){
+    workingLine = ` That's based on ${fmtSGD(sc.cost)} in expected repayments, loan interest, and any added running costs.`;
+  }else{
+    workingLine='';
+  }
+  if(hit>0){
+    const newSurplus=currentSurplus-hit;
+    return `Here's the calculation: ${comboLead}your current monthly surplus is about ${fmtSGD(currentSurplus)}. ${isCombo?'Together, these decisions add':'This decision adds'} about ${fmtSGD(hit)} in new monthly costs, which brings that down to about ${fmtSGD(newSurplus)}.${workingLine}`;
+  }
+  return `Here's the calculation: ${comboLead}${isCombo?'these decisions require':'this decision requires'} setting aside about ${fmtSGD(Math.abs(hit))} in new monthly savings, on top of your current monthly surplus of about ${fmtSGD(currentSurplus)}, to stay on track.${workingLine}`;
 }
 function lifesimSelectImpact(id){
   const d=lifesimActiveDecision(); if(!d)return;
@@ -4025,13 +4235,14 @@ function lifesimSelectImpact(id){
 function rmFabToggle(){
   showModal(`<div style="text-align:center">
     <div class="lifesim-rmicon" style="margin:0 auto 14px">🤝</div>
-    <h3 style="text-align:center;margin-bottom:4px">Contact Your Relationship Manager?</h3>
-    <p style="text-align:center;color:var(--muted);font-size:13px;line-height:1.5;margin-bottom:4px">Jasmine will receive your current context — whatever you've been looking at — so you won't need to repeat yourself.</p>
+    <h3 style="text-align:center;margin-bottom:4px">Book Your Relationship Manager?</h3>
+    <p style="text-align:center;color:var(--muted);font-size:13px;line-height:1.5;margin-bottom:4px">Jasmine will receive your app activity — no explanations or repetitions required, receive personalised recommendations immediately.</p>
     <button class="btn gold" onclick="rmFabConfirm()" style="margin-top:18px">Confirm →</button>
-    <button class="btn ghost" onclick="hideModal()" style="margin-top:10px">Not now</button>
+    <button class="btn ghost" onclick="hideModal()" style="margin-top:10px">Not Now</button>
   </div>`);
 }
 function rmFabConfirm(){
+  state._rmFrom=cur;
   hideModal();
   go('lifesimRM');
 }
@@ -4039,15 +4250,19 @@ function lifesimOpenDecision(id){
   state.lifesim.activeDecisionId=id;
   go('lifesimResults');
 }
+function lifesimRMCall(){
+  toast('📞 Calling Jasmine Lau… she has your full context ready.');
+}
+function lifesimRMText(){
+  toast("💬 Message sent to Jasmine Lau — she'll reply shortly.");
+}
 function lifesimProceed(){
   const d=lifesimActiveDecision(); if(d)d.status='accepted';
-  toast('Your team is making these adjustments to your plan ✓');
-  go('pilot');
+  go('lifesimConfirmed');
 }
 function lifesimApplyReduce(){
   const d=lifesimActiveDecision(); if(d)d.status='reduced';
-  toast("Adjustments applied across your team's plan ✓");
-  go('pilot');
+  go('lifesimConfirmed');
 }
 
 function mbtiStart(){state.mbti={step:0,answers:[],riskScore:0,planScore:0,archetype:null,needsQ6:false,done:false};go('mbtiQuiz');}
@@ -4090,6 +4305,22 @@ function mbtiBack(){
   const m=state.mbti;
   if(m.needsQ6){m.needsQ6=false;m.step--;m.answers.pop();mbtiRecompute();keepScroll(()=>render());return;}
   if(m.step>0){m.step--;m.answers.pop();mbtiRecompute();keepScroll(()=>render());}
+}
+function mbtiFormatStory(text){
+  const parts=Array.isArray(text)?text:[text];
+  return parts.map((p,i)=>`<p${i>0?' style="margin-top:12px"':''}>${p}</p>`).join('');
+}
+function mbtiRunReveal(){
+  const box=$('mbtiRevealBox'),susp=$('mbtiSuspense'),flash=$('mbtiFlash');
+  if(!box||!susp)return;
+  if(navigator.vibrate)try{navigator.vibrate(15);}catch(e){}
+  setTimeout(()=>{
+    susp.classList.add('mbtisuspense-out');
+    if(flash)flash.classList.add('mbtiflash-go');
+    box.classList.add('mbtireveal-in');
+    if(navigator.vibrate)try{navigator.vibrate([20,30,30]);}catch(e){}
+    setTimeout(()=>{if(susp)susp.style.display='none';},400);
+  },1900);
 }
 function mbtiRetake(){mbtiStart();}
 function mbtiSaveProfile(){
@@ -4249,26 +4480,25 @@ function render(){
   if(cur!=='analyze'&&cur!=='lifesimAnalyzing')stopNetMesh();
   closePicker();hideModal();$('view').innerHTML=S[cur]();$('view').scrollTop=0;
   const BG_SCREENS={
-    mbtiIntro:{img:'images/background/ocbc-ea-profiling.png',top:-40,width:100},
-    mbtiQuiz:{img:'images/background/ocbc-ea-profiling.png',top:-40,width:100},
-    mbtiResult:{img:'images/background/ocbc-ea-yourmoneyidentity.png',top:-40,width:100},
-    team:{img:'images/background/ocbc-ea-myaiteam.png',top:-40,width:100},
-    goals:{img:'images/background/ocbc-ea-yourgoals.png',top:-40,width:100},
-    risk:{img:'images/background/ocbc-ea-risk.png',top:-40,width:100},
-    reco:{img:'images/background/ocbc-ea-yourplan.png',top:-40,width:100},
-    portfolio:{img:'images/background/ocbc-ea-portfolio.png',top:-40,width:100},
-    link:{img:'images/background/ocbc-ea-link.png',top:-40,width:100},
-    tune:{img:'images/background/ocbc-ea-sandbox.png',top:-40,width:100},
-    projection:{img:'images/background/ocbc-ea-projection.png',top:-40,width:100},
-    advice:{img:'images/background/ocbc-ea-finaladvice.png',top:-40,width:100},
-    trade:{img:'images/background/ocbc-ea-trade.png',top:-40,width:100},
-    pilot:{img:'images/background/ocbc-ea-myoneteamhome.png',top:-40,width:100},
-    review:{img:'images/background/ocbc-ea-quarterlyreview.png',top:-40,width:100},
+    mbtiIntro:{img:'images/background/ocbc-ea-financialprofile.png',top:-40,width:100},
+    mbtiQuiz:{img:'images/background/ocbc-ea-financialprofile.png',top:-40,width:100},
+    mbtiResult:{img:'images/background/ocbc-ea-blankv1.png',top:-40,width:100},
+    team:{img:'images/background/ocbc-ea-myoneteamv1.png',top:-40,width:100},
+    goals:{img:'images/background/ocbc-ea-myoneteamv1.png',top:-40,width:100},
+    risk:{img:'images/background/ocbc-ea-myoneteamv1.png',top:-40,width:100},
+    portfolio:{img:'images/background/ocbc-ea-myoneteamv2.png',top:-40,width:100},
+    link:{img:'images/background/ocbc-ea-followup.png',top:-40,width:100},
+    tune:{img:'images/background/ocbc-ea-myoneteamv2.png',top:-40,width:100},
+    projection:{img:'images/background/ocbc-ea-myoneteamv2.png',top:-40,width:100},
+    pilot:{img:'images/background/ocbc-ea-myoneteamv2.png',top:-40,width:100},
+    review:{img:'images/background/ocbc-ea-myoneteamv2.png',top:-40,width:100},
     lifesimIntro:{img:'images/background/ocbc-ea-lifesim.png',top:-40,width:100},
-    lifesimDetails:{img:'images/background/ocbc-ea-myaiteam.png',top:-40,width:100},
+    lifesimDetails:{img:'images/background/ocbc-ea-lifesim.png',top:-40,width:100},
+    lifesimAnalyzing:{img:'images/background/ocbc-ea-lifesim.png',top:-40,width:100},
     lifesimResults:{img:'images/background/ocbc-ea-lifesim.png',top:-40,width:100},
-    lifesimReduce:{img:'images/background/ocbc-ea-lifefollowup.png',top:-40,width:100},
-    lifesimRM:{img:'images/background/ocbc-ea-rm.png',top:-40,width:100}
+    lifesimReduce:{img:'images/background/ocbc-ea-lifesim.png',top:-40,width:100},
+    lifesimConfirmed:{img:'images/background/ocbc-ea-followup.png',top:-40,width:100},
+    lifesimRM:{img:'images/background/ocbc-ea-followup.png',top:-40,width:100}
   };
   $('statusbar').className='statusbar'+(cur==='home'||cur==='analyze'||cur==='lifesimAnalyzing'||BG_SCREENS[cur]?' onhero':cur==='login'?' over':'');
   if($('screenbg')){
@@ -4281,7 +4511,7 @@ function render(){
     }
   }
   const i=ORDER.indexOf(STEP_ALIAS[cur]||cur);$('stepLabel').textContent=(i+1)+' / '+ORDER.length+' · '+NAMES[cur];
-  const fabScreens=['reco','portfolio','tune','projection','advice','trade','pilot','review','lifesimIntro','lifesimResults','lifesimReduce'];
+  const fabScreens=['portfolio','tune','projection','pilot','review','lifesimIntro','lifesimResults','lifesimReduce'];
   const showFab=fabScreens.indexOf(cur)>=0;
   if($('chatFab'))$('chatFab').classList.toggle('show',showFab);
   $('view').classList.toggle('hasfab',showFab);
@@ -4298,8 +4528,35 @@ function render(){
   if($('rmFab'))$('rmFab').classList.toggle('show',showRmFab);
   if(cur==='sandbox')refreshChrome();
   if(cur==='goals')setTimeout(startGoalChat,0);
+  if(cur==='login')setTimeout(positionLoginBtn,0);
   setTimeout(startCarousel,0);
 }
+/* Precisely align the tappable login button with the "Log in to OCBC Wealth
+   Management" button already drawn inside images/background/ocbc-ea-login.jpg.
+   The image is shown with object-fit:cover so it always fills the phone frame
+   exactly (no gap below it, whatever the frame's aspect ratio), which means
+   part of the image is cropped to fit. This function reconstructs how the
+   image was scaled and cropped (standard object-fit:cover math, centered),
+   then maps the button's position — defined as a percentage of the ORIGINAL
+   uncropped artwork — into the visible, cropped box, so it lines up with the
+   real button pixel-for-pixel regardless of the frame's size or aspect ratio. */
+const LOGIN_BTN_BOX={left:0.07971,top:0.84219,width:0.82884,height:0.05803};
+function positionLoginBtn(){
+  const img=$('loginImg'),btn=$('loginBtnOverlay');
+  if(!img||!btn||!img.naturalWidth)return;
+  const rw=img.clientWidth,rh=img.clientHeight;
+  if(!rw||!rh)return;
+  const nw=img.naturalWidth,nh=img.naturalHeight;
+  const scale=Math.max(rw/nw,rh/nh);
+  const renderedW=nw*scale,renderedH=nh*scale;
+  const offsetX=(renderedW-rw)/2,offsetY=(renderedH-rh)/2;
+  btn.style.position='absolute';
+  btn.style.left=(LOGIN_BTN_BOX.left*renderedW-offsetX)+'px';
+  btn.style.top=(LOGIN_BTN_BOX.top*renderedH-offsetY)+'px';
+  btn.style.width=(LOGIN_BTN_BOX.width*renderedW)+'px';
+  btn.style.height=(LOGIN_BTN_BOX.height*renderedH)+'px';
+}
+window.addEventListener('resize',()=>{if(cur==='login')positionLoginBtn();});
 setInterval(()=>{$('clock').textContent=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});},1000);
 render();
 </script>
