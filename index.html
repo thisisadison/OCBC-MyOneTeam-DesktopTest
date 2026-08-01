@@ -35,7 +35,7 @@
   }
   *{box-sizing:border-box}
   html,body{margin:0;height:100%}
-  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#26282e;color:var(--ink);
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#111214;color:var(--ink);
     -webkit-font-smoothing:antialiased;display:flex;flex-direction:column;align-items:center;padding:20px 14px 40px}
   h1,h2,h3,.disp{font-family:'Sora','Inter',sans-serif;letter-spacing:-.02em}
 
@@ -46,7 +46,7 @@
   .demobar button:hover{background:#f6f7f9}
   .stepwrap{font-size:13px;color:var(--muted);font-weight:600}
 
-  .phone{width:402px;max-width:97vw;background:#0a0b0d;border-radius:50px;padding:11px;box-shadow:0 40px 80px rgba(0,0,0,.4);position:relative}
+  .phone{width:402px;max-width:97vw;background:#0a0b0d;border-radius:50px;padding:11px;box-shadow:0 0 0 2px rgba(255,255,255,.28),0 40px 80px rgba(0,0,0,.5);position:relative}
   .screen{background:var(--bg);border-radius:40px;overflow:hidden;position:relative;display:flex;flex-direction:column;height:846px}
   .notch{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:122px;height:32px;background:#0a0b0d;border-radius:20px;z-index:40}
   .statusbar{height:50px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 26px 8px;font-size:13px;font-weight:600;color:var(--ink);position:relative;z-index:10}
@@ -2962,20 +2962,20 @@ lifesimRM(){
   <div style="position:relative;z-index:1;padding-top:50px">${appbar('Relationship Manager',state._rmFrom||'lifesimResults',false,true)}<div class="pad" style="padding-bottom:32px">
   <div style="text-align:center"><span class="okbadge">✓ Booking Confirmed</span></div>
   <div class="lifesim-rmicon">🤝</div>
-  <h1 style="text-align:center">You're All Set to Talk to Jasmine</h1>
+  <h1 style="text-align:center">You're All Set to Talk to Jensen</h1>
   <p class="sub" style="text-align:center">Your Relationship Manager already has the full picture — no need to repeat yourself.</p>
 
   <div class="card" style="background:#fff;margin-top:8px">
     <div class="lifesim-rm-row"><span>Scenario</span><b>${sc?sc.label+(sc.cost?' · '+fmtSGD(sc.cost):''):'General enquiry'}</b></div>
-    <div class="lifesim-rm-row"><span>Sent to</span><b>Jasmine Lau, Relationship Manager</b></div>
+    <div class="lifesim-rm-row"><span>Sent to</span><b>Jensen, Relationship Manager</b></div>
     <div class="lifesim-rm-row"><span>Includes</span><b>Full impact analysis + team recommendations</b></div>
     <div class="lifesim-rm-row"><span>Includes</span><b>Mitigation strategies already discussed</b></div>
   </div>
 
-  <button class="btn gold" onclick="lifesimRMCall()" style="margin-top:16px">📞 Call Jasmine Now</button>
-  <button class="btn ghost" onclick="lifesimRMText()" style="margin-top:10px">💬 Text Jasmine Now</button>
+  <button class="btn gold" onclick="lifesimRMCall()" style="margin-top:16px">📞 Call Jensen Now</button>
+  <button class="btn ghost" onclick="lifesimRMText()" style="margin-top:10px">💬 Text Jensen Now</button>
 
-  <div class="note" style="margin-top:16px">Prefer to wait? Jasmine will reach out shortly either way — when you speak, you can pick up exactly where you left off with your AI team, nothing gets lost in translation.</div>
+  <div class="note" style="margin-top:16px">Prefer to wait? Jensen will reach out shortly either way — when you speak, you can pick up exactly where you left off with your AI team, nothing gets lost in translation.</div>
 
   <button class="btn ghost" onclick="go('pilot')" style="margin-top:16px">Back To My OneTeam →</button>
 </div></div></div>`;},
@@ -4236,7 +4236,7 @@ function rmFabToggle(){
   showModal(`<div style="text-align:center">
     <div class="lifesim-rmicon" style="margin:0 auto 14px">🤝</div>
     <h3 style="text-align:center;margin-bottom:4px">Book Your Relationship Manager?</h3>
-    <p style="text-align:center;color:var(--muted);font-size:13px;line-height:1.5;margin-bottom:4px">Jasmine will receive your app activity — no explanations or repetitions required, receive personalised recommendations immediately.</p>
+    <p style="text-align:center;color:var(--muted);font-size:13px;line-height:1.5;margin-bottom:4px">Jensen will receive your app activity — no explanations or repetitions required, receive personalised recommendations immediately.</p>
     <button class="btn gold" onclick="rmFabConfirm()" style="margin-top:18px">Confirm →</button>
     <button class="btn ghost" onclick="hideModal()" style="margin-top:10px">Not Now</button>
   </div>`);
@@ -4251,10 +4251,10 @@ function lifesimOpenDecision(id){
   go('lifesimResults');
 }
 function lifesimRMCall(){
-  toast('📞 Calling Jasmine Lau… she has your full context ready.');
+  toast('📞 Calling Jensen… they have your full context ready.');
 }
 function lifesimRMText(){
-  toast("💬 Message sent to Jasmine Lau — she'll reply shortly.");
+  toast("💬 Message sent to Jensen — they'll reply shortly.");
 }
 function lifesimProceed(){
   const d=lifesimActiveDecision(); if(d)d.status='accepted';
