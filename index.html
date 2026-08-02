@@ -542,8 +542,9 @@
   .chatfab .cfs{font-size:12.5px;opacity:.72;font-weight:600;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .chatfab .cfgo{font-size:18px;flex-shrink:0;line-height:1;background:#34d399;color:#0c1f16;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800}
 
-  .rmfab{position:absolute;right:16px;bottom:24px;z-index:55;display:none;width:54px;height:54px;border-radius:50%;background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a;font-size:22px;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(190,150,60,.4);cursor:pointer;border:2px solid #fff}
+  .rmfab{position:absolute;right:16px;bottom:24px;z-index:55;display:none;height:44px;padding:0 16px 0 12px;border-radius:22px;background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a;align-items:center;justify-content:center;gap:7px;box-shadow:0 8px 22px rgba(190,150,60,.4);cursor:pointer;border:2px solid #fff;font-family:'Sora';font-weight:800;font-size:13px;white-space:nowrap}
   .rmfab.show{display:flex}
+  .rmfab .rmfab-ic{font-size:17px;line-height:1}
   .view.hasfab{padding-top:96px}
   .overlay{position:absolute;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:flex-end;z-index:70;border-radius:40px;overflow:hidden}
   .sheet{background:#fff;width:100%;border-radius:24px 24px 0 0;padding:22px 20px 24px;animation:slideup .25s ease;text-align:center}
@@ -1160,7 +1161,7 @@
       <div style="flex:1;text-align:left;min-width:0"><div class="cft" id="chatFabName">Ask your AI team</div><div class="cfs">Tap to chat about your plan</div></div>
       <div class="cfgo">›</div>
     </div>
-    <div class="rmfab" id="rmFab" onclick="rmFabToggle()">🤝</div>
+    <div class="rmfab" id="rmFab" onclick="rmFabToggle()"><span class="rmfab-ic">🤝</span>Ask RM</div>
     <div class="toast" id="toast"></div>
   </div>
 </div>
@@ -1446,7 +1447,7 @@ function lifesimParseYears(text){
 }
 
 const ARCHETYPES=[
-  {id:'anchor',theme:'#5949a0',name:'Bubble Tea',img:'images/mbti/ocbc-ea-bubbletea.png',preview:'images/mbti/preview/ocbc-ea-bubbletea-preview.jpg',risk:0,plan:0.5,
+  {id:'anchor',theme:'#5949a0',name:'Bubble Tea',img:'images/mbti/ocbc-ea-bubbletea.jpg',preview:'images/mbti/preview/ocbc-ea-bubbletea-preview.jpg',risk:0,plan:0.5,
     superpower:'Never rushes, never loses ground',
     instinct:'Protects capital above all else — certainty beats upside',
     personality:['Extremely cautious','Dislikes volatility','Prefers guarantees','Diligent saver','Distrusts hype','Values certainty over upside'],
@@ -1456,7 +1457,7 @@ const ARCHETYPES=[
     compatible:[{id:'stone',why:'Near-identical values, shared pace'},{id:'lantern',why:'Shares caution and diligence'}],
     incompatible:[{id:'bolt',why:'Opposite in every way'},{id:'compass',why:'Pace and risk both too high'}],
     moves:['Move excess cash above the buffer into a low-risk yield product','Set one automatic small investment to start building comfort with markets','Review whether the cash buffer has grown too large','Get a second opinion before assuming "safe" is always cheapest']},
-  {id:'stone',theme:'#2c3841',name:'Kopi O Kosong',img:'images/mbti/ocbc-ea-kopiokosong.png',preview:'images/mbti/preview/ocbc-ea-kopiokosong-preview.jpg',risk:0.9,plan:0.7,
+  {id:'stone',theme:'#2c3841',name:'Kopi O Kosong',img:'images/mbti/ocbc-ea-kopiokosong.jpg',preview:'images/mbti/preview/ocbc-ea-kopiokosong-preview.jpg',risk:0.9,plan:0.7,
     superpower:'Steady ground, no surprises',
     instinct:'Prioritises safety and long-term security over quick wins',
     personality:['Values stability','Plans ahead','Avoids risk','Prefers certainty','Patient saver','Cautious spender'],
@@ -1466,7 +1467,7 @@ const ARCHETYPES=[
     compatible:[{id:'hourglass',why:'Shares the long-term, steady mindset'},{id:'lantern',why:'Shares caution and research before acting'}],
     incompatible:[{id:'balloon',why:'Spends on impulse, no buffer'},{id:'bolt',why:'Too much volatility for comfort'}],
     moves:['Top up emergency fund','Diversify a little beyond cash','Ladder fixed deposits','Consider inflation-protected assets']},
-  {id:'lantern',theme:'#919c27',name:'Sugarcane',img:'images/mbti/ocbc-ea-sugarcane.png',preview:'images/mbti/preview/ocbc-ea-sugarcane-preview.jpg',risk:1.9,plan:0.6,
+  {id:'lantern',theme:'#919c27',name:'Sugarcane',img:'images/mbti/ocbc-ea-sugarcane.jpg',preview:'images/mbti/preview/ocbc-ea-sugarcane-preview.jpg',risk:1.9,plan:0.6,
     superpower:'Loves research and makes smart, informed decisions',
     instinct:'Analyses before acting — knowledge lowers risk',
     personality:['Research-driven','Reads the fine print','Compares options','Risk-aware','Patient decision maker','Values expertise'],
@@ -1476,7 +1477,7 @@ const ARCHETYPES=[
     compatible:[{id:'stone',why:'Shares caution and diligence'},{id:'compass',why:'Ambition tempered by research'}],
     incompatible:[{id:'bolt',why:'Acts before analysing'},{id:'cloud',why:'Avoids the homework'}],
     moves:['Set a rebalancing schedule','Try one new asset class after research','Set an alert instead of checking daily','Document the "why" behind each holding']},
-  {id:'compass',theme:'#0052a3',name:'Soya Milk',img:'images/mbti/ocbc-ea-soyamilk.png',preview:'images/mbti/preview/ocbc-ea-soyamilk-preview.jpg',risk:3.1,plan:0.9,
+  {id:'compass',theme:'#0052a3',name:'Soya Milk',img:'images/mbti/ocbc-ea-soyamilk.jpg',preview:'images/mbti/preview/ocbc-ea-soyamilk-preview.jpg',risk:3.1,plan:0.9,
     superpower:'Sets a goal and charts the fastest smart route there',
     instinct:'Takes calculated risk in service of a clear target',
     personality:['Ambitious','Sets clear targets','Comfortable with moderate risk for a plan','Competitive','Strategic','Adaptable'],
@@ -1486,7 +1487,7 @@ const ARCHETYPES=[
     compatible:[{id:'lantern',why:'Research grounds the ambition'},{id:'hourglass',why:'Shared goal discipline'}],
     incompatible:[{id:'anchor',why:'Too slow for the pace wanted'},{id:'cloud',why:'No plan to rally behind'}],
     moves:['Write down the next milestone and date','Stress-test the plan against a downturn','Keep a minimum cash buffer despite the pace','Revisit the goal every quarter']},
-  {id:'bolt',theme:'#ed9e02',name:'Honey Lemon',img:'images/mbti/ocbc-ea-honeylemon.png',preview:'images/mbti/preview/ocbc-ea-honeylemon-preview.jpg',risk:4,plan:3.3,
+  {id:'bolt',theme:'#ed9e02',name:'Honey Lemon',img:'images/mbti/ocbc-ea-honeylemon.jpg',preview:'images/mbti/preview/ocbc-ea-honeylemon-preview.jpg',risk:4,plan:3.3,
     superpower:'Moves fast and loves high risk',
     instinct:'Chases momentum and thrives on quick, high-reward action',
     personality:['Impulsive','Thrill-seeking','Confident','Fast decision maker','High risk tolerance','Bored by "safe"'],
@@ -1496,7 +1497,7 @@ const ARCHETYPES=[
     compatible:[{id:'compass',why:'Shares ambition and speed'},{id:'balloon',why:'Shares spontaneity'}],
     incompatible:[{id:'stone',why:'Too cautious to keep up'},{id:'anchor',why:'Opposite in every way'}],
     moves:['Set a hard stop-loss rule','Build a minimum emergency fund outside trading accounts','Cap high-risk exposure as a percent of net worth','Review win/loss history honestly each quarter']},
-  {id:'balloon',theme:'#d54b5e',name:'Bandung',img:'images/mbti/ocbc-ea-bandung.png',preview:'images/mbti/preview/ocbc-ea-bandung-preview.jpg',risk:2.1,plan:3.4,
+  {id:'balloon',theme:'#d54b5e',name:'Bandung',img:'images/mbti/ocbc-ea-bandung.jpg',preview:'images/mbti/preview/ocbc-ea-bandung-preview.jpg',risk:2.1,plan:3.4,
     superpower:'Joy today, memories forever',
     instinct:'Lives for today and spends on experiences',
     personality:['Loves experiences','Spends on joy','Values freedom','Lives in the moment','Seeks excitement','Easygoing and optimistic'],
@@ -1506,7 +1507,7 @@ const ARCHETYPES=[
     compatible:[{id:'hourglass',why:'Grows steadily and builds wealth over time'},{id:'lantern',why:'Loves research, makes informed decisions'}],
     incompatible:[{id:'stone',why:'Values stability and long-term security'},{id:'bolt',why:'Moves too fast, loves high risk'}],
     moves:['Build an emergency fund','Invest consistently every month','Review insurance','Plan for retirement']},
-  {id:'cloud',theme:'#2680de',name:'Barley Water',img:'images/mbti/ocbc-ea-barleywater.png',preview:'images/mbti/preview/ocbc-ea-barleywater-preview.jpg',risk:1.0,plan:3.2,
+  {id:'cloud',theme:'#2680de',name:'Barley Water',img:'images/mbti/ocbc-ea-barleywater.jpg',preview:'images/mbti/preview/ocbc-ea-barleywater-preview.jpg',risk:1.0,plan:3.2,
     superpower:'Keeps things simple and stress-free',
     instinct:'Avoids complexity and lets good defaults do the work',
     personality:['Low-maintenance','Avoids financial stress','Trusts default options','Present-minded but not showy','Values peace of mind','Adaptable'],
@@ -1516,7 +1517,7 @@ const ARCHETYPES=[
     compatible:[{id:'balloon',why:'Shares the easygoing nature'},{id:'stone',why:'Both prefer low effort, low stress'}],
     incompatible:[{id:'compass',why:'Too demanding a pace'},{id:'bolt',why:'Too intense to keep up with'}],
     moves:['Turn on auto-invest so growth happens passively','Set one yearly reminder to check progress','Pick one balanced fund instead of none','Name a goal so the drifting has a direction']},
-  {id:'hourglass',theme:'#7a562c',name:'Milo Dinosaur',img:'images/mbti/ocbc-ea-milodinosaur.png',preview:'images/mbti/preview/ocbc-ea-milodinosaur-preview.jpg',risk:2,plan:1.1,
+  {id:'hourglass',theme:'#7a562c',name:'Milo Dinosaur',img:'images/mbti/ocbc-ea-milodinosaur.jpg',preview:'images/mbti/preview/ocbc-ea-milodinosaur-preview.jpg',risk:2,plan:1.1,
     superpower:'Grows steadily and builds wealth over time',
     instinct:'Trusts patient, consistent compounding over shortcuts',
     personality:['Disciplined saver','Believes in compounding','Goal-oriented','Optimistic about the long run','Consistent','Avoids get-rich-quick schemes'],
@@ -1614,11 +1615,11 @@ function accessoryPath(name,outfit,outfitDark){
 function avatar(a){
   const id=a.id==='judge'?'judge':a.id;
   const AVATAR_IMAGES={
-    income:'images/agents/ocbc-ea-incomebuilder.png',
-    grow:'images/agents/ocbc-ea-growthstrategist.png',
-    retire:'images/agents/ocbc-ea-retirementplanner.png',
-    home:'images/agents/ocbc-ea-propertyplanner.png',
-    judge:'images/agents/ocbc-ea-orchestrator.png'
+    income:'images/agents/ocbc-ea-incomebuilder.jpg',
+    grow:'images/agents/ocbc-ea-growthstrategist.jpg',
+    retire:'images/agents/ocbc-ea-retirementplanner.jpg',
+    home:'images/agents/ocbc-ea-propertyplanner.jpg',
+    judge:'images/agents/ocbc-ea-orchestrator.jpg'
   };
   if(AVATAR_IMAGES[id]){
     return `<img src="${AVATAR_IMAGES[id]}" alt="${a.name||id}" style="width:100%;height:auto;object-fit:cover;display:block">`;
@@ -3127,7 +3128,7 @@ projection(){recalcBuckets();state.chart='line';state.invest=Math.max(1000,total
     </div>
   </div>
 
-  <h2 style="margin-top:6px">What moved your projection</h2>
+  <h2 style="margin-top:6px">What Moved Your Projection</h2>
   <div class="newswrap">${newsFeed()}</div>
 
   <h2 style="margin-top:14px">Your Confirmed Holdings <span style="font-size:12px;font-weight:600;color:var(--muted)">· growth ${simLabel()==='today'?'from today':'after '+simLabel().replace(' in','')}</span></h2>
@@ -3288,7 +3289,19 @@ function placeOrder(){const prods=PRODUCTS.filter(p=>p.bucket);const total=total
     </div>
 
     <div class="miniorder">
-      <div class="orow"><span class="oname">Holdings</span><span class="oamt">${prods.length} funds · ${KEYS4.filter(k=>PRODUCTS.some(p=>p.bucket===k)).length} asset classes</span></div>
+      <div class="orow" onclick="toggleOrderHoldings()" style="cursor:pointer">
+        <span class="oname">Holdings</span>
+        <span class="oamt">${prods.length} funds · ${KEYS4.filter(k=>PRODUCTS.some(p=>p.bucket===k)).length} asset classes <span id="orderHoldingsChev">▾</span></span>
+      </div>
+    </div>
+    <div id="orderHoldingsList" style="display:none;margin:-4px 0 14px">
+      ${KEYS4.map(k=>{const ps=PRODUCTS.filter(p=>p.bucket===k);if(!ps.length)return '';const bv=ps.reduce((s,p)=>s+(p.amt||0),0);
+        return `<div class="ordgroup">
+          <div class="ordhead"><span class="bdot" style="background:${BK[k].hex}"></span>${BK[k].name}<span class="ordvia">${CHANNEL[k]}</span><span class="ordsum">S$${bv.toLocaleString()}</span></div>
+          ${ps.map(p=>`<div class="ordrow"><div class="picon sm" style="background:${BK[k].hex}">${prodTicker(p.name).slice(0,2)}</div>
+            <div style="flex:1;min-width:0"><div class="pname">${cleanName(p.name)}</div><div class="ptk">${prodTicker(p.name)}</div></div>
+            <div class="ordamt">S$${(p.amt||0).toLocaleString()}</div></div>`).join('')}
+        </div>`;}).join('')}
     </div>
 
     <div class="ordtotalhero">
@@ -3298,6 +3311,13 @@ function placeOrder(){const prods=PRODUCTS.filter(p=>p.bucket);const total=total
 
     <button class="btn gold" onclick="execOrder()">Place Order With OCBC</button>
     <button class="btn ghost" onclick="hideModal()">Back</button></div>`);}
+function toggleOrderHoldings(){
+  const list=$('orderHoldingsList'),chev=$('orderHoldingsChev');
+  if(!list)return;
+  const open=list.style.display!=='none';
+  list.style.display=open?'none':'block';
+  if(chev)chev.textContent=open?'▾':'▴';
+}
 function execOrder(){state.invested=true;const total=totalVal();const n=PRODUCTS.filter(p=>p.bucket).length;hideModal();
   showModal(`<div style="text-align:center">
     <div class="okcheck">✓</div>
@@ -4475,31 +4495,31 @@ function stopNetMesh(){
   if(window._netMeshRAF){cancelAnimationFrame(window._netMeshRAF);window._netMeshRAF=null;}
 }
 
+const BG_SCREENS={
+  mbtiIntro:{img:'images/background/ocbc-ea-financialprofile.jpg',top:-40,width:100},
+  mbtiQuiz:{img:'images/background/ocbc-ea-financialprofile.jpg',top:-40,width:100},
+  mbtiResult:{img:'images/background/ocbc-ea-blankv1.jpg',top:-40,width:100},
+  team:{img:'images/background/ocbc-ea-myoneteamv1.jpg',top:-40,width:100},
+  goals:{img:'images/background/ocbc-ea-myoneteamv1.jpg',top:-40,width:100},
+  risk:{img:'images/background/ocbc-ea-myoneteamv1.jpg',top:-40,width:100},
+  portfolio:{img:'images/background/ocbc-ea-myoneteamv2.jpg',top:-40,width:100},
+  link:{img:'images/background/ocbc-ea-followup.jpg',top:-40,width:100},
+  tune:{img:'images/background/ocbc-ea-myoneteamv2.jpg',top:-40,width:100},
+  projection:{img:'images/background/ocbc-ea-myoneteamv2.jpg',top:-40,width:100},
+  pilot:{img:'images/background/ocbc-ea-myoneteamv2.jpg',top:-40,width:100},
+  review:{img:'images/background/ocbc-ea-myoneteamv2.jpg',top:-40,width:100},
+  lifesimIntro:{img:'images/background/ocbc-ea-lifesim.jpg',top:-40,width:100},
+  lifesimDetails:{img:'images/background/ocbc-ea-lifesim.jpg',top:-40,width:100},
+  lifesimAnalyzing:{img:'images/background/ocbc-ea-lifesim.jpg',top:-40,width:100},
+  lifesimResults:{img:'images/background/ocbc-ea-lifesim.jpg',top:-40,width:100},
+  lifesimReduce:{img:'images/background/ocbc-ea-lifesim.jpg',top:-40,width:100},
+  lifesimConfirmed:{img:'images/background/ocbc-ea-followup.jpg',top:-40,width:100},
+  lifesimRM:{img:'images/background/ocbc-ea-followup.jpg',top:-40,width:100}
+};
 function render(){
   if(window._agTimer){clearInterval(window._agTimer);window._agTimer=null;}
   if(cur!=='analyze'&&cur!=='lifesimAnalyzing')stopNetMesh();
   closePicker();hideModal();$('view').innerHTML=S[cur]();$('view').scrollTop=0;
-  const BG_SCREENS={
-    mbtiIntro:{img:'images/background/ocbc-ea-financialprofile.png',top:-40,width:100},
-    mbtiQuiz:{img:'images/background/ocbc-ea-financialprofile.png',top:-40,width:100},
-    mbtiResult:{img:'images/background/ocbc-ea-blankv1.png',top:-40,width:100},
-    team:{img:'images/background/ocbc-ea-myoneteamv1.png',top:-40,width:100},
-    goals:{img:'images/background/ocbc-ea-myoneteamv1.png',top:-40,width:100},
-    risk:{img:'images/background/ocbc-ea-myoneteamv1.png',top:-40,width:100},
-    portfolio:{img:'images/background/ocbc-ea-myoneteamv2.png',top:-40,width:100},
-    link:{img:'images/background/ocbc-ea-followup.png',top:-40,width:100},
-    tune:{img:'images/background/ocbc-ea-myoneteamv2.png',top:-40,width:100},
-    projection:{img:'images/background/ocbc-ea-myoneteamv2.png',top:-40,width:100},
-    pilot:{img:'images/background/ocbc-ea-myoneteamv2.png',top:-40,width:100},
-    review:{img:'images/background/ocbc-ea-myoneteamv2.png',top:-40,width:100},
-    lifesimIntro:{img:'images/background/ocbc-ea-lifesim.png',top:-40,width:100},
-    lifesimDetails:{img:'images/background/ocbc-ea-lifesim.png',top:-40,width:100},
-    lifesimAnalyzing:{img:'images/background/ocbc-ea-lifesim.png',top:-40,width:100},
-    lifesimResults:{img:'images/background/ocbc-ea-lifesim.png',top:-40,width:100},
-    lifesimReduce:{img:'images/background/ocbc-ea-lifesim.png',top:-40,width:100},
-    lifesimConfirmed:{img:'images/background/ocbc-ea-followup.png',top:-40,width:100},
-    lifesimRM:{img:'images/background/ocbc-ea-followup.png',top:-40,width:100}
-  };
   $('statusbar').className='statusbar'+(cur==='home'||cur==='analyze'||cur==='lifesimAnalyzing'||BG_SCREENS[cur]?' onhero':cur==='login'?' over':'');
   if($('screenbg')){
     const bgCfg=BG_SCREENS[cur];
@@ -4558,5 +4578,29 @@ function positionLoginBtn(){
 }
 window.addEventListener('resize',()=>{if(cur==='login')positionLoginBtn();});
 setInterval(()=>{$('clock').textContent=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});},1000);
+/* Preloads every image the app will ever show, once, early — so by the time someone
+   navigates to a screen its background/portrait is already cached and appears instantly
+   instead of visibly popping in after a network fetch. Runs quietly in the background;
+   nothing waits on it, it just gets ahead of where the person is likely headed next. */
+function preloadAllImages(){
+  const urls=new Set();
+  Object.values(BG_SCREENS).forEach(cfg=>urls.add(cfg.img));
+  if(typeof ARCHETYPES!=='undefined')ARCHETYPES.forEach(a=>a.img&&urls.add(a.img));
+  if(typeof MBTI_Q!=='undefined')MBTI_Q.forEach(q=>q.img&&urls.add(q.img));
+  if(typeof MBTI_Q6!=='undefined'&&MBTI_Q6.img)urls.add(MBTI_Q6.img);
+  if(typeof AGENT_IMG!=='undefined')Object.values(AGENT_IMG).forEach(u=>u&&urls.add(u));
+  ['images/agents/ocbc-ea-incomebuilder.jpg','images/agents/ocbc-ea-growthstrategist.jpg','images/agents/ocbc-ea-retirementplanner.jpg','images/agents/ocbc-ea-propertyplanner.jpg','images/agents/ocbc-ea-orchestrator.jpg'].forEach(u=>urls.add(u));
+  urls.forEach(url=>{const img=new Image();img.src=url;});
+}
+function nudgeChromeCollapse(){
+  if(window.innerWidth>480)return; // only on real mobile widths, not the desktop phone mockup
+  window.scrollTo(0,1);
+  setTimeout(()=>window.scrollTo(0,1),300);
+}
+window.addEventListener('load',nudgeChromeCollapse);
+window.addEventListener('orientationchange',()=>setTimeout(nudgeChromeCollapse,300));
+
 render();
+nudgeChromeCollapse();
+setTimeout(preloadAllImages,300);
 </script>
