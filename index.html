@@ -433,7 +433,7 @@
   }
   .promo .pt{font-family:'Sora';font-weight:800;font-size:18px;display:flex;align-items:center;gap:8px}
   .promo .pd{font-size:13px;opacity:.85;margin:7px 0 13px;line-height:1.45}
-  .promo .pb{background:linear-gradient(135deg,#e0a83e,#b8791f);color:#fff;font-weight:800;border:none;border-radius:12px;padding:13px;width:100%;cursor:pointer;font-family:'Inter';font-size:14.5px;box-shadow:0 8px 20px rgba(184,121,31,.35)}
+  .promo .pb{background:linear-gradient(165deg,#f6e2ab 0%,#e8c164 32%,#cf9f45 62%,#b17e28 100%);color:#2a1c05;font-weight:800;border:1px solid rgba(230,190,110,.4);border-radius:12px;padding:13px;width:100%;cursor:pointer;font-family:'Inter';font-size:14.5px;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 8px 18px rgba(180,130,40,.28)}
   .promo .spark{position:absolute;right:-10px;top:-10px;font-size:80px;opacity:.1}
 
   
@@ -1447,6 +1447,8 @@ function lifesimParseYears(text){
   if(m)return Math.round((parseFloat(m[1])/12)*10)/10;
   m=t.match(/(?:in|within|next)?\s*(\d+\.?\d*)\s*years?\s*(?:from now|later|out|away|time)?/);
   if(m)return parseFloat(m[1]);
+  m=t.match(/\b(20\d{2})\b/);
+  if(m)return Math.max(0,parseInt(m[1],10)-2026);
   return null;
 }
 
@@ -2199,7 +2201,7 @@ function homePromo(){
       <div id="agDots" style="display:flex;gap:5px">${dots}</div>
     </div>
     <div id="agCarousel" style="position:relative;height:128px;margin-bottom:16px;overflow:hidden">${body}</div>
-    <button class="pb" onclick="${state.mbti.done?"go('team')":"go('mbtiIntro')"}">Try It Now \u2192</button>
+    <button class="pb" onclick="${state.mbti.done?"go('team')":"go('mbtiIntro')"}">Build My OneTeam Now</button>
   </div>`;
 }
 function appbar(t,back,gold,hideLogo){return `<div class="appbar"><div class="back" onclick="go('${back}')">‹</div><div class="ttl">${t}</div>${hideLogo?'':`<div class="ologo${gold?' ologo-gold':''}">${gold?'<svg class="ologo-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="19" fill="none" stroke="url(#ogGrad)" stroke-width="2.4"/><path d="M20 9 L28 15 V25 L20 31 L12 25 V15 Z" fill="none" stroke="url(#ogGrad)" stroke-width="2.2" stroke-linejoin="round"/><defs><linearGradient id="ogGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d68d"/><stop offset="0.55" stop-color="#d3a347"/><stop offset="1" stop-color="#a8701f"/></linearGradient></defs></svg>':''}OCBC</div>`}</div>`;}
@@ -2521,7 +2523,7 @@ mbtiResult(){
 </div></div></div>`;},
 
 team(){return `<div style="position:relative">
-  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Home',state.mbti.done?'mbtiResult':'mbtiIntro',false,true)}<div class="pad" style="padding-bottom:32px">
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Home',state.invested?'pilot':(state.mbti.done?'mbtiResult':'mbtiIntro'),false,true)}<div class="pad" style="padding-bottom:32px">
   <div class="stepbadge gold">Step 2 of 2</div>
   <h1>Build Your AI Team</h1>
   <p class="sub">Choose up to two AI specialists. Your personal orchestrator will combine their expertise into one investment plan.</p>
@@ -2579,7 +2581,7 @@ team(){return `<div style="position:relative">
 
 analyze(){runAnalyze();const sel=AGENTS.filter(a=>state.agents.includes(a.id));setTimeout(initNetMesh,0);return `<div style="position:relative">
   <div class="netmesh-wrap"><canvas id="netmesh"></canvas></div>
-  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Building Your Plan','risk',false,true)}<div class="pad" style="padding-top:14px">
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Building Your Plan','risk',false,true)}<div class="pad" style="padding-top:26px">
   <div style="text-align:center;margin:4px 0 14px"><div class="ai-orb" style="width:52px;height:52px;margin:0 auto 12px;background:linear-gradient(135deg,#e3b04a,#b8790f);box-shadow:0 0 0 1px rgba(211,163,71,.3),0 8px 30px rgba(190,134,45,.28)"></div>
     <div class="eyebrow" style="background:linear-gradient(120deg,#e3b04a,#a6710f);-webkit-background-clip:text;background-clip:text;color:transparent">Your AI team is working</div>
     <h1 style="margin-top:4px">Building Your Plan</h1>
@@ -2696,8 +2698,8 @@ pilot(){const inv=totalVal(),curV=Math.round(inv*1.047),gain=curV-inv,gpct=(gain
   </div>
 
   <h2>Manage Your Plan</h2>
-  <div class="reviewcard" style="margin-bottom:10px" onclick="go('portfolio')"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">⚙</div><div style="flex:1"><div class="opt-t">Adjust holdings &amp; Amounts</div><div class="opt-d">Fine-tune your funds and dollar amounts.</div></div><span class="opt-go">›</span></div>
-  <div class="reviewcard" style="margin-bottom:10px" onclick="updateProfile()"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">✎</div><div style="flex:1"><div class="opt-t">Update goals &amp; Risk profile</div><div class="opt-d">Life changed? Re-answer your questionnaire.</div></div><span class="opt-go">›</span></div>`;
+  <div class="reviewcard" style="margin-bottom:10px" onclick="go('portfolio')"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">⚙</div><div style="flex:1"><div class="opt-t">Adjust Holdings &amp; Amounts</div><div class="opt-d">Fine-tune your funds and dollar amounts.</div></div><span class="opt-go">›</span></div>
+  <div class="reviewcard" style="margin-bottom:10px" onclick="updateProfile()"><div class="opt-ic" style="background:linear-gradient(160deg,#f3d68d,#e3b04a);color:#7a4d0a">✎</div><div style="flex:1"><div class="opt-t">Update Goals &amp; Risk Profile</div><div class="opt-d">Life changed? Re-answer your questionnaire.</div></div><span class="opt-go">›</span></div>`;
   const tabContent=((state._pilotTab||'overview')==='markets') ? marketsTab() : ((state._pilotTab==='news') ? newsTab() : overviewHtml);
   const topTab=state._topTab||'myoneteam';
   const lifePanel=`
@@ -2754,7 +2756,7 @@ lifesimIntro(){const m=state.lifesim;
   <div class="lifesim-inputwrap">
     <textarea id="lifesimInput" class="lifesim-input" placeholder="e.g. I want to buy a $2mil house next year" oninput="lifesimOnInput()">${m.customText||''}</textarea>
   </div>
-  <button class="btn ghost" id="lifesimDetectBtn" onclick="lifesimDetectFromText()" style="margin-top:8px" ${(m.customText||'').trim().length<3?'disabled':''}>Detect from what I typed →</button>
+  <button class="btn ghost" id="lifesimDetectBtn" onclick="lifesimDetectFromText()" style="margin-top:8px" ${(m.customText||'').trim().length<3?'disabled':''}>Detect From What I Typed →</button>
   ${m.detectFeedback?`<div class="note" style="margin-top:8px;color:#a6710f;font-weight:600">${m.detectFeedback}</div>`:''}
 
   <div class="lifesim-chiphead" style="margin-top:20px">Or tap to select — pick as many as you like</div>
@@ -2839,7 +2841,9 @@ lifesimAnalyzing(){
   <div class="netmesh-wrap"><canvas id="netmesh"></canvas></div>
   <div style="position:relative;z-index:1;padding-top:50px">${appbar('Life Simulator','lifesimIntro',false,true)}<div class="pad" style="padding-bottom:32px">
   <div class="lifesim-analyzewrap">
-    <div class="lifesim-analyzetitle">Your team is on it</div>
+    <div class="ai-orb" style="width:52px;height:52px;margin:0 auto 12px;background:linear-gradient(135deg,#e3b04a,#b8790f);box-shadow:0 0 0 1px rgba(211,163,71,.3),0 8px 30px rgba(190,134,45,.28)"></div>
+    <div class="eyebrow" style="background:linear-gradient(120deg,#e3b04a,#a6710f);-webkit-background-clip:text;background-clip:text;color:transparent">Your AI team is working</div>
+    <div class="lifesim-analyzetitle">Your Team Is On It</div>
     <div class="lifesim-analyzesub" id="lifesimScenarioLabel">Looking at your scenario…</div>
 
     <div class="lifesim-hier">
@@ -3052,7 +3056,7 @@ portfolio(){if(!PRODUCTS.some(p=>p.bucket&&p.amt)){applyAgents();recommendAmount
   const k=state.activeBucket;
   return `<div style="position:relative">
   <div style="position:absolute;top:130px;left:0;right:0;bottom:0;background:rgba(255,251,244,.38);z-index:0;pointer-events:none"></div>
-  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Your Portfolio','analyze',false,true)}<div class="pad">
+  <div style="position:relative;z-index:1;padding-top:50px">${appbar('Your Portfolio',state.invested?'pilot':'analyze',false,true)}<div class="pad">
   <div style="background:rgba(255,253,248,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:16px;padding:14px 16px;margin:0 0 14px">
     <div class="eyebrow" style="background:linear-gradient(120deg,#e3b04a,#a6710f);-webkit-background-clip:text;background-clip:text;color:transparent">Your AI-recommended portfolio</div>
     <h1 style="margin:6px 0 4px">${riskComfort().word} ${PNAME[state.agents[0]]||''} Mix</h1>
@@ -3333,7 +3337,7 @@ function execOrder(){state.invested=true;const total=totalVal();const n=PRODUCTS
       <div class="orow"><span class="oname">Status</span><span class="oamt" style="color:#1f9d57">Placed ✓</span></div>
     </div>
     <p style="text-align:center;font-size:12px;color:var(--muted);margin:10px 0 2px">Your AI team keeps watching your plan and flags anything worth your attention.</p>
-    <button class="btn gold" onclick="hideModal();go('pilot')">Go To My OneTeam home →</button>
+    <button class="btn gold" onclick="hideModal();go('pilot')">Go To My OneTeam Home →</button>
   </div>`);}
 
 /* ===== persona: always orchestrator for chat ===== */
@@ -3774,7 +3778,7 @@ function runAnalyze(){analyzeRun=false;setTimeout(()=>{
     const bars=KEYS4.map(k=>`<div class="vbar"><div class="vbl"><span class="vsw" style="background:${BK[k].hex}"></span>${BK[k].name}</div><div class="vtrack"><span style="width:${state.buckets[k]}%;background:${BK[k].hex}"></span></div><div class="vpc">${state.buckets[k]}%</div></div>`).join('');
     v.innerHTML=`<div class="verdictcard" style="animation:slideup .3s ease">
       <div class="vhead"><div class="pixframe gold" style="width:48px;flex-shrink:0">${avatar(JUDGE)}</div>
-        <div><div class="veyebrow">Orchestrator · The Verdict</div><div class="vtitle">Your recommended allocation</div></div></div>
+        <div><div class="veyebrow">Orchestrator · The Verdict</div><div class="vtitle">Your Recommended Allocation</div></div></div>
       <div class="vsub">Balancing ${names} for your ${goalLabel()}. Figures are the share (%) of your portfolio in each asset class.</div>
       <div class="vbars">${bars}</div></div>`;}
     const cta=$('analyzeCta');if(cta)cta.innerHTML=`<button class="btn gold glowpulse" style="animation:slideup .3s ease" onclick="go('portfolio')">See My Recommended Plan →</button>`;},after);
@@ -3928,7 +3932,7 @@ function learnMore(id){const n=pilotNews()[id];const a=AGENTS.find(x=>x.id===id)
   showModal(`<div style="display:flex;align-items:center;gap:11px;margin-bottom:10px"><div style="width:42px;flex-shrink:0">${avatar(a)}</div><div style="text-align:left"><div style="font-family:'Sora';font-weight:800;font-size:15px">${a.name}</div><div style="font-size:11px;color:var(--muted)">${n.time} · ${n.tag}</div></div></div>
   <p style="text-align:left"><b>${n.ev}</b> ${n.ef}</p>
   <p style="text-align:left;color:var(--ink2)">${n.more}</p>
-  <button class="btn ghost" onclick="hideModal();go('sandbox')">Open my plan to explore</button>
+  <button class="btn ghost" onclick="hideModal();go('portfolio')">Open my plan to explore</button>
   <button class="btn link" onclick="hideModal()">Close</button>`);}
 function applyRec(msg){toast(msg+' ✓');}
 function rebalance(){state.pilot.rebalanced=true;state.pilot.drift=state.buckets.Funds;keepScroll(()=>render());toast('Rebalanced back to your target mix ✓');}
