@@ -6,8 +6,8 @@ An AI-driven wealth advisory prototype built around goal-based investing and lif
 
 | Platform | URL |
 |---|---|
-| 🖥️ Desktop | ocbc-team3-myoneteam-desktoptest.netlify.app |
-| 📱 Mobile | ocbc-team3-myoneteam-mobiletest.netlify.app |
+| 🖥️ Desktop | https://thisisadison.github.io/OCBC-MyOneTeam-DesktopTest/ |
+| 📱 Mobile | temporarily unavailable |
 
 > Best experienced on mobile / a narrow viewport — the prototype is designed mobile-first as an in-app experience.
 
