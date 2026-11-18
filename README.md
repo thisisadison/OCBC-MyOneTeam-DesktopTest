@@ -8,8 +8,8 @@ An agentic AI wealth-advisor concept for OCBC, shown as a mobile-first clickable
 
 | Platform | URL |
 |---|---|
-| 🖥️ Desktop | [Open MyOneTeam →] https://thisisadison.github.io/OCBC-MyOneTeam-DesktopTest/ |
-| 📱 Mobile | [Open MyOneTeam →] Temporarily Unavailable |
+| 🖥️ Desktop | https://thisisadison.github.io/OCBC-MyOneTeam-DesktopTest/ |
+| 📱 Mobile | Temporarily Unavailable |
 
 > Designed mobile-first as an in-app experience, so it looks best on a phone or a narrow browser window.
 
