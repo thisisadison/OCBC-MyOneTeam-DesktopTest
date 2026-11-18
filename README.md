@@ -62,16 +62,6 @@ To test on a phone over your network, serve it instead:
 npx serve .
 ```
 
-## Project Status
-
-A high-fidelity prototype, not a production application.
-
-- ✅ Fully clickable front end covering the whole journey above
-- ❌ No backend, authentication or persistence
-- ❌ No live brokerage, CPF or bank integrations
-- ❌ No real market data; all figures are illustrative
-- ❌ Agents are a proof of concept and are not connected to any model or OCBC system
-
 ## Repository Structure
 
 ```
